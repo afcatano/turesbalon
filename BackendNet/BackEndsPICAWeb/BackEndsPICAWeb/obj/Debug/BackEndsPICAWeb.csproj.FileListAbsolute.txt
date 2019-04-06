@@ -1,0 +1,120 @@
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\BackEndsPICAWeb.dll.config
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\BackEndsPICAWeb.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\BackEndsPICAWeb.pdb
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csc.exe
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csc.exe.config
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csc.rsp
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csi.exe
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csi.exe.config
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csi.rsp
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.Managed.Core.targets
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.AppContext.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Collections.Immutable.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Console.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.Compression.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.FileSystem.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.Pipes.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Reflection.Metadata.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.AccessControl.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Claims.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Principal.Windows.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.ValueTuple.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.XmlDocument.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.XPath.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\vbc.exe
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\vbc.exe.config
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\vbc.rsp
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\VBCSCompiler.exe
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\VBCSCompiler.exe.config
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\CommonsWeb.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\CommonsWeb.pdb
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\CommonsWeb.dll.config
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.csprojAssemblyReference.cache
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.csproj.CoreCompileInputs.cache
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.csproj.CopyComplete
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.dll
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.pdb
+E:\PICA .NET\BackEndsPICAWeb\BackEndsPICAWeb\bin\Oracle.DataAccess.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\BackEndsPICAWeb.dll.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\BackEndsPICAWeb.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\BackEndsPICAWeb.pdb
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csc.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csc.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csc.rsp
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csi.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csi.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\csi.rsp
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.AppContext.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Console.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.Compression.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Claims.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.ValueTuple.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\vbc.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\vbc.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\vbc.rsp
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\VBCSCompiler.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\CommonsWeb.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\Oracle.DataAccess.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\CommonsWeb.pdb
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\CommonsWeb.dll.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.csprojAssemblyReference.cache
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.csproj.CoreCompileInputs.cache
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.csproj.CopyComplete
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\BackEndsPICAWeb\obj\Debug\BackEndsPICAWeb.pdb

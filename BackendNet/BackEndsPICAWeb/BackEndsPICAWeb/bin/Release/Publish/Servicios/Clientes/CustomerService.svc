@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="BackEndsPICAWeb.Servicios.Clientes.CustomerService" CodeBehind="CustomerService.svc.cs" %>
