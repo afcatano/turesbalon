@@ -1,0 +1,168 @@
+<div class="container" >
+    <form style="background-color: white; padding: 30px;">
+      <div >
+        <h2>{{page.title}}</h2>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationServer01">Nombre</label>
+            <input maxlength="40" type="text" [(ngModel)]="register.nombre"  (change)="validateForm('nombre')" name="nombre" [ngClass]="validate.nombre.css" class="form-control " id="nombre" placeholder="Nombre"  required>
+            <div *ngIf="!validate.nombre.valid" class="invalid-feedback">
+              {{validate.nombre.message}}
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Apellido</label>
+            <input maxlength="40" type="text" [(ngModel)]="register.apellido"  (change)="validateForm('apellido')" name="apellido" [ngClass]="validate.apellido.css" class="form-control " id="apellido" placeholder="Apellido"  required>
+            <div *ngIf="!validate.apellido.valid" class="invalid-feedback">
+              {{validate.apellido.message}}
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-3">
+              <label for="validationServer02">Numero Telefonico</label>
+              <input maxlength="15" type="number" [(ngModel)]="register.telefono"  (change)="validateForm('telefono')" name="telefono" [ngClass]="validate.telefono.css" class="form-control" id="telefono" placeholder="Telefono"  required>
+              <div *ngIf="!validate.telefono.valid" class="invalid-feedback">
+                {{validate.telefono.message}}
+              </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Dirección</label>
+            <input maxlength="100" type="text" [(ngModel)]="register.direccion"  (change)="validateForm('direccion')" name="direccion" [ngClass]="validate.direccion.css" class="form-control" id="direccion" placeholder="Dirección"  required>
+            <div *ngIf="!validate.direccion.valid" class="invalid-feedback">
+              {{validate.direccion.message}}
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Tipo Documento</label>
+           
+            <select class="form-control "  name="tipoDocumento" [(ngModel)]="register.tipoDocumento" (change)="capturar()" >
+              <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}">{{data.name}}</option>
+            </select>
+            <div *ngIf="!validate.tipoDocumento.valid" class="invalid-feedback">
+              {{validate.tipoDocumento.message}}
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Número documento</label>
+            <input maxlength="20" type="number" [(ngModel)]="register.documento"  (change)="validateForm('documento')" name="documento" [ngClass]="validate.documento.css" class="form-control" id="documento" placeholder="Numero Documento"  required>
+            <div *ngIf="!validate.documento.valid" class="invalid-feedback">
+              {{validate.documento.message}}
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="validationServerUsername">Correo Electronico</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3">@</span>
+              </div>
+              <input maxlength="30" type="email"  [(ngModel)]="register.correo"  (change)="validateForm('correo')" name="correo" [ngClass]="validate.correo.css"  class="form-control" id="validationServerUsername" placeholder="Correo Electronico" aria-describedby="inputGroupPrepend3" required>
+              <div *ngIf="!validate.correo.valid" class="invalid-feedback">
+                {{validate.apellido.message}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          
+       
+          <div class="col-md-3 mb-3">
+            <label for="validationServer05">Pais</label>
+            <select class="form-control " [(ngModel)]="register.pais" name="pais">
+              <option *ngFor="let pais of dataPaises" >{{pais.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServer03">Ciudad</label>
+            <input maxlength="30"  type="text"  [(ngModel)]="register.ciudad"  (change)="validateForm('ciudad')" name="ciudad" [ngClass]="validate.ciudad.css" class="form-control " id="ciudad" placeholder="Ciudad" required>
+            <div *ngIf="!validate.ciudad.valid" class="invalid-feedback">
+                {{validate.ciudad.message}}
+              </div>
+            
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+              <label for="validationServer02">Nombre Usuario</label>
+              <input maxlength="15" type="text"  [(ngModel)]="register.username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css"  class="form-control " id="username" placeholder="Usuario"  required>
+              <div *ngIf="!validate.username.valid" class="invalid-feedback">
+                {{validate.username.message}}
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="validationServer02">Contraseña</label>
+              <input maxlength="15" type="password"  [(ngModel)]="register.password"  (change)="validateForm('password')" name="password" [ngClass]="validate.password.css"  class="form-control " id="password" placeholder="Contraseña"  required>
+              <div *ngIf="!validate.password.valid" class="invalid-feedback">
+                {{validate.password.message}}
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <label for="validationServer02">Confirmar Contraseña</label>
+              <input maxlength="15" type="password"  [(ngModel)]="register.confirmarContrasena"  (change)="validateForm('confirmarContrasena')" name="confirmarContrasena" [ngClass]="validate.confirmarContrasena.css"  class="form-control " id="confirmarContrasena" placeholder="Contraseña"  required>
+              <div *ngIf="!validate.confirmarContrasena.valid" class="invalid-feedback">
+                {{validate.confirmarContrasena.message}}
+              </div>
+          </div>
+          <hr>
+          <div class="col-md-12 mb-3">
+          <div class="form-check">
+              <input class="form-check-input" type="checkbox"  id="defaultCheckTarjeta" name="defaultCheckTarjeta" [(ngModel)]="register.checkTarjeta">
+              <label class="form-check-label" for="defaultCheck1">
+                Ingresar Datos Tarjeta de credito.
+              </label>
+          </div>
+        </div>
+
+         <div  *ngIf="register.checkTarjeta" class="col-md-12 mb-3">
+            <div class="col-md-4 mb-3">
+              <label for="validationServer01">Franquicia</label>
+            
+              <select class="form-control " [(ngModel)]="register.franquiciaTarjeta" name="franquiciaTarjeta">
+                  <option *ngFor="let data of dataFranquicias"  value="{{data.id}}">{{data.name}}</option>
+                </select>
+              <div *ngIf="!validate.franquiciaTarjeta.valid" class="invalid-feedback">
+                {{validate.franquiciaTarjeta.message}}
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationServer02">Numero de tarjeta</label>
+              <input maxlength="16" type="text"  [(ngModel)]="register.numeroTarjeta"  (change)="validateForm('numeroTarjeta')" name="numeroTarjeta" [ngClass]="validate.numeroTarjeta.css"   class="form-control" id="numeroTarjeta" placeholder="Numero"  required>
+              <div *ngIf="!validate.numeroTarjeta.valid" class="invalid-feedback">
+                {{validate.numeroTarjeta.message}}
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationServer02">Fecha Vencimiento</label>
+              <input maxlength="16" type="text"  [(ngModel)]="register.fechaTarjeta"  (change)="validateForm('fechaTarjeta')" name="fechaTarjeta" [ngClass]="validate.fechaTarjeta.css"   class="form-control" id="fechaTarjeta" placeholder="12/2020"  required>
+              <div *ngIf="!validate.fechaTarjeta.valid" class="invalid-feedback">
+                {{validate.fechaTarjeta.message}}
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationServer02">Codigo de Seguridad</label>
+                <input maxlength="3" type="text"  [(ngModel)]="register.codigoTarjeta"  (change)="validateForm('codigoTarjeta')" name="codigoTarjeta" [ngClass]="validate.codigoTarjeta.css"   class="form-control" id="codigoTarjeta" placeholder="Codigo"  required>
+                <div *ngIf="!validate.codigoTarjeta.valid" class="invalid-feedback">
+                  {{validate.codigoTarjeta.message}}
+                </div>
+             </div>
+         </div>
+        </div>
+        <div class="form-group" *ngIf="terminosCondiciones">
+          <div class="form-check">
+            <input class="form-check-input " type="checkbox" [(ngModel)]="terminosCondicionesValue" (change)="validateForm('terminosCondiciones')" name="terminosCondiciones" id="terminosCondicionesid" required>
+            <label class="form-check-label" for="invalidCheck3">
+              Acepte los terminos y condiciones
+            </label>
+            <div *ngIf="!terminosCondicionesValid" class="invalid-feedback">
+                Debe Aceptar los terminos y condiciones
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" (click)="onSubmit()"  type="submit">{{page.button}}</button>
+      </div>
+        
+      </form>
+  </div>

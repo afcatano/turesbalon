@@ -1,0 +1,242 @@
+
+<div class="container-fluid" style="margin-bottom: 20px;">
+    <div class="row ">
+      <div class="col-auto mr-auto"> 
+          <a class="nav-link" style="display: inline-block" href="#">TouresBalon</a>> 
+          <a class="nav-link" style="display: inline-block" href="#">Paquetes</a>> 
+          <a class="nav-link" style="display: inline-block" href="#">Futbol</a>> 
+          <a class="nav-link" style="display: inline-block" href="#">Champion League</a>> 
+         Hoteles 
+        </div>
+      <div class="col-auto">
+          <div class="card" style="width: 18rem;">
+             <div class="card-body ">
+              <div class="row">
+                  <div class="col-7"> 
+                    <form>
+                        <small class="form-text text-muted">Realiza el pago:</small>
+                      <button type="submit" class="btn btn-primary">Pagar</button>
+            
+                    </form></div>
+                </div>
+              </div>
+            </div>
+       </div>
+    </div>
+    
+  </div>
+<div class="container" >
+  <h2>Resumen de Compra</h2>
+    <div class="row" >
+       
+        <div class="card mb-3 col-md-5" *ngFor="let item of carrito">
+            <div class="row no-gutters">
+              <div class="col-md">
+                <div class="card-body ">
+                  <h5 class="card-title">Paquete</h5>
+                  <ul class="list-group list-group-flush">
+                            <li class="list-group-item background-grey" *ngIf="item.evento">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>Champion League</P>
+                                      <P>Lun. 15 Abril 2019</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>BOG</P>
+                                      <P>Bogotá</P>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="list-group-item background-white" *ngIf="item.evento">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>Cantidad 2 Personas</P>
+                                     </div>
+                                    <div class="col-sm">
+                                      <P>22:30</P>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="list-group-item background-grey" *ngIf="item.transporte">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>IDA</P>
+                                      <P>Lun. 15 Abril 2019</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>MAD</P>
+                                      <P>Madrid</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>BOG</P>
+                                      <P>Bogotá</P>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item background-white" *ngIf="item.transporte">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <P>  <img [src]="item.transporte.imagen" class="card-img card-logo" alt="..."></P>
+                                    </div>
+                                    <div class="col-sm">
+                                        <P>{{item.horaSalida}}</P>
+                                    </div>
+                                    <div class="col-sm">
+                                        <P>22:10</P>
+                                    </div>
+                                </div>
+                            </li>
+       
+     
+                            <li class="list-group-item background-grey" *ngIf="item.hotel">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>Hotel</P>
+                                      <P> {{item.hotel.nombre}}</P>
+                                     </div>
+                                    <div class="col-sm">
+                                      <P>Check-in</P>
+                                     </div>
+                                    <div class="col-sm">
+                                      <P>Check-out</P>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item background-white" *ngIf="item.hotel">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>{{item.hotel.cantidadHotel}} personas</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>{{item.hotel.reservaInicial}}</P>
+                                    </div>
+                                    <div class="col-sm">
+                                       <P>{{item.hotel.reservaFinal}}</P>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                          </ul>
+                </div>
+              </div>
+              <div class="col-md-12 card-color-blue" style="margin-bottom: 10px;" >
+                 <div class="card-body ">
+                  <div class="row">
+                      <div class="col-9">  <button type="button" style="margin-top: 20px;" class="btn btn-danger">Eliminar</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      
+      
+
+        <div class="card mb-3 col-md-5" >
+            <div class="row no-gutters">
+              <div class="col-md">
+                <div class="card-body ">
+                  <h5 class="card-title">Paquete</h5>
+                  <ul class="list-group list-group-flush">
+                            <li class="list-group-item background-grey">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>Champion League</P>
+                                      <P>Lun. 15 Abril 2019</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>BOG</P>
+                                      <P>Bogotá</P>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="list-group-item background-white">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>Cantidad 2 Personas</P>
+                                     </div>
+                                    <div class="col-sm">
+                                      <P>22:30</P>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="list-group-item background-grey">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>IDA</P>
+                                      <P>Lun. 15 Abril 2019</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>MAD</P>
+                                      <P>Madrid</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>BOG</P>
+                                      <P>Bogotá</P>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item background-white">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <P>  <img src="../../../assets/vuelos/logo-bolivariano.jpg" class="card-img card-logo" alt="..."></P>
+                                    </div>
+                                    <div class="col-sm">
+                                        <P>20:10</P>
+                                    </div>
+                                    <div class="col-sm">
+                                        <P>22:10</P>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item background-grey">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>Hotel</P>
+                                      <P> Madrid</P>
+                                     </div>
+                                    <div class="col-sm">
+                                      <P>Check-in</P>
+                                     </div>
+                                    <div class="col-sm">
+                                      <P>Check-out</P>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item background-white">
+                                <div class="row">
+                                    <div class="col-sm">
+                                      <P>2 personas</P>
+                                    </div>
+                                    <div class="col-sm">
+                                      <P>Lun. 15 Abril 2019</P>
+                                    </div>
+                                    <div class="col-sm">
+                                       <P>Lun. 15 Abril 2019</P>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                          </ul>
+                </div>
+              </div>
+              <div class="col-md-12 card-color-blue" style="margin-bottom: 10px;" >
+                 <div class="card-body ">
+                  <div class="row">
+                      <div class="col-9">  <button type="button" style="margin-top: 20px;" class="btn btn-danger">Eliminar</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      
+      
+        <div class="col-md-6 offset-md-3" style="background-color: white; padding: 30px;">
+         
+         
+      </div>
+    </div>
+  </div>
