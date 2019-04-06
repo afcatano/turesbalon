@@ -17,8 +17,6 @@ namespace BackEndsPICAWeb.Business.Clientes
             try
             {
                 //validar tipos de datos
-
-
                 List<ClientesDTO> lstClientesDTO;
                 lstClientesDTO = null;
 
@@ -377,5 +375,30 @@ namespace BackEndsPICAWeb.Business.Clientes
             return lpcr_response;
         }
 
+        GetLoginResponse ICustomerServiceBusiness.GetResultLoginDTOs(ClientesDTO prmloginClientesDTO)
+        {
+
+            GetLoginResponse loginResponse = new GetLoginResponse();
+            loginResponse.status = new Status();
+
+            int rsta = 0;
+
+            ClientesDAL ClientesDAL = new ClientesDAL();
+            rsta = ClientesDAL.LoginClientes(prmloginClientesDTO);
+
+            if (rsta == 0)
+            {
+                loginResponse.status.CodeResp = "01";
+                loginResponse.status.MessageResp = "Datos Incorrectos";
+            }
+            else
+            {
+                loginResponse.status.CodeResp = "0";
+                loginResponse.status.MessageResp = "";
+            }
+
+            return loginResponse;
+
+        }
     }
 }

@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Servicios\Clientes\CustomerService.svc" />
+    <Content Include="Servicios\Login\LoginService.svc" />
     <Content Include="Servicios\Orders\OrderService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -87,6 +88,11 @@
       <DependentUpon>CustomerService.svc</DependentUpon>
     </Compile>
     <Compile Include="Servicios\Clientes\ICustomerService.cs" />
+    <Compile Include="Servicios\Login\ILoginService.cs" />
+    <Compile Include="Servicios\Login\LoginService.cs" />
+    <Compile Include="Servicios\Login\LoginService.svc.cs">
+      <DependentUpon>LoginService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\Orders\IOrderService.cs" />
     <Compile Include="Servicios\Orders\OrderService.cs" />
     <Compile Include="Servicios\Orders\OrderService.svc.cs">

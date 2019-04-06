@@ -194,6 +194,53 @@ namespace CommonsWeb.DAL
             }
         }
 
+        public int ExecuteSqlEscalar(string sentenceSql, List<OracleParameter> parameters)
+        {
+            ImprimirParametros(sentenceSql, parameters);
+
+            OracleCommand command = null;
+            OracleDataAdapter dbAdapter = null;
+            int rsta;
+
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    command = new OracleCommand(sentenceSql, connection);
+                    command.BindByName = true;
+                    command.CommandTimeout = 600;
+                    foreach (OracleParameter par in parameters)
+                    {
+                        command.Parameters.Add(par);
+                    }
+
+                    rsta = (int)command.ExecuteScalar();
+                    return rsta;
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Debug, "ERROR EN EJECUCION SENTENCIA SQL :: " + sentenceSql + "  " + ex.Message);
+                return 0;
+            }
+            finally
+            {
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Debug, "----------------------------------------- FIN");
+                if (command != null)
+                {
+                    command.Dispose();
+                    command = null;
+                }
+
+                if (dbAdapter != null)
+                {
+                    dbAdapter.Dispose();
+                    dbAdapter = null;
+                }
+            }
+        }
+
         private OracleCommand PrepareCommand(string sentenceSql, List<OracleParameter> parameters, OracleConnection connection)
         {
 
