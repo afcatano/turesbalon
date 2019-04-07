@@ -71,7 +71,7 @@ namespace CommonsWeb.DAL.Clientes
                                 CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
                                 FName = Convert.ToString(dataRowClientes["FNAME"]),
                                 LName = Convert.ToString(dataRowClientes["LNAME"]),
-                                CodTypeIdent = Convert.ToString(dataRowClientes["TYPEIDENT"]),
+                                CodTypeIdent = Convert.ToString(dataRowClientes["IDTYPEIDENT"]),
                                 PhoneNumber = Convert.ToString(dataRowClientes["PHONENUMBER"]),
                                 Email = Convert.ToString(dataRowClientes["EMAIL"]),
                                 Address = Convert.ToString(dataRowClientes["ADDRESS"]),
