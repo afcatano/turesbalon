@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Web;
+using System.Web.Caching;
 using BackEndsPICAWeb.Business.Clientes.DTO;
 using CommonsWeb.DAL.Clientes;
 
@@ -13,96 +15,109 @@ namespace BackEndsPICAWeb.Business.Clientes
         {
             GetCustomerResponse customerResponse = new GetCustomerResponse();
             customerResponse.status = new Status();
+            string CacheKey = "getClientes";
+            //private GetCustomerResponse repository;
+            ObjectCache cache = MemoryCache.Default;
 
-            try
+            if (cache.Contains(CacheKey))
             {
-                //validar tipos de datos
-
-
-                List<ClientesDTO> lstClientesDTO;
-                lstClientesDTO = null;
-
-
-                ClientesDAL ClientesDAL = new ClientesDAL();
-                lstClientesDTO = ClientesDAL.GetClientes(prmsearchClientesDTO);
-
-                if (lstClientesDTO != null)
+                return (GetCustomerResponse)cache.Get(CacheKey);
+            }
+            else
+            {
+                try
                 {
-                    if (lstClientesDTO.Count > 0)
+                    //validar tipos de datos
+                    List<ClientesDTO> lstClientesDTO;
+                    lstClientesDTO = null;
+
+
+                    ClientesDAL ClientesDAL = new ClientesDAL();
+                    lstClientesDTO = ClientesDAL.GetClientes(prmsearchClientesDTO);
+
+                    if (lstClientesDTO != null)
                     {
-                        List<GetCustomerResult> GetCustomerResult = new List<GetCustomerResult>();
-
-                        foreach (ClientesDTO clientesDTO in lstClientesDTO)
+                        if (lstClientesDTO.Count > 0)
                         {
+                            List<GetCustomerResult> GetCustomerResult = new List<GetCustomerResult>();
 
-                            GetCustomerResult lCustomer;
-                            List<CreditCardGet> lcreditCard = new List<CreditCardGet>();
-
-                            lCustomer = new GetCustomerResult
+                            foreach (ClientesDTO clientesDTO in lstClientesDTO)
                             {
-                                IdType = clientesDTO.CodTypeIdent,
-                                FirstName = clientesDTO.FName,
-                                LastNames = clientesDTO.LName,
-                                IdNumber = clientesDTO.CustID,
-                                PhoneNumber = clientesDTO.PhoneNumber,
-                                Email = clientesDTO.Email,
-                                Address = clientesDTO.Address,
-                                Country = clientesDTO.Country,
-                                City = clientesDTO.City,
-                                User = clientesDTO.User,
-                                Password = clientesDTO.Password,
-                                StatusCustomer = clientesDTO.Status
-                            };
 
-                            if (clientesDTO.LCreditCard != null)
-                            {
-                                foreach (CreditCardDTO creditCardDTO in clientesDTO.LCreditCard)
+                                GetCustomerResult lCustomer;
+                                List<CreditCardGet> lcreditCard = new List<CreditCardGet>();
+
+                                lCustomer = new GetCustomerResult
                                 {
+                                    IdType = clientesDTO.CodTypeIdent,
+                                    FirstName = clientesDTO.FName,
+                                    LastNames = clientesDTO.LName,
+                                    IdNumber = clientesDTO.CustID,
+                                    PhoneNumber = clientesDTO.PhoneNumber,
+                                    Email = clientesDTO.Email,
+                                    Address = clientesDTO.Address,
+                                    Country = clientesDTO.Country,
+                                    City = clientesDTO.City,
+                                    User = clientesDTO.User,
+                                    Password = clientesDTO.Password,
+                                    StatusCustomer = clientesDTO.Status
+                                };
 
-                                    CreditCardGet creditCard = new CreditCardGet
+                                if (clientesDTO.LCreditCard != null)
+                                {
+                                    foreach (CreditCardDTO creditCardDTO in clientesDTO.LCreditCard)
                                     {
-                                        CardName = creditCardDTO.CardName,
-                                        ExpirationDate = creditCardDTO.ExpirationDate,
-                                        Type = creditCardDTO.Type,
-                                        Number = creditCardDTO.Number,
-                                        SecurityCode = creditCardDTO.SecurityCode,
-                                        StatusCard = creditCardDTO.StatusCard
-                                    };
 
-                                    lcreditCard.Add(creditCard);
-                                    lCustomer.CreditCard = creditCard;
+                                        CreditCardGet creditCard = new CreditCardGet
+                                        {
+                                            CardName = creditCardDTO.CardName,
+                                            ExpirationDate = creditCardDTO.ExpirationDate,
+                                            Type = creditCardDTO.Type,
+                                            Number = creditCardDTO.Number,
+                                            SecurityCode = creditCardDTO.SecurityCode,
+                                            StatusCard = creditCardDTO.StatusCard
+                                        };
+
+                                        lcreditCard.Add(creditCard);
+                                        lCustomer.CreditCard = creditCard;
+                                    }
                                 }
+
+                                GetCustomerResult.Add(lCustomer);
                             }
 
-                            GetCustomerResult.Add(lCustomer);
+                            customerResponse.result = GetCustomerResult.ToArray();
+                            customerResponse.status.CodeResp = "0";
+                            customerResponse.status.MessageResp = "Proceso satisfactorio";
                         }
-
-                        customerResponse.result = GetCustomerResult.ToArray();
-                        customerResponse.status.CodeResp = "0";
-                        customerResponse.status.MessageResp = "Proceso satisfactorio";
+                        else
+                        {
+                            customerResponse.status.CodeResp = "01";
+                            customerResponse.status.MessageResp = "no existen datos....";
+                        }
                     }
                     else
                     {
+
                         customerResponse.status.CodeResp = "01";
-                        customerResponse.status.MessageResp = "no existen datos....";
+                        customerResponse.status.MessageResp = "error....";
                     }
+
+                    // Store data in the cache
+                    CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
+                    cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddMinutes(3);
+                    cache.Add(CacheKey, customerResponse, cacheItemPolicy);
                 }
-                else
+                catch (Exception ex)
                 {
-
                     customerResponse.status.CodeResp = "01";
-                    customerResponse.status.MessageResp = "error....";
+                    customerResponse.status.MessageResp = "Error en la....";
+                    Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO CustomerService:GetCustomer");
+                    Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
+                    throw ex;
                 }
-            }
-            catch (Exception ex)
-            {
-                customerResponse.status.CodeResp = "01";
-                customerResponse.status.MessageResp = "Error en la....";
-                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO CustomerService:GetCustomer");
-                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
-                throw ex;
-            }
 
+            }
             return customerResponse;
         }
 
@@ -377,5 +392,30 @@ namespace BackEndsPICAWeb.Business.Clientes
             return lpcr_response;
         }
 
+        GetLoginResponse ICustomerServiceBusiness.GetResultLoginDTOs(ClientesDTO prmloginClientesDTO)
+        {
+
+            GetLoginResponse loginResponse = new GetLoginResponse();
+            loginResponse.status = new Status();
+
+            int rsta = 0;
+
+            ClientesDAL ClientesDAL = new ClientesDAL();
+            rsta = ClientesDAL.LoginClientes(prmloginClientesDTO);
+
+            if (rsta == 0)
+            {
+                loginResponse.status.CodeResp = "01";
+                loginResponse.status.MessageResp = "Datos Incorrectos";
+            }
+            else
+            {
+                loginResponse.status.CodeResp = "0";
+                loginResponse.status.MessageResp = "";
+            }
+
+            return loginResponse;
+
+        }
     }
 }

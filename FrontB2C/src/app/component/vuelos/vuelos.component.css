@@ -1,0 +1,30 @@
+.card-color-blue{
+    background-color:  rgb(31, 72, 124) !important;
+    color: white;
+}
+.col-sm{
+    margin-bottom: 25px;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+     padding: 0px; 
+}
+
+.col-sm[_ngcontent-c12] {
+     margin-bottom: 0px;
+}
+
+.background-grey{
+    background-color: #80808029;
+    padding: 10px;
+}
+
+.background-white{
+    background-color:#fff;
+    padding: 10px;
+}
+.card-logo{
+ width: 120px;
+}

@@ -28,10 +28,9 @@ namespace CommonsWeb.DAL.Clientes
 
                 strWhere = ConfiguracionParametrosGet(clientesDTO);
 
-                strPLSQL = "SELECT B.TYPEIDENT, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, A.USUARIO, A.PASSWORD, D.STATUS, " +
+                strPLSQL = "SELECT A.IDTypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, A.USUARIO, A.PASSWORD, D.STATUS, " +
                        "E.CREDITCARDTYPE, C.CREDITCARDNUMBER, C.CARDNAME, C.FVENCE, C.CODESECURITY " +
                        "FROM CUSTOMER A " +
-                       "LEFT JOIN TypeIdent B ON A.IDTypeIdent = B.CodTypeIdent " +
                        "LEFT JOIN customercreditcards C ON A.CUSTID = C.CUSTID " +
                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " +
                        "LEFT JOIN CreditCardType E ON C.IDCREDITCARDTYPE = E.CodCreditCardType " + strWhere;
@@ -72,7 +71,7 @@ namespace CommonsWeb.DAL.Clientes
                                 CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
                                 FName = Convert.ToString(dataRowClientes["FNAME"]),
                                 LName = Convert.ToString(dataRowClientes["LNAME"]),
-                                CodTypeIdent = Convert.ToString(dataRowClientes["TYPEIDENT"]),
+                                CodTypeIdent = Convert.ToString(dataRowClientes["IDTYPEIDENT"]),
                                 PhoneNumber = Convert.ToString(dataRowClientes["PHONENUMBER"]),
                                 Email = Convert.ToString(dataRowClientes["EMAIL"]),
                                 Address = Convert.ToString(dataRowClientes["ADDRESS"]),
@@ -247,6 +246,35 @@ namespace CommonsWeb.DAL.Clientes
 
         }
 
+        public int LoginClientes(ClientesDTO clientesDTO)
+        {
+            int rsta;
+            DataSet dsLogin;
+            try
+            {
+                strPLSQL = "SELECT CUSTID FROM CUSTOMER WHERE USUARIO = '" + clientesDTO.User.ToString() + "' AND PASSWORD = '" + clientesDTO.Password.ToString() + "'";
+                OracleServerHelper OrclConection = new OracleServerHelper();
+
+                dsLogin = OrclConection.ExecuteSqlToDataSet(strPLSQL, new List<OracleParameter>());
+
+                if (dsLogin != null && dsLogin.Tables[0].Rows.Count > 0)
+                {
+                    rsta = 1;
+                }
+                else
+                {
+                    rsta = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                rsta = 0;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN DAL Clientes: LOGIN");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
+            }
+
+            return rsta;
+        }
 
         private string ConfiguracionParametrosGet(ClientesDTO clientesDTO)
         {

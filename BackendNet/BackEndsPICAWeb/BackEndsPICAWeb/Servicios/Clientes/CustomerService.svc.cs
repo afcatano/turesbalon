@@ -79,8 +79,8 @@ namespace BackEndsPICAWeb.Servicios.Clientes
             catch (Exception ex)
             {
 
-                postCustomer.status.CodeResp = "";
-                postCustomer.status.MessageResp = "";
+                postCustomer.status.CodeResp = "01";
+                postCustomer.status.MessageResp = "Error en el Servicio";
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN EL SERVICIO CustomerService:PostCustomer " + ex.Message);
                 throw ex;
             }
