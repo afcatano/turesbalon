@@ -33,16 +33,11 @@ namespace CommonsWeb.Util
                     {
 
                         if (!ld_data.TryGetValue(ao_request, out lo_return))
-                            lo_return = new object();
+                            lo_return = null;
 
                     }
-                    else
-                        lo_return = new object();
-
 
                 }
-                else
-                    lo_return = new object();
 
             }
             catch (Exception ae_e)
@@ -55,6 +50,29 @@ namespace CommonsWeb.Util
             }
 
             return lo_return;
+
+        }
+
+        public void AddCache(string as_cacheKey, object ao_list)
+        {
+
+            try
+            {
+
+                CacheItemPolicy lcip_policy;
+
+                lcip_policy = new CacheItemPolicy();
+                lcip_policy.AbsoluteExpiration = DateTime.Now.AddMinutes(3);
+                ioc_cache.Add(as_cacheKey, ao_list, lcip_policy);
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR CacheHandler:AddCache");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " : " + ae_e.Message);
+
+            }
 
         }
 
