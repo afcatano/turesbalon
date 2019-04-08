@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Caching;
-using System.Web;
-using System.Web.Caching;
 using BackEndsPICAWeb.Business.Clientes.DTO;
 using CommonsWeb.DAL.Clientes;
+using CommonsWeb.Util;
 
 namespace BackEndsPICAWeb.Business.Clientes
 {
@@ -15,14 +12,35 @@ namespace BackEndsPICAWeb.Business.Clientes
         {
             GetCustomerResponse customerResponse = new GetCustomerResponse();
             customerResponse.status = new Status();
-            string CacheKey = "getClientes";
-            //private GetCustomerResponse repository;
-            ObjectCache cache = MemoryCache.Default;
+            CacheHandler lch_cache;
+            Dictionary<ClientesDTO, GetCustomerResponse> ld_data;
+            GetCustomerResponse customerResponse2 = null;
+            bool lb_valCache;
 
-            if (cache.Contains(CacheKey))
+            lch_cache = new CacheHandler();
+            ld_data = (Dictionary<ClientesDTO, GetCustomerResponse>)lch_cache.GetCache("getClientes");
+            lb_valCache = false;
+
+            if (ld_data != null)
             {
-                return (GetCustomerResponse)cache.Get(CacheKey);
+
+                foreach (ClientesDTO lc_key in ld_data.Keys)
+                {
+
+                    if (lc_key.Equals(prmsearchClientesDTO))
+                    {
+
+                        lb_valCache = ld_data.TryGetValue(lc_key, out customerResponse2);
+                        break;
+
+                    }
+
+                }
+
             }
+
+            if (lb_valCache)
+                customerResponse = customerResponse2;
             else
             {
                 try
@@ -89,6 +107,13 @@ namespace BackEndsPICAWeb.Business.Clientes
                             customerResponse.result = GetCustomerResult.ToArray();
                             customerResponse.status.CodeResp = "0";
                             customerResponse.status.MessageResp = "Proceso satisfactorio";
+
+                            if (ld_data == null)
+                                ld_data = new Dictionary<ClientesDTO, GetCustomerResponse>();
+
+                            ld_data.Add(prmsearchClientesDTO, customerResponse);
+                            lch_cache.AddCache("getClientes", ld_data);
+
                         }
                         else
                         {
@@ -103,10 +128,6 @@ namespace BackEndsPICAWeb.Business.Clientes
                         customerResponse.status.MessageResp = "error....";
                     }
 
-                    // Store data in the cache
-                    CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
-                    cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddMinutes(3);
-                    cache.Add(CacheKey, customerResponse, cacheItemPolicy);
                 }
                 catch (Exception ex)
                 {
