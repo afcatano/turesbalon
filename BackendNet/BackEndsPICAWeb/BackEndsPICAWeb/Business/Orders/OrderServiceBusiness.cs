@@ -1,5 +1,6 @@
 ﻿using CommonsWeb.DAL.Orders;
 using CommonsWeb.DTO;
+using CommonsWeb.Util;
 using System;
 using System.Collections.Generic;
 
@@ -161,55 +162,96 @@ namespace BackEndsPICAWeb.Business.Orders
 
                         }
 
-                        OrderServiceDAL losd_losDAL;
-                        List<OrderDTO> llo_orders;
+                        CacheHandler lch_cache;
+                        Dictionary<OrderDTO, GetOrderResponse> ld_data;
+                        GetOrderResponse lgor_tempResponse;
+                        bool lb_valCache;
 
-                        losd_losDAL = new OrderServiceDAL();
-                        llo_orders = losd_losDAL.GetOrder(lo_order);
+                        lch_cache = new CacheHandler();
+                        ld_data = (Dictionary<OrderDTO, GetOrderResponse>)lch_cache.GetCache("GetOrder");
+                        lgor_tempResponse = null;
+                        lb_valCache = false;
 
-                        if (llo_orders != null)
+                        if (ld_data != null)
                         {
 
-                            if (llo_orders.Count > 0)
+                            foreach (OrderDTO lo_key in ld_data.Keys)
                             {
 
-                                List<OrderInfo> llor_orders;
-
-                                llor_orders = new List<OrderInfo>();
-
-                                foreach (OrderDTO lo_orderTemp in llo_orders)
+                                if (lo_key.Equals(lo_order))
                                 {
 
-                                    OrderInfo loi_oi;
-
-                                    loi_oi = new OrderInfo();
-                                    loi_oi.OrderCode = lo_orderTemp.OrderCode.ToString();
-                                    loi_oi.OrderDate = lo_orderTemp.OrderDate;
-                                    loi_oi.OrderStatus = lo_orderTemp.OrderStatus;
-                                    loi_oi.OrderValue = lo_orderTemp.OrderValue;
-                                    loi_oi.IdType = lo_orderTemp.IdType.ToString();
-                                    loi_oi.IdNumber = lo_orderTemp.IdNumber.ToString();
-                                    loi_oi.EventCode = lo_orderTemp.EventCode.ToString();
-                                    loi_oi.HotelCode = lo_orderTemp.HotelCode.ToString();
-                                    loi_oi.TransportCode = lo_orderTemp.TransportCode.ToString();
-                                    llor_orders.Add(loi_oi);
+                                    lb_valCache = ld_data.TryGetValue(lo_key, out lgor_tempResponse);
+                                    break;
 
                                 }
 
-                                lgor_response.status.CodeResp = "0";
-                                lgor_response.status.MessageResp = "";
-                                lgor_response.result = llor_orders.ToArray();
+                            }
+
+                        }
+
+                        if (lb_valCache)
+                            lgor_response = lgor_tempResponse;
+                        else
+                        {
+
+                            OrderServiceDAL losd_losDAL;
+                            List<OrderDTO> llo_orders;
+
+                            losd_losDAL = new OrderServiceDAL();
+                            llo_orders = losd_losDAL.GetOrder(lo_order);
+
+                            if (llo_orders != null)
+                            {
+
+                                if (llo_orders.Count > 0)
+                                {
+
+                                    List<OrderInfo> llor_orders;
+
+                                    llor_orders = new List<OrderInfo>();
+
+                                    foreach (OrderDTO lo_orderTemp in llo_orders)
+                                    {
+
+                                        OrderInfo loi_oi;
+
+                                        loi_oi = new OrderInfo();
+                                        loi_oi.OrderCode = lo_orderTemp.OrderCode.ToString();
+                                        loi_oi.OrderDate = lo_orderTemp.OrderDate;
+                                        loi_oi.OrderStatus = lo_orderTemp.OrderStatus;
+                                        loi_oi.OrderValue = lo_orderTemp.OrderValue;
+                                        loi_oi.IdType = lo_orderTemp.IdType.ToString();
+                                        loi_oi.IdNumber = lo_orderTemp.IdNumber.ToString();
+                                        loi_oi.EventCode = lo_orderTemp.EventCode.ToString();
+                                        loi_oi.HotelCode = lo_orderTemp.HotelCode.ToString();
+                                        loi_oi.TransportCode = lo_orderTemp.TransportCode.ToString();
+                                        llor_orders.Add(loi_oi);
+
+                                    }
+
+                                    lgor_response.status.CodeResp = "0";
+                                    lgor_response.status.MessageResp = "";
+                                    lgor_response.result = llor_orders.ToArray();
+
+                                    if (ld_data == null)
+                                        ld_data = new Dictionary<OrderDTO, GetOrderResponse>();
+
+                                    ld_data.Add(lo_order, lgor_response);
+                                    lch_cache.AddCache("GetOrder", ld_data);
+
+                                }
+                                else
+                                {
+                                    throw new Exception("No se encontraron ordenes con los datos ingresados");
+                                }
 
                             }
                             else
                             {
-                                throw new Exception("No se encontraron ordenes con los datos ingresados");
+                                throw new Exception("Error consultando ordenes");
                             }
 
-                        }
-                        else
-                        {
-                            throw new Exception("Error consultando ordenes");
                         }
 
                     }

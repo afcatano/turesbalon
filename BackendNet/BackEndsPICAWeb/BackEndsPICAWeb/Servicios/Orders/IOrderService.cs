@@ -7,15 +7,17 @@ namespace BackEndsPICAWeb.Servicios.Orders
     interface IOrderService
     {
 
+        [XmlSerializerFormatAttribute()]
         [OperationContract]
         GetOrderResponse GetOrder(GetOrderRequest agor_gor);
 
+        [XmlSerializerFormatAttribute()]
         [OperationContract]
         PostOrderRequest PostOrder(PostOrderRequest apor_por);
 
+        [XmlSerializerFormatAttribute()]
         [OperationContract]
         PutOrderResponse PutOrder(PutOrderRequest aprr_prr);
-
 
     }
 
