@@ -9,7 +9,7 @@ namespace CommonsWeb.Util
 
         private ObjectCache ioc_cache { get; set; }
 
-        public object GetCache(string as_cacheKey, object ao_request)
+        public object GetCache(string as_cacheKey)
         {
 
             object lo_return;
@@ -22,22 +22,7 @@ namespace CommonsWeb.Util
                 ioc_cache = MemoryCache.Default;
 
                 if (ioc_cache.Contains(as_cacheKey))
-                {
-
-                    Dictionary<object, object> ld_data;
-
-                    ld_data = new Dictionary<object, object>();
-                    ld_data = (Dictionary<object, object>)ioc_cache.Get(as_cacheKey);
-
-                    if (ld_data.ContainsKey(ao_request))
-                    {
-
-                        if (!ld_data.TryGetValue(ao_request, out lo_return))
-                            lo_return = null;
-
-                    }
-
-                }
+                    lo_return = ioc_cache.Get(as_cacheKey);
 
             }
             catch (Exception ae_e)
