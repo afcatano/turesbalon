@@ -11,9 +11,11 @@ namespace BackEndsPICAWeb.Servicios.Clientes
         [OperationContract]
         GetCustomerResponse GetCustomer(GetCustomerRequest customerRequest);
 
+        [XmlSerializerFormatAttribute()]
         [OperationContract]
         PostCustomerResponse PostCustomer(PostCustomerRequest customerRequest);
 
+        [XmlSerializerFormatAttribute()]
         [OperationContract]
         PutCustomerResponse PutCustomer(PutCustomerRequest apcr_pcr);
     }
