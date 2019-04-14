@@ -8,7 +8,8 @@ namespace BackEndsPICAWeb.Business.Clientes.DTO
 {
     public class ClientesDTO
     {
-        public int CustID { get; set; }
+        public long ID { get; set; }
+        public long CustID { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string CodTypeIdent { get; set; }
@@ -35,7 +36,7 @@ namespace BackEndsPICAWeb.Business.Clientes.DTO
             if (CustID != lc_cliente.CustID || FName != lc_cliente.FName || LName != lc_cliente.LName ||
                 Email != lc_cliente.Email || PhoneNumber != lc_cliente.PhoneNumber ||
                 Address != lc_cliente.Address || City != lc_cliente.City || Country != lc_cliente.Country ||
-                User != lc_cliente.User || Status != lc_cliente.Status || Password != lc_cliente.Password)
+                User != lc_cliente.User || Status != lc_cliente.Status || Password != lc_cliente.Password || ID != lc_cliente.ID)
                 return false;
 
             return true;

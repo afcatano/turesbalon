@@ -30,8 +30,7 @@ namespace BackEndsPICAWeb.Servicios.Clientes
                     City = prmcustomerRequest.Customer.City,
                     Country = prmcustomerRequest.Customer.Country,
                     User = prmcustomerRequest.Customer.User,
-                    Status = prmcustomerRequest.Customer.StatusCustomer,
-                    Password = prmcustomerRequest.Customer.Password
+                    Status = prmcustomerRequest.Customer.StatusCustomer
                 };
 
                 iCSBusiness = new CustomerServicesBusiness();
