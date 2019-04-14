@@ -112,7 +112,7 @@ namespace CommonsWeb.DAL.Orders
                         lo_order.OrderStatus = Convert.ToString(ldr_temp["ORDERSTATUS"]);
                         lo_order.OrderValue = Convert.ToDecimal(ldr_temp["ORDERVALUE"]);
                         lo_order.IdUser = Convert.ToInt32(ldr_temp["IDUSER"]);
-                        lo_order.IdNumber = Convert.ToInt32(ldr_temp["IDCUSTOMER"]);
+                        lo_order.IdNumber = Convert.ToInt32(ldr_temp["CUSTID"]);
                         lo_order.IdType = Convert.ToInt32(ldr_temp["IDTYPEIDENT"]);
 
                         if (aod_order.FlagDetail)
