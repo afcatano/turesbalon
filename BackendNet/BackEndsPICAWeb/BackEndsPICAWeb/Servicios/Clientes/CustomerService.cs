@@ -10,34 +10,33 @@
 
 
 
-
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", ConfigurationName = "CustomerService")]
+[System.ServiceModel.ServiceContractAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", ConfigurationName="CustomerService")]
 public interface CustomerService
 {
-
+    
     // CODEGEN: Se está generando un contrato de mensaje, ya que la operación PostCustomer no es RPC ni está encapsulada en un documento.
-    [System.ServiceModel.OperationContractAttribute(Action = "http://xmlns.touresbalon.com/CustomerService/PostCustomer", ReplyAction = "*")]
+    [System.ServiceModel.OperationContractAttribute(Action="http://xmlns.touresbalon.com/CustomerService/PostCustomer", ReplyAction="*")]
     [System.ServiceModel.XmlSerializerFormatAttribute()]
     PostCustomerResponse1 PostCustomer(PostCustomerRequest1 request);
-
-    [System.ServiceModel.OperationContractAttribute(Action = "http://xmlns.touresbalon.com/CustomerService/PostCustomer", ReplyAction = "*")]
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://xmlns.touresbalon.com/CustomerService/PostCustomer", ReplyAction="*")]
     System.Threading.Tasks.Task<PostCustomerResponse1> PostCustomerAsync(PostCustomerRequest1 request);
-
+    
     // CODEGEN: Se está generando un contrato de mensaje, ya que la operación GetCustomer no es RPC ni está encapsulada en un documento.
-    [System.ServiceModel.OperationContractAttribute(Action = "http://xmlns.touresbalon.com/CustomerService/GetCustomer", ReplyAction = "*")]
+    [System.ServiceModel.OperationContractAttribute(Action="http://xmlns.touresbalon.com/CustomerService/GetCustomer", ReplyAction="*")]
     [System.ServiceModel.XmlSerializerFormatAttribute()]
     GetCustomerResponse1 GetCustomer(GetCustomerRequest1 request);
-
-    [System.ServiceModel.OperationContractAttribute(Action = "http://xmlns.touresbalon.com/CustomerService/GetCustomer", ReplyAction = "*")]
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://xmlns.touresbalon.com/CustomerService/GetCustomer", ReplyAction="*")]
     System.Threading.Tasks.Task<GetCustomerResponse1> GetCustomerAsync(GetCustomerRequest1 request);
-
+    
     // CODEGEN: Se está generando un contrato de mensaje, ya que la operación PutCustomer no es RPC ni está encapsulada en un documento.
-    [System.ServiceModel.OperationContractAttribute(Action = "http://xmlns.touresbalon.com/CustomerService/PutCustomer", ReplyAction = "*")]
+    [System.ServiceModel.OperationContractAttribute(Action="http://xmlns.touresbalon.com/CustomerService/PutCustomer", ReplyAction="*")]
     [System.ServiceModel.XmlSerializerFormatAttribute()]
     PutCustomerResponse1 PutCustomer(PutCustomerRequest1 request);
-
-    [System.ServiceModel.OperationContractAttribute(Action = "http://xmlns.touresbalon.com/CustomerService/PutCustomer", ReplyAction = "*")]
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://xmlns.touresbalon.com/CustomerService/PutCustomer", ReplyAction="*")]
     System.Threading.Tasks.Task<PutCustomerResponse1> PutCustomerAsync(PutCustomerRequest1 request);
 }
 
@@ -46,14 +45,14 @@ public interface CustomerService
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class PostCustomerRequest
 {
-
+    
     private Customer customerField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public Customer Customer
     {
         get
@@ -72,36 +71,36 @@ public partial class PostCustomerRequest
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class Customer
 {
-
+    
     private string idTypeField;
-
-    private int idNumberField;
-
+    
+    private long idNumberField;
+    
     private string firstNameField;
-
+    
     private string lastNamesField;
-
+    
     private string emailField;
-
+    
     private string phoneNumberField;
-
+    
     private string addressField;
-
+    
     private string cityField;
-
+    
     private string countryField;
-
+    
     private string userField;
-
+    
     private string passwordField;
-
+    
     private CreditCard creditCardField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string IdType
     {
         get
@@ -113,10 +112,10 @@ public partial class Customer
             this.idTypeField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-    public int IdNumber
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+    public long IdNumber
     {
         get
         {
@@ -127,9 +126,9 @@ public partial class Customer
             this.idNumberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string FirstName
     {
         get
@@ -141,9 +140,9 @@ public partial class Customer
             this.firstNameField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public string LastNames
     {
         get
@@ -155,9 +154,9 @@ public partial class Customer
             this.lastNamesField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public string Email
     {
         get
@@ -169,9 +168,9 @@ public partial class Customer
             this.emailField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
     public string PhoneNumber
     {
         get
@@ -183,9 +182,9 @@ public partial class Customer
             this.phoneNumberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
     public string Address
     {
         get
@@ -197,9 +196,9 @@ public partial class Customer
             this.addressField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
     public string City
     {
         get
@@ -211,9 +210,9 @@ public partial class Customer
             this.cityField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
     public string Country
     {
         get
@@ -225,9 +224,9 @@ public partial class Customer
             this.countryField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
     public string User
     {
         get
@@ -239,9 +238,9 @@ public partial class Customer
             this.userField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
     public string Password
     {
         get
@@ -253,9 +252,9 @@ public partial class Customer
             this.passwordField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
     public CreditCard CreditCard
     {
         get
@@ -274,22 +273,22 @@ public partial class Customer
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class CreditCard
 {
-
+    
     private string typeField;
-
+    
     private string numberField;
-
+    
     private string cardNameField;
-
-    private double expirationDateField;
-
+    
+    private string expirationDateField;
+    
     private string securityCodeField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public string Type
     {
         get
@@ -301,9 +300,9 @@ public partial class CreditCard
             this.typeField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string Number
     {
         get
@@ -315,9 +314,9 @@ public partial class CreditCard
             this.numberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
     public string CardName
     {
         get
@@ -329,10 +328,10 @@ public partial class CreditCard
             this.cardNameField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
-    public double ExpirationDate
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+    public string ExpirationDate
     {
         get
         {
@@ -343,9 +342,9 @@ public partial class CreditCard
             this.expirationDateField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public string SecurityCode
     {
         get
@@ -364,144 +363,50 @@ public partial class CreditCard
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService")]
-public partial class CreditCardGet
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+public partial class PutCustomer
 {
-
-    private string typeField;
-
-    private string numberField;
-
-    private string cardNameField;
-
-    private double expirationDateField;
-
-    private string securityCodeField;
-
-    private string statusCardField;
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
-    public string Type
-    {
-        get
-        {
-            return this.typeField;
-        }
-        set
-        {
-            this.typeField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-    public string Number
-    {
-        get
-        {
-            return this.numberField;
-        }
-        set
-        {
-            this.numberField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
-    public string CardName
-    {
-        get
-        {
-            return this.cardNameField;
-        }
-        set
-        {
-            this.cardNameField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
-    public double ExpirationDate
-    {
-        get
-        {
-            return this.expirationDateField;
-        }
-        set
-        {
-            this.expirationDateField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
-    public string SecurityCode
-    {
-        get
-        {
-            return this.securityCodeField;
-        }
-        set
-        {
-            this.securityCodeField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
-    public string StatusCard
-    {
-        get
-        {
-            return this.statusCardField;
-        }
-        set
-        {
-            this.statusCardField = value;
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
-[System.SerializableAttribute()]
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService")]
-public partial class GetCustomerResult
-{
-
+    
+    private long idUserField;
+    
     private string idTypeField;
-
-    private int idNumberField;
-
+    
+    private long idNumberField;
+    
     private string firstNameField;
-
+    
     private string lastNamesField;
-
+    
     private string emailField;
-
+    
     private string phoneNumberField;
-
+    
     private string addressField;
-
+    
     private string cityField;
-
+    
     private string countryField;
-
+    
     private string userField;
-
-    private string passwordField;
-
+    
     private string statusCustomerField;
-
-    private CreditCardGet creditCardField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public long IdUser
+    {
+        get
+        {
+            return this.idUserField;
+        }
+        set
+        {
+            this.idUserField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string IdType
     {
         get
@@ -513,10 +418,10 @@ public partial class GetCustomerResult
             this.idTypeField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-    public int IdNumber
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+    public long IdNumber
     {
         get
         {
@@ -527,9 +432,9 @@ public partial class GetCustomerResult
             this.idNumberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public string FirstName
     {
         get
@@ -541,9 +446,9 @@ public partial class GetCustomerResult
             this.firstNameField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public string LastNames
     {
         get
@@ -555,9 +460,9 @@ public partial class GetCustomerResult
             this.lastNamesField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
     public string Email
     {
         get
@@ -569,9 +474,9 @@ public partial class GetCustomerResult
             this.emailField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
     public string PhoneNumber
     {
         get
@@ -583,9 +488,9 @@ public partial class GetCustomerResult
             this.phoneNumberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
     public string Address
     {
         get
@@ -597,9 +502,9 @@ public partial class GetCustomerResult
             this.addressField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
     public string City
     {
         get
@@ -611,9 +516,9 @@ public partial class GetCustomerResult
             this.cityField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
     public string Country
     {
         get
@@ -625,9 +530,9 @@ public partial class GetCustomerResult
             this.countryField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
     public string User
     {
         get
@@ -639,23 +544,9 @@ public partial class GetCustomerResult
             this.userField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
-    public string Password
-    {
-        get
-        {
-            return this.passwordField;
-        }
-        set
-        {
-            this.passwordField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
     public string StatusCustomer
     {
         get
@@ -667,57 +558,413 @@ public partial class GetCustomerResult
             this.statusCustomerField = value;
         }
     }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 12)]
-    public CreditCardGet CreditCard
-    {
-        get
-        {
-            return this.creditCardField;
-        }
-        set
-        {
-            this.creditCardField = value;
-        }
-    }
 }
+
+///// <remarks/>
+//[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
+//[System.SerializableAttribute()]
+//[System.Diagnostics.DebuggerStepThroughAttribute()]
+//[System.ComponentModel.DesignerCategoryAttribute("code")]
+//[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+//public partial class CreditCardGet
+//{
+    
+//    private string typeField;
+    
+//    private string numberField;
+    
+//    private string cardNameField;
+    
+//    private double expirationDateField;
+    
+//    private string securityCodeField;
+    
+//    private string statusCardField;
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+//    public string Type
+//    {
+//        get
+//        {
+//            return this.typeField;
+//        }
+//        set
+//        {
+//            this.typeField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+//    public string Number
+//    {
+//        get
+//        {
+//            return this.numberField;
+//        }
+//        set
+//        {
+//            this.numberField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+//    public string CardName
+//    {
+//        get
+//        {
+//            return this.cardNameField;
+//        }
+//        set
+//        {
+//            this.cardNameField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+//    public double ExpirationDate
+//    {
+//        get
+//        {
+//            return this.expirationDateField;
+//        }
+//        set
+//        {
+//            this.expirationDateField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+//    public string SecurityCode
+//    {
+//        get
+//        {
+//            return this.securityCodeField;
+//        }
+//        set
+//        {
+//            this.securityCodeField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+//    public string StatusCard
+//    {
+//        get
+//        {
+//            return this.statusCardField;
+//        }
+//        set
+//        {
+//            this.statusCardField = value;
+//        }
+//    }
+//}
+
+///// <remarks/>
+//[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
+//[System.SerializableAttribute()]
+//[System.Diagnostics.DebuggerStepThroughAttribute()]
+//[System.ComponentModel.DesignerCategoryAttribute("code")]
+//[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+//public partial class GetCustomerResult
+//{
+    
+//    private long idUserField;
+    
+//    private string idTypeField;
+    
+//    private string idNumberField;
+    
+//    private string firstNameField;
+    
+//    private string lastNamesField;
+    
+//    private string emailField;
+    
+//    private string phoneNumberField;
+    
+//    private string addressField;
+    
+//    private string cityField;
+    
+//    private string countryField;
+    
+//    private string userField;
+    
+//    private string passwordField;
+    
+//    private string statusCustomerField;
+    
+//    private CreditCardGet creditCardField;
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+//    public long IdUser
+//    {
+//        get
+//        {
+//            return this.idUserField;
+//        }
+//        set
+//        {
+//            this.idUserField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+//    public string IdType
+//    {
+//        get
+//        {
+//            return this.idTypeField;
+//        }
+//        set
+//        {
+//            this.idTypeField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+//    public string IdNumber
+//    {
+//        get
+//        {
+//            return this.idNumberField;
+//        }
+//        set
+//        {
+//            this.idNumberField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+//    public string FirstName
+//    {
+//        get
+//        {
+//            return this.firstNameField;
+//        }
+//        set
+//        {
+//            this.firstNameField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+//    public string LastNames
+//    {
+//        get
+//        {
+//            return this.lastNamesField;
+//        }
+//        set
+//        {
+//            this.lastNamesField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+//    public string Email
+//    {
+//        get
+//        {
+//            return this.emailField;
+//        }
+//        set
+//        {
+//            this.emailField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+//    public string PhoneNumber
+//    {
+//        get
+//        {
+//            return this.phoneNumberField;
+//        }
+//        set
+//        {
+//            this.phoneNumberField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+//    public string Address
+//    {
+//        get
+//        {
+//            return this.addressField;
+//        }
+//        set
+//        {
+//            this.addressField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+//    public string City
+//    {
+//        get
+//        {
+//            return this.cityField;
+//        }
+//        set
+//        {
+//            this.cityField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+//    public string Country
+//    {
+//        get
+//        {
+//            return this.countryField;
+//        }
+//        set
+//        {
+//            this.countryField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+//    public string User
+//    {
+//        get
+//        {
+//            return this.userField;
+//        }
+//        set
+//        {
+//            this.userField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+//    public string Password
+//    {
+//        get
+//        {
+//            return this.passwordField;
+//        }
+//        set
+//        {
+//            this.passwordField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+//    public string StatusCustomer
+//    {
+//        get
+//        {
+//            return this.statusCustomerField;
+//        }
+//        set
+//        {
+//            this.statusCustomerField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+//    public CreditCardGet CreditCard
+//    {
+//        get
+//        {
+//            return this.creditCardField;
+//        }
+//        set
+//        {
+//            this.creditCardField = value;
+//        }
+//    }
+//}
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class GetCustomer
 {
-
+    
+    private long idUserField;
+    
+    private bool idUserFieldSpecified;
+    
     private string idTypeField;
-
-    private int idNumberField;
-
+    
+    private long idNumberField;
+    
     private string firstNameField;
-
+    
     private string lastNamesField;
-
+    
     private string emailField;
-
+    
     private string phoneNumberField;
-
+    
     private string addressField;
-
+    
     private string cityField;
-
+    
     private string countryField;
-
+    
     private string userField;
-
+    
     private string statusCustomerField;
-
-    private string passwordField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public long IdUser
+    {
+        get
+        {
+            return this.idUserField;
+        }
+        set
+        {
+            this.idUserField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool IdUserSpecified
+    {
+        get
+        {
+            return this.idUserFieldSpecified;
+        }
+        set
+        {
+            this.idUserFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
     public string IdType
     {
         get
@@ -729,10 +976,10 @@ public partial class GetCustomer
             this.idTypeField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-    public int IdNumber
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+    public long IdNumber
     {
         get
         {
@@ -743,9 +990,9 @@ public partial class GetCustomer
             this.idNumberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
     public string FirstName
     {
         get
@@ -757,9 +1004,9 @@ public partial class GetCustomer
             this.firstNameField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
     public string LastNames
     {
         get
@@ -771,9 +1018,9 @@ public partial class GetCustomer
             this.lastNamesField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
     public string Email
     {
         get
@@ -785,9 +1032,9 @@ public partial class GetCustomer
             this.emailField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
     public string PhoneNumber
     {
         get
@@ -799,9 +1046,9 @@ public partial class GetCustomer
             this.phoneNumberField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
     public string Address
     {
         get
@@ -813,9 +1060,9 @@ public partial class GetCustomer
             this.addressField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
     public string City
     {
         get
@@ -827,9 +1074,9 @@ public partial class GetCustomer
             this.cityField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
     public string Country
     {
         get
@@ -841,9 +1088,9 @@ public partial class GetCustomer
             this.countryField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
     public string User
     {
         get
@@ -855,9 +1102,9 @@ public partial class GetCustomer
             this.userField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
     public string StatusCustomer
     {
         get
@@ -869,19 +1116,6 @@ public partial class GetCustomer
             this.statusCustomerField = value;
         }
     }
-
-    [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
-    public string Password
-    {
-        get
-        {
-            return this.passwordField;
-        }
-        set
-        {
-            this.passwordField = value;
-        }
-    }
 }
 
 /// <remarks/>
@@ -889,56 +1123,84 @@ public partial class GetCustomer
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService")]
-public partial class Status
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+public partial class PostCustomer
 {
-
-    private string codeRespField;
-
-    private string messageRespField;
-
+    
+    private long idUserField;
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
-    public string CodeResp
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public long IdUser
     {
         get
         {
-            return this.codeRespField;
+            return this.idUserField;
         }
         set
         {
-            this.codeRespField = value;
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-    public string MessageResp
-    {
-        get
-        {
-            return this.messageRespField;
-        }
-        set
-        {
-            this.messageRespField = value;
+            this.idUserField = value;
         }
     }
 }
+
+///// <remarks/>
+//[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
+//[System.SerializableAttribute()]
+//[System.Diagnostics.DebuggerStepThroughAttribute()]
+//[System.ComponentModel.DesignerCategoryAttribute("code")]
+//[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+//public partial class Status
+//{
+    
+//    private string codeRespField;
+    
+//    private string messageRespField;
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+//    public string CodeResp
+//    {
+//        get
+//        {
+//            return this.codeRespField;
+//        }
+//        set
+//        {
+//            this.codeRespField = value;
+//        }
+//    }
+    
+//    /// <remarks/>
+//    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+//    public string MessageResp
+//    {
+//        get
+//        {
+//            return this.messageRespField;
+//        }
+//        set
+//        {
+//            this.messageRespField = value;
+//        }
+//    }
+//}
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class PostCustomerResponse
 {
-
+    
     private Status statusField;
-
+    
+    private PostCustomer customerField;
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public Status status
     {
         get
@@ -950,22 +1212,36 @@ public partial class PostCustomerResponse
             this.statusField = value;
         }
     }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+    public PostCustomer Customer
+    {
+        get
+        {
+            return this.customerField;
+        }
+        set
+        {
+            this.customerField = value;
+        }
+    }
 }
 
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
 public partial class PostCustomerRequest1
 {
-
-    [System.ServiceModel.MessageBodyMemberAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", Order = 0)]
+    
+    [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", Order=0)]
     public PostCustomerRequest PostCustomerRequest;
-
+    
     public PostCustomerRequest1()
     {
     }
-
+    
     public PostCustomerRequest1(PostCustomerRequest PostCustomerRequest)
     {
         this.PostCustomerRequest = PostCustomerRequest;
@@ -975,17 +1251,17 @@ public partial class PostCustomerRequest1
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
 public partial class PostCustomerResponse1
 {
-
-    [System.ServiceModel.MessageBodyMemberAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", Order = 0)]
+    
+    [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", Order=0)]
     public PostCustomerResponse PostCustomerResponse;
-
+    
     public PostCustomerResponse1()
     {
     }
-
+    
     public PostCustomerResponse1(PostCustomerResponse PostCustomerResponse)
     {
         this.PostCustomerResponse = PostCustomerResponse;
@@ -997,14 +1273,14 @@ public partial class PostCustomerResponse1
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class GetCustomerRequest
 {
-
+    
     private GetCustomer customerField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public GetCustomer Customer
     {
         get
@@ -1023,16 +1299,16 @@ public partial class GetCustomerRequest
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class GetCustomerResponse
 {
-
+    
     private Status statusField;
-
+    
     private GetCustomerResult[] resultField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public Status status
     {
         get
@@ -1044,10 +1320,10 @@ public partial class GetCustomerResponse
             this.statusField = value;
         }
     }
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlArrayAttribute(Order = 1)]
-    [System.Xml.Serialization.XmlArrayItemAttribute("Customer", IsNullable = false)]
+    [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+    [System.Xml.Serialization.XmlArrayItemAttribute("Customer", IsNullable=false)]
     public GetCustomerResult[] result
     {
         get
@@ -1064,17 +1340,17 @@ public partial class GetCustomerResponse
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
 public partial class GetCustomerRequest1
 {
-
-    [System.ServiceModel.MessageBodyMemberAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", Order = 0)]
+    
+    [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", Order=0)]
     public GetCustomerRequest GetCustomerRequest;
-
+    
     public GetCustomerRequest1()
     {
     }
-
+    
     public GetCustomerRequest1(GetCustomerRequest GetCustomerRequest)
     {
         this.GetCustomerRequest = GetCustomerRequest;
@@ -1084,17 +1360,17 @@ public partial class GetCustomerRequest1
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
 public partial class GetCustomerResponse1
 {
-
-    [System.ServiceModel.MessageBodyMemberAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", Order = 0)]
+    
+    [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", Order=0)]
     public GetCustomerResponse GetCustomerResponse;
-
+    
     public GetCustomerResponse1()
     {
     }
-
+    
     public GetCustomerResponse1(GetCustomerResponse GetCustomerResponse)
     {
         this.GetCustomerResponse = GetCustomerResponse;
@@ -1106,15 +1382,15 @@ public partial class GetCustomerResponse1
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class PutCustomerRequest
 {
-
-    private GetCustomer customerField;
-
+    
+    private PutCustomer customerField;
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
-    public GetCustomer Customer
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public PutCustomer Customer
     {
         get
         {
@@ -1132,14 +1408,14 @@ public partial class PutCustomerRequest
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://xmlns.touresbalon.com/CustomerService")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://xmlns.touresbalon.com/CustomerService")]
 public partial class PutCustomerResponse
 {
-
+    
     private Status statusField;
-
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public Status status
     {
         get
@@ -1156,17 +1432,17 @@ public partial class PutCustomerResponse
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
 public partial class PutCustomerRequest1
 {
-
-    [System.ServiceModel.MessageBodyMemberAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", Order = 0)]
+    
+    [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", Order=0)]
     public PutCustomerRequest PutCustomerRequest;
-
+    
     public PutCustomerRequest1()
     {
     }
-
+    
     public PutCustomerRequest1(PutCustomerRequest PutCustomerRequest)
     {
         this.PutCustomerRequest = PutCustomerRequest;
@@ -1176,17 +1452,17 @@ public partial class PutCustomerRequest1
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-[System.ServiceModel.MessageContractAttribute(IsWrapped = false)]
+[System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
 public partial class PutCustomerResponse1
 {
-
-    [System.ServiceModel.MessageBodyMemberAttribute(Namespace = "http://xmlns.touresbalon.com/CustomerService", Order = 0)]
+    
+    [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService", Order=0)]
     public PutCustomerResponse PutCustomerResponse;
-
+    
     public PutCustomerResponse1()
     {
     }
-
+    
     public PutCustomerResponse1(PutCustomerResponse PutCustomerResponse)
     {
         this.PutCustomerResponse = PutCustomerResponse;
@@ -1202,37 +1478,37 @@ public interface CustomerServiceChannel : CustomerService, System.ServiceModel.I
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 public partial class CustomerServiceClient : System.ServiceModel.ClientBase<CustomerService>, CustomerService
 {
-
+    
     public CustomerServiceClient()
     {
     }
-
-    public CustomerServiceClient(string endpointConfigurationName) :
+    
+    public CustomerServiceClient(string endpointConfigurationName) : 
             base(endpointConfigurationName)
     {
     }
-
-    public CustomerServiceClient(string endpointConfigurationName, string remoteAddress) :
+    
+    public CustomerServiceClient(string endpointConfigurationName, string remoteAddress) : 
             base(endpointConfigurationName, remoteAddress)
     {
     }
-
-    public CustomerServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) :
+    
+    public CustomerServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(endpointConfigurationName, remoteAddress)
     {
     }
-
-    public CustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
+    
+    public CustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(binding, remoteAddress)
     {
     }
-
+    
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     PostCustomerResponse1 CustomerService.PostCustomer(PostCustomerRequest1 request)
     {
         return base.Channel.PostCustomer(request);
     }
-
+    
     public PostCustomerResponse PostCustomer(PostCustomerRequest PostCustomerRequest)
     {
         PostCustomerRequest1 inValue = new PostCustomerRequest1();
@@ -1240,26 +1516,26 @@ public partial class CustomerServiceClient : System.ServiceModel.ClientBase<Cust
         PostCustomerResponse1 retVal = ((CustomerService)(this)).PostCustomer(inValue);
         return retVal.PostCustomerResponse;
     }
-
+    
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     System.Threading.Tasks.Task<PostCustomerResponse1> CustomerService.PostCustomerAsync(PostCustomerRequest1 request)
     {
         return base.Channel.PostCustomerAsync(request);
     }
-
+    
     public System.Threading.Tasks.Task<PostCustomerResponse1> PostCustomerAsync(PostCustomerRequest PostCustomerRequest)
     {
         PostCustomerRequest1 inValue = new PostCustomerRequest1();
         inValue.PostCustomerRequest = PostCustomerRequest;
         return ((CustomerService)(this)).PostCustomerAsync(inValue);
     }
-
+    
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     GetCustomerResponse1 CustomerService.GetCustomer(GetCustomerRequest1 request)
     {
         return base.Channel.GetCustomer(request);
     }
-
+    
     public GetCustomerResponse GetCustomer(GetCustomerRequest GetCustomerRequest)
     {
         GetCustomerRequest1 inValue = new GetCustomerRequest1();
@@ -1267,26 +1543,26 @@ public partial class CustomerServiceClient : System.ServiceModel.ClientBase<Cust
         GetCustomerResponse1 retVal = ((CustomerService)(this)).GetCustomer(inValue);
         return retVal.GetCustomerResponse;
     }
-
+    
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     System.Threading.Tasks.Task<GetCustomerResponse1> CustomerService.GetCustomerAsync(GetCustomerRequest1 request)
     {
         return base.Channel.GetCustomerAsync(request);
     }
-
+    
     public System.Threading.Tasks.Task<GetCustomerResponse1> GetCustomerAsync(GetCustomerRequest GetCustomerRequest)
     {
         GetCustomerRequest1 inValue = new GetCustomerRequest1();
         inValue.GetCustomerRequest = GetCustomerRequest;
         return ((CustomerService)(this)).GetCustomerAsync(inValue);
     }
-
+    
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     PutCustomerResponse1 CustomerService.PutCustomer(PutCustomerRequest1 request)
     {
         return base.Channel.PutCustomer(request);
     }
-
+    
     public PutCustomerResponse PutCustomer(PutCustomerRequest PutCustomerRequest)
     {
         PutCustomerRequest1 inValue = new PutCustomerRequest1();
@@ -1294,13 +1570,13 @@ public partial class CustomerServiceClient : System.ServiceModel.ClientBase<Cust
         PutCustomerResponse1 retVal = ((CustomerService)(this)).PutCustomer(inValue);
         return retVal.PutCustomerResponse;
     }
-
+    
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     System.Threading.Tasks.Task<PutCustomerResponse1> CustomerService.PutCustomerAsync(PutCustomerRequest1 request)
     {
         return base.Channel.PutCustomerAsync(request);
     }
-
+    
     public System.Threading.Tasks.Task<PutCustomerResponse1> PutCustomerAsync(PutCustomerRequest PutCustomerRequest)
     {
         PutCustomerRequest1 inValue = new PutCustomerRequest1();

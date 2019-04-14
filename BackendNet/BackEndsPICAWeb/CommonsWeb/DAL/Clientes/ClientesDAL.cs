@@ -28,10 +28,10 @@ namespace CommonsWeb.DAL.Clientes
 
                 strWhere = ConfiguracionParametrosGet(clientesDTO);
 
-                strPLSQL = "SELECT A.IDTypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, A.USUARIO, A.PASSWORD, D.STATUS, " +
+                strPLSQL = "SELECT A.ID, A.IDTypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, A.USUARIO, A.PASSWORD, D.STATUS, " +
                        "E.CREDITCARDTYPE, C.CREDITCARDNUMBER, C.CARDNAME, C.FVENCE, C.CODESECURITY " +
                        "FROM CUSTOMER A " +
-                       "LEFT JOIN customercreditcards C ON A.CUSTID = C.CUSTID " +
+                       "LEFT JOIN customercreditcards C ON A.ID = C.IDCUSTOMER " +
                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " +
                        "LEFT JOIN CreditCardType E ON C.IDCREDITCARDTYPE = E.CodCreditCardType " + strWhere;
 
@@ -55,7 +55,7 @@ namespace CommonsWeb.DAL.Clientes
                                 Type = Convert.ToString(dataRowClientes["CREDITCARDTYPE"]),
                                 Number = Convert.ToString(dataRowClientes["CREDITCARDNUMBER"]),
                                 CardName = Convert.ToString(dataRowClientes["CARDNAME"]),
-                                ExpirationDate = Convert.ToDouble(dataRowClientes["FVENCE"]),
+                                ExpirationDate = Convert.ToString(dataRowClientes["FVENCE"]),
                                 SecurityCode = Convert.ToString(dataRowClientes["CODESECURITY"]),
                                 StatusCard = ""
                             };
@@ -68,6 +68,7 @@ namespace CommonsWeb.DAL.Clientes
                         {
                             lclientesDTO = new ClientesDTO
                             {
+                                ID = Convert.ToInt32(dataRowClientes["ID"]),
                                 CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
                                 FName = Convert.ToString(dataRowClientes["FNAME"]),
                                 LName = Convert.ToString(dataRowClientes["LNAME"]),
@@ -133,12 +134,11 @@ namespace CommonsWeb.DAL.Clientes
             return rsta;
         }
 
-        public bool InsertarCliente(ClientesDTO ac_cliente)
+        public long InsertarCliente(ClientesDTO ac_cliente)
         {
 
-            bool lb_respuesta;
-
-            lb_respuesta = false;
+            long lb_respuesta;
+            lb_respuesta = 0;
 
             try
             {
@@ -147,18 +147,21 @@ namespace CommonsWeb.DAL.Clientes
                 OracleServerHelper losh_conection;
                 DataSet lds_datos;
 
-                ls_sql = "SELECT * FROM CUSTOMER WHERE CUSTID = " + ac_cliente.CustID.ToString();
+                ls_sql = "SELECT * FROM CUSTOMER WHERE USUARIO = '" + ac_cliente.User.ToString() + "'";
                 losh_conection = new OracleServerHelper();
-                lds_datos = losh_conection.ExecuteSqlToDataSet(strPLSQL, new List<OracleParameter>());
+                lds_datos = losh_conection.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
 
-                if (lds_datos != null && lds_datos.Tables.Count > 0)
+                if (lds_datos != null && lds_datos.Tables[0].Rows.Count > 0)
                 {
-                    throw new Exception("Ya existe un usuario con la información ingresada");
+                    throw new Exception("Ya existe un usuario con el LOGIN ingresado");
                 }
                 else
                 {
 
-                    long ll_affected;
+                    DataSet dsAffected;
+                    long tmpID = 0;
+                    int ll_affected;
+                    int tmprsta;
 
                     ls_sql = "INSERT INTO CUSTOMER (CUSTID,FNAME,LNAME,PHONENUMBER,EMAIL,PASSWORD,IDSTATUS,";
                     ls_sql += "ADDRESS,CITY,COUNTRY,USUARIO,IDTYPEIDENT) VALUES(" + ac_cliente.CustID.ToString();
@@ -168,75 +171,75 @@ namespace CommonsWeb.DAL.Clientes
                     ls_sql += "'" + ac_cliente.Email + "',1,'" + ac_cliente.Address + "',";
                     ls_sql += "'" + ac_cliente.City + "','" + ac_cliente.Country + "',";
                     ls_sql += "'" + ac_cliente.User + "'," + ac_cliente.CodTypeIdent + ")";
-                    ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
 
-                    if (ll_affected > 0)
+                    tmprsta = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                    if (tmprsta > 0)
                     {
+                        ls_sql = "SELECT MAX(ID) FROM Customer";
+                        dsAffected = losh_conection.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
 
-                        if (ac_cliente.LCreditCard != null)
+                        if (dsAffected != null && dsAffected.Tables[0].Rows.Count > 0)
+                        {
+                            foreach (DataRow dataRowClientes in dsAffected.Tables[0].Rows)
+                            {
+                                tmpID = Convert.ToInt32(dataRowClientes["MAX(ID)"]);
+                            }
+                        }
+                        else
+                        {
+                            tmpID = 0;
+                        }
+
+                        if (tmpID != 0)
                         {
 
-                            if (ac_cliente.LCreditCard.Count > 0)
+                            if (ac_cliente.LCreditCard != null)
                             {
 
-                                foreach (CreditCardDTO lcc_creditCard in ac_cliente.LCreditCard)
+                                if (ac_cliente.LCreditCard.Count > 0)
                                 {
 
-                                    ls_sql = "SELECT * FROM CUSTOMERCREDITCARDS WHERE CREDITCARDNUMBER = " + lcc_creditCard.Number;
-                                    lds_datos = losh_conection.ExecuteSqlToDataSet(strPLSQL, new List<OracleParameter>());
-
-                                    if (lds_datos != null && lds_datos.Tables.Count > 0)
+                                    foreach (CreditCardDTO lcc_creditCard in ac_cliente.LCreditCard)
                                     {
+                                            ls_sql = "INSERT INTO CUSTOMERCREDITCARDS(CREDITCARDNUMBER,IDCUSTOMER,IDCREDITCARDTYPE,";
+                                            ls_sql += "FVENCE,CODESECURITY,CARDNAME) VALUES(" + lcc_creditCard.Number + ",";
+                                            ls_sql += tmpID.ToString() + "," + lcc_creditCard.Type + ",";
+                                            ls_sql += lcc_creditCard.ExpirationDate + "," + lcc_creditCard.SecurityCode + ",";
+                                            ls_sql += "'" + lcc_creditCard.CardName + "')";
 
-                                        throw new Exception("Ya existe una tarjeta de credito con los datos ingresados");
-                                        //ls_sql = "UPDATE CUSTOMERCREDITCARDS SET";
-                                        //ls_sql += " CUSTID = " + ac_cliente.CustID.ToString() + ",";
-                                        //ls_sql += " IDCREDITCARDTYPE = " + lcc_creditCard.Type + ",";
-                                        //ls_sql += " FVENCE = " + lcc_creditCard.ExpirationDate + ",";
-                                        //ls_sql += " CODESECURITY = " + lcc_creditCard.SecurityCode + ",";
-                                        //ls_sql += " CARDNAME = '" + lcc_creditCard.CardName + "'";
-                                        //ls_sql += " WHERE CREDITCARDNUMBER = " + lcc_creditCard.Number;
+                                            ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
 
+                                            if (ll_affected <= 0)
+                                            {
+                                                throw new Exception("Error ingresando tarjeta de credito");
+                                            }
                                     }
-                                    else
-                                    {
 
-                                        ls_sql = "INSERT INTO CUSTOMERCREDITCARDS(CREDITCARDNUMBER,CUSTID,IDCREDITCARDTYPE,";
-                                        ls_sql += "FVENCE,CODESECURITY,CARDNAME) VALUES(" + lcc_creditCard.Number + ",";
-                                        ls_sql += ac_cliente.CustID.ToString() + "," + lcc_creditCard.Type + ",";
-                                        ls_sql += lcc_creditCard.ExpirationDate + "," + lcc_creditCard.SecurityCode + ",";
-                                        ls_sql += "'" + lcc_creditCard.CardName + "')";
-
-                                        ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
-
-                                        if (ll_affected <= 0)
-                                        {
-                                            throw new Exception("Error ingresando tarjeta de credito");
-                                        }
-
-                                    }
+                                    lb_respuesta = tmpID;
 
                                 }
-
-                                lb_respuesta = true;
+                                else
+                                    lb_respuesta = tmpID;
 
                             }
                             else
-                                lb_respuesta = true;
-
+                                lb_respuesta = tmpID;
                         }
                         else
-                            lb_respuesta = true;
-
+                        {
+                            lb_respuesta = tmpID;
+                        }
                     }
-
-
+                    else
+                    {
+                        lb_respuesta = tmpID;
+                    }
                 }
-
             }
             catch (Exception ae_e)
             {
-                lb_respuesta = false;
+                lb_respuesta = 0;
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN DAL Clientes:InsertarCliente");
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ae_e.Message);
                 throw ae_e;
@@ -288,7 +291,7 @@ namespace CommonsWeb.DAL.Clientes
                     OrclParameters = new OracleParameter("IdType", OracleDbType.Int32);
                     OrclParameters.Value = clientesDTO.CodTypeIdent;
                     Lstparameters.Add(OrclParameters);
-                    strWhere = strWhere + " AND B.CodTypeIdent = :IdType";
+                    strWhere = strWhere + " AND A.IDTypeIdent = :IdType";
                 }
             }
 
@@ -517,14 +520,14 @@ namespace CommonsWeb.DAL.Clientes
                 }
             }
 
-            if (clientesDTO.User != null)
+            if (clientesDTO.Password != null)
             {
                 if (clientesDTO.User.Trim().Length > 0)
                 {
-                    OrclParameters = new OracleParameter("Usuario", OracleDbType.Varchar2);
+                    OrclParameters = new OracleParameter("Password", OracleDbType.Varchar2);
                     OrclParameters.Value = clientesDTO.User;
                     Lstparameters.Add(OrclParameters);
-                    strSET = strSET + " , USUARIO = :Usuario";
+                    strSET = strSET + " , PASSWORD = :Password";
                 }
             }
 

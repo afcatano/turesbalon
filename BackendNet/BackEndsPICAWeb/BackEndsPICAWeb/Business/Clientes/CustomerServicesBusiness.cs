@@ -78,7 +78,8 @@ namespace BackEndsPICAWeb.Business.Clientes
                                     City = clientesDTO.City,
                                     User = clientesDTO.User,
                                     Password = clientesDTO.Password,
-                                    StatusCustomer = clientesDTO.Status
+                                    StatusCustomer = clientesDTO.Status,
+                                    IdUser = clientesDTO.ID
                                 };
 
                                 if (clientesDTO.LCreditCard != null)
@@ -172,6 +173,7 @@ namespace BackEndsPICAWeb.Business.Clientes
 
             lpcr_response = new PostCustomerResponse();
             lpcr_response.status = new Status();
+            lpcr_response.Customer = new PostCustomer();
 
             try
             {
@@ -343,7 +345,7 @@ namespace BackEndsPICAWeb.Business.Clientes
                             else
                                 throw new Exception("El nombre en la tarjeta de credito es obligatorio");
 
-                            if (apcr_request.Customer.CreditCard.ExpirationDate <= 0)
+                            if (apcr_request.Customer.CreditCard.ExpirationDate == null)
                                 throw new Exception("La fecha de vencimiento en la tarjeta de credito es obligatorio");
                             else if (!DateTime.TryParseExact("01" + apcr_request.Customer.CreditCard.ExpirationDate.ToString(),
                                 "ddMMyyyy", null, System.Globalization.DateTimeStyles.None, out ldt_fechaVencimiento))
@@ -368,11 +370,14 @@ namespace BackEndsPICAWeb.Business.Clientes
                         }
 
                         ClientesDAL lcd_clientesDAL;
-
                         lcd_clientesDAL = new ClientesDAL();
 
-                        if (lcd_clientesDAL.InsertarCliente(lc_cliente))
+                        long IDUser;
+                        IDUser = lcd_clientesDAL.InsertarCliente(lc_cliente);
+
+                        if (IDUser != 0)
                         {
+                            lpcr_response.Customer.IdUser = IDUser;
                             lpcr_response.status.CodeResp = "0";
                             lpcr_response.status.MessageResp = "";
                         }
@@ -419,24 +424,95 @@ namespace BackEndsPICAWeb.Business.Clientes
             GetLoginResponse loginResponse = new GetLoginResponse();
             loginResponse.status = new Status();
 
-            int rsta = 0;
+            try
+            {
+                //validar tipos de datos
+                List<ClientesDTO> lstClientesDTO;
+                lstClientesDTO = null;
 
-            ClientesDAL ClientesDAL = new ClientesDAL();
-            rsta = ClientesDAL.LoginClientes(prmloginClientesDTO);
 
-            if (rsta == 0)
+                ClientesDAL ClientesDAL = new ClientesDAL();
+                lstClientesDTO = ClientesDAL.GetClientes(prmloginClientesDTO);
+
+                if (lstClientesDTO != null)
+                {
+                    if (lstClientesDTO.Count > 0)
+                    {
+                        List<GetCustomerResult> GetCustomerResult = new List<GetCustomerResult>();
+
+                        foreach (ClientesDTO clientesDTO in lstClientesDTO)
+                        {
+
+                            GetCustomerResult lCustomer;
+                            List<CreditCardGet> lcreditCard = new List<CreditCardGet>();
+
+                            lCustomer = new GetCustomerResult
+                            {
+                                IdType = clientesDTO.CodTypeIdent,
+                                FirstName = clientesDTO.FName,
+                                LastNames = clientesDTO.LName,
+                                IdNumber = clientesDTO.CustID,
+                                PhoneNumber = clientesDTO.PhoneNumber,
+                                Email = clientesDTO.Email,
+                                Address = clientesDTO.Address,
+                                Country = clientesDTO.Country,
+                                City = clientesDTO.City,
+                                User = clientesDTO.User,
+                                Password = clientesDTO.Password,
+                                StatusCustomer = clientesDTO.Status,
+                                IdUser = clientesDTO.ID 
+                            };
+
+                            if (clientesDTO.LCreditCard != null)
+                            {
+                                foreach (CreditCardDTO creditCardDTO in clientesDTO.LCreditCard)
+                                {
+
+                                    CreditCardGet creditCard = new CreditCardGet
+                                    {
+                                        CardName = creditCardDTO.CardName,
+                                        ExpirationDate = creditCardDTO.ExpirationDate,
+                                        Type = creditCardDTO.Type,
+                                        Number = creditCardDTO.Number,
+                                        SecurityCode = creditCardDTO.SecurityCode,
+                                        StatusCard = creditCardDTO.StatusCard
+                                    };
+
+                                    lcreditCard.Add(creditCard);
+                                    lCustomer.CreditCard = creditCard;
+                                }
+                            }
+
+                            GetCustomerResult.Add(lCustomer);
+                        }
+                        loginResponse.result = GetCustomerResult.ToArray();
+                        loginResponse.status.CodeResp = "0";
+                        loginResponse.status.MessageResp = "";
+                    }
+                    else
+                    {
+                        loginResponse.status.CodeResp = "01";
+                        loginResponse.status.MessageResp = "Datos Incorrectos";
+                    }
+                }
+                else
+                {
+
+                    loginResponse.status.CodeResp = "01";
+                    loginResponse.status.MessageResp = "Error al Procesar Datos";
+                }
+
+            }
+            catch (Exception ex)
             {
                 loginResponse.status.CodeResp = "01";
-                loginResponse.status.MessageResp = "Datos Incorrectos";
-            }
-            else
-            {
-                loginResponse.status.CodeResp = "0";
-                loginResponse.status.MessageResp = "";
+                loginResponse.status.MessageResp = "Error en la capa de negocio";
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO CustomerService:Login");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
+                throw ex;
             }
 
             return loginResponse;
-
         }
     }
 }
