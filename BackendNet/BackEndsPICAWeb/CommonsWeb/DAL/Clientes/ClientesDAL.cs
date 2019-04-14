@@ -202,13 +202,13 @@ namespace CommonsWeb.DAL.Clientes
 
                                     foreach (CreditCardDTO lcc_creditCard in ac_cliente.LCreditCard)
                                     {
-                                            ls_sql = "INSERT INTO CUSTOMERCREDITCARDS(CREDITCARDNUMBER,IDCUSTOMER,IDCREDITCARDTYPE,";
-                                            ls_sql += "FVENCE,CODESECURITY,CARDNAME) VALUES(" + lcc_creditCard.Number + ",";
-                                            ls_sql += tmpID.ToString() + "," + lcc_creditCard.Type + ",";
-                                            ls_sql += lcc_creditCard.ExpirationDate + "," + lcc_creditCard.SecurityCode + ",";
-                                            ls_sql += "'" + lcc_creditCard.CardName + "')";
+                                        ls_sql = "INSERT INTO CUSTOMERCREDITCARDS(CREDITCARDNUMBER,IDCUSTOMER,IDCREDITCARDTYPE,";
+                                        ls_sql += "FVENCE,CODESECURITY,CARDNAME) VALUES(" + lcc_creditCard.Number + ",";
+                                        ls_sql += tmpID.ToString() + "," + lcc_creditCard.Type + ",";
+                                        ls_sql += "'" + lcc_creditCard.ExpirationDate + "'," + lcc_creditCard.SecurityCode + ",";
+                                        ls_sql += "'" + lcc_creditCard.CardName + "')";
 
-                                            ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+                                        ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                                             if (ll_affected <= 0)
                                             {
