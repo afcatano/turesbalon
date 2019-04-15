@@ -23,7 +23,7 @@ namespace CommonsWeb.DAL.Orders
                 OracleServerHelper losh_osh;
                 DataSet lds_datos;
 
-                ls_sql = "SELECT DISTINCT O.ORDERCODE, O.ORDERDATE, O.ORDERSTATUS,";
+                ls_sql = "SELECT O.ORDERCODE, O.ORDERDATE, O.ORDERSTATUS,";
                 ls_sql += " O.ORDERVALUE, C.ID IDUSER, C.CUSTID, C.IDTYPEIDENT";
 
                 if (aod_order.FlagDetail)
@@ -98,7 +98,7 @@ namespace CommonsWeb.DAL.Orders
                 losh_osh = new OracleServerHelper();
                 lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
 
-                if (lds_datos != null && lds_datos.Tables.Count > 0)
+                if (lds_datos != null && lds_datos.Tables[0].Rows.Count > 0)
                 {
 
                     foreach (DataRow ldr_temp in lds_datos.Tables[0].Rows)
@@ -173,6 +173,45 @@ namespace CommonsWeb.DAL.Orders
             }
 
             return llo_orders;
+
+        }
+
+        public bool PutOrder(OrderDTO aod_order)
+        {
+
+            bool lb_retorno;
+
+            lb_retorno = false;
+
+            try
+            {
+
+                string ls_sql;
+                long ll_affected;
+                OracleServerHelper losh_conection;
+
+                ls_sql = "UPDATE ORDERS SET ORDERSTATUS = '" + aod_order.OrderStatus + "'";
+                ls_sql += " WHERE ORDERCODE = " + aod_order.OrderCode;
+                losh_conection = new OracleServerHelper();
+                ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                if (ll_affected > 0)
+                    lb_retorno = true;
+                
+            }
+            catch (Exception ae_e)
+            {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                lb_retorno = false;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE DATOS OrderService:PutOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " : " + le_e.Message);
+
+            }
+
+            return lb_retorno;
 
         }
 

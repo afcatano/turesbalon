@@ -320,23 +320,96 @@ namespace BackEndsPICAWeb.Business.Orders
 
         public PutOrderResponse PutOrder(PutOrderRequest aprr_prr)
         {
-            throw new System.NotImplementedException();
-        }
 
-        private void ValidateOrderRequest(object ao_request)
-        {
+            PutOrderResponse lpor_response;
+
+            lpor_response = new PutOrderResponse();
+            lpor_response.status = new Status();
 
             try
             {
 
+                if (aprr_prr != null)
+                {
 
+                    if (aprr_prr.Order != null)
+                    {
 
+                        OrderDTO lo_order;
+                        OrderServiceDAL losd_losDAL;
 
+                        lo_order = new OrderDTO();
+                        losd_losDAL = new OrderServiceDAL();
+
+                        if (aprr_prr.Order.OrderCode != null)
+                        {
+
+                            if (aprr_prr.Order.OrderCode.Trim().Length > 0)
+                            {
+
+                                long ll_result;
+
+                                ll_result = 0;
+
+                                if (!long.TryParse(aprr_prr.Order.OrderCode, out ll_result))
+                                    throw new Exception("El numero de la orden debe ser numerico");
+                                else
+                                    lo_order.OrderCode = long.Parse(aprr_prr.Order.OrderCode);
+
+                            }
+                            else
+                                throw new Exception("El numero de la orden es obligatorio");
+
+                        }
+                        else
+                            throw new Exception("El numero de la orden es obligatorio");
+
+                        if (aprr_prr.Order.Status != null)
+                        {
+
+                            if (aprr_prr.Order.Status.Trim().Length > 0)
+                                lo_order.OrderStatus = aprr_prr.Order.Status;
+                            else
+                                throw new Exception("El estado de la orden es obligatorio");
+
+                        }
+                        else
+                            throw new Exception("El estado de la orden es obligatorio");
+
+                        if (losd_losDAL.PutOrder(lo_order))
+                        {
+
+                            lpor_response.status.CodeResp = "0";
+                            lpor_response.status.MessageResp = "";
+
+                        }
+                        else
+                            throw new Exception("Error actualizando orden");
+
+                    }
+                    else
+                        throw new Exception("Parametros de entrada vacios");
+
+                }
+                else
+                    throw new Exception("Parametros de entrada vacios");
 
             }
             catch (Exception ae_e)
             {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                lpor_response.status.CodeResp = "01";
+                lpor_response.status.MessageResp = ae_e.InnerException != null ? "Error en la ejecucion del servicio" : ae_e.Message;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO OrderService:PutOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + le_e.Message);
+                throw le_e;
+
             }
+
+            return lpor_response;
 
         }
 
