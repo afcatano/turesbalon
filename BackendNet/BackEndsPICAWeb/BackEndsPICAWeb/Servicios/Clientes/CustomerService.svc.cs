@@ -50,7 +50,7 @@ namespace BackEndsPICAWeb.Servicios.Clientes
 
         PutCustomerResponse ICustomerService.PutCustomer(PutCustomerRequest prmcustomerRequest)
         {
-            PutCustomerResponse postCustomer = new PutCustomerResponse();
+            PutCustomerResponse putCustomer = new PutCustomerResponse();
 
             try
             {
@@ -69,22 +69,23 @@ namespace BackEndsPICAWeb.Servicios.Clientes
                     City = prmcustomerRequest.Customer.City,
                     Country = prmcustomerRequest.Customer.Country,
                     User = prmcustomerRequest.Customer.User,
-                    Status = prmcustomerRequest.Customer.StatusCustomer
+                    Status = prmcustomerRequest.Customer.StatusCustomer,
+                    Password = prmcustomerRequest.Customer.Password
                 };
 
                 iCSBusiness = new CustomerServicesBusiness();
-                postCustomer = iCSBusiness.PutCustomerRequest(clientesDTO);
+                putCustomer = iCSBusiness.PutCustomerRequest(clientesDTO);
             }
             catch (Exception ex)
             {
 
-                postCustomer.status.CodeResp = "01";
-                postCustomer.status.MessageResp = "Error en el Servicio";
-                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN EL SERVICIO CustomerService:PostCustomer " + ex.Message);
+                putCustomer.status.CodeResp = "01";
+                putCustomer.status.MessageResp = "Error en el Servicio";
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN EL SERVICIO CustomerService:PutCustomer " + ex.Message);
                 throw ex;
             }
 
-            return postCustomer;
+            return putCustomer;
         }
 
         public PostCustomerResponse PostCustomer(PostCustomerRequest apcr_request)
