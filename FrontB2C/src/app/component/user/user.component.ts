@@ -1,6 +1,8 @@
 import { Component, OnInit,Input,Output,EventEmitter , Inject } from '@angular/core';
 import {User } from '../../Models/User';
 import  {Paises} from '../../mock/paises';
+import  {anos} from '../../mock/anos';
+import  {meses} from '../../mock/mes';
 import {franquicias} from '../../mock/franquicia';
 import  {TiposDocumento} from '../../mock/tipoDocumentos';
 import { AppComponent } from '../../app.component';
@@ -25,7 +27,10 @@ export class UserComponent implements OnInit {
   //Evento de accion sobre formulario
   @Output() action = new EventEmitter<User>()
 
+  userDisabled:boolean=false;
   register:User;
+  dataMeses = meses;
+  dataAnos = anos;
   dataPaises = Paises;
   dataFranquicias= franquicias;
   dataTiposDocumento = TiposDocumento;
@@ -33,6 +38,7 @@ export class UserComponent implements OnInit {
   terminosCondiciones:boolean;
   tipoDocumentoSeleccionado:any;
   terminosCondicionesValid:boolean=true;
+  dataFechaTarjeta={dataAnos:"", dataMeses:""};
   
   validate={
     nombre:{valid:true, message:"",css:""},
@@ -63,7 +69,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.register = new User( "","","","","","","","","","","","","","","","","","");
+    this.register = new User( "","","","","","","","","","","","","","","","","","", "");
     console.log(this.register.nombre);
     switch(this.page.action){
       case  "update":
@@ -86,11 +92,14 @@ export class UserComponent implements OnInit {
                       this.userdata.codigoTarjeta,
                       this.userdata. fechaTarjeta,
                       this.userdata.numeroTarjeta,
-                      this.userdata. franquiciaTarjeta)
+                      this.userdata. franquiciaTarjeta,
+                      this.userdata.userid)
+                      this.register.confirmarContrasena= this.register.password;
+                      this.userDisabled = true;
                      break;
        case  "create":
                       this.terminosCondiciones= true;
-                      this.register = new User( "","","","","","","","","","","","","","","","","","");
+                      this.register = new User( "","","","","","","","","","","","","","","","","","","");
                       break;
         default:
               break;
@@ -103,18 +112,23 @@ export class UserComponent implements OnInit {
   onSubmit() {
     var validate=false;
     var msg="Debe completar todos los campos";
+    
+    this.register.fechaTarjeta = this.dataFechaTarjeta.dataMeses + this.dataFechaTarjeta.dataAnos;
+   console.log(this.register.fechaTarjeta);
+   console.log("tarjeta");
     if(this.terminosCondiciones){
        if(!this.terminosCondicionesValue){
            msg="Debe aceptar los terminos y condiciones";
            this.terminosCondicionesValid=false;
          }else{
-          validate=true;
+          validate=this.validateSumitForms();
          }
         }else{
-          validate=true;
+          validate=this.validateSumitForms();
         }
 
-    if(validate) {
+        
+   if(validate) {
       console.log("Ejecuta accion.");
       this.action.emit(new User( 
        this.register.username,
@@ -134,7 +148,9 @@ export class UserComponent implements OnInit {
        this.register.codigoTarjeta,
        this.register. fechaTarjeta,
        this.register.numeroTarjeta,
-       this.register. franquiciaTarjeta));
+       this.register. franquiciaTarjeta,
+       this.register.userid
+      ));
     } else {
       this.parent.openDialog( "",msg,"Alerta");
     }
@@ -145,109 +161,167 @@ export class UserComponent implements OnInit {
    console.log(this.register.tipoDocumento);
 }
 
+
+validateSumitForms(){
+  if(
+    this.validateNombre()&&
+    this.validateApellido()&&
+    this.validateUserName()&&
+    this.validatePassword()&&
+    this.validateConfirmaPass()&&
+    this.validateTelefono()&&
+    this.validateCorreo() &&
+    this.validateCiudad()&&
+    this.validateDocumento()){
+      return true;
+    }else{
+      return false;
+    }
+}
+
+  validateTerminos(){
+    if(this.terminosCondicionesValue)
+    return this.terminosCondicionesValid=true;
+    else
+    return this.terminosCondicionesValid=false;
+  }
+
+  validateNombre(){
+    if(this.register.nombre!=''){
+      this.validate.nombre.css="is-valid";
+      this.validate.nombre.message="Dato Valido";
+      return this.validate.nombre.valid=true;
+    }else{
+      this.validate.nombre.css="is-invalid";
+      this.validate.nombre.message="Dato requerido";
+      return this.validate.nombre.valid=false;
+  }
+  }
+
+
+  validateApellido(){
+    if(this.register.nombre!=''){
+      this.validate.nombre.css="is-valid";
+      this.validate.nombre.message="Dato Valido";
+      return  this.validate.nombre.valid=true;
+    }else{
+      this.validate.nombre.css="is-invalid";
+      this.validate.nombre.message="Dato requerido";
+      return this.validate.nombre.valid=false;
+  }
+  }
+
+
+  validateUserName(){
+    if(this.register.username!=''){
+      this.validate.username.css="is-valid";
+      this.validate.username.message="Dato Valido";
+      return this.validate.username.valid=true;
+    }else{
+      this.validate.username.css="is-invalid";
+      this.validate.username.message="Dato requerido";
+      return this.validate.username.valid=false;
+  }
+  }
+
+  validatePassword(){
+    if(this.register.password!=''){
+      this.validate.password.css="is-valid";
+      this.validate.password.message="Dato Valido";
+      //this.register.confirmarContrasena="";
+      return this.validate.password.valid=true;
+      
+    }else{
+      this.validate.password.css="is-invalid";
+      this.validate.password.message="Dato requerido";
+      return this.validate.password.valid=false;
+  }
+  }
+
+
+  validateConfirmaPass(){
+    if(this.register.confirmarContrasena==this.register.password){
+      this.validate.confirmarContrasena.css="is-valid";
+      this.validate.confirmarContrasena.message="Dato Valido";
+      return this.validate.confirmarContrasena.valid=true;
+      console.log("igual");
+    }else{
+      this.validate.confirmarContrasena.css="is-invalid";
+      this.validate.confirmarContrasena.message="Las contraseñas no coiciden";
+      return this.validate.confirmarContrasena.valid=false;
+      console.log("no igual");
+  }
+  }
+
+  validateTelefono(){
+   if(this.register.telefono>0){
+      this.validate.telefono.css="is-valid";
+      this.validate.telefono.message="Dato Valido";
+      return  this.validate.telefono.valid=true;
+    }else{
+      this.validate.telefono.css="is-invalid";
+      this.validate.telefono.message="Dato requerido";
+      return this.validate.telefono.valid=false;
+  }
+  }
+
+  validateCorreo(){
+    if(this.register.correo!=''){
+      this.validate.correo.css="is-valid";
+      this.validate.correo.message="Dato Valido";
+      return  this.validate.correo.valid=true;
+    }else{
+      this.validate.correo.css="is-invalid";
+      this.validate.correo.message="Dato requerido";
+      return  this.validate.correo.valid=false;
+  }
+  }
+
+  validateCiudad(){
+   if(this.register.ciudad!=''){
+      this.validate.ciudad.css="is-valid";
+      this.validate.ciudad.message="Dato Valido";
+      return this.validate.ciudad.valid=true;
+    }else{
+      this.validate.ciudad.css="is-invalid";
+      this.validate.ciudad.message="Dato requerido";
+      return this.validate.ciudad.valid=false;
+  }
+  }
+
+  validateDocumento(){
+    if(this.register.documento>0){
+      this.validate.documento.css="is-valid";
+      this.validate.documento.message="Dato Valido";
+      return this.validate.documento.valid=true;
+    }else{
+      this.validate.documento.css="is-invalid";
+      this.validate.documento.message="Dato requerido";
+      return this.validate.documento.valid=false;
+  }
+  }
   validateForm(text){
     
     if("terminosCondiciones")
-       if(this.terminosCondicionesValue)
-           this.terminosCondicionesValid=true;
-           else
-           this.terminosCondicionesValid=false;
+    this.validateTerminos();
     if("nombre"==text)
-      if(this.register.nombre!=''){
-          this.validate.nombre.css="is-valid";
-          this.validate.nombre.message="Dato Valido";
-          this.validate.nombre.valid=true;
-        }else{
-          this.validate.nombre.css="is-invalid";
-          this.validate.nombre.message="Dato requerido";
-          this.validate.nombre.valid=false;
-      }
+    this.validateNombre();
     if("apellido"==text)
-      if(this.register.apellido!=''){
-          this.validate.apellido.css="is-valid";
-          this.validate.apellido.message="Dato Valido";
-          this.validate.apellido.valid=true;
-        }else{
-          this.validate.apellido.css="is-invalid";
-          this.validate.apellido.message="Dato requerido";
-          this.validate.apellido.valid=false;
-      }
+    this.validateApellido();
     if("username"==text)
-      if(this.register.username!=''){
-          this.validate.username.css="is-valid";
-          this.validate.username.message="Dato Valido";
-          this.validate.username.valid=true;
-        }else{
-          this.validate.username.css="is-invalid";
-          this.validate.username.message="Dato requerido";
-          this.validate.username.valid=false;
-      }
+     this.validateUserName();
     if("password"==text)
-      if(this.register.password!=''){
-          this.validate.password.css="is-valid";
-          this.validate.password.message="Dato Valido";
-          this.validate.password.valid=true;
-          this.register.confirmarContrasena="";
-        }else{
-          this.validate.password.css="is-invalid";
-          this.validate.password.message="Dato requerido";
-          this.validate.password.valid=false;
-      }
+    this.validatePassword();
      if("confirmarContrasena"==text)
-      if(this.register.confirmarContrasena==this.register.password){
-          this.validate.confirmarContrasena.css="is-valid";
-          this.validate.confirmarContrasena.message="Dato Valido";
-          this.validate.confirmarContrasena.valid=true;
-          console.log("igual");
-        }else{
-          this.validate.confirmarContrasena.css="is-invalid";
-          this.validate.confirmarContrasena.message="Las contraseñas no coiciden";
-          this.validate.confirmarContrasena.valid=false;
-          console.log("no igual");
-      }
-
+     this.validateConfirmaPass();
     if("telefono"==text)
-      if(this.register.telefono>0){
-          this.validate.telefono.css="is-valid";
-          this.validate.telefono.message="Dato Valido";
-          this.validate.telefono.valid=true;
-        }else{
-          this.validate.telefono.css="is-invalid";
-          this.validate.telefono.message="Dato requerido";
-          this.validate.telefono.valid=false;
-      }
+    this.validateTelefono();
     if("correo"==text)
-      if(this.register.correo!=''){
-          this.validate.correo.css="is-valid";
-          this.validate.correo.message="Dato Valido";
-          this.validate.correo.valid=true;
-        }else{
-          this.validate.correo.css="is-invalid";
-          this.validate.correo.message="Dato requerido";
-          this.validate.correo.valid=false;
-      }
-
-      if("ciudad"==text)
-      if(this.register.ciudad!=''){
-          this.validate.ciudad.css="is-valid";
-          this.validate.ciudad.message="Dato Valido";
-          this.validate.ciudad.valid=true;
-        }else{
-          this.validate.ciudad.css="is-invalid";
-          this.validate.ciudad.message="Dato requerido";
-          this.validate.ciudad.valid=false;
-      }
-
-    if("documento"==text)
-      if(this.register.documento>0){
-          this.validate.documento.css="is-valid";
-          this.validate.documento.message="Dato Valido";
-          this.validate.documento.valid=true;
-        }else{
-          this.validate.documento.css="is-invalid";
-          this.validate.documento.message="Dato requerido";
-          this.validate.documento.valid=false;
-      }
+    this.validateCorreo()
+     if("ciudad"==text)
+     this.validateCiudad();
+     if("documento"==text)
+      this.validateDocumento();
 
     
 

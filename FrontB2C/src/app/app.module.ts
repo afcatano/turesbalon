@@ -17,15 +17,20 @@ import { RegistroComponent } from './component/registro/registro.component';
 import { CarroComponent } from './component/carro/carro.component';
 import { MessageComponent} from './component/message/message.component';
 import { TableComponent} from './component/table/table.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //servicios
 import {StorageService} from "./storage/storage.service";
+import {StorageConfigService} from "./storage/storage-config.service";
 import {StorageParamsService} from "./storage/storage-params.service";
 import {RemoveSession} from "./service/remove-session.service";
 import { AuthenticationService } from './service/authentication.service';
 import { DatosUsuarioComponent } from './component/datos-usuario/datos-usuario.component';
 import { OrdenesComponent } from './component/ordenes/ordenes.component';
 import { UserComponent } from './component/user/user.component';
+import { PanelBuscadorComponent } from './component/panel-buscador/panel-buscador.component';
 
 @NgModule({
   declarations: [
@@ -43,21 +48,25 @@ import { UserComponent } from './component/user/user.component';
     DatosUsuarioComponent,
     OrdenesComponent,
     UserComponent,
-    TableComponent
+    TableComponent,
+    PanelBuscadorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
      //Angular material iniciio
      MaterialModule, 
      BrowserAnimationsModule,
      //Angular material fin
      FormsModule,
-     HttpClientModule
+     HttpClientModule,
+     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
+     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),  
   ],
   entryComponents: [ MessageComponent],
-  providers: [StorageService, StorageParamsService, RemoveSession, AuthenticationService
+  providers: [StorageService, StorageParamsService, RemoveSession, AuthenticationService,StorageConfigService
 ],
   bootstrap: [AppComponent]
 })

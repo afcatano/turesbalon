@@ -2,7 +2,7 @@
 
 import {hotel} from './hotel';
 import {transporte} from './transporte';
-
+import {Evento} from './evento';
 
 export class Producto {
     uuidPaqueteProducto:string;
@@ -10,8 +10,10 @@ export class Producto {
     titulo: string;
     precio: number;
     descripcion: string;
+    imagen: string;
+    ciudad:string
      /**info transporte */
-     evento: string;
+     evento: Evento;
      inicioEvento:string;
      finEvento:string;
      cantidad:string;

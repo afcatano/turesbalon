@@ -10,9 +10,9 @@ import { Producto } from '../../Models/producto';
 })
 export class CarroComponent implements OnInit {
 
-  private carrito: Array<Producto> = [];
-  private subscription: Subscription;
-  private total: number;
+  public carrito: Array<Producto> = [];
+  public subscription: Subscription;
+  public total: number;
 
   constructor(private carritoService: CarritoService) { }
 

@@ -1,0 +1,45 @@
+
+
+  <div class="container separador">
+    
+    <div class="buscador_principal">
+         <div class="buscador_title">
+            <h3>Buscar Evento</h3>
+          </div>
+          <div class="buscador_input">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Categoria</label>
+            <select class="form-control" id="Categoria" [(ngModel)]="paquete.categoria">
+              <option>--selecciona--</option>
+              <option>Futbol</option>
+              <option>Tenis</option>
+              <option>Basketbol</option>
+            </select>
+          </div>
+        </div>
+        <div class="buscador_input">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Evento</label>
+              <input  name="Evento" type="text" class="form-control" [(ngModel)]="paquete.nombre" placeholder="Evento">
+            </div>
+        </div>
+        
+        <div class="buscador_input_small">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Cantidad</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="validationTooltipUsernamePrepend"><mat-icon>person</mat-icon></span>
+                </div>
+            <input  name="Cantidad" type="number" [(ngModel)]="paquete.cantidad" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="buscador_input_small">
+            <div class="form-group">
+          <button type="button" class="btn btn-secondary" (click)="onSubmit()" style="position: relative;top:-10px">Buscar</button>
+          </div>
+        </div>
+    </div>
+
+</div>

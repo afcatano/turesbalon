@@ -22,7 +22,8 @@ export class HotelesComponent implements OnInit {
   infoTable: any[];
   processing:boolean;
   
-  constructor(private sesion:StorageService, private productService: ProductsService, private parent: AppComponent, private carritoService:CarritoService) { 
+  constructor(private sesion:StorageService, private productService: ProductsService,
+     private parent: AppComponent, private carritoService:CarritoService) { 
 
   }
 

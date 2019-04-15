@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MessageComponent } from './component/message/message.component';
 import {MatDialog} from '@angular/material';
+import {StorageConfigService} from './storage/storage-config.service';
+import {ParameterInfo} from './ParameterInfo'; 
 
 @Component({
   selector: 'app-root',
@@ -11,8 +13,11 @@ export class AppComponent {
   title = 'turesbalon';
 
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private config:StorageConfigService) {
     this.OnInit();
+    var paramter = new ParameterInfo();
+    this.config.setConfigSession(paramter);
+                       
   }
 
   OnInit(){

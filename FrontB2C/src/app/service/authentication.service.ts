@@ -12,7 +12,7 @@ export class AuthenticationService {
   private authAPI:string;
 
   constructor(private http:HttpClient) {
-    this.authAPI = "/usuario/api/login";
+    this.authAPI = "/login/usuario";
 
     
   }
@@ -26,7 +26,6 @@ export class AuthenticationService {
     headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
     headers.append('Access-Control-Allow-Headers', 'Content-Type');
     
-    user.telefono=9142668;
     console.log(user.toJSON());
     console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
     return this.http.post(

@@ -16,8 +16,8 @@ export class UserInfoService {
 
   constructor(private http: HttpClient) {
     this.pathGetOverview = "/api/statistics/overview";
-    this.pathUpdate = "/usuario/api/user/";
-    this.pathRegisterUser = "/usuario/api/user/"
+    this.pathUpdate = "/usuario/user";
+    this.pathRegisterUser = "/usuario/user"
     this.pathOrderUser = "/api/user/order"
    }
 
