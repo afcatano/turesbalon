@@ -390,6 +390,8 @@ public partial class PutCustomer
     private string userField;
     
     private string statusCustomerField;
+
+    private string passwordField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -544,9 +546,21 @@ public partial class PutCustomer
             this.userField = value;
         }
     }
-    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+    [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
+    public string Password
+    {
+        get
+        {
+            return this.passwordField;
+        }
+        set
+        {
+            this.passwordField = value;
+        }
+    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=12)]
     public string StatusCustomer
     {
         get

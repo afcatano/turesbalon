@@ -14,6 +14,7 @@ export class User {
   public direccion: string;
   public tipoDocumento: string;
   public documento: number;
+  public userid : number;
 
   public codigoTarjeta: number;
   public fechaTarjeta: string;
@@ -39,7 +40,9 @@ export class User {
       fechaTarjeta,
       numeroTarjeta,
       franquiciaTarjeta,
+      iduser,
   ) {
+    this.userid = iduser;
     this.username = username;
     this.password = password;
     this.nombre=nombre;
@@ -212,8 +215,17 @@ export class User {
     this.numeroTarjeta=numeroTarjeta;
   }
 
+  getiduser = () => {
+    return this.userid;
+  }
+
+  setiduser = (userid) => {
+    this.userid=userid;
+  }
+
   toJSON = () => ({
     username: this.username,
+    userid: this.userid,
     password: this.password,
     nombre: this.nombre,
     apellido :this.apellido,
@@ -231,6 +243,7 @@ export class User {
     fechaTarjeta :this. fechaTarjeta,
     numeroTarjeta: this. numeroTarjeta,
     franquiciaTarjeta :this. franquiciaTarjeta,
+    nombreTarjeta:"demo"
     
   })
 

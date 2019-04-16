@@ -38,7 +38,7 @@
             <label for="validationServer02">Tipo Documento</label>
            
             <select class="form-control "  name="tipoDocumento" [(ngModel)]="register.tipoDocumento" (change)="capturar()" >
-              <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}">{{data.name}}</option>
+              <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}" [selected] = "data.id == register.tipoDocumento">{{data.name}}</option>
             </select>
             <div *ngIf="!validate.tipoDocumento.valid" class="invalid-feedback">
               {{validate.tipoDocumento.message}}
@@ -87,7 +87,7 @@
         <div class="form-row">
           <div class="col-md-4 mb-3">
               <label for="validationServer02">Nombre Usuario</label>
-              <input maxlength="15" type="text"  [(ngModel)]="register.username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css"  class="form-control " id="username" placeholder="Usuario"  required>
+              <input maxlength="15" type="text" [disabled]="userDisabled"  [(ngModel)]="register.username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css"  class="form-control " id="username" placeholder="Usuario"  required>
               <div *ngIf="!validate.username.valid" class="invalid-feedback">
                 {{validate.username.message}}
               </div>
@@ -121,7 +121,7 @@
               <label for="validationServer01">Franquicia</label>
             
               <select class="form-control " [(ngModel)]="register.franquiciaTarjeta" name="franquiciaTarjeta">
-                  <option *ngFor="let data of dataFranquicias"  value="{{data.id}}">{{data.name}}</option>
+                  <option *ngFor="let data of dataFranquicias"  value="{{data.id}}" [selected] = "data.id == register.franquiciaTarjeta" >{{data.name}}</option>
                 </select>
               <div *ngIf="!validate.franquiciaTarjeta.valid" class="invalid-feedback">
                 {{validate.franquiciaTarjeta.message}}
@@ -135,11 +135,16 @@
               </div>
             </div>
             <div class="col-md-4 mb-3">
-              <label for="validationServer02">Fecha Vencimiento</label>
-              <input maxlength="16" type="text"  [(ngModel)]="register.fechaTarjeta"  (change)="validateForm('fechaTarjeta')" name="fechaTarjeta" [ngClass]="validate.fechaTarjeta.css"   class="form-control" id="fechaTarjeta" placeholder="12/2020"  required>
-              <div *ngIf="!validate.fechaTarjeta.valid" class="invalid-feedback">
-                {{validate.fechaTarjeta.message}}
+              <label for="validationServer02">Mes de vencimiento</label>
+              <select class="form-control " [(ngModel)]="dataFechaTarjeta.dataMeses" name="mes">
+                <option *ngFor="let date of dataMeses" >{{date.value}}</option>
+              </select>
               </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationServer02">Año de Vencimiento</label>
+              <select class="form-control " [(ngModel)]="dataFechaTarjeta.dataAnos" name="ano">
+                <option *ngFor="let date of dataAnos" >{{date.value}}</option>
+              </select>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationServer02">Codigo de Seguridad</label>

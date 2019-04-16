@@ -8,6 +8,11 @@ import { Observable } from 'rxjs';
 import { StorageService } from '../../storage/storage.service';
 import { AuthenticationService } from '../../service/authentication.service';
 import { homeComponent } from '../home/home.component';
+
+import {StorageConfigService}from '../../storage/storage-config.service'; 
+import { user} from '../../mock/user';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -44,7 +49,8 @@ export class LoginComponent implements OnInit {
     private parent: AppComponent 
     ,private storageService: StorageService
     ,private router: Router,
-  private home:homeComponent) {
+    private home:homeComponent,
+   private storage:StorageConfigService) {
     this.username=null;
     this.password= null;
     this.processing = false;
@@ -59,15 +65,22 @@ export class LoginComponent implements OnInit {
     if(this.username && this.password) {
       this.processing=true;
       console.log(this.username, this.password);
- 
-      this.servicio.signIn(new User(this.username, this.password,"","","","","","","","","","","","","","","","")).subscribe(
+      var sessionData= new Session();
+      var config= this.storage.getConfigSession();
+
+      //Valida si aplica mock
+      if(config.login){
+        var use = user;
+        sessionData.user=use;
+        this.correctLogin(sessionData);
+      }else
+      this.servicio.signIn(new User(this.username, this.password,"","","","","","","","","","","","","","","","","")).subscribe(
         result => {
              console.log(result);
              this.processing = false;
             if(result.codigo=="0") {
               console.log("usuario logueado "+this.username);
               this.parent.openDialog( "","Usuario  "+this.username+" autenticado !!","Informativo");
-              var sessionData= new Session();
               var userData= new User( 
                 result.username,
                 result.password,
@@ -86,13 +99,15 @@ export class LoginComponent implements OnInit {
                 result.codigoTarjeta,
                 result. fechaTarjeta,
                 result.numeroTarjeta,
-                result. franquiciaTarjeta)
+                result. franquiciaTarjeta,
+                result. iduser,
+              )
 
               sessionData.user=userData;
               this.correctLogin(sessionData);
             } else {
               console.log(JSON.stringify(result, null, 4));
-              this.parent.openDialog( "",result.description,"Alerta");
+              this.parent.openDialog( "",result.mensaje,"Alerta");
             }
         },
         error => {

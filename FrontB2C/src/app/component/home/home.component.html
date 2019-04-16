@@ -1,14 +1,17 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="!shouldRun">
   <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
+    <button mat-icon-button name="click" (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <img src="../../../assets/images/logo.png" >
-    <img class="contacto-home" src="../../../assets/images/contacto.png" >
+    <p class="LogoInicial">
+      Toures Balón</p>
+    <p class="ventas">
+        <img alt="logo" class="imageAudifono" src="../../../assets/images/audifonos.png" >
+      Para ventas 01 800 0292 2929</p>
     
     <p class="saludo"> {{ saludo }} </p>
 
-    <button  mat-icon-button [matMenuTriggerFor]="menu" class="menuCerrar-Session ">
+    <button name="click"  mat-icon-button [matMenuTriggerFor]="menu" class="menuCerrar-Session ">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -60,16 +63,16 @@
     <mat-sidenav-content (click)="snav.toggle(false)">
       <div class="baner_home">
         <div class="baner_iconos" style="margin-left: 10%;">
-          <img class="icono_ticket" src="../../../assets/images/paquete.png" >
+          <img class="icono_ticket" alt="Paquetes" src="../../../assets/images/paquete.png" >
         </div>
         <div class="baner_iconos" style="margin-left: 2%;">
-          <img class="icono_ticket" src="../../../assets/images/balon.png" >
+          <img class="icono_ticket" alt="Eventos" src="../../../assets/images/balon.png" >
         </div>
           <div class="baner_iconos" style="margin-left: 60%;">
-          <img class="icono_ticket" src="../../../assets/images/ticket.png" >
+          <img class="icono_ticket" alt="Tickets" src="../../../assets/images/ticket.png" >
         </div>
           <div class="baner_iconos" style="margin-left: 2%;">
-          <img class="icono_ticket" src="../../../assets/images/tarjeta.png" >
+          <img class="icono_ticket" alt="Pagos" src="../../../assets/images/tarjeta.png" >
         </div>
       </div>
       <div>
@@ -77,9 +80,9 @@
         <div class="baner_campaing">
         </div>
       </div>
-      <div style="margin-top: 40px;">
-        <router-outlet></router-outlet>
-      </div>
+        <div style="margin-top: 40px;">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

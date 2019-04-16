@@ -1,0 +1,32 @@
+
+.buscador_principal{
+    width: 80%;
+    margin-left: 10%;
+    background-color:  rgb(31, 72, 124) !important;
+    border-radius: 20px;
+    color: white !important;
+    padding-left: 20px;
+    }
+
+.buscador_title{
+    color: white !important;
+    margin: 30px;
+    position: relative;
+    top: 30px;
+    left: 10px;
+
+}
+
+.buscador_input{
+    margin-left: 20px;
+    width: 25%!important;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.buscador_input_small{
+    margin-left: 20px;
+    width: 15%!important;
+    margin-top: 20px;
+    display: inline-block;
+}

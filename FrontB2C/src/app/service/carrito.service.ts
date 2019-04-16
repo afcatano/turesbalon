@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import * as Rx from 'rxjs/Rx';
 import { Producto } from '../Models/producto';
 import { Observable } from 'rxjs';
-import { ReplaySubject } from 'rxjs/';
+import { ReplaySubject } from 'rxjs';
 import { BehaviorSubject ,} from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
