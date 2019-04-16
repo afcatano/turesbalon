@@ -221,36 +221,48 @@ namespace BackEndsPICAWeb.Business.Orders
                                         {
 
                                             loi_oi.Event = new GetEvent();
-                                            loi_oi.Hotel = new GetHotel();
-                                            loi_oi.Transport = new GetTransport();
                                             loi_oi.Event.EventCode = lo_orderTemp.EventCode.ToString();
                                             loi_oi.Event.Name = lo_orderTemp.EventName;
                                             loi_oi.Event.Description = lo_orderTemp.EventDescription;
                                             loi_oi.Event.Date = lo_orderTemp.EventDate;
                                             loi_oi.Event.Value = lo_orderTemp.EventPrice;
-                                            loi_oi.Hotel.BookingId = lo_orderTemp.Hotel.BookingId;
-                                            loi_oi.Hotel.HotelCode = lo_orderTemp.Hotel.Id.ToString();
-                                            loi_oi.Hotel.Name = lo_orderTemp.Hotel.Name;
-                                            loi_oi.Hotel.RoomNumber = lo_orderTemp.Hotel.RoomNumber;
-                                            loi_oi.Hotel.Address = lo_orderTemp.Hotel.Address;
-                                            loi_oi.Hotel.Country = lo_orderTemp.Hotel.Country;
-                                            loi_oi.Hotel.City = lo_orderTemp.Hotel.City;
-                                            loi_oi.Hotel.Checkin = lo_orderTemp.Hotel.CheckIn;
-                                            loi_oi.Hotel.Checkout = lo_orderTemp.Hotel.CheckOut;
-                                            loi_oi.Hotel.Type = lo_orderTemp.Hotel.TypeRoom;
-                                            loi_oi.Hotel.Value = lo_orderTemp.Hotel.PriceRoom;
-                                            loi_oi.Transport.BookingId = lo_orderTemp.Transport.BookingId;
-                                            loi_oi.Transport.TransportCode = lo_orderTemp.Transport.Id.ToString();
-                                            loi_oi.Transport.CountryFrom = lo_orderTemp.Transport.CountryFrom;
-                                            loi_oi.Transport.CountryTo = lo_orderTemp.Transport.CountryTo;
-                                            loi_oi.Transport.CityFrom = lo_orderTemp.Transport.CityFrom;
-                                            loi_oi.Transport.CityTo = lo_orderTemp.Transport.CityTo;
-                                            loi_oi.Transport.Chairs = lo_orderTemp.Transport.Seat;
-                                            loi_oi.Transport.DepartureDepartDate = lo_orderTemp.Transport.DepartureDepartDate;
-                                            loi_oi.Transport.DepartureArrivingDate = lo_orderTemp.Transport.DepartureArrivingDate;
-                                            loi_oi.Transport.ReturnDepartDate = lo_orderTemp.Transport.ReturnDepartDate;
-                                            loi_oi.Transport.ReturnArrivingDate = lo_orderTemp.Transport.ReturnArrivingDate;
-                                            loi_oi.Transport.Value = lo_orderTemp.Transport.Price;
+
+                                            if (lo_orderTemp.Hotel != null)
+                                            {
+
+                                                loi_oi.Hotel = new GetHotel();
+                                                loi_oi.Hotel.BookingId = lo_orderTemp.Hotel.BookingId;
+                                                loi_oi.Hotel.HotelCode = lo_orderTemp.Hotel.Id.ToString();
+                                                loi_oi.Hotel.Name = lo_orderTemp.Hotel.Name;
+                                                loi_oi.Hotel.RoomNumber = lo_orderTemp.Hotel.RoomNumber;
+                                                loi_oi.Hotel.Address = lo_orderTemp.Hotel.Address;
+                                                loi_oi.Hotel.Country = lo_orderTemp.Hotel.Country;
+                                                loi_oi.Hotel.City = lo_orderTemp.Hotel.City;
+                                                loi_oi.Hotel.Checkin = lo_orderTemp.Hotel.CheckIn;
+                                                loi_oi.Hotel.Checkout = lo_orderTemp.Hotel.CheckOut;
+                                                loi_oi.Hotel.Type = lo_orderTemp.Hotel.TypeRoom;
+                                                loi_oi.Hotel.Value = lo_orderTemp.Hotel.PriceRoom;
+
+                                            }
+
+                                            if (lo_orderTemp.Transport != null)
+                                            {
+
+                                                loi_oi.Transport = new GetTransport();
+                                                loi_oi.Transport.BookingId = lo_orderTemp.Transport.BookingId;
+                                                loi_oi.Transport.TransportCode = lo_orderTemp.Transport.Id.ToString();
+                                                loi_oi.Transport.CountryFrom = lo_orderTemp.Transport.CountryFrom;
+                                                loi_oi.Transport.CountryTo = lo_orderTemp.Transport.CountryTo;
+                                                loi_oi.Transport.CityFrom = lo_orderTemp.Transport.CityFrom;
+                                                loi_oi.Transport.CityTo = lo_orderTemp.Transport.CityTo;
+                                                loi_oi.Transport.Chairs = lo_orderTemp.Transport.Seat;
+                                                loi_oi.Transport.DepartureDepartDate = lo_orderTemp.Transport.DepartureDepartDate;
+                                                loi_oi.Transport.DepartureArrivingDate = lo_orderTemp.Transport.DepartureArrivingDate;
+                                                loi_oi.Transport.ReturnDepartDate = lo_orderTemp.Transport.ReturnDepartDate;
+                                                loi_oi.Transport.ReturnArrivingDate = lo_orderTemp.Transport.ReturnArrivingDate;
+                                                loi_oi.Transport.Value = lo_orderTemp.Transport.Price;
+
+                                            }
 
                                         }
 
