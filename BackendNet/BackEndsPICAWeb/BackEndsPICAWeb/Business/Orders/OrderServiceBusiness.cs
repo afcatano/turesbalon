@@ -546,23 +546,31 @@ namespace BackEndsPICAWeb.Business.Orders
                             else
                                 throw new Exception("La ciudad de llegada del transporte es obligatoria");
 
-                            if (apor_por.Order.Transport.Chairs.Trim().Length > 0)
+                            if (apor_por.Order.Transport.Chairs != null)
                             {
 
-                                long ll_result;
+                                if (apor_por.Order.Transport.Chairs.Trim().Length > 0)
+                                {
 
-                                ll_result = 0;
+                                    long ll_result;
 
-                                if (!long.TryParse(apor_por.Order.Transport.Chairs, out ll_result))
-                                    throw new Exception("El numero de sillas de la reserva de transporte debe ser numerico");
-                                else if (long.Parse(apor_por.Order.Transport.Chairs) <= 0)
-                                    throw new Exception("El numero de sillas de la reserva de transporte debe ser mayor a 0");
+                                    ll_result = 0;
+
+                                    if (!long.TryParse(apor_por.Order.Transport.Chairs, out ll_result))
+                                        throw new Exception("El numero de sillas de la reserva de transporte debe ser numerico");
+                                    else if (long.Parse(apor_por.Order.Transport.Chairs) <= 0)
+                                        throw new Exception("El numero de sillas de la reserva de transporte debe ser mayor a 0");
+                                    else
+                                        lo_order.Transport.Seat = apor_por.Order.Transport.Chairs;
+
+                                }
                                 else
-                                    lo_order.Transport.Seat = apor_por.Order.Transport.Chairs;
+                                    throw new Exception("El numero de sillas de la reserva de transporte es oblogatorio");
 
                             }
                             else
                                 throw new Exception("El numero de sillas de la reserva de transporte es oblogatorio");
+
 
                             if (apor_por.Order.Transport.DepartureDepartDate != null)
                                 if (apor_por.Order.Transport.DepartureDepartDate != new DateTime())

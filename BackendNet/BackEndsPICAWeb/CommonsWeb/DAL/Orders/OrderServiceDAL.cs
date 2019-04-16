@@ -31,19 +31,25 @@ namespace CommonsWeb.DAL.Orders
 
                     ls_sql += ", O.EVENTCODE, O.EVENTNAME, O.EVENTDESCRIPTION,";
                     ls_sql += " O.EVENTDATE, O.EVENTPRICE, H.RESERVATIONCODE HBID,";
-                    ls_sql += " H.ID HOTELID, H.NAME HOTELNAME, H.ROOMNUMBER,";
+                    ls_sql += " NVL(H.ID,-1) HOTELID, H.NAME HOTELNAME, H.ROOMNUMBER,";
                     ls_sql += " H.ADDRESS, H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT,";
                     ls_sql += " H.TYPEROOM, H.PRICEROOM, T.RESERVATIONCODE TBID,";
-                    ls_sql += " T.ID TRANSPORTID, T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY,";
+                    ls_sql += " NVL(T.ID,-1) TRANSPORTID, T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY,";
                     ls_sql += " T.DEPARTURECITY, T.ARRIVALCITY, T.SEAT, T.DEPARTDEPARTDATE,";
                     ls_sql += " T.DEPARTARRIDATE, T.ARRIVALDEPARTDATE, T.ARRIVALARRIDATE, T.PRICE";
 
                 }
 
-                ls_sql += " FROM ORDERS O, CUSTOMER C";
+                ls_sql += " FROM ORDERS O";
 
                 if (aod_order.FlagDetail)
-                    ls_sql += ", HOTELRESERVATION H, TRANSPORTRESERVATION T";
+                {
+                    ls_sql += " LEFT JOIN HOTELRESERVATION H ON (H.IDORDER = O.ORDERCODE)";
+                    ls_sql += " LEFT JOIN TRANSPORTRESERVATION T ON (T.IDORDER = O.ORDERCODE),";
+                    ls_sql += " CUSTOMER C";
+                }
+                else
+                    ls_sql += ", CUSTOMER C";
 
                 ls_sql += " WHERE C.ID = O.IDCUSTOMER";
 
@@ -82,8 +88,6 @@ namespace CommonsWeb.DAL.Orders
                 if (aod_order.FlagDetail)
                 {
 
-                    ls_sql += " AND H.IDORDER = O.ORDERCODE AND T.IDORDER = O.ORDERCODE";
-
                     if (aod_order.EventCode > 0)
                         ls_sql += " AND O.EVENTCODE = " + aod_order.EventCode.ToString();
 
@@ -118,36 +122,48 @@ namespace CommonsWeb.DAL.Orders
                         if (aod_order.FlagDetail)
                         {
 
-                            lo_order.Hotel = new HotelReservationDTO();
-                            lo_order.Transport = new TransportReservationDTO();
                             lo_order.EventCode = Convert.ToInt32(ldr_temp["EVENTCODE"]);
                             lo_order.EventName = Convert.ToString(ldr_temp["EVENTNAME"]);
                             lo_order.EventDescription = Convert.ToString(ldr_temp["EVENTDESCRIPTION"]);
                             lo_order.EventDate = Convert.ToDateTime(ldr_temp["EVENTDATE"]);
                             lo_order.EventPrice = Convert.ToDecimal(ldr_temp["EVENTPRICE"]);
-                            lo_order.Hotel.BookingId = Convert.ToString(ldr_temp["HBID"]);
-                            lo_order.Hotel.Id = Convert.ToInt32(ldr_temp["HOTELID"]);
-                            lo_order.Hotel.Name = Convert.ToString(ldr_temp["HOTELNAME"]);
-                            lo_order.Hotel.RoomNumber = Convert.ToString(ldr_temp["ROOMNUMBER"]);
-                            lo_order.Hotel.Address = Convert.ToString(ldr_temp["ADDRESS"]);
-                            lo_order.Hotel.Country = Convert.ToString(ldr_temp["COUNTRY"]);
-                            lo_order.Hotel.City = Convert.ToString(ldr_temp["CITY"]);
-                            lo_order.Hotel.CheckIn = Convert.ToDateTime(ldr_temp["CHECKIN"]);
-                            lo_order.Hotel.CheckOut = Convert.ToDateTime(ldr_temp["CHECKOUT"]);
-                            lo_order.Hotel.TypeRoom = Convert.ToString(ldr_temp["TYPEROOM"]);
-                            lo_order.Hotel.PriceRoom = Convert.ToDecimal(ldr_temp["PRICEROOM"]);
-                            lo_order.Transport.BookingId = Convert.ToString(ldr_temp["TBID"]);
-                            lo_order.Transport.Id = Convert.ToInt32(ldr_temp["TRANSPORTID"]);
-                            lo_order.Transport.CountryFrom = Convert.ToString(ldr_temp["DEPARTURECOUNTRY"]);
-                            lo_order.Transport.CountryTo = Convert.ToString(ldr_temp["ARRIVALCOUNTRY"]);
-                            lo_order.Transport.CityFrom = Convert.ToString(ldr_temp["DEPARTURECITY"]);
-                            lo_order.Transport.CityTo = Convert.ToString(ldr_temp["ARRIVALCITY"]);
-                            lo_order.Transport.Seat = Convert.ToString(ldr_temp["SEAT"]);
-                            lo_order.Transport.DepartureDepartDate = Convert.ToDateTime(ldr_temp["DEPARTDEPARTDATE"]);
-                            lo_order.Transport.DepartureArrivingDate = Convert.ToDateTime(ldr_temp["DEPARTARRIDATE"]);
-                            lo_order.Transport.ReturnDepartDate = Convert.ToDateTime(ldr_temp["ARRIVALDEPARTDATE"]);
-                            lo_order.Transport.ReturnArrivingDate = Convert.ToDateTime(ldr_temp["ARRIVALARRIDATE"]);
-                            lo_order.Transport.Price = Convert.ToDecimal(ldr_temp["PRICE"]);
+
+                            if (Convert.ToInt32(ldr_temp["HOTELID"]) > 0)
+                            {
+
+                                lo_order.Hotel = new HotelReservationDTO();
+                                lo_order.Hotel.BookingId = Convert.ToString(ldr_temp["HBID"]);
+                                lo_order.Hotel.Id = Convert.ToInt32(ldr_temp["HOTELID"]);
+                                lo_order.Hotel.Name = Convert.ToString(ldr_temp["HOTELNAME"]);
+                                lo_order.Hotel.RoomNumber = Convert.ToString(ldr_temp["ROOMNUMBER"]);
+                                lo_order.Hotel.Address = Convert.ToString(ldr_temp["ADDRESS"]);
+                                lo_order.Hotel.Country = Convert.ToString(ldr_temp["COUNTRY"]);
+                                lo_order.Hotel.City = Convert.ToString(ldr_temp["CITY"]);
+                                lo_order.Hotel.CheckIn = Convert.ToDateTime(ldr_temp["CHECKIN"]);
+                                lo_order.Hotel.CheckOut = Convert.ToDateTime(ldr_temp["CHECKOUT"]);
+                                lo_order.Hotel.TypeRoom = Convert.ToString(ldr_temp["TYPEROOM"]);
+                                lo_order.Hotel.PriceRoom = Convert.ToDecimal(ldr_temp["PRICEROOM"]);
+
+                            }
+
+                            if (Convert.ToInt32(ldr_temp["TRANSPORTID"]) > 0)
+                            {
+
+                                lo_order.Transport = new TransportReservationDTO();
+                                lo_order.Transport.BookingId = Convert.ToString(ldr_temp["TBID"]);
+                                lo_order.Transport.Id = Convert.ToInt32(ldr_temp["TRANSPORTID"]);
+                                lo_order.Transport.CountryFrom = Convert.ToString(ldr_temp["DEPARTURECOUNTRY"]);
+                                lo_order.Transport.CountryTo = Convert.ToString(ldr_temp["ARRIVALCOUNTRY"]);
+                                lo_order.Transport.CityFrom = Convert.ToString(ldr_temp["DEPARTURECITY"]);
+                                lo_order.Transport.CityTo = Convert.ToString(ldr_temp["ARRIVALCITY"]);
+                                lo_order.Transport.Seat = Convert.ToString(ldr_temp["SEAT"]);
+                                lo_order.Transport.DepartureDepartDate = Convert.ToDateTime(ldr_temp["DEPARTDEPARTDATE"]);
+                                lo_order.Transport.DepartureArrivingDate = Convert.ToDateTime(ldr_temp["DEPARTARRIDATE"]);
+                                lo_order.Transport.ReturnDepartDate = Convert.ToDateTime(ldr_temp["ARRIVALDEPARTDATE"]);
+                                lo_order.Transport.ReturnArrivingDate = Convert.ToDateTime(ldr_temp["ARRIVALARRIDATE"]);
+                                lo_order.Transport.Price = Convert.ToDecimal(ldr_temp["PRICE"]);
+
+                            }
 
                         }
 
