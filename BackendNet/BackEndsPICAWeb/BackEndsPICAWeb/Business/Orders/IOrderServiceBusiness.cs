@@ -2,10 +2,10 @@
 {
     interface IOrderServiceBusiness
     {
-        
+
         GetOrderResponse GetOrder(GetOrderRequest agor_gor);
 
-        PostOrderRequest PostOrder(PostOrderRequest apor_por);
+        PostOrderResponse PostOrder(PostOrderRequest apor_por);
 
         PutOrderResponse PutOrder(PutOrderRequest aprr_prr);
 

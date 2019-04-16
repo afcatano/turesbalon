@@ -246,8 +246,10 @@ namespace BackEndsPICAWeb.Business.Orders
                                             loi_oi.Transport.CityFrom = lo_orderTemp.Transport.CityFrom;
                                             loi_oi.Transport.CityTo = lo_orderTemp.Transport.CityTo;
                                             loi_oi.Transport.Chairs = lo_orderTemp.Transport.Seat;
-                                            loi_oi.Transport.DepartDate = lo_orderTemp.Transport.DepartDate;
-                                            loi_oi.Transport.ArrivingDate = lo_orderTemp.Transport.ArrivingDate;
+                                            loi_oi.Transport.DepartureDepartDate = lo_orderTemp.Transport.DepartureDepartDate;
+                                            loi_oi.Transport.DepartureArrivingDate = lo_orderTemp.Transport.DepartureArrivingDate;
+                                            loi_oi.Transport.ReturnDepartDate = lo_orderTemp.Transport.ReturnDepartDate;
+                                            loi_oi.Transport.ReturnArrivingDate = lo_orderTemp.Transport.ReturnArrivingDate;
                                             loi_oi.Transport.Value = lo_orderTemp.Transport.Price;
 
                                         }
@@ -313,9 +315,343 @@ namespace BackEndsPICAWeb.Business.Orders
 
         }
 
-        public PostOrderRequest PostOrder(PostOrderRequest apor_por)
+        public PostOrderResponse PostOrder(PostOrderRequest apor_por)
         {
-            throw new System.NotImplementedException();
+
+            PostOrderResponse lpor_response;
+
+            lpor_response = new PostOrderResponse();
+            lpor_response.status = new Status();
+
+            try
+            {
+
+                if (apor_por != null)
+                {
+
+                    if (apor_por.Order != null)
+                    {
+
+                        OrderDTO lo_order;
+                        OrderServiceDAL losd_losDAL;
+
+                        lo_order = new OrderDTO();
+                        losd_losDAL = new OrderServiceDAL();
+
+                        if (apor_por.Order.IdUser > 0)
+                            lo_order.IdUser = apor_por.Order.IdUser;
+                        else
+                            throw new Exception("El codigo del usuario es obligatorio");
+
+                        if (apor_por.Order.TotalValue > 0)
+                            lo_order.OrderValue = apor_por.Order.TotalValue;
+                        else
+                            throw new Exception("El valor de la orden es obligatorio y debe ser mayor a 0");
+
+                        if (apor_por.Order.Event != null)
+                        {
+
+                            if (apor_por.Order.Event.EventCode != null)
+                            {
+
+                                if (apor_por.Order.Event.EventCode.Trim().Length > 0)
+                                {
+
+                                    long ll_result;
+
+                                    ll_result = 0;
+
+                                    if (!long.TryParse(apor_por.Order.Event.EventCode, out ll_result))
+                                        throw new Exception("El codigo del evento debe ser numerico");
+                                    else if (long.Parse(apor_por.Order.Event.EventCode) <= 0)
+                                        throw new Exception("El codigo del evento debe ser mayor a 0");
+                                    else
+                                        lo_order.EventCode = long.Parse(apor_por.Order.Event.EventCode);
+
+                                }
+                                else
+                                    throw new Exception("El codigo del evento es obligatorio");
+
+                            }
+                            else
+                                throw new Exception("El codigo del evento es obligatorio");
+
+                            if (apor_por.Order.Event.Name != null)
+                            {
+
+                                if (apor_por.Order.Event.Name.Trim().Length > 0)
+                                    lo_order.EventName = apor_por.Order.Event.Name;
+                                else
+                                    throw new Exception("El nombre del evento es obligatorio");
+
+                            }
+                            else
+                                throw new Exception("El nombre del evento es obligatorio");
+
+                            if (apor_por.Order.Event.Description != null)
+                            {
+
+                                if (apor_por.Order.Event.Description.Trim().Length > 0)
+                                    lo_order.EventDescription = apor_por.Order.Event.Description;
+                                else
+                                    throw new Exception("La descripcion del evento es obligatoria");
+
+                            }
+                            else
+                                throw new Exception("La descripcion del evento es obligatoria");
+
+                            if (apor_por.Order.Event.Date != null)
+                                if (apor_por.Order.Event.Date != new DateTime())
+                                    lo_order.OrderDateFrom = apor_por.Order.Event.Date;
+                                else
+                                    throw new Exception("La fecha del evento es obligatoria");
+                            else
+                                throw new Exception("La fecha del evento es obligatoria");
+
+                            if (apor_por.Order.Event.Value > 0)
+                                lo_order.IdUser = apor_por.Order.IdUser;
+                            else
+                                throw new Exception("El valor del evento es obligatorio y debe ser mayor a 0");
+
+                        }
+                        else
+                            throw new Exception("El evento es obligatorio");
+
+                        if (apor_por.Order.Hotel != null)
+                        {
+
+                            lo_order.Hotel = new HotelReservationDTO();
+
+                            if (apor_por.Order.Hotel.BookingId != null)
+                                if (apor_por.Order.Hotel.BookingId.Trim().Length > 0)
+                                    lo_order.Hotel.BookingId = apor_por.Order.Hotel.BookingId;
+                                else
+                                    throw new Exception("El codigo de la reserva del hotel es obligatorio");
+                            else
+                                throw new Exception("El codigo de la reserva del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.Name != null)
+                                if (apor_por.Order.Hotel.Name.Trim().Length > 0)
+                                    lo_order.Hotel.Name = apor_por.Order.Hotel.Name;
+                                else
+                                    throw new Exception("El nombre del hotel es obligatorio");
+                            else
+                                throw new Exception("El nombre del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.RoomNumber != null)
+                                if (apor_por.Order.Hotel.RoomNumber.Trim().Length > 0)
+                                    lo_order.Hotel.RoomNumber = apor_por.Order.Hotel.RoomNumber;
+                                else
+                                    throw new Exception("El numero de habitacion del hotel es obligatorio");
+                            else
+                                throw new Exception("El numero de habitacion del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.Address != null)
+                                if (apor_por.Order.Hotel.Address.Trim().Length > 0)
+                                    lo_order.Hotel.Address = apor_por.Order.Hotel.Address;
+                                else
+                                    throw new Exception("La direccion del hotel es obligatoria");
+                            else
+                                throw new Exception("La direccion del hotel es obligatoria");
+
+                            if (apor_por.Order.Hotel.Country != null)
+                                if (apor_por.Order.Hotel.Country.Trim().Length > 0)
+                                    lo_order.Hotel.Country = apor_por.Order.Hotel.Country;
+                                else
+                                    throw new Exception("El pais del hotel es obligatorio");
+                            else
+                                throw new Exception("El pais del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.City != null)
+                                if (apor_por.Order.Hotel.City.Trim().Length > 0)
+                                    lo_order.Hotel.City = apor_por.Order.Hotel.City;
+                                else
+                                    throw new Exception("La ciudad del hotel es obligatoria");
+                            else
+                                throw new Exception("La ciudad del hotel es obligatoria");
+
+                            if (apor_por.Order.Hotel.Checkin != null)
+                                if (apor_por.Order.Hotel.Checkin != new DateTime())
+                                    lo_order.Hotel.CheckIn = apor_por.Order.Hotel.Checkin;
+                                else
+                                    throw new Exception("El checkin del hotel es obligatorio");
+                            else
+                                throw new Exception("El checkin del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.Checkout != null)
+                                if (apor_por.Order.Hotel.Checkout != new DateTime())
+                                    lo_order.Hotel.CheckOut = apor_por.Order.Hotel.Checkout;
+                                else
+                                    throw new Exception("El checkout del hotel es obligatorio");
+                            else
+                                throw new Exception("El checkout del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.Type != null)
+                                if (apor_por.Order.Hotel.Type.Trim().Length > 0)
+                                    lo_order.Hotel.TypeRoom = apor_por.Order.Hotel.Type;
+                                else
+                                    throw new Exception("El tipo de habitacion del hotel es obligatorio");
+                            else
+                                throw new Exception("El tipo de habitacion del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.Value > 0)
+                                lo_order.Hotel.PriceRoom = apor_por.Order.Hotel.Value;
+                            else
+                                throw new Exception("El valor de la reserva hotelera es obligatorio y debe ser mayor a 0");
+
+                        }
+
+                        if (apor_por.Order.Transport != null)
+                        {
+
+                            lo_order.Transport = new TransportReservationDTO();
+
+                            if (apor_por.Order.Transport.BookingId != null)
+                                if (apor_por.Order.Transport.BookingId.Trim().Length > 0)
+                                    lo_order.Transport.BookingId = apor_por.Order.Transport.BookingId;
+                                else
+                                    throw new Exception("El codigo de la reserva del transporte es obligatorio");
+                            else
+                                throw new Exception("El codigo de la reserva del transporte es obligatorio");
+
+                            if (apor_por.Order.Transport.CountryFrom != null)
+                                if (apor_por.Order.Transport.CountryFrom.Trim().Length > 0)
+                                    lo_order.Transport.CountryFrom = apor_por.Order.Transport.CountryFrom;
+                                else
+                                    throw new Exception("El pais de origen del transporte es obligatorio");
+                            else
+                                throw new Exception("El pais de origen del transporte es obligatorio");
+
+                            if (apor_por.Order.Transport.CountryTo != null)
+                                if (apor_por.Order.Transport.CountryTo.Trim().Length > 0)
+                                    lo_order.Transport.CountryTo = apor_por.Order.Transport.CountryTo;
+                                else
+                                    throw new Exception("El pais de llegada del transporte es obligatorio");
+                            else
+                                throw new Exception("El pais de llegada del transporte es obligatorio");
+
+                            if (apor_por.Order.Transport.CityFrom != null)
+                                if (apor_por.Order.Transport.CityFrom.Trim().Length > 0)
+                                    lo_order.Transport.CityFrom = apor_por.Order.Transport.CityFrom;
+                                else
+                                    throw new Exception("La ciudad de origen del transporte es obligatoria");
+                            else
+                                throw new Exception("La ciudad de origen del transporte es obligatoria");
+
+                            if (apor_por.Order.Transport.CityTo != null)
+                                if (apor_por.Order.Transport.CityTo.Trim().Length > 0)
+                                    lo_order.Transport.CityTo = apor_por.Order.Transport.CityTo;
+                                else
+                                    throw new Exception("La ciudad de llegada del transporte es obligatoria");
+                            else
+                                throw new Exception("La ciudad de llegada del transporte es obligatoria");
+
+                            if (apor_por.Order.Transport.Chairs.Trim().Length > 0)
+                            {
+
+                                long ll_result;
+
+                                ll_result = 0;
+
+                                if (!long.TryParse(apor_por.Order.Transport.Chairs, out ll_result))
+                                    throw new Exception("El numero de sillas de la reserva de transporte debe ser numerico");
+                                else if (long.Parse(apor_por.Order.Transport.Chairs) <= 0)
+                                    throw new Exception("El numero de sillas de la reserva de transporte debe ser mayor a 0");
+                                else
+                                    lo_order.Transport.Seat = apor_por.Order.Transport.Chairs;
+
+                            }
+                            else
+                                throw new Exception("El numero de sillas de la reserva de transporte es oblogatorio");
+
+                            if (apor_por.Order.Transport.DepartureDepartDate != null)
+                                if (apor_por.Order.Transport.DepartureDepartDate != new DateTime())
+                                    lo_order.Transport.DepartureDepartDate = apor_por.Order.Transport.DepartureDepartDate;
+                                else
+                                    throw new Exception("La fecha de salida de ida de la reserva de transporte es obligatoria");
+                            else
+                                throw new Exception("La fecha de salida de ida de la reserva de transporte es obligatoria");
+
+                            if (apor_por.Order.Transport.DepartureArrivingDate != null)
+                                if (apor_por.Order.Transport.DepartureArrivingDate != new DateTime())
+                                    lo_order.Transport.DepartureArrivingDate = apor_por.Order.Transport.DepartureArrivingDate;
+                                else
+                                    throw new Exception("La fecha de llegada de ida de la reserva de transporte es obligatoria");
+                            else
+                                throw new Exception("La fecha de llegada de ida de la reserva de transporte es obligatoria");
+
+                            if (lo_order.Transport.DepartureArrivingDate < lo_order.Transport.DepartureDepartDate)
+                                throw new Exception("La fecha de llegada de ida de la reserva de transporte no puede ser menor a la fecha de salida de ida");
+
+                            if (apor_por.Order.Transport.ReturnDepartDate != null)
+                                if (apor_por.Order.Transport.ReturnDepartDate != new DateTime())
+                                    lo_order.Transport.ReturnDepartDate = apor_por.Order.Transport.ReturnDepartDate;
+                                else
+                                    throw new Exception("La fecha de salida de regreso de la reserva de transporte es obligatoria");
+                            else
+                                throw new Exception("La fecha de salida de regreso de la reserva de transporte es obligatoria");
+
+                            if (apor_por.Order.Transport.ReturnArrivingDate != null)
+                                if (apor_por.Order.Transport.ReturnArrivingDate != new DateTime())
+                                    lo_order.Transport.ReturnArrivingDate = apor_por.Order.Transport.ReturnArrivingDate;
+                                else
+                                    throw new Exception("La fecha de llegada de regreso de la reserva de transporte es obligatoria");
+                            else
+                                throw new Exception("La fecha de llegada de regreso de la reserva de transporte es obligatoria");
+
+                            if (lo_order.Transport.ReturnArrivingDate < lo_order.Transport.ReturnDepartDate)
+                                throw new Exception("La fecha de llegada de regreso de la reserva de transporte no puede ser menor a la fecha de salida de regreso");
+
+                            if (apor_por.Order.Transport.Value > 0)
+                                lo_order.Transport.Price = apor_por.Order.Transport.Value;
+                            else
+                                throw new Exception("El valor de la reserva hotelera es obligatorio y debe ser mayor a 0");
+
+                        }
+
+                        lo_order.OrderCode = losd_losDAL.PostOrder(lo_order);
+
+                        if (lo_order.OrderCode > 0)
+                        {
+
+                            lpor_response.status.CodeResp = "0";
+                            lpor_response.status.MessageResp = "";
+                            lpor_response.result = new RegOrder();
+                            lpor_response.result.OrderCode = lo_order.OrderCode.ToString();
+                            lpor_response.result.OrderDate = DateTime.Now;
+                            lpor_response.result.OrderStatus = "A";
+                            lpor_response.result.OrderValue = lo_order.OrderValue;
+
+                        }
+                        else
+                            throw new Exception("Error ingresando orden");
+
+                    }
+                    else
+                        throw new Exception("Parametros de entrada vacios");
+
+                }
+                else
+                    throw new Exception("Parametros de entrada vacios");
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                lpor_response.status.CodeResp = "01";
+                lpor_response.status.MessageResp = ae_e.InnerException != null ? "Error en la ejecucion del servicio" : ae_e.Message;
+                lpor_response.result = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO OrderService:PostOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + le_e.Message);
+                throw le_e;
+
+            }
+
+            return lpor_response;
+
         }
 
         public PutOrderResponse PutOrder(PutOrderRequest aprr_prr)

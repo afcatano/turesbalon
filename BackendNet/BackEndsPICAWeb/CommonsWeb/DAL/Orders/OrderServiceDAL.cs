@@ -35,8 +35,8 @@ namespace CommonsWeb.DAL.Orders
                     ls_sql += " H.ADDRESS, H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT,";
                     ls_sql += " H.TYPEROOM, H.PRICEROOM, T.RESERVATIONCODE TBID,";
                     ls_sql += " T.ID TRANSPORTID, T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY,";
-                    ls_sql += " T.DEPARTURECITY, T.ARRIVALCITY, T.SEAT, T.DEPARTUREDATE,";
-                    ls_sql += " T.ARRIVALDATE, T.PRICE";
+                    ls_sql += " T.DEPARTURECITY, T.ARRIVALCITY, T.SEAT, T.DEPARTDEPARTDATE,";
+                    ls_sql += " T.DEPARTARRIDATE, T.ARRIVALDEPARTDATE, T.ARRIVALARRIDATE, T.PRICE";
 
                 }
 
@@ -143,8 +143,10 @@ namespace CommonsWeb.DAL.Orders
                             lo_order.Transport.CityFrom = Convert.ToString(ldr_temp["DEPARTURECITY"]);
                             lo_order.Transport.CityTo = Convert.ToString(ldr_temp["ARRIVALCITY"]);
                             lo_order.Transport.Seat = Convert.ToString(ldr_temp["SEAT"]);
-                            lo_order.Transport.DepartDate = Convert.ToDateTime(ldr_temp["DEPARTUREDATE"]);
-                            lo_order.Transport.ArrivingDate = Convert.ToDateTime(ldr_temp["ARRIVALDATE"]);
+                            lo_order.Transport.DepartureDepartDate = Convert.ToDateTime(ldr_temp["DEPARTDEPARTDATE"]);
+                            lo_order.Transport.DepartureArrivingDate = Convert.ToDateTime(ldr_temp["DEPARTARRIDATE"]);
+                            lo_order.Transport.ReturnDepartDate = Convert.ToDateTime(ldr_temp["ARRIVALDEPARTDATE"]);
+                            lo_order.Transport.ReturnArrivingDate = Convert.ToDateTime(ldr_temp["ARRIVALARRIDATE"]);
                             lo_order.Transport.Price = Convert.ToDecimal(ldr_temp["PRICE"]);
 
                         }
@@ -176,6 +178,122 @@ namespace CommonsWeb.DAL.Orders
 
         }
 
+        public long PostOrder(OrderDTO aod_order)
+        {
+
+            long ll_orderCode;
+
+            ll_orderCode = 0;
+
+            try
+            {
+
+                string ls_sql;
+                OracleServerHelper losh_osh;
+                DataSet lds_datos;
+
+                ls_sql = "SELECT NVL(MAX(ORDERCODE),0) + 1 ORDERCODE FROM ORDERS";
+                losh_osh = new OracleServerHelper();
+                lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
+
+                if (lds_datos != null && lds_datos.Tables[0].Rows.Count == 1)
+                {
+
+                    foreach (DataRow ldr_temp in lds_datos.Tables[0].Rows)
+                    {
+
+                        long ll_affected;
+
+                        ll_orderCode = Convert.ToInt32(ldr_temp["ORDERCODE"]);
+                        ls_sql = "INSERT INTO ORDERS(ORDERCODE,ORDERDATE,ORDERSTATUS,ORDERVALUE,";
+                        ls_sql += "IDCUSTOMER,EVENTCODE,EVENTNAME,EVENTDESCRIPTION,";
+                        ls_sql += "EVENTDATE,EVENTPRICE) VALUES(" + ll_orderCode + ",SYSDATE,'A',";
+                        ls_sql += aod_order.OrderValue.ToString().Replace(",", ".") + ",";
+                        ls_sql += aod_order.IdUser + "," + aod_order.EventCode + ",";
+                        ls_sql += "'" + aod_order.EventName + "','" + aod_order.EventDescription + "',";
+                        ls_sql += "TO_DATE('" + aod_order.EventDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                        ls_sql += aod_order.EventPrice.ToString().Replace(",", ".") + ")";
+                        ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                        if (ll_affected > 0)
+                        {
+
+                            if (aod_order.Hotel != null)
+                            {
+
+                                ls_sql = "INSERT INTO HOTELRESERVATION (RESERVATIONCODE,NAME,ADDRESS,";
+                                ls_sql += "COUNTRY,CITY,PHONENUMBER,ROOMNUMBER,TYPEROOM,PRICEROOM,";
+                                ls_sql += "CHECKIN,CHECKOUT,IDORDER) VALUES ('" + aod_order.Hotel.BookingId + "',";
+                                ls_sql += "'" + aod_order.Hotel.Name + "','" + aod_order.Hotel.Address + "',";
+                                ls_sql += "'" + aod_order.Hotel.Country + "','" + aod_order.Hotel.City + "',";
+                                ls_sql += "'" + aod_order.Hotel.PhoneNumber + "','" + aod_order.Hotel.RoomNumber + "',";
+                                ls_sql += "'" + aod_order.Hotel.TypeRoom + "'," + aod_order.Hotel.PriceRoom.
+                                    ToString().Replace(",", ".") + ",";
+                                ls_sql += "TO_DATE('" + aod_order.Hotel.CheckIn.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                                ls_sql += "TO_DATE('" + aod_order.Hotel.CheckOut.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                                ls_sql += ll_orderCode + ")";
+                                ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                                if (ll_affected <= 0)
+                                    Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error,
+                                        "ERROR EN LA CAPA DE DATOS OrderService:PostOrder:Error" +
+                                        " ingresando reserva hotel para order " + ll_orderCode);
+
+                            }
+
+                            if (aod_order.Transport != null)
+                            {
+
+                                ls_sql = "INSERT INTO TRANSPORTRESERVATION (RESERVATIONCODE,NAME,DEPARTURECOUNTRY,";
+                                ls_sql += "DEPARTURECITY,ARRIVALCOUNTRY,ARRIVALCITY,DEPARTDEPARTDATE,DEPARTARRIDATE,";
+                                ls_sql += "ARRIVALDEPARTDATE,ARRIVALARRIDATE,CLASS,SEAT,PRICE,IDORDER) VALUES (";
+                                ls_sql += "'" + aod_order.Transport.BookingId + "','" + aod_order.Transport.Name + "',";
+                                ls_sql += "'" + aod_order.Transport.CountryFrom + "','" + aod_order.Transport.CityFrom + "',";
+                                ls_sql += "'" + aod_order.Transport.CountryTo + "','" + aod_order.Transport.CityTo + "',";
+                                ls_sql += "TO_DATE('" + aod_order.Transport.DepartureDepartDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                                ls_sql += "TO_DATE('" + aod_order.Transport.DepartureArrivingDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                                ls_sql += "TO_DATE('" + aod_order.Transport.ReturnDepartDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                                ls_sql += "TO_DATE('" + aod_order.Transport.ReturnArrivingDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
+                                ls_sql += "'" + aod_order.Transport.Class + "','" + aod_order.Transport.Seat + "',";
+                                ls_sql += aod_order.Transport.Price.ToString().Replace(",", ".") + ",";
+                                ls_sql += ll_orderCode + ")";
+                                ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                                if (ll_affected <= 0)
+                                    Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error,
+                                        "ERROR EN LA CAPA DE DATOS OrderService:PostOrder:Error" +
+                                        " ingresando reserva transporte para order " + ll_orderCode);
+
+
+                            }
+
+                        }
+                        else
+                            throw new Exception("Error ingresando orden");
+
+                    }
+
+                }
+                else
+                    throw new Exception("Error consultando id de la orden");
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                ll_orderCode = -1;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE DATOS OrderService:PostOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " : " + le_e.Message);
+
+            }
+
+            return ll_orderCode;
+
+        }
+
         public bool PutOrder(OrderDTO aod_order)
         {
 
@@ -197,7 +315,7 @@ namespace CommonsWeb.DAL.Orders
 
                 if (ll_affected > 0)
                     lb_retorno = true;
-                
+
             }
             catch (Exception ae_e)
             {

@@ -13,7 +13,7 @@ namespace BackEndsPICAWeb.Servicios.Orders
 
         [XmlSerializerFormatAttribute()]
         [OperationContract]
-        PostOrderRequest PostOrder(PostOrderRequest apor_por);
+        PostOrderResponse PostOrder(PostOrderRequest apor_por);
 
         [XmlSerializerFormatAttribute()]
         [OperationContract]

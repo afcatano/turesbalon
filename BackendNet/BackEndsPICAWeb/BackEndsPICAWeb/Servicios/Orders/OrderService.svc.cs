@@ -42,9 +42,39 @@ namespace BackEndsPICAWeb.Servicios.Orders
 
         }
 
-        public PostOrderRequest PostOrder(PostOrderRequest apor_por)
+        public PostOrderResponse PostOrder(PostOrderRequest apor_por)
         {
-            throw new NotImplementedException();
+
+            PostOrderResponse lpor_response;
+
+            lpor_response = new PostOrderResponse();
+            lpor_response.status = new Status();
+
+            try
+            {
+
+                IOrderServiceBusiness liosb_iosb;
+
+                liosb_iosb = new OrderServiceBusiness();
+                lpor_response = liosb_iosb.PostOrder(apor_por);
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                lpor_response.status.CodeResp = "01";
+                lpor_response.status.MessageResp = ae_e.InnerException != null ? "Error en la ejecucion del servicio" : ae_e.Message;
+                lpor_response.result = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE SERVICIO OrderService:PostOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + le_e.Message);
+
+            }
+
+            return lpor_response;
+
         }
 
         public PutOrderResponse PutOrder(PutOrderRequest aprr_prr)
