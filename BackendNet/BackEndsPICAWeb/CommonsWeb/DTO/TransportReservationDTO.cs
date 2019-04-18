@@ -20,6 +20,7 @@ namespace CommonsWeb.DTO
         public string Class { get; set; }
         public string Seat { get; set; }
         public decimal Price { get; set; }
+        public string CompanyName { get; set; }
 
     }
 }

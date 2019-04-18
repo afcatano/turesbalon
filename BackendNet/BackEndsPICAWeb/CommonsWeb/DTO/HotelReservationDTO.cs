@@ -18,6 +18,7 @@ namespace CommonsWeb.DTO
         public decimal PriceRoom { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
+        public string CompanyName { get; set; }
 
     }
 }

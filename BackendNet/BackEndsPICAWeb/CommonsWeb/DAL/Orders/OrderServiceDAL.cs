@@ -33,10 +33,12 @@ namespace CommonsWeb.DAL.Orders
                     ls_sql += " O.EVENTDATE, O.EVENTPRICE, H.RESERVATIONCODE HBID,";
                     ls_sql += " NVL(H.ID,-1) HOTELID, H.NAME HOTELNAME, H.ROOMNUMBER,";
                     ls_sql += " H.ADDRESS, H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT,";
-                    ls_sql += " H.TYPEROOM, H.PRICEROOM, T.RESERVATIONCODE TBID,";
-                    ls_sql += " NVL(T.ID,-1) TRANSPORTID, T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY,";
-                    ls_sql += " T.DEPARTURECITY, T.ARRIVALCITY, T.SEAT, T.DEPARTDEPARTDATE,";
-                    ls_sql += " T.DEPARTARRIDATE, T.ARRIVALDEPARTDATE, T.ARRIVALARRIDATE, T.PRICE";
+                    ls_sql += " H.TYPEROOM, H.PRICEROOM, H.COMPANYNAME HCOMPANYNAME,";
+                    ls_sql += " T.RESERVATIONCODE TBID, NVL(T.ID,-1) TRANSPORTID,";
+                    ls_sql += " T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY, T.DEPARTURECITY,";
+                    ls_sql += " T.ARRIVALCITY, T.SEAT, T.DEPARTDEPARTDATE, T.DEPARTARRIDATE,";
+                    ls_sql += " T.ARRIVALDEPARTDATE, T.ARRIVALARRIDATE, T.PRICE,";
+                    ls_sql += " T.COMPANYNAME TCOMPANYNAME";
 
                 }
 
@@ -143,6 +145,7 @@ namespace CommonsWeb.DAL.Orders
                                 lo_order.Hotel.CheckOut = Convert.ToDateTime(ldr_temp["CHECKOUT"]);
                                 lo_order.Hotel.TypeRoom = Convert.ToString(ldr_temp["TYPEROOM"]);
                                 lo_order.Hotel.PriceRoom = Convert.ToDecimal(ldr_temp["PRICEROOM"]);
+                                lo_order.Hotel.CompanyName = Convert.ToString(ldr_temp["HCOMPANYNAME"]);
 
                             }
 
@@ -162,6 +165,7 @@ namespace CommonsWeb.DAL.Orders
                                 lo_order.Transport.ReturnDepartDate = Convert.ToDateTime(ldr_temp["ARRIVALDEPARTDATE"]);
                                 lo_order.Transport.ReturnArrivingDate = Convert.ToDateTime(ldr_temp["ARRIVALARRIDATE"]);
                                 lo_order.Transport.Price = Convert.ToDecimal(ldr_temp["PRICE"]);
+                                lo_order.Transport.CompanyName = Convert.ToString(ldr_temp["TCOMPANYNAME"]);
 
                             }
 
@@ -239,7 +243,7 @@ namespace CommonsWeb.DAL.Orders
 
                                 ls_sql = "INSERT INTO HOTELRESERVATION (RESERVATIONCODE,NAME,ADDRESS,";
                                 ls_sql += "COUNTRY,CITY,PHONENUMBER,ROOMNUMBER,TYPEROOM,PRICEROOM,";
-                                ls_sql += "CHECKIN,CHECKOUT,IDORDER) VALUES ('" + aod_order.Hotel.BookingId + "',";
+                                ls_sql += "CHECKIN,CHECKOUT,IDORDER,COMPANYNAME) VALUES ('" + aod_order.Hotel.BookingId + "',";
                                 ls_sql += "'" + aod_order.Hotel.Name + "','" + aod_order.Hotel.Address + "',";
                                 ls_sql += "'" + aod_order.Hotel.Country + "','" + aod_order.Hotel.City + "',";
                                 ls_sql += "'" + aod_order.Hotel.PhoneNumber + "','" + aod_order.Hotel.RoomNumber + "',";
@@ -247,7 +251,7 @@ namespace CommonsWeb.DAL.Orders
                                     ToString().Replace(",", ".") + ",";
                                 ls_sql += "TO_DATE('" + aod_order.Hotel.CheckIn.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
                                 ls_sql += "TO_DATE('" + aod_order.Hotel.CheckOut.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
-                                ls_sql += ll_orderCode + ")";
+                                ls_sql += ll_orderCode + ",'" + aod_order.Hotel.CompanyName + "')";
                                 ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                                 if (ll_affected <= 0)
@@ -262,7 +266,7 @@ namespace CommonsWeb.DAL.Orders
 
                                 ls_sql = "INSERT INTO TRANSPORTRESERVATION (RESERVATIONCODE,NAME,DEPARTURECOUNTRY,";
                                 ls_sql += "DEPARTURECITY,ARRIVALCOUNTRY,ARRIVALCITY,DEPARTDEPARTDATE,DEPARTARRIDATE,";
-                                ls_sql += "ARRIVALDEPARTDATE,ARRIVALARRIDATE,CLASS,SEAT,PRICE,IDORDER) VALUES (";
+                                ls_sql += "ARRIVALDEPARTDATE,ARRIVALARRIDATE,CLASS,SEAT,PRICE,IDORDER,COMPANYNAME) VALUES (";
                                 ls_sql += "'" + aod_order.Transport.BookingId + "','" + aod_order.Transport.Name + "',";
                                 ls_sql += "'" + aod_order.Transport.CountryFrom + "','" + aod_order.Transport.CityFrom + "',";
                                 ls_sql += "'" + aod_order.Transport.CountryTo + "','" + aod_order.Transport.CityTo + "',";
@@ -272,7 +276,7 @@ namespace CommonsWeb.DAL.Orders
                                 ls_sql += "TO_DATE('" + aod_order.Transport.ReturnArrivingDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
                                 ls_sql += "'" + aod_order.Transport.Class + "','" + aod_order.Transport.Seat + "',";
                                 ls_sql += aod_order.Transport.Price.ToString().Replace(",", ".") + ",";
-                                ls_sql += ll_orderCode + ")";
+                                ls_sql += ll_orderCode + ",'" + aod_order.Transport.CompanyName + "')";
                                 ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                                 if (ll_affected <= 0)

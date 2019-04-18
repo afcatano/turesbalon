@@ -61,5 +61,25 @@ namespace CommonsWeb.Util
 
         }
 
+        public void RemoveCache(string as_cacheKey)
+        {
+
+            try
+            {
+
+                if (ioc_cache.Contains(as_cacheKey))
+                    ioc_cache.Remove(as_cacheKey);
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR CacheHandler:RemoveCache");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " : " + ae_e.Message);
+
+            }
+
+        }
+
     }
 }

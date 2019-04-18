@@ -242,6 +242,7 @@ namespace BackEndsPICAWeb.Business.Orders
                                                 loi_oi.Hotel.Checkout = lo_orderTemp.Hotel.CheckOut;
                                                 loi_oi.Hotel.Type = lo_orderTemp.Hotel.TypeRoom;
                                                 loi_oi.Hotel.Value = lo_orderTemp.Hotel.PriceRoom;
+                                                loi_oi.Hotel.CompanyName = lo_orderTemp.Hotel.CompanyName;
 
                                             }
 
@@ -261,6 +262,7 @@ namespace BackEndsPICAWeb.Business.Orders
                                                 loi_oi.Transport.ReturnDepartDate = lo_orderTemp.Transport.ReturnDepartDate;
                                                 loi_oi.Transport.ReturnArrivingDate = lo_orderTemp.Transport.ReturnArrivingDate;
                                                 loi_oi.Transport.Value = lo_orderTemp.Transport.Price;
+                                                loi_oi.Transport.CompanyName = lo_orderTemp.Transport.CompanyName;
 
                                             }
 
@@ -511,6 +513,14 @@ namespace BackEndsPICAWeb.Business.Orders
                             else
                                 throw new Exception("El valor de la reserva hotelera es obligatorio y debe ser mayor a 0");
 
+                            if (apor_por.Order.Hotel.CompanyName != null)
+                                if (apor_por.Order.Hotel.CompanyName.Trim().Length > 0)
+                                    lo_order.Hotel.CompanyName = apor_por.Order.Hotel.CompanyName;
+                                else
+                                    throw new Exception("El nombre de la compañia del hotel es obligatorio");
+                            else
+                                throw new Exception("El nombre de la compañia del hotel es obligatorio");
+
                         }
 
                         if (apor_por.Order.Transport != null)
@@ -627,6 +637,14 @@ namespace BackEndsPICAWeb.Business.Orders
                             else
                                 throw new Exception("El valor de la reserva hotelera es obligatorio y debe ser mayor a 0");
 
+                            if (apor_por.Order.Transport.CompanyName != null)
+                                if (apor_por.Order.Transport.CompanyName.Trim().Length > 0)
+                                    lo_order.Transport.CompanyName = apor_por.Order.Transport.CompanyName;
+                                else
+                                    throw new Exception("El nombre de la compañia del transporte es obligatorio");
+                            else
+                                throw new Exception("El nombre de la compañia del transporte es obligatorio");
+
                         }
 
                         lo_order.OrderCode = losd_losDAL.PostOrder(lo_order);
@@ -734,6 +752,15 @@ namespace BackEndsPICAWeb.Business.Orders
 
                         if (losd_losDAL.PutOrder(lo_order))
                         {
+
+                            CacheHandler lch_cache;
+                            Dictionary<OrderDTO, GetOrderResponse> ld_data;
+
+                            lch_cache = new CacheHandler();
+                            ld_data = (Dictionary<OrderDTO, GetOrderResponse>)lch_cache.GetCache("GetOrder");
+
+                            if (ld_data != null)
+                                lch_cache.RemoveCache("GetOrder");
 
                             lpor_response.status.CodeResp = "0";
                             lpor_response.status.MessageResp = "";
