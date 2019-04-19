@@ -252,7 +252,7 @@ namespace BackEndsPICAWeb.Business.Orders
                                                 loi_oi.Hotel.Type = lo_orderTemp.Hotel.TypeRoom;
                                                 loi_oi.Hotel.Value = lo_orderTemp.Hotel.PriceRoom;
                                                 loi_oi.Hotel.CompanyName = lo_orderTemp.Hotel.CompanyName;
-                                                loi_oi.Hotel.Cantidad = lo_order.Hotel.Guests.ToString();
+                                                loi_oi.Hotel.Cantidad = lo_orderTemp.Hotel.Guests.ToString();
 
                                             }
 
