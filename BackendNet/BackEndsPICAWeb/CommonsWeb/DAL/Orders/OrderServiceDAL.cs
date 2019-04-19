@@ -238,12 +238,12 @@ namespace CommonsWeb.DAL.Orders
                         ll_orderCode = Convert.ToInt32(ldr_temp["ORDERCODE"]);
                         ls_sql = "INSERT INTO ORDERS(ORDERCODE,ORDERDATE,ORDERSTATUS,ORDERVALUE,";
                         ls_sql += "IDCUSTOMER,EVENTCODE,EVENTNAME,EVENTDESCRIPTION,";
-                        ls_sql += "EVENTDATE,EVENTPRICE) VALUES(" + ll_orderCode + ",SYSDATE,'A',";
+                        ls_sql += "EVENTDATE,EVENTPRICE,EVENTUNIT) VALUES(" + ll_orderCode + ",SYSDATE,'A',";
                         ls_sql += aod_order.OrderValue.ToString().Replace(",", ".") + ",";
                         ls_sql += aod_order.IdUser + "," + aod_order.EventCode + ",";
                         ls_sql += "'" + aod_order.EventName + "','" + aod_order.EventDescription + "',";
                         ls_sql += "TO_DATE('" + aod_order.EventDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
-                        ls_sql += aod_order.EventPrice.ToString().Replace(",", ".") + ")";
+                        ls_sql += aod_order.EventPrice.ToString().Replace(",", ".") + "," + aod_order.EventUnit + ")";
                         ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                         if (ll_affected > 0)
@@ -254,7 +254,7 @@ namespace CommonsWeb.DAL.Orders
 
                                 ls_sql = "INSERT INTO HOTELRESERVATION (RESERVATIONCODE,NAME,ADDRESS,";
                                 ls_sql += "COUNTRY,CITY,PHONENUMBER,ROOMNUMBER,TYPEROOM,PRICEROOM,";
-                                ls_sql += "CHECKIN,CHECKOUT,IDORDER,COMPANYNAME) VALUES ('" + aod_order.Hotel.BookingId + "',";
+                                ls_sql += "CHECKIN,CHECKOUT,IDORDER,COMPANYNAME,GUESTS) VALUES ('" + aod_order.Hotel.BookingId + "',";
                                 ls_sql += "'" + aod_order.Hotel.Name + "','" + aod_order.Hotel.Address + "',";
                                 ls_sql += "'" + aod_order.Hotel.Country + "','" + aod_order.Hotel.City + "',";
                                 ls_sql += "'" + aod_order.Hotel.PhoneNumber + "','" + aod_order.Hotel.RoomNumber + "',";
@@ -262,7 +262,7 @@ namespace CommonsWeb.DAL.Orders
                                     ToString().Replace(",", ".") + ",";
                                 ls_sql += "TO_DATE('" + aod_order.Hotel.CheckIn.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
                                 ls_sql += "TO_DATE('" + aod_order.Hotel.CheckOut.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
-                                ls_sql += ll_orderCode + ",'" + aod_order.Hotel.CompanyName + "')";
+                                ls_sql += ll_orderCode + ",'" + aod_order.Hotel.CompanyName + "'," + aod_order.Hotel.Guests + ")";
                                 ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                                 if (ll_affected <= 0)

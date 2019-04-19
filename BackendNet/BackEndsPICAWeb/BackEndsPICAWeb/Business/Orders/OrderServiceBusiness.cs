@@ -437,6 +437,31 @@ namespace BackEndsPICAWeb.Business.Orders
                             else
                                 throw new Exception("El valor del evento es obligatorio y debe ser mayor a 0");
 
+                            if (apor_por.Order.Event.Cantidad != null)
+                            {
+
+                                if (apor_por.Order.Event.Cantidad.Trim().Length > 0)
+                                {
+
+                                    long ll_result;
+
+                                    ll_result = 0;
+
+                                    if (!long.TryParse(apor_por.Order.Event.Cantidad, out ll_result))
+                                        throw new Exception("La cantidad de tickets para el evento debe ser numerico");
+                                    else if (long.Parse(apor_por.Order.Event.Cantidad) <= 0)
+                                        throw new Exception("La cantidad de tickets para el evento debe ser mayor a 0");
+                                    else
+                                        lo_order.EventUnit = long.Parse(apor_por.Order.Event.Cantidad);
+
+                                }
+                                else
+                                    throw new Exception("La cantidad de tickets para el evento es obligatoria");
+
+                            }
+                            else
+                                throw new Exception("La cantidad de tickets para el evento es obligatoria");
+
                         }
                         else
                             throw new Exception("El evento es obligatorio");
@@ -530,6 +555,31 @@ namespace BackEndsPICAWeb.Business.Orders
                                     throw new Exception("El nombre de la compañia del hotel es obligatorio");
                             else
                                 throw new Exception("El nombre de la compañia del hotel es obligatorio");
+
+                            if (apor_por.Order.Hotel.Cantidad != null)
+                            {
+
+                                if (apor_por.Order.Hotel.Cantidad.Trim().Length > 0)
+                                {
+
+                                    long ll_result;
+
+                                    ll_result = 0;
+
+                                    if (!long.TryParse(apor_por.Order.Hotel.Cantidad, out ll_result))
+                                        throw new Exception("La cantidad de huéspedes pra la reserva hotelera debe ser numerico");
+                                    else if (long.Parse(apor_por.Order.Hotel.Cantidad) <= 0)
+                                        throw new Exception("La cantidad de huéspedes pra la reserva hotelera debe ser mayor a 0");
+                                    else
+                                        lo_order.Hotel.Guests = long.Parse(apor_por.Order.Hotel.Cantidad);
+
+                                }
+                                else
+                                    throw new Exception("La cantidad de huéspedes pra la reserva hotelera es obligatoria");
+
+                            }
+                            else
+                                throw new Exception("La cantidad de huéspedes pra la reserva hotelera es obligatoria");
 
                         }
 
