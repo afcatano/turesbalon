@@ -133,6 +133,10 @@ namespace BackEndsPICAWeb.Business.Orders
 
                             }
 
+                            if (agor_gor.Order.HotelCompanyName != null)
+                                if (agor_gor.Order.HotelCompanyName.Trim().Length > 0)
+                                    lo_order.HotelCompanyName = agor_gor.Order.HotelCompanyName;
+
                             if (agor_gor.Order.TransportCode != null)
                             {
 
@@ -151,6 +155,10 @@ namespace BackEndsPICAWeb.Business.Orders
                                 }
 
                             }
+
+                            if (agor_gor.Order.TransportCompanyName != null)
+                                if (agor_gor.Order.TransportCompanyName.Trim().Length > 0)
+                                    lo_order.TransportCompanyName = agor_gor.Order.TransportCompanyName;
 
                         }
 
@@ -226,6 +234,7 @@ namespace BackEndsPICAWeb.Business.Orders
                                             loi_oi.Event.Description = lo_orderTemp.EventDescription;
                                             loi_oi.Event.Date = lo_orderTemp.EventDate;
                                             loi_oi.Event.Value = lo_orderTemp.EventPrice;
+                                            loi_oi.Event.Cantidad = lo_orderTemp.EventUnit.ToString();
 
                                             if (lo_orderTemp.Hotel != null)
                                             {
@@ -243,6 +252,7 @@ namespace BackEndsPICAWeb.Business.Orders
                                                 loi_oi.Hotel.Type = lo_orderTemp.Hotel.TypeRoom;
                                                 loi_oi.Hotel.Value = lo_orderTemp.Hotel.PriceRoom;
                                                 loi_oi.Hotel.CompanyName = lo_orderTemp.Hotel.CompanyName;
+                                                loi_oi.Hotel.Cantidad = lo_order.Hotel.Guests.ToString();
 
                                             }
 
@@ -651,6 +661,15 @@ namespace BackEndsPICAWeb.Business.Orders
 
                         if (lo_order.OrderCode > 0)
                         {
+
+                            CacheHandler lch_cache;
+                            Dictionary<OrderDTO, GetOrderResponse> ld_data;
+
+                            lch_cache = new CacheHandler();
+                            ld_data = (Dictionary<OrderDTO, GetOrderResponse>)lch_cache.GetCache("GetOrder");
+
+                            if (ld_data != null)
+                                lch_cache.RemoveCache("GetOrder");
 
                             lpor_response.status.CodeResp = "0";
                             lpor_response.status.MessageResp = "";

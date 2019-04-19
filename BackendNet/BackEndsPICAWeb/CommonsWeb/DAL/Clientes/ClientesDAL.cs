@@ -168,7 +168,7 @@ namespace CommonsWeb.DAL.Clientes
                     ls_sql += ",'" + ac_cliente.FName + "','" + ac_cliente.LName + "',";
                     ls_sql += ac_cliente.PhoneNumber == null ? "NULL," : "'" + ac_cliente.PhoneNumber + "',";
                     ls_sql += ac_cliente.Email == null ? "NULL," : "'" + ac_cliente.Email + "',";
-                    ls_sql += "'" + ac_cliente.Email + "',1,'" + ac_cliente.Address + "',";
+                    ls_sql += "'" + ac_cliente.Password + "',1,'" + ac_cliente.Address + "',";
                     ls_sql += "'" + ac_cliente.City + "','" + ac_cliente.Country + "',";
                     ls_sql += "'" + ac_cliente.User + "'," + ac_cliente.CodTypeIdent + ")";
 

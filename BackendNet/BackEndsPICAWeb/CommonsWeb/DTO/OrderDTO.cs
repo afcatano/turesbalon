@@ -23,6 +23,9 @@ namespace CommonsWeb.DTO
         public string EventCountry { get; set; }
         public string EventType { get; set; }
         public decimal EventPrice { get; set; }
+        public string HotelCompanyName { get; set; }
+        public string TransportCompanyName { get; set; }
+        public long EventUnit { get; set; }
         public bool FlagDetail { get; set; }
         public HotelReservationDTO Hotel { get; set; }
         public TransportReservationDTO Transport { get; set; }
@@ -43,7 +46,8 @@ namespace CommonsWeb.DTO
                 OrderValue != lo_order.OrderValue || IdUser != lo_order.IdUser ||
                 IdType != lo_order.IdType || IdNumber != lo_order.IdNumber ||
                 EventCode != lo_order.EventCode || HotelCode != lo_order.HotelCode ||
-                TransportCode != lo_order.TransportCode || FlagDetail != lo_order.FlagDetail)
+                TransportCode != lo_order.TransportCode || FlagDetail != lo_order.FlagDetail ||
+                HotelCompanyName != lo_order.HotelCompanyName || TransportCompanyName != lo_order.TransportCompanyName)
                 return false;
 
             return true;

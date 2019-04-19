@@ -30,10 +30,11 @@ namespace CommonsWeb.DAL.Orders
                 {
 
                     ls_sql += ", O.EVENTCODE, O.EVENTNAME, O.EVENTDESCRIPTION,";
-                    ls_sql += " O.EVENTDATE, O.EVENTPRICE, H.RESERVATIONCODE HBID,";
-                    ls_sql += " NVL(H.ID,-1) HOTELID, H.NAME HOTELNAME, H.ROOMNUMBER,";
-                    ls_sql += " H.ADDRESS, H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT,";
-                    ls_sql += " H.TYPEROOM, H.PRICEROOM, H.COMPANYNAME HCOMPANYNAME,";
+                    ls_sql += " O.EVENTDATE, O.EVENTPRICE, O.EVENTUNIT,";
+                    ls_sql += " H.RESERVATIONCODE HBID, NVL(H.ID,-1) HOTELID,";
+                    ls_sql += " H.NAME HOTELNAME, H.ROOMNUMBER, H.ADDRESS,";
+                    ls_sql += " H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT, H.TYPEROOM,";
+                    ls_sql += " H.PRICEROOM, H.COMPANYNAME HCOMPANYNAME, H.GUESTS,";
                     ls_sql += " T.RESERVATIONCODE TBID, NVL(T.ID,-1) TRANSPORTID,";
                     ls_sql += " T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY, T.DEPARTURECITY,";
                     ls_sql += " T.ARRIVALCITY, T.SEAT, T.DEPARTDEPARTDATE, T.DEPARTARRIDATE,";
@@ -96,8 +97,16 @@ namespace CommonsWeb.DAL.Orders
                     if (aod_order.HotelCode > 0)
                         ls_sql += " AND H.ID = " + aod_order.HotelCode.ToString();
 
+                    if (aod_order.HotelCompanyName != null)
+                        if (aod_order.HotelCompanyName.Trim().Length > 0)
+                            ls_sql += " AND H.COMPANYNAME = '" + aod_order.HotelCompanyName + "'";
+
                     if (aod_order.TransportCode > 0)
-                        ls_sql += " AND O.ID = " + aod_order.TransportCode.ToString();
+                        ls_sql += " AND T.ID = " + aod_order.TransportCode.ToString();
+
+                    if (aod_order.TransportCompanyName != null)
+                        if (aod_order.TransportCompanyName.Trim().Length > 0)
+                            ls_sql += " AND T.COMPANYNAME = '" + aod_order.TransportCompanyName + "'";
 
                 }
 
@@ -129,6 +138,7 @@ namespace CommonsWeb.DAL.Orders
                             lo_order.EventDescription = Convert.ToString(ldr_temp["EVENTDESCRIPTION"]);
                             lo_order.EventDate = Convert.ToDateTime(ldr_temp["EVENTDATE"]);
                             lo_order.EventPrice = Convert.ToDecimal(ldr_temp["EVENTPRICE"]);
+                            lo_order.EventUnit = Convert.ToInt32(ldr_temp["EVENTUNIT"]);
 
                             if (Convert.ToInt32(ldr_temp["HOTELID"]) > 0)
                             {
@@ -146,6 +156,7 @@ namespace CommonsWeb.DAL.Orders
                                 lo_order.Hotel.TypeRoom = Convert.ToString(ldr_temp["TYPEROOM"]);
                                 lo_order.Hotel.PriceRoom = Convert.ToDecimal(ldr_temp["PRICEROOM"]);
                                 lo_order.Hotel.CompanyName = Convert.ToString(ldr_temp["HCOMPANYNAME"]);
+                                lo_order.Hotel.Guests = Convert.ToInt32(ldr_temp["GUESTS"]);
 
                             }
 

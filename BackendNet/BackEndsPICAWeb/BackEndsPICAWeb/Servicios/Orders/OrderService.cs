@@ -761,6 +761,8 @@ public partial class Hotel
 
     private string companyNameField;
 
+    private string cantidadField;
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 0)]
     public string BookingId
@@ -914,6 +916,20 @@ public partial class Hotel
             this.companyNameField = value;
         }
     }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 11)]
+    public string Cantidad
+    {
+        get
+        {
+            return this.cantidadField;
+        }
+        set
+        {
+            this.cantidadField = value;
+        }
+    }
 }
 
 /// <remarks/>
@@ -934,6 +950,8 @@ public partial class Event
     private System.DateTime dateField;
 
     private decimal valueField;
+
+    private string cantidadField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 0)]
@@ -1002,6 +1020,20 @@ public partial class Event
         set
         {
             this.valueField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 5)]
+    public string Cantidad
+    {
+        get
+        {
+            return this.cantidadField;
+        }
+        set
+        {
+            this.cantidadField = value;
         }
     }
 }
@@ -1347,6 +1379,8 @@ public partial class GetHotel
 
     private string companyNameField;
 
+    private string cantidadField;
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 0)]
     public string BookingId
@@ -1514,6 +1548,20 @@ public partial class GetHotel
             this.companyNameField = value;
         }
     }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 12)]
+    public string Cantidad
+    {
+        get
+        {
+            return this.cantidadField;
+        }
+        set
+        {
+            this.cantidadField = value;
+        }
+    }
 }
 
 /// <remarks/>
@@ -1534,6 +1582,8 @@ public partial class GetEvent
     private System.DateTime dateField;
 
     private decimal valueField;
+
+    private string cantidadField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 0)]
@@ -1602,6 +1652,20 @@ public partial class GetEvent
         set
         {
             this.valueField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType = "integer", Order = 5)]
+    public string Cantidad
+    {
+        get
+        {
+            return this.cantidadField;
+        }
+        set
+        {
+            this.cantidadField = value;
         }
     }
 }
