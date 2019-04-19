@@ -110,6 +110,8 @@ namespace CommonsWeb.DAL.Orders
 
                 }
 
+                ls_sql += " ORDER BY O.ORDERCODE DESC";
+
                 losh_osh = new OracleServerHelper();
                 lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
 
@@ -186,10 +188,6 @@ namespace CommonsWeb.DAL.Orders
 
                     }
 
-                }
-                else
-                {
-                    throw new Exception("Error consultando ordenes");
                 }
 
             }
