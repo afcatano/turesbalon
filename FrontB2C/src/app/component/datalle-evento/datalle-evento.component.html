@@ -1,0 +1,122 @@
+<h1 mat-dialog-title style="font-weight: bold;">Detalle {{data.tipoDetalle}} # {{data.codigo}}</h1>
+<div mat-dialog-content style="text-align: center">
+  
+      <table *ngIf="data.Evento" class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Descripción</th>
+              <th scope="col">Detalle Evento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <th scope="row">Fecha Evento</th>
+               <td>{{data.Evento.FechaEvento}}</td>
+            </tr>
+            
+              <tr >
+              <th scope="row">Evento</th>
+                  <td>{{data.Evento.NombreEvento}}</td>
+              </tr>
+              <tr >
+              <th scope="row">Descripción</th>
+                  <td>{{data.Evento.DescEvento}}</td>
+              </tr>
+              <tr >
+              <th scope="row">Ciudad</th>
+                  <td>{{data.Evento.ciudad}}</td>
+              </tr>
+              <tr>
+              <th scope="row">Costo Evento</th>
+                 <td>{{data.Evento.ValorEvento | currency}}</td>
+              </tr>
+          </tbody>
+        </table>
+        <table *ngIf="data.Transporte" class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Descripción</th>
+                <th scope="col">Detalle Transporte</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <th scope="row">Proveedor</th>
+                     <td>{{data.Transporte.proveedor}}</td>
+                  </tr>
+              <tr >
+                <th scope="row">Fecha Ida</th>
+                 <td>{{data.Transporte.fechaIda}}</td>
+              </tr>
+              <tr >
+                <th scope="row">Fecha Vuelta</th>
+                  <td>{{data.Transporte.fechaRegreso}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Pais Origen</th>
+                  <td>{{data.Transporte.paisOrigen}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Pais Destino</th>
+                   <td>{{data.Transporte.paisDestino}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Ciudad Origen</th>
+                    <td>{{data.Transporte.ciudadOrigen}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Ciudad Destino</th>
+                    <td>{{data.Transporte.ciudadDestino}}</td>
+                </tr>
+                <tr>
+                <th scope="row">Costo Transporte</th>
+                   <td>{{data.Transporte.valor | currency}}</td>
+                </tr>
+            </tbody>
+          </table>
+
+          <table *ngIf="data.Hotel"  class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Detalle Hotel</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                  <th scope="row">Nombre Hotel</th>
+                   <td>{{data.Hotel.nombre}}</td>
+                </tr>
+                <tr >
+                    <th scope="row">Descripción</th>
+                      <td>{{data.Hotel.descripcion}}</td>
+                    </tr>
+                <tr >
+                  <th scope="row">Dirección</th>
+                    <td>{{data.Hotel.direccion}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Pais</th>
+                     <td>{{data.Hotel.pais}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Ciudad</th>
+                      <td>{{data.Hotel.ciudad}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Costo Hotel</th>
+                     <td>{{data.Hotel.valor | currency}}</td>
+                  </tr>
+              </tbody>
+            </table>
+
+            
+</div>
+
+
+
+
+<br>
+<div mat-dialog-actions >
+  <button style="margin: auto;" mat-stroked-button class="message-info" [mat-dialog-close]="" cdkFocusInitial>Aceptar</button>
+</div>

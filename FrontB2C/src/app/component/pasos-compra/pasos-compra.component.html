@@ -1,0 +1,9 @@
+
+
+  <ul class="steps-horizontal-container" style="align-content: center;margin-bottom: 50px;aling-items: center ; justify-content: center">
+      <li *ngFor="let item of pasos" [ngClass]="{'step-separator':item.paso === 0 }"> 
+        <span *ngIf="item.paso!=0" class="optionNumber" [ngClass]="{'optionNumber-active':item.estado }">{{item.paso}}</span>  
+        <span *ngIf="item.paso!=0" class="optionText">{{item.nombre}}</span>
+        
+      </li>
+  </ul>

@@ -1,13 +1,16 @@
 
 export class Evento {
-    codigo: number;
-    titulo: string;
-    precio: number;
-    descripcion: string;
+    CodigoEvento: number;
+    NombreEvento: string;
+    ValorEvento: number;
+    DescEvento: string;
     ciudad:string
     imagen: string;
+    FechaEvento:string;
     inicioEvento:string;
     finEvento:string;
+    cantidadDisponibildad:number;
+    cantidadPersonas:number;
     
 }
 

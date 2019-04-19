@@ -7,7 +7,7 @@
           
           <div class="form-group">
             <label for="exampleInputEmail1">Usuario</label>
-            <input type="email"  maxlength="15"   [(ngModel)]="username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usuario" required>
+            <input type="email"  maxlength="50"   [(ngModel)]="username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usuario" required>
             <div *ngIf="!validate.username.valid" class="invalid-feedback">
               {{validate.username.message}}
             </div>

@@ -25,12 +25,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {StorageService} from "./storage/storage.service";
 import {StorageConfigService} from "./storage/storage-config.service";
 import {StorageParamsService} from "./storage/storage-params.service";
+import {StorageParamsCompraService} from "./storage/storage-compra";
 import {RemoveSession} from "./service/remove-session.service";
 import { AuthenticationService } from './service/authentication.service';
 import { DatosUsuarioComponent } from './component/datos-usuario/datos-usuario.component';
 import { OrdenesComponent } from './component/ordenes/ordenes.component';
 import { UserComponent } from './component/user/user.component';
 import { PanelBuscadorComponent } from './component/panel-buscador/panel-buscador.component';
+import { DetalleOrdenComponent } from './component/detalle-orden/detalle-orden.component';
+import { DatalleEventoComponent } from './component/datalle-evento/datalle-evento.component';
+import { PasosCompraComponent } from './component/pasos-compra/pasos-compra.component';
+import { NavegadorComponent } from './component/navegador/navegador.component';
+import { FechaBuscadorComponent } from './component/fecha-buscador/fecha-buscador.component';
+import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,13 @@ import { PanelBuscadorComponent } from './component/panel-buscador/panel-buscado
     OrdenesComponent,
     UserComponent,
     TableComponent,
-    PanelBuscadorComponent
+    PanelBuscadorComponent,
+    DetalleOrdenComponent,
+    DatalleEventoComponent,
+    PasosCompraComponent,
+    NavegadorComponent,
+    FechaBuscadorComponent,
+    CrearOrdenComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +78,8 @@ import { PanelBuscadorComponent } from './component/panel-buscador/panel-buscado
      environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
      ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),  
   ],
-  entryComponents: [ MessageComponent],
-  providers: [StorageService, StorageParamsService, RemoveSession, AuthenticationService,StorageConfigService
+  entryComponents: [ MessageComponent,DetalleOrdenComponent, DatalleEventoComponent],
+  providers: [StorageService, StorageParamsService, RemoveSession, AuthenticationService,StorageConfigService,StorageParamsCompraService
 ],
   bootstrap: [AppComponent]
 })

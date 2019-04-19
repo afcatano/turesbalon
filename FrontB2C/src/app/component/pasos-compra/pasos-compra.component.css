@@ -1,0 +1,54 @@
+.steps-horizontal-container {
+    max-height: 32px;
+    margin: 0 -10px 8px;
+    text-align: justify;
+    margin-bottom: 5px;
+    display: inline-block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    list-style-type: none;
+}
+
+li {
+    float: left;
+  }
+
+.step-separator{
+  padding: 50px;
+  border-top: solid 2px rgb(31, 72, 124);
+  border-color: rgb(31, 72, 124);
+  position: relative;
+  top: 10px;
+}
+.optionNumber{
+    font-stretch: extra-condensed;
+    background-color: rgb(31, 72, 124) !important;
+    color: white;
+    border-radius: 100%;
+    padding: 13px;
+    padding-left: 18px;
+    font-size: 14px;
+    padding-right: 18px;
+    font-weight: bold;
+    margin-left: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.optionNumber-active{
+    background-color: rgb(174, 184, 196) !important;
+}
+
+.optionText{
+    font-stretch: extra-condensed;
+    color: rgb(31, 72, 124) !important;
+    padding: 13px;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}

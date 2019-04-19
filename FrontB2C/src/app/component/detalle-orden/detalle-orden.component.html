@@ -1,0 +1,140 @@
+<h1 mat-dialog-title style="font-weight: bold;">Detalle Orden #{{data.CodigoOrden}}</h1>
+<div mat-dialog-content style="text-align: center">
+  
+      <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Descripción</th>
+              <th scope="col">Detalle Evento</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr >
+              <th scope="row">Fecha Creación</th>
+               <td>{{data.FechaOrden}}</td>
+            </tr>
+            <tr >
+              <th scope="row">Estado</th>
+                <td>{{data.EstadoOrden}}</td>
+              </tr>
+              <tr >
+              <th scope="row">Valor Total</th>
+                <td>{{data.ValorOrden | currency}}</td>
+              </tr>
+              <tr >
+              <th scope="row">Codigo Evento</th>
+                 <td>{{data.Evento.CodigoEvento}}</td>
+              </tr>
+              <tr >
+              <th scope="row">Evento</th>
+                  <td>{{data.Evento.NombreEvento}}</td>
+              </tr>
+              <tr >
+              <th scope="row">Fecha Evento</th>
+                  <td>{{data.Evento.FechaEvento}}</td>
+              </tr>
+              <tr>
+              <th scope="row">Costo Evento</th>
+                 <td>{{data.Evento.ValorEvento | currency}}</td>
+              </tr>
+          </tbody>
+        </table>
+        <table *ngIf="data.Transporte" class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Descripción</th>
+                <th scope="col">Detalle Transporte</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <th scope="row">Empresa</th>
+                     <td>{{data.Transporte.EmpresaTransporte}}</td>
+                  </tr>
+              <tr >
+                <th scope="row">Fecha Ida</th>
+                 <td>{{data.Transporte.FechaIdaDespegue}}</td>
+              </tr>
+              <tr >
+                <th scope="row">Fecha Vuelta</th>
+                  <td>{{data.Transporte.FechaRegresoDespegue}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Pais Origen</th>
+                  <td>{{data.Transporte.PaisOrigen}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Pais Destino</th>
+                   <td>{{data.Transporte.PaisDestino}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Ciudad Origen</th>
+                    <td>{{data.Transporte.CiudadOrigen}}</td>
+                </tr>
+                <tr >
+                <th scope="row">Ciudad Destino</th>
+                    <td>{{data.Transporte.CiudadDestino}}</td>
+                </tr>
+                <tr>
+                <th scope="row">Costo Transporte</th>
+                   <td>{{data.Transporte.ValorTransporte | currency}}</td>
+                </tr>
+            </tbody>
+          </table>
+
+          <table *ngIf="data.Hotel"  class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Detalle Hotel</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr >
+                      <th scope="row">Empresa</th>
+                       <td>{{data.Hotel.EmpresaHotel}}</td>
+                    </tr>
+                <tr >
+                  <th scope="row">Nombre Hotel</th>
+                   <td>{{data.Hotel.NombreHotel}}</td>
+                </tr>
+                <tr >
+                  <th scope="row">Dirección</th>
+                    <td>{{data.Hotel.Direccion}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Número habitación</th>
+                    <td>{{data.Hotel.NumeroHabitacion}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Codigo Pais</th>
+                     <td>{{data.Hotel.Pais}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Ciudad</th>
+                      <td>{{data.Hotel.Ciudad}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Fecha entrada</th>
+                      <td>{{data.Hotel.FechaEntrada}}</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">Fecha salida</th>
+                     <td>{{data.Hotel.FechaSalida}}</td>
+                  </tr>
+                  <tr >
+                  <th scope="row">Costo Hotel</th>
+                     <td>{{data.Hotel.ValorHotel | currency}}</td>
+                  </tr>
+              </tbody>
+            </table>        
+</div>
+
+
+
+
+<br>
+<div mat-dialog-actions >
+  <button style="margin: auto;" mat-stroked-button class="message-info" [mat-dialog-close]="" cdkFocusInitial>Aceptar</button>
+</div>

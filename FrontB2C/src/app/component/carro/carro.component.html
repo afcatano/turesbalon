@@ -2,21 +2,21 @@
 <div class="container-fluid" style="margin-bottom: 20px;">
     <div class="row ">
       <div class="col-auto mr-auto"> 
-          <a class="nav-link" style="display: inline-block" href="#">TouresBalon</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Paquetes</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Futbol</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Champion League</a>> 
-         Hoteles 
+            <app-navegador  [params]="params"></app-navegador>
         </div>
       <div class="col-auto">
           <div class="card" style="width: 18rem;">
              <div class="card-body ">
               <div class="row">
-                  <div class="col-7"> 
+                  <div class="col-12"> 
                     <form>
-                        <small class="form-text text-muted">Realiza el pago:</small>
-                      <button type="submit" class="btn btn-primary">Pagar</button>
-            
+                     <div class="row">
+                        <div class="col-5" >
+                        <small class="form-text text-muted" style="padding-bottom: 10px;">Realiza el pago:</small>
+                        <button type="submit" (click)="pagar()" class="btn btn-primary">Pagar</button>
+                        </div>
+                        <div class="col-5" style="padding: 15px;" > Total: {{totalOrders | currency}}  </div>
+                      </div>
                     </form></div>
                 </div>
               </div>
@@ -25,17 +25,27 @@
     </div>
     
   </div>
-<div class="container" >
-  <h2>Resumen de Compra</h2>
+  <div class="container separador">
+        <div class="container-fluid">
+            <app-pasos-compra  [params]="params"></app-pasos-compra>
+         </div>
+        <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+    </div>  
+ <div class="container" >
+  <div style="padding: 0px 0px 40px 10px;"><h2>Resumen de Compra</h2></div>
     <div class="row" >
        
+        <div class="card mb-3 col-md-10" *ngIf="countOrders == 0">
+            <h4>No hay Elementos en el carrito, para seguir comprando da click en :
+                <a [routerLink]="['/home']">Paquetes</a></h4>
+        </div>
         <div class="card mb-3 col-md-5" *ngFor="let item of carrito">
             <div class="row no-gutters">
               <div class="col-md">
                 <div class="card-body ">
                   <h5 class="card-title">Paquete</h5>
                   <ul class="list-group list-group-flush">
-                            <li class="list-group-item background-grey" *ngIf="item.evento">
+                            <li class="list-group-item background-grey" *ngIf="item.Evento">
                                 <div class="row">
                                     <div class="col-sm">
                                       <P>Champion League</P>
@@ -48,7 +58,7 @@
                                     
                                 </div>
                             </li>
-                            <li class="list-group-item background-white" *ngIf="item.evento">
+                            <li class="list-group-item background-white" *ngIf="item.Evento">
                                 <div class="row">
                                     <div class="col-sm">
                                       <P>Cantidad 2 Personas</P>
@@ -56,10 +66,13 @@
                                     <div class="col-sm">
                                       <P>22:30</P>
                                     </div>
+                                    <div class="col-sm">
+                                            <P>Total: {{item.Evento.ValorEvento | currency}} </P>
+                                     </div>
                                     
                                 </div>
                             </li>
-                            <li class="list-group-item background-grey" *ngIf="item.transporte">
+                            <li class="list-group-item background-grey" *ngIf="item.Transporte">
                                 <div class="row">
                                     <div class="col-sm">
                                       <P>IDA</P>
@@ -73,28 +86,30 @@
                                       <P>BOG</P>
                                       <P>Bogotá</P>
                                     </div>
+                                    
                                 </div>
                             </li>
-                            <li class="list-group-item background-white" *ngIf="item.transporte">
+                            <li class="list-group-item background-white" *ngIf="item.Transporte">
                                 <div class="row">
                                     <div class="col-sm">
-                                        <P>  <img [src]="item.transporte.imagen" class="card-img card-logo" alt="..."></P>
+                                        <P>  <img [src]="item.Transporte.imagen" class="card-img card-logo" alt="..."></P>
                                     </div>
                                     <div class="col-sm">
                                         <P>{{item.horaSalida}}</P>
                                     </div>
+                                    
                                     <div class="col-sm">
-                                        <P>22:10</P>
-                                    </div>
+                                            <P>Total: {{item.Transporte.valor | currency}} </P>
+                                     </div>
                                 </div>
                             </li>
        
      
-                            <li class="list-group-item background-grey" *ngIf="item.hotel">
+                            <li class="list-group-item background-grey" *ngIf="item.Hotel">
                                 <div class="row">
                                     <div class="col-sm">
                                       <P>Hotel</P>
-                                      <P> {{item.hotel.nombre}}</P>
+                                      <P> {{item.Hotel.nombre}}</P>
                                      </div>
                                     <div class="col-sm">
                                       <P>Check-in</P>
@@ -104,17 +119,20 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item background-white" *ngIf="item.hotel">
+                            <li class="list-group-item background-white" *ngIf="item.Hotel">
                                 <div class="row">
                                     <div class="col-sm">
-                                      <P>{{item.hotel.cantidadHotel}} personas</P>
+                                      <P>{{item.Hotel.cantidadHotel}} personas</P>
                                     </div>
                                     <div class="col-sm">
-                                      <P>{{item.hotel.reservaInicial}}</P>
+                                      <P>{{item.Hotel.reservaInicial}}</P>
                                     </div>
                                     <div class="col-sm">
-                                       <P>{{item.hotel.reservaFinal}}</P>
+                                       <P>{{item.Hotel.reservaFinal}}</P>
                                     </div>
+                                    <div class="col-sm">
+                                            <P>Total: {{item.Hotel.valor | currency}} </P>
+                                     </div>
                                 </div>
                             </li>
                             
@@ -124,15 +142,18 @@
               <div class="col-md-12 card-color-blue" style="margin-bottom: 10px;" >
                  <div class="card-body ">
                   <div class="row">
-                      <div class="col-9">  <button type="button" style="margin-top: 20px;" class="btn btn-danger">Eliminar</button></div>
-                  </div>
+                        <div class="col-12" style="    padding: 20px;"> Total: {{item.precio | currency}}  </div>
+                
+                      <div class="col-5">  <button type="button" style="margin-top: 20px;" (click)="eliminarItem(item)" class="btn btn-danger">Eliminar</button></div>
+                      <div class="col-5"><button type="submit"   style="margin-top: 20px;"(click)="pagar()" class="btn btn-success" >Pagar</button></div>
+                    </div>
                 </div>
               </div>
             </div>
         </div>
       
       
-
+<!--
         <div class="card mb-3 col-md-5" >
             <div class="row no-gutters">
               <div class="col-md">
@@ -233,10 +254,7 @@
             </div>
         </div>
       
-      
-        <div class="col-md-6 offset-md-3" style="background-color: white; padding: 30px;">
-         
-         
-      </div>
+      -->
+        
     </div>
   </div>

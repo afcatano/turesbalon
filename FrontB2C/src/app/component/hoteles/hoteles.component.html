@@ -1,11 +1,7 @@
 <div class="container-fluid" style="margin-bottom: 20px;">
     <div class="row ">
       <div class="col-auto mr-auto"> 
-          <a class="nav-link" style="display: inline-block" href="#">TouresBalon</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Paquetes</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Futbol</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Champion League</a>> 
-         Hoteles 
+          <app-navegador  [params]="params"></app-navegador>
         </div>
       <div class="col-auto">
           <div class="card" style="width: 18rem;">
@@ -20,12 +16,19 @@
     </div>
     
   </div>
-<div class="container-fluid">
+  <app-fecha-buscador [params]="params" ></app-fecha-buscador>
+  <div class="container separador">
+      <div class="container-fluid">
+          <app-pasos-compra  [params]="params"></app-pasos-compra>
+       </div>
+      <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+  </div>  
+  <div class="container-fluid">
     <div class="row">
         <div class="col-sm">
             6 Hoteles encontrados
           </div>
-          </div>
+    </div>
     <div class="row">
         <div class="col-3">
             <div class="card" style="width: 18rem;">
@@ -75,7 +78,11 @@
                      <div class="card-body ">
                       <div class="row">
                           <div class="col-9"><p style="margin-left: 20%;">Precio unitario </p><p class="card-text" style="margin-left: 30%;">{{item.valor | currency}}</p></div>
-                          <div class="col-9">  <button type="button" (click)="addProducto(item)" style="margin-left: 20%;margin-top: 20px;" class="btn btn-success">Selecionar</button></div>
+                          <div class="col-9">  
+                            <button type="button" (click)="addProducto(item)" style="margin-left: 20%;margin-top: 20px;" class="btn btn-success">Selecionar</button>
+                            <button type="button" style="margin-left: 20%;margin-top: 20px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
+                
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -85,4 +92,4 @@
           
         </div>
       </div>
-</div>
+  </div>

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ParameterInfo} from '../ParameterInfo';
-import {Evento} from './../Models/evento';
-import {Eventos} from './../mock/mockEventos';
-import {StorageConfigService} from './../storage/storage-config.service'
+import {Evento} from '../Models/evento';
+import {Eventos} from '../mock/mockEventos';
+import {StorageConfigService} from '../storage/storage-config.service'
 
 @Injectable({
   providedIn: 'root'

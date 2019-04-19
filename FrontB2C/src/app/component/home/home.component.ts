@@ -31,14 +31,16 @@ export class homeComponent implements OnInit {
   //Variables
   navMenuHome = {"state":"/home","title":"Home","icon":"dashboard"}
   navMenuHotel = {"state":"/hotel","title":"Hoteles","icon":"hotel"}
-  navMenuPaquetes = {"state":"/paquetes","title":"Paquetes","icon":"business_center"}
+  navMenuPaquetes = {"state":"/home","title":"Paquetes","icon":"business_center"}
   navMenuTransporte = {"state":"/transporte","title":"Transporte","icon":"flight"}
   navMenuUsuario = []
   navMenuCerrarSesion = {"state":"/login","title":"Cerrar Sesión","icon":"exit_to_app"} 
   navMenuLogin = {"state":"/login","title":"Iniciar Sessión","icon":"lock"} 
   navMenuProductos = {"state":"/products","title":"Ver Productos","icon":"add_shopping_cart"} 
   
-  navMenu = [this.navMenuHome,this.navMenuPaquetes, this. navMenuTransporte,this.navMenuHotel,this.navMenuCerrarSesion];//Variable que contiene la lista de menú
+  navMenu = [this.navMenuHome,this.navMenuPaquetes
+    //,this. navMenuTransporte,this.navMenuHotel
+    ,this.navMenuCerrarSesion];//Variable que contiene la lista de menú
   navMenuChatBot = [];
   botSelected:any;
   tituloBot:string;

@@ -1,0 +1,44 @@
+<div *ngIf="params.nombrePaso=='E'">
+      <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+      Paquetes 
+</div>
+<div *ngIf="params.nombrePaso=='C' && params.opionPaquete=='E'">
+    <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+    Carrito 
+</div>
+<div *ngIf="params.nombrePaso=='H'">
+  <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+  <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+ Hoteles 
+</div>
+<div *ngIf="params.nombrePaso=='C' && params.opionPaquete=='EH'">
+    <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../hotel']">Hoteles</a>> 
+   Carrito 
+  </div>
+<div *ngIf="params.nombrePaso=='T' && params.opionPaquete=='ET'">
+    <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+   Transporte 
+</div>
+<div *ngIf="params.nombrePaso=='C' && params.opionPaquete=='ET'">
+    <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../transporte']">Transporte</a>> 
+   Carrito 
+</div>
+<div *ngIf="params.nombrePaso=='T' && params.opionPaquete=='FULL'">
+    <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../hotel']">Hoteles</a>>  
+    Transporte
+</div>
+<div *ngIf="params.nombrePaso=='C' && params.opionPaquete=='FULL'">
+    <a class="nav-link" style="display: inline-block" href="../home">TouresBalon</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../paquetes']">Paquetes</a>> 
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../hotel']">Hoteles</a>>  
+    <a class="nav-link" style="display: inline-block" [routerLink]="['../transporte']">Transporte</a>> 
+    Carrito
+</div>

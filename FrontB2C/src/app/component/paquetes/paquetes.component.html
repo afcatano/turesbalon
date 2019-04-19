@@ -3,10 +3,8 @@
 <div class="container-fluid">
     <div class="row ">
       <div class="col-auto mr-auto"> 
-          <a class="nav-link" style="display: inline-block" href="#">TouresBalon</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Paquetes</a>> 
-          <a class="nav-link" style="display: inline-block" href="#">Futbol</a>> 
-          Champion League</div>
+        <app-navegador  [params]="params"></app-navegador>
+      </div>
       <div class="col-auto">
           <div class="card" style="width: 18rem;">
              <div class="card-body ">
@@ -20,22 +18,28 @@
     </div>
     
   </div>
-  <app-panel-buscador  (action)="action($event)"></app-panel-buscador>
+  <app-panel-buscador [params]="params" (action)="action($event)"></app-panel-buscador>
 <div class="container separador">
-
-<div class="row">
+  <div class="container-fluid">
+    <app-pasos-compra  [params]="params"></app-pasos-compra>
+  </div>
+   <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+   <div class="row">
     <div class="col-sm">
         {{dataCount}} partidos encontrados
       </div>
-      </div>
-  <div class="row">
+   </div>
+   <div class="row">
       <div class="col-sm" *ngFor="let item of dataEventos">
         <div class="card" style="width: 18rem;">
           <img [src]="item.imagen" class="card-img-top" alt="...">
           <div class="card-body card-color-blue">
               <div class="row">
-                  <div class="col-6"><p >Precio unitario </p><p class="card-text" style="margin-left: 20%;">${{item.precio}}</p></div>
-                  <div class="col-3">  <button type="button"  (click)="addProducto(item)" class="btn btn-success">Selecionar</button></div>
+                  <div class="col-6"><p >Precio unitario </p><p class="card-text" style="margin-left: 20%;">{{item.ValorEvento | currency}}</p></div>
+                  <div class="col-3">  
+                    <button type="button"  (click)="addProducto(item)" class="btn btn-success">Selecionar</button>
+                    <button type="button" style="margin-top: 10px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
+                  </div>
                 </div>
           </div>
         </div>

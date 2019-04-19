@@ -1,7 +1,7 @@
 
 .buscador_principal{
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
+    margin-left: 0%;
     position: relative;
     top: -180px;
     background-color:  rgb(31, 72, 124) !important;
@@ -9,10 +9,26 @@
     color: white !important;
     padding-left: 20px;
     }
-
+.opciones-paquete{
+    background-color:  rgb(31, 72, 124) !important;
+    margin-left: 1% !important;
+    margin-right: 1% !important;
+    border-color: white !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+    cursor: pointer;
+    margin-top: 10px;
+    }
+ .opciones-paquete-active{
+    background-color:  rgb(161, 161, 161) !important;
+    }   
+.mat-icon{
+        position: relative;
+        top: 4px;
+    }
 .buscador_title{
     color: white !important;
-    margin: 30px;
+    margin: 10px;
     position: relative;
     top: 30px;
     left: 10px;
