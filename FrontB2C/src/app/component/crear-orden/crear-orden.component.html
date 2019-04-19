@@ -1,0 +1,13 @@
+<div class="container" >
+    <div style="padding: 0px 0px 40px 10px;"><h2>Estado Compra</h2></div>
+      <div class="row" >
+
+          <div class="col-12"><h5>CodigoOrden: {{CodigoOrden}}</h5> </div>
+          <div class="col-12"><h5>EstadoOrden: {{EstadoOrden}}</h5> </div>
+          <div class="col-12"><h5>FechaOrden : {{FechaOrden}}</h5> </div>
+          <div class="col-12"><h5>ValorOrden : {{ValorOrden | currency}}</h5> </div>
+         
+          <div class="col-12"> <a [routerLink]="['/ordenesusuario']">Mis Ordenes</a></div>
+        </div>
+</div>
+    

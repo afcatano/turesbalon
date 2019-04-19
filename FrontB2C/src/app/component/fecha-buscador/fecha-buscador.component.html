@@ -1,0 +1,82 @@
+
+
+  <div class="container separador">
+    
+      <div class="buscador_principal">
+           <div class="buscador_title">
+              <h3>Buscar {{param.nombrePaso=='T'?'Transporte':'Hotel'}}</h3>
+            </div>
+
+            <div  *ngIf="param.nombrePaso=='T'" class="buscador_input">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Origen</label>
+                  <input  name="Evento" type="text" style="    height: 46px;" class="form-control" [(ngModel)]="param.origen" maxlength="50"  placeholder="Origen">
+                  <div  class="invalid-feedback">
+                    {{validate.evento.message}} 
+                  </div>
+                </div>
+            </div>
+            <div class="buscador_input">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Destino</label>
+                  <input  name="Evento" type="text" style="    height: 46px;" class="form-control" [(ngModel)]="param.destino" maxlength="50"  placeholder="Destino">
+                  <div  class="invalid-feedback">
+                    {{validate.evento.message}} datoss
+                  </div>
+                </div>
+            </div>
+            
+            <div class="buscador_input" >
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Fecha Inicial</label>
+                    <div class="date-picker">
+                        <input matInput [matDatepicker]="initialDate" class="input-date-picker" [min]="minInitialDate" [max]="maxDateFist" placeholder="Fecha inicial" (dateInput)="addEvent('input', $event, 'initialDate')"
+                          (dateChange)="addEvent('change', $event,'initialDate')">
+                        <mat-datepicker-toggle matSuffix [for]="initialDate">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #initialDate></mat-datepicker>
+                      </div>
+                  <div  class="invalid-feedback">
+                    {{validate.evento.message}} 
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="buscador_input" >
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Fecha Final</label>
+                    <div class="date-picker">
+                    <input matInput [matDatepicker]="endDate" class="input-date-picker" [min]="minEndDate" [max]="maxEndDate" placeholder="Fecha final" (dateInput)="addEvent('input', $event, 'endDate')"
+                    (dateChange)="addEvent('change', $event,'endDate')">
+                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                    <mat-datepicker #endDate></mat-datepicker>
+                  </div>
+                  <div  class="invalid-feedback">
+                    {{validate.evento.message}} datoss
+                  </div>
+                </div>
+            </div>
+           
+          
+          <div class="buscador_input_small">
+            <div class="form-group" style="margin-left: 0px;">
+              <label for="exampleFormControlSelect1">Cantidad</label>
+              <div class="input-group">
+                  <div class="input-group-prepend" style="position: relative;
+                  top: 8px;">
+                    <span class="input-group-text" id="validationTooltipUsernamePrepend"><mat-icon>person</mat-icon></span>
+                  </div>
+              <input  name="Cantidad" type="number" [(ngModel)]="param.cantidadPersonas" (change)="replaceNegative(param.cantidad)" maxlength="50" class="form-control"style="position: relative;
+              top: 8px;"/>
+              </div>
+            </div>
+          </div>
+          <div class="buscador_input_small">
+              <div class="form-group">
+            <button type="button" class="btn btn-secondary" (click)="onSubmit()" style="position: relative;top:-10px">Buscar</button>
+            </div>
+          </div>
+      </div>
+  
+  </div>

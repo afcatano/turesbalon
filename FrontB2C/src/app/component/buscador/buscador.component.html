@@ -5,22 +5,40 @@
       <div class="buscador_principal">
            <div class="buscador_title">
               <h3>Compra tu paquete</h3>
+              <div class="row" >
+                  <div class="card mb-3 col-md-3 opciones-paquete" (click)="selectOpcion('EH')" [ngClass]="{'opciones-paquete-active':params.optionPaquete === 'EH'}">
+                      <div><mat-icon class="icon-opciones">business_center</mat-icon> Evento + <mat-icon>hotel</mat-icon> Hotel</div>
+                  </div>
+
+                  <div class="card mb-3 col-md-3 opciones-paquete" (click)="selectOpcion('ET')" [ngClass]="{'opciones-paquete-active':params.optionPaquete === 'ET'}">
+                      <div><mat-icon class="icon-opciones">business_center</mat-icon> Evento + <mat-icon>flight</mat-icon> Transporte</div>
+                  </div>
+                  <div class="card mb-3 col-md-4 opciones-paquete" (click)="selectOpcion('FULL')" [ngClass]="{'opciones-paquete-active':params.optionPaquete === 'FULL'}">
+                      <div><mat-icon>business_center</mat-icon> Evento + <mat-icon>hotel</mat-icon> Hotel + <mat-icon>flight</mat-icon> Transporte</div>
+                  </div>
+                </div>
             </div>
             <div class="buscador_input">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Categoria</label>
-              <select class="form-control" id="Categoria">
-                <option>--selecciona--</option>
+              <select class="form-control" id="Categoria"  [(ngModel)]="params.categoria" >
+                <option selected="selected">--selecciona--</option>
                 <option>Futbol</option>
                 <option>Tenis</option>
                 <option>Basketbol</option>
               </select>
+              <div *ngIf="!validate.categoria.valid" class="invalid-feedback">
+                {{validate.categoria.message}}
+              </div>
             </div>
           </div>
           <div class="buscador_input">
               <div class="form-group">
                   <label for="exampleFormControlSelect1">Evento</label>
-                <input  name="Evento" type="text" class="form-control" placeholder="Evento">
+                <input  name="Evento" type="text" class="form-control" [(ngModel)]="params.evento" maxlength="50" minlength="3" placeholder="Evento">
+                <div *ngIf="!validate.evento.valid" class="invalid-feedback">
+                  {{validate.evento.message}}
+                </div>
               </div>
           </div>
           
@@ -31,13 +49,14 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="validationTooltipUsernamePrepend"><mat-icon>person</mat-icon></span>
                   </div>
-              <input  name="Cantidad" type="number" class="form-control">
+              <input  name="Cantidad" type="number" [(ngModel)]="params.cantidad" (change)="replaceNegative(params.cantidad)"  maxlength="50" class="form-control">
+              
               </div>
             </div>
           </div>
           <div class="buscador_input_small">
               <div class="form-group">
-            <button type="button" class="btn btn-secondary" style="position: relative;top:-10px">Buscar</button>
+            <button type="button" class="btn btn-secondary" (click)="consultar()" style="position: relative;top:-10px">Buscar</button>
             </div>
           </div>
       </div>

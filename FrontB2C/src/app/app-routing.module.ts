@@ -12,6 +12,7 @@ import { HotelesComponent } from './component/hoteles/hoteles.component';
 import { PaquetesComponent } from './component/paquetes/paquetes.component';
 import { VuelosComponent } from './component/vuelos/vuelos.component';
 import { CarroComponent } from './component/carro/carro.component';
+import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
 import { transporte } from './Models/transporte';
 //Constante que almacena las rutas de la app
 const routes: Route[] = [
@@ -22,10 +23,12 @@ const routes: Route[] = [
   {path: "datosusuario", component: DatosUsuarioComponent},
   {path: "ordenesusuario", component: OrdenesComponent},
   {path: "paquetes", component: PaquetesComponent},
+  {path: "paquetes/:categoria/:evento/:cantidad/:option", component: PaquetesComponent},
   {path: "carro", component: CarroComponent},
   {path: "transporte", component: VuelosComponent},
   { path: "login", component: LoginComponent},
   { path: "hotel", component: HotelesComponent},
+  { path: "crearOrden", component: CrearOrdenComponent},
   { path: "logout", component: LoginComponent, canActivate: [RemoveSession] },
   //, canActivate: [RemoveSession] },
  /* children: [

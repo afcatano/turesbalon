@@ -53,14 +53,14 @@ body {
 }
 
 .separador{
-  padding-top: 20px;
-  padding-bottom: 40px;
+  padding-top: 0px;
+  padding-bottom: 20px;
 }
 
 
 .mat-icon-button {
     
-    background-color:  rgb(31, 72, 124) !important;
+    background-color:  rgb(31, 72, 124) ;
 }
 
 .btn-primary {

@@ -82,8 +82,8 @@ export class LoginComponent implements OnInit {
               console.log("usuario logueado "+this.username);
               this.parent.openDialog( "","Usuario  "+this.username+" autenticado !!","Informativo");
               var userData= new User( 
-                result.username,
-                result.password,
+                this.username,
+                this.password,
                 result.nombre,
                 result.apellido,
                 result.telefono,
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
                 result.ciudad,
                 result.departamento,
                 result.pais,
-                result.confirmarContrasena,
+                this.password,
                 result.checkTarjeta,
                 result.direccion,
                 result.tipoDocumento,
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
                 result. fechaTarjeta,
                 result.numeroTarjeta,
                 result. franquiciaTarjeta,
-                result. iduser,
+                result. userid,
               )
 
               sessionData.user=userData;

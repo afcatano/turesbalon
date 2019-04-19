@@ -98,6 +98,7 @@ export class UserComponent implements OnInit {
                       this.userDisabled = true;
                      break;
        case  "create":
+       
                       this.terminosCondiciones= true;
                       this.register = new User( "","","","","","","","","","","","","","","","","","","");
                       break;
@@ -130,6 +131,9 @@ export class UserComponent implements OnInit {
         
    if(validate) {
       console.log("Ejecuta accion.");
+      if(!this.register.checkTarjeta)
+      this.register.checkTarjeta=false;
+
       this.action.emit(new User( 
        this.register.username,
        this.register.password,
@@ -172,7 +176,10 @@ validateSumitForms(){
     this.validateTelefono()&&
     this.validateCorreo() &&
     this.validateCiudad()&&
-    this.validateDocumento()){
+    this.validateDocumento()&&
+    this.validatePais()){
+
+    
       return true;
     }else{
       return false;
@@ -229,6 +236,8 @@ validateSumitForms(){
       this.validate.password.css="is-valid";
       this.validate.password.message="Dato Valido";
       //this.register.confirmarContrasena="";
+     if(this.register.confirmarContrasena)
+      this.validateConfirmaPass();
       return this.validate.password.valid=true;
       
     }else{
@@ -267,14 +276,28 @@ validateSumitForms(){
 
   validateCorreo(){
     if(this.register.correo!=''){
-      this.validate.correo.css="is-valid";
+      if(this.validarEmail(this.register.correo))
+      {this.validate.correo.css="is-valid";
       this.validate.correo.message="Dato Valido";
       return  this.validate.correo.valid=true;
+    }else{
+      this.validate.correo.css="is-invalid";
+      this.validate.correo.message="Correo no valido.";
+      return  this.validate.correo.valid=false;
+    }
     }else{
       this.validate.correo.css="is-invalid";
       this.validate.correo.message="Dato requerido";
       return  this.validate.correo.valid=false;
   }
+  }
+
+   validarEmail(email) {
+    if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(email)){
+      return (true)
+    } else {
+      return (false);
+    }
   }
 
   validateCiudad(){
@@ -300,6 +323,19 @@ validateSumitForms(){
       return this.validate.documento.valid=false;
   }
   }
+
+  validatePais(){
+    if(this.register.pais!=''){
+      this.validate.pais.css="is-valid";
+      this.validate.pais.message="Dato Valido";
+      return this.validate.pais.valid=true;
+    }else{
+      this.validate.pais.css="is-invalid";
+      this.validate.pais.message="Dato requerido";
+      return this.validate.pais.valid=false;
+  }
+  }
+
   validateForm(text){
     
     if("terminosCondiciones")
@@ -321,8 +357,9 @@ validateSumitForms(){
      if("ciudad"==text)
      this.validateCiudad();
      if("documento"==text)
-      this.validateDocumento();
-
+       this.validateDocumento();
+      if("pais"==text)
+      this.validatePais();
     
 
      /* ciudad:{valid:true, message:"",css:""},

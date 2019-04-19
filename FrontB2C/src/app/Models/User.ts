@@ -73,7 +73,7 @@ export class User {
   }
 
   getPassword = () => {
-    return this.username;
+    return this.password;
   }
 
   setPassword = (password) => {

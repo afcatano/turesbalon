@@ -59,7 +59,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend3">@</span>
               </div>
-              <input maxlength="30" type="email"  [(ngModel)]="register.correo"  (change)="validateForm('correo')" name="correo" [ngClass]="validate.correo.css"  class="form-control" id="validationServerUsername" placeholder="Correo Electronico" aria-describedby="inputGroupPrepend3" required>
+              <input maxlength="50" type="email"  [(ngModel)]="register.correo"  (change)="validateForm('correo')" name="correo" [ngClass]="validate.correo.css"  class="form-control" id="validationServerUsername" placeholder="Correo Electronico" aria-describedby="inputGroupPrepend3" required>
               <div *ngIf="!validate.correo.valid" class="invalid-feedback">
                 {{validate.apellido.message}}
               </div>
@@ -71,9 +71,12 @@
        
           <div class="col-md-3 mb-3">
             <label for="validationServer05">Pais</label>
-            <select class="form-control " [(ngModel)]="register.pais" name="pais">
+            <select class="form-control " [(ngModel)]="register.pais" name="pais" (change)="validateForm('pais')" [ngClass]="validate.pais.css" >
               <option *ngFor="let pais of dataPaises" >{{pais.name}}</option>
             </select>
+            <div *ngIf="!validate.pais.valid" class="invalid-feedback">
+                {{validate.pais.message}}
+              </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="validationServer03">Ciudad</label>
@@ -87,7 +90,7 @@
         <div class="form-row">
           <div class="col-md-4 mb-3">
               <label for="validationServer02">Nombre Usuario</label>
-              <input maxlength="15" type="text" [disabled]="userDisabled"  [(ngModel)]="register.username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css"  class="form-control " id="username" placeholder="Usuario"  required>
+              <input maxlength="30" type="text" [disabled]="userDisabled"  [(ngModel)]="register.username"  (change)="validateForm('username')" name="username" [ngClass]="validate.username.css"  class="form-control " id="username" placeholder="Usuario"  required>
               <div *ngIf="!validate.username.valid" class="invalid-feedback">
                 {{validate.username.message}}
               </div>

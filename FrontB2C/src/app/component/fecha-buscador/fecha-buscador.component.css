@@ -1,0 +1,56 @@
+
+.buscador_principal{
+    width: 100%;
+    background-color:  rgb(31, 72, 124) !important;
+    border-radius: 20px;
+    color: white !important;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    }
+
+   
+.buscador_title{
+    color: white !important;
+    margin: 30px;
+    position: relative;
+    top: 30px;
+    left: 10px;
+
+}
+
+.buscador_input{
+    margin-left: 20px;
+    width: 25%!important;
+    margin-top: 20px;
+    display: inline-block;
+    width: 200px!important;
+}
+
+.buscador_input_small{
+    margin-left: 10px;
+    width: 15%!important;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.date-picker{
+    background-color: white;
+    color: black;
+    width: 75% !important;
+    border-radius: 5px;
+    margin-right: 0px!important;
+    padding: 3px;
+}
+.mat-icon-button {
+    
+    background-color:  white !important;
+}
+.input-date-picker .mat-icon-button,.input-date-picker  button,.mat-datepicker-toggle,button .mat-icon-button{background-color: white !important;}
+.input-date-picker  button{background-color: white !important;}
+.input-date-picker  button .mat-icon-button{background-color: white !important;} 
+
+.input-date-picker,.date-picker input{
+    border: none!important;
+    padding: 5px!important;
+    width: 60%;
+}

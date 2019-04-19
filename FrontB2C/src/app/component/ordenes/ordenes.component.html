@@ -10,7 +10,7 @@
              <div class="card-body ">
               <div class="row">
                   <div class="col-2"><mat-icon>shopping_cart</mat-icon> </div>
-                  <div class="col-7"> Mis Ordenes</div>
+                  <div class="col-7"> <a [routerLink]="['/carro']">Mi Carrito</a></div>
                 </div>
               </div>
             </div>
@@ -81,14 +81,17 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let nav of infoTable">
-                            <th scope="row">{{nav.id}}</th>
-                            <td>{{nav.fecha}}</td>
-                            <td>{{nav.valor}}</td>
-                            <td>{{nav.evento}}</td>
-                            <td>{{nav.transporte}}</td>
-                            <td>{{nav.hotel}}</td>
-                            <td>{{nav.evento}}</td>
-                            <td> <button class="btn btn-primary"   type="submit">ver</button></td>
+                            <th scope="row">{{nav.CodigoOrden}}</th>
+                            <td>{{nav.FechaOrden}}</td>
+                            <td>{{nav.ValorOrden | currency}}</td>
+                            <td>{{nav.Evento.NombreEvento}}</td>
+                            <td>{{nav.Transporte? nav.Transporte.EmpresaTransporte:'N/A'}}</td>
+                            <td>{{nav.Hotel? nav.Hotel.EmpresaHotel:'N/A'}}</td>
+                            <td>{{nav.EstadoOrden}}</td>
+                            <td> 
+                                <button type="button" class="btn btn-danger" (click)="cancelarOrden(nav)">Cancelar Orden</button>
+                                &nbsp;&nbsp;
+                                <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">ver</button></td>
                           </tr>
                           
                         </tbody>
