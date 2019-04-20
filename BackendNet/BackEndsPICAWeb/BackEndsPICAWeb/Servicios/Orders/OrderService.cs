@@ -115,6 +115,8 @@ public partial class GetOrder
 
     private bool flagDetailFieldSpecified;
 
+    private string typeQueryField;
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
     public string OrderCode
@@ -392,6 +394,20 @@ public partial class GetOrder
         set
         {
             this.flagDetailFieldSpecified = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 14)]
+    public string TypeQuery
+    {
+        get
+        {
+            return this.typeQueryField;
+        }
+        set
+        {
+            this.typeQueryField = value;
         }
     }
 }

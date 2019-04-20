@@ -9,6 +9,60 @@ namespace CommonsWeb.DAL.Orders
     public class OrderServiceDAL
     {
 
+        public List<OrderDTO> GetTopEvents(long al_top)
+        {
+
+            List<OrderDTO> llo_orders;
+
+            llo_orders = new List<OrderDTO>();
+
+            try
+            {
+
+                string ls_sql;
+                OracleServerHelper losh_osh;
+                DataSet lds_datos;
+
+                ls_sql = "SELECT X.* FROM (SELECT EVENTCODE, COUNT(0) CANT FROM ORDERS";
+                ls_sql += " GROUP BY EVENTCODE ORDER BY CANT DESC) X WHERE ROWNUM";
+                ls_sql += " BETWEEN 1 AND " + al_top.ToString();
+                losh_osh = new OracleServerHelper();
+                lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
+
+                if (lds_datos != null && lds_datos.Tables[0].Rows.Count > 0)
+                {
+
+                    foreach (DataRow ldr_temp in lds_datos.Tables[0].Rows)
+                    {
+
+                        OrderDTO lo_order;
+
+                        lo_order = new OrderDTO();
+                        lo_order.EventCode = Convert.ToInt32(ldr_temp["EVENTCODE"]);
+                        lo_order.EventUnit = Convert.ToInt32(ldr_temp["CANT"]);
+                        llo_orders.Add(lo_order);
+
+                    }
+
+                }
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                llo_orders = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE DATOS OrderService:GetTopOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " : " + le_e.Message);
+
+            }
+
+            return llo_orders;
+
+        }
+
         public List<OrderDTO> GetOrder(OrderDTO aod_order)
         {
 
@@ -111,7 +165,6 @@ namespace CommonsWeb.DAL.Orders
                 }
 
                 ls_sql += " ORDER BY O.ORDERCODE DESC";
-
                 losh_osh = new OracleServerHelper();
                 lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
 
