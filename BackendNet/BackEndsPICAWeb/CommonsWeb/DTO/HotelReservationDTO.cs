@@ -19,6 +19,7 @@ namespace CommonsWeb.DTO
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public string CompanyName { get; set; }
+        public long Guests { get; set; }
 
     }
 }

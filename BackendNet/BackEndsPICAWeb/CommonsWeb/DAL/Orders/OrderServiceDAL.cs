@@ -9,6 +9,60 @@ namespace CommonsWeb.DAL.Orders
     public class OrderServiceDAL
     {
 
+        public List<OrderDTO> GetTopEvents(long al_top)
+        {
+
+            List<OrderDTO> llo_orders;
+
+            llo_orders = new List<OrderDTO>();
+
+            try
+            {
+
+                string ls_sql;
+                OracleServerHelper losh_osh;
+                DataSet lds_datos;
+
+                ls_sql = "SELECT X.* FROM (SELECT EVENTCODE, COUNT(0) CANT FROM ORDERS";
+                ls_sql += " GROUP BY EVENTCODE ORDER BY CANT DESC) X WHERE ROWNUM";
+                ls_sql += " BETWEEN 1 AND " + al_top.ToString();
+                losh_osh = new OracleServerHelper();
+                lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
+
+                if (lds_datos != null && lds_datos.Tables[0].Rows.Count > 0)
+                {
+
+                    foreach (DataRow ldr_temp in lds_datos.Tables[0].Rows)
+                    {
+
+                        OrderDTO lo_order;
+
+                        lo_order = new OrderDTO();
+                        lo_order.EventCode = Convert.ToInt32(ldr_temp["EVENTCODE"]);
+                        lo_order.EventUnit = Convert.ToInt32(ldr_temp["CANT"]);
+                        llo_orders.Add(lo_order);
+
+                    }
+
+                }
+
+            }
+            catch (Exception ae_e)
+            {
+
+                Exception le_e;
+
+                le_e = ae_e.InnerException != null ? ae_e.InnerException : ae_e;
+                llo_orders = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE DATOS OrderService:GetTopOrder");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " : " + le_e.Message);
+
+            }
+
+            return llo_orders;
+
+        }
+
         public List<OrderDTO> GetOrder(OrderDTO aod_order)
         {
 
@@ -30,10 +84,11 @@ namespace CommonsWeb.DAL.Orders
                 {
 
                     ls_sql += ", O.EVENTCODE, O.EVENTNAME, O.EVENTDESCRIPTION,";
-                    ls_sql += " O.EVENTDATE, O.EVENTPRICE, H.RESERVATIONCODE HBID,";
-                    ls_sql += " NVL(H.ID,-1) HOTELID, H.NAME HOTELNAME, H.ROOMNUMBER,";
-                    ls_sql += " H.ADDRESS, H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT,";
-                    ls_sql += " H.TYPEROOM, H.PRICEROOM, H.COMPANYNAME HCOMPANYNAME,";
+                    ls_sql += " O.EVENTDATE, O.EVENTPRICE, O.EVENTUNIT,";
+                    ls_sql += " H.RESERVATIONCODE HBID, NVL(H.ID,-1) HOTELID,";
+                    ls_sql += " H.NAME HOTELNAME, H.ROOMNUMBER, H.ADDRESS,";
+                    ls_sql += " H.COUNTRY, H.CITY, H.CHECKIN, H.CHECKOUT, H.TYPEROOM,";
+                    ls_sql += " H.PRICEROOM, H.COMPANYNAME HCOMPANYNAME, H.GUESTS,";
                     ls_sql += " T.RESERVATIONCODE TBID, NVL(T.ID,-1) TRANSPORTID,";
                     ls_sql += " T.DEPARTURECOUNTRY, T.ARRIVALCOUNTRY, T.DEPARTURECITY,";
                     ls_sql += " T.ARRIVALCITY, T.SEAT, T.DEPARTDEPARTDATE, T.DEPARTARRIDATE,";
@@ -96,11 +151,20 @@ namespace CommonsWeb.DAL.Orders
                     if (aod_order.HotelCode > 0)
                         ls_sql += " AND H.ID = " + aod_order.HotelCode.ToString();
 
+                    if (aod_order.HotelCompanyName != null)
+                        if (aod_order.HotelCompanyName.Trim().Length > 0)
+                            ls_sql += " AND H.COMPANYNAME = '" + aod_order.HotelCompanyName + "'";
+
                     if (aod_order.TransportCode > 0)
-                        ls_sql += " AND O.ID = " + aod_order.TransportCode.ToString();
+                        ls_sql += " AND T.ID = " + aod_order.TransportCode.ToString();
+
+                    if (aod_order.TransportCompanyName != null)
+                        if (aod_order.TransportCompanyName.Trim().Length > 0)
+                            ls_sql += " AND T.COMPANYNAME = '" + aod_order.TransportCompanyName + "'";
 
                 }
 
+                ls_sql += " ORDER BY O.ORDERCODE DESC";
                 losh_osh = new OracleServerHelper();
                 lds_datos = losh_osh.ExecuteSqlToDataSet(ls_sql, new List<OracleParameter>());
 
@@ -129,6 +193,7 @@ namespace CommonsWeb.DAL.Orders
                             lo_order.EventDescription = Convert.ToString(ldr_temp["EVENTDESCRIPTION"]);
                             lo_order.EventDate = Convert.ToDateTime(ldr_temp["EVENTDATE"]);
                             lo_order.EventPrice = Convert.ToDecimal(ldr_temp["EVENTPRICE"]);
+                            lo_order.EventUnit = Convert.ToInt32(ldr_temp["EVENTUNIT"]);
 
                             if (Convert.ToInt32(ldr_temp["HOTELID"]) > 0)
                             {
@@ -146,6 +211,7 @@ namespace CommonsWeb.DAL.Orders
                                 lo_order.Hotel.TypeRoom = Convert.ToString(ldr_temp["TYPEROOM"]);
                                 lo_order.Hotel.PriceRoom = Convert.ToDecimal(ldr_temp["PRICEROOM"]);
                                 lo_order.Hotel.CompanyName = Convert.ToString(ldr_temp["HCOMPANYNAME"]);
+                                lo_order.Hotel.Guests = Convert.ToInt32(ldr_temp["GUESTS"]);
 
                             }
 
@@ -175,10 +241,6 @@ namespace CommonsWeb.DAL.Orders
 
                     }
 
-                }
-                else
-                {
-                    throw new Exception("Error consultando ordenes");
                 }
 
             }
@@ -227,12 +289,12 @@ namespace CommonsWeb.DAL.Orders
                         ll_orderCode = Convert.ToInt32(ldr_temp["ORDERCODE"]);
                         ls_sql = "INSERT INTO ORDERS(ORDERCODE,ORDERDATE,ORDERSTATUS,ORDERVALUE,";
                         ls_sql += "IDCUSTOMER,EVENTCODE,EVENTNAME,EVENTDESCRIPTION,";
-                        ls_sql += "EVENTDATE,EVENTPRICE) VALUES(" + ll_orderCode + ",SYSDATE,'A',";
+                        ls_sql += "EVENTDATE,EVENTPRICE,EVENTUNIT) VALUES(" + ll_orderCode + ",SYSDATE,'A',";
                         ls_sql += aod_order.OrderValue.ToString().Replace(",", ".") + ",";
                         ls_sql += aod_order.IdUser + "," + aod_order.EventCode + ",";
                         ls_sql += "'" + aod_order.EventName + "','" + aod_order.EventDescription + "',";
                         ls_sql += "TO_DATE('" + aod_order.EventDate.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
-                        ls_sql += aod_order.EventPrice.ToString().Replace(",", ".") + ")";
+                        ls_sql += aod_order.EventPrice.ToString().Replace(",", ".") + "," + aod_order.EventUnit + ")";
                         ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                         if (ll_affected > 0)
@@ -243,7 +305,7 @@ namespace CommonsWeb.DAL.Orders
 
                                 ls_sql = "INSERT INTO HOTELRESERVATION (RESERVATIONCODE,NAME,ADDRESS,";
                                 ls_sql += "COUNTRY,CITY,PHONENUMBER,ROOMNUMBER,TYPEROOM,PRICEROOM,";
-                                ls_sql += "CHECKIN,CHECKOUT,IDORDER,COMPANYNAME) VALUES ('" + aod_order.Hotel.BookingId + "',";
+                                ls_sql += "CHECKIN,CHECKOUT,IDORDER,COMPANYNAME,GUESTS) VALUES ('" + aod_order.Hotel.BookingId + "',";
                                 ls_sql += "'" + aod_order.Hotel.Name + "','" + aod_order.Hotel.Address + "',";
                                 ls_sql += "'" + aod_order.Hotel.Country + "','" + aod_order.Hotel.City + "',";
                                 ls_sql += "'" + aod_order.Hotel.PhoneNumber + "','" + aod_order.Hotel.RoomNumber + "',";
@@ -251,7 +313,7 @@ namespace CommonsWeb.DAL.Orders
                                     ToString().Replace(",", ".") + ",";
                                 ls_sql += "TO_DATE('" + aod_order.Hotel.CheckIn.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
                                 ls_sql += "TO_DATE('" + aod_order.Hotel.CheckOut.ToString("yyyy-MM-dd") + "','YYYY-MM-DD'),";
-                                ls_sql += ll_orderCode + ",'" + aod_order.Hotel.CompanyName + "')";
+                                ls_sql += ll_orderCode + ",'" + aod_order.Hotel.CompanyName + "'," + aod_order.Hotel.Guests + ")";
                                 ll_affected = losh_osh.ExecuteSql(ls_sql, new List<OracleParameter>());
 
                                 if (ll_affected <= 0)
