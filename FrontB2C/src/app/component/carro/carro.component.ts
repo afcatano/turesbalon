@@ -30,15 +30,17 @@ export class CarroComponent implements OnInit {
     this.params={};
     if(this.session)
     {
-      var valorTotal:0;
+      var valorTotal=0;
       this.params.opionPaquete=this.session.optionPaquete
       
       if(this.session.orden.Evento!= undefined )
-        valorTotal= this.session.orden.Evento.ValorEvento !=null? this.session.orden.Evento.ValorEvento:0;
+       { 
+         valorTotal= (this.session.orden.Evento.ValorEvento !=null? this.session.orden.Evento.ValorEvento:0)*(this.session.orden.Evento.cantidadPersonas);
+       }
       if(this.session.orden.Transporte!= undefined )
-        valorTotal=valorTotal+ (this.session.orden.Transporte.valor !=null? this.session.orden.Transporte.valor:0);
+        valorTotal=valorTotal+ ((this.session.orden.Transporte.valor !=null? this.session.orden.Transporte.valor:0)*(this.session.orden.Transporte.numSillas));
       if(this.session.orden.Hotel!= undefined )
-        valorTotal= valorTotal + (this.session.orden.Hotel.valor !=null? this.session.orden.Hotel.valor:0);
+        valorTotal= valorTotal + ((this.session.orden.Hotel.valor !=null? this.session.orden.Hotel.valor:0)*(this.session.orden.Evento.cantidadPersonas));
 
       this.session.orden.precio =valorTotal;
       this.totalOrders=valorTotal;

@@ -1,0 +1,113 @@
+
+<div class="container separador" style="margin-bottom: 160px">
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  <h3 style=" color:  rgb(31, 72, 124) !important;">Viaja fácil</h3>               
+                </div>
+                <div class="card-body ">
+                  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                      <img class="card-img"alt="Paquetes" src="../../../assets/vuelos/avianca.jpg" >
+                    </div>
+
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <img class="card-img"alt="Paquetes" src="../../../assets/vuelos/american.jpg" >
+                    </div>
+
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <img class="card-img"alt="Paquetes" src="../../../assets/vuelos/logo-bolivariano.jpg" >
+                    </div>
+
+                </div>
+                
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    <h4 style=" color:  rgb(31, 72, 124) !important;"> Quedate en el mejor lugar  </h4>            
+                  </div>
+                  <div class="card-body ">
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <img class="card-img"alt="Paquetes" src="../../../assets/hoteles/hotel1.jpg" >
+                      </div>
+  
+                      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                          <img class="card-img"alt="Paquetes" src="../../../assets/hoteles/hotel2.jpg" >
+                      </div>
+  
+                      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                          <img class="card-img"alt="Paquetes" src="../../../assets/hoteles/hotel3.jpg" >
+                      </div>
+  
+                      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                          <img class="card-img" alt="Paquetes" src="../../../assets/hoteles/hotel4.jpg" >
+                       </div>
+                  </div>
+                  
+                </div>
+
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                      <h4 style=" color:  rgb(31, 72, 124) !important;"> Paga rápido </h4>            
+                    </div>
+                    <div class="card-body ">
+                      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                          <img class="card-img"alt="Paquetes" src="../../../assets/pagos/american.jpg" >
+                        </div>
+    
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <img class="card-img"alt="Paquetes" src="../../../assets/pagos/diners.png" >
+                        </div>
+    
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <img class="card-img"alt="Paquetes" src="../../../assets/pagos/master.png" >
+                        </div>
+    
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <img class="card-img" alt="Paquetes" src="../../../assets/pagos/pse.png" >
+                         </div>
+                    </div>
+                    
+                  </div>
+        </div>
+     
+        <div class="col-8">
+            <h2 style=" color:  rgb(31, 72, 124) !important;">Nuestras Campañas</h2>
+            <div class="container separador" style="margin-bottom: 30px">
+          </div>
+          <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+          <div class="card mb-3" *ngFor="let item of campaing">
+                <div class="row no-gutters">
+                  <div class="col-md-12">
+                    <img  class="card-img" alt="..." [src]="item.imagen" >
+                  </div>
+                  <div class="col-md-12">
+                    <div class="card-body ">
+                      <h5 class="card-title">{{item.campana}}</h5>
+                      <p class="card-text">{{item.descripcion}}</p>
+                      <p class="card-text"><small class="text-muted">{{item.descripcion}}</small></p>
+                      <p class="card-text"><small class="text-muted">{{item.cantidad}}</small></p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 card-color-blue" >
+                     <div class="card-body ">
+                      <div class="row">
+                          <div class="col-9">  
+                            <button type="button" style="margin-left: 20%;margin-top: 20px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+        
+      </div>
+  </div>
+  <div class="container separador" style="margin-bottom: 100px">
+    </div>
+    

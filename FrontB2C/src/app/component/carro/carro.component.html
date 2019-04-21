@@ -39,7 +39,7 @@
             <h4>No hay Elementos en el carrito, para seguir comprando da click en :
                 <a [routerLink]="['/home']">Paquetes</a></h4>
         </div>
-        <div class="card mb-3 col-md-5" *ngFor="let item of carrito">
+        <div class="card mb-3 col-md-6" *ngFor="let item of carrito">
             <div class="row no-gutters">
               <div class="col-md">
                 <div class="card-body ">
@@ -61,13 +61,13 @@
                             <li class="list-group-item background-white" *ngIf="item.Evento">
                                 <div class="row">
                                     <div class="col-sm">
-                                      <P>Cantidad 2 Personas</P>
-                                     </div>
+                                      <P>Cantidad: {{item.Evento.cantidadPersonas}}</P>
+                                   </div>
+                                   <div class="col-sm">
+                                        <P>Valor unitario: {{item.Evento.ValorEvento | currency}} </P>
+                                   </div>
                                     <div class="col-sm">
-                                      <P>22:30</P>
-                                    </div>
-                                    <div class="col-sm">
-                                            <P>Total: {{item.Evento.ValorEvento | currency}} </P>
+                                        <P>Total: {{item.Evento.ValorEvento * item.Evento.cantidadPersonas  | currency}} </P>
                                      </div>
                                     
                                 </div>
@@ -94,15 +94,24 @@
                                     <div class="col-sm">
                                         <P>  <img [src]="item.Transporte.imagen" class="card-img card-logo" alt="..."></P>
                                     </div>
-                                    <div class="col-sm">
-                                        <P>{{item.horaSalida}}</P>
-                                    </div>
                                     
-                                    <div class="col-sm">
-                                            <P>Total: {{item.Transporte.valor | currency}} </P>
-                                     </div>
+                                    
                                 </div>
                             </li>
+                            <li class="list-group-item background-white" *ngIf="item.Transporte">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                                <P>Cantidad: {{item.Transporte.numSillas}}</P>
+                                        </div>
+                                        <div class="col-sm">
+                                            <P>Valor unitario: {{item.Transporte.valor | currency}} </P>
+                                        </div>
+                                        <div class="col-sm">
+                                            <P>Total: {{item.Transporte.valor * item.Transporte.numSillas  | currency}} </P>
+                                        </div>
+                                        
+                                    </div>
+                                </li>
        
      
                             <li class="list-group-item background-grey" *ngIf="item.Hotel">
@@ -121,18 +130,16 @@
                             </li>
                             <li class="list-group-item background-white" *ngIf="item.Hotel">
                                 <div class="row">
-                                    <div class="col-sm">
-                                      <P>{{item.Hotel.cantidadHotel}} personas</P>
+                                     <div class="col-sm">
+                                            <P>Cantidad: {{item.Hotel.cantidadPersonas}}</P>
                                     </div>
                                     <div class="col-sm">
-                                      <P>{{item.Hotel.reservaInicial}}</P>
+                                        <P>Valor unitario: {{item.Hotel.valor | currency}} </P>
                                     </div>
                                     <div class="col-sm">
-                                       <P>{{item.Hotel.reservaFinal}}</P>
+                                        <P>Total: {{item.Hotel.valor * item.Hotel.cantidadPersonas  | currency}} </P>
                                     </div>
-                                    <div class="col-sm">
-                                            <P>Total: {{item.Hotel.valor | currency}} </P>
-                                     </div>
+                                    
                                 </div>
                             </li>
                             

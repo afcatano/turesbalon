@@ -13,7 +13,7 @@ export class transporte {
     tipo: string;
     imagen: string;
      accion: string;
-     numSillas:string;
+     numSillas:number;
      fechaRegresoDespegue:string;
      fechaRegresoAterrizaje:string;
   }

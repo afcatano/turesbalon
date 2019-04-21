@@ -10,18 +10,18 @@
             <div  *ngIf="param.nombrePaso=='T'" class="buscador_input">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Origen</label>
-                  <input  name="Evento" type="text" style="    height: 46px;" class="form-control" [(ngModel)]="param.origen" maxlength="50"  placeholder="Origen">
+                  <input  name="origen" type="text" style="    height: 46px;" class="form-control" [(ngModel)]="param.origen" maxlength="50"  placeholder="Origen">
                   <div  class="invalid-feedback">
-                    {{validate.evento.message}} 
+                    {{validate.origen.message}} 
                   </div>
                 </div>
             </div>
             <div class="buscador_input">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Destino</label>
-                  <input  name="Evento" type="text" style="    height: 46px;" class="form-control" [(ngModel)]="param.destino" maxlength="50"  placeholder="Destino">
+                  <input  name="destino" type="text" style="    height: 46px;" class="form-control" [(ngModel)]="param.destino" maxlength="50"  placeholder="Destino">
                   <div  class="invalid-feedback">
-                    {{validate.evento.message}} datoss
+                    {{validate.destino.message}} datoss
                   </div>
                 </div>
             </div>
@@ -36,9 +36,7 @@
                         </mat-datepicker-toggle>
                         <mat-datepicker #initialDate></mat-datepicker>
                       </div>
-                  <div  class="invalid-feedback">
-                    {{validate.evento.message}} 
-                  </div>
+                  
                 </div>
             </div>
 
@@ -52,9 +50,7 @@
                     <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
                     <mat-datepicker #endDate></mat-datepicker>
                   </div>
-                  <div  class="invalid-feedback">
-                    {{validate.evento.message}} datoss
-                  </div>
+                  
                 </div>
             </div>
            
@@ -67,7 +63,7 @@
                   top: 8px;">
                     <span class="input-group-text" id="validationTooltipUsernamePrepend"><mat-icon>person</mat-icon></span>
                   </div>
-              <input  name="Cantidad" type="number" [(ngModel)]="param.cantidadPersonas" (change)="replaceNegative(param.cantidad)" maxlength="50" class="form-control"style="position: relative;
+              <input  name="Cantidad" type="number" [(ngModel)]="param.cantidadPersonas" (change)="replaceNegative(param.cantidadPersonas)" maxlength="50" class="form-control"style="position: relative;
               top: 8px;"/>
               </div>
             </div>

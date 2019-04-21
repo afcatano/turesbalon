@@ -13,6 +13,7 @@ export class StorageParamsCompraService {
   };
   setParamsCompraSession(session: any): void {
     this.ParamsCompraSession = session;
+    console.log(session);
     this.localStorageService.setItem('ParamsCompra', JSON.stringify(session));
   };
   loadSessionData(): any{

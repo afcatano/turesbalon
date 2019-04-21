@@ -83,6 +83,10 @@
         <div style="margin-top: 40px;">
           <router-outlet></router-outlet>
         </div>
+        <div  *ngIf="router.url =='/' || router.url =='/home'">
+          <app-campaing></app-campaing>
+        </div>
+       
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

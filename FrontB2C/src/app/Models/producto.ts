@@ -38,7 +38,12 @@ export class Producto {
               NombreEvento: this.Evento.NombreEvento,
               DescEvento: this.Evento.DescEvento,
               FechaEvento: this.Evento.FechaEvento,
-              ValorEvento: this.Evento.ValorEvento
+              ValorEvento: this.Evento.ValorEvento,
+              ciudad:this.Evento.ciudad,
+              imagen:this.Evento.imagen,
+              inicioEvento:this.Evento.inicioEvento,
+              finEvento:this.Evento.finEvento,
+              cantidadPersonas:this.Evento.cantidadPersonas
             },
             Hotel: {
               IdReservaHotel: this.Hotel ? this.Hotel.codigo:null,

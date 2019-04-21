@@ -18,11 +18,12 @@ import {parametrosBusqueda} from '../../Models/parametrosBusqueda';
 })
 export class FechaBuscadorComponent implements OnInit {
 
-  //Evento que envia la consulta realizada
+  //destino que envia la consulta realizada
   @Output() action = new EventEmitter<parametrosBusqueda>();
   
   @Input() params: any;
 
+  mensajeError="";
   v_initialDate = new FormControl(new Date());
   v_endDate = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
@@ -45,7 +46,7 @@ export class FechaBuscadorComponent implements OnInit {
   minEndDate = this.v_minEndDate;
   maxEndDate = this.v_maxEndDate;
 
-  param={ categoria:"",nombre:"", fechaInicial:"", fechaFinal:"", cantidadPersonas:"1" ,accion:"", nombrePaso:"", descripcion: "",
+  param={ categoria:"",nombre:"", fechaInicial:"", fechaFinal:"", cantidadPersonas:1 ,accion:"", nombrePaso:"", descripcion: "",
    codigo: "",
    comodin: "",
    destino: "",
@@ -56,13 +57,14 @@ export class FechaBuscadorComponent implements OnInit {
 
   validate={
     categoria:{valid:true, message:"",css:""},
-    evento:{valid:true, message:"",css:""}
+    destino:{valid:true, message:"",css:""},
+    origen:{valid:true, message:"",css:""}
   };
 
   ngOnInit() {
     this.param.categoria=this.params.categoria;
-    this.param.cantidadPersonas=this.params.cantidad?this.params.cantidad:1;
-    this.param.nombre=this.params.evento;
+    this.param.cantidadPersonas=this.params.cantidad?parseInt(this.params.cantidad):1;
+    this.param.nombre=this.params.destino;
     this.param.accion=this.params.accion;
     this.param.nombrePaso=this.params.nombrePaso;
     console.log(this.param);
@@ -76,8 +78,10 @@ export class FechaBuscadorComponent implements OnInit {
 
   validateSumitForms(){
     if(
-      this.validateCategoria()||
-      this.validateEvento()){
+      (this.param.nombrePaso=='T'? this.validateOrigen(): true)&&
+      this.validateDestino()&&
+      this.validateDate()&&
+      this.validateCantidad()){
            return true;
       }else{
         return false;
@@ -94,17 +98,42 @@ export class FechaBuscadorComponent implements OnInit {
       this.validate.categoria.message="Dato requerido";
       return this.validate.categoria.valid=false;
   }
+}
+
+    validateCantidad(){
+       if(this.param.cantidadPersonas > 0){
+          return true;
+        }else{
+            this.mensajeError="La cantidad de personas debe ser mayor a 0.";
+            return false;
+        }
+      
     }
   
-    validateEvento(){
-      if(this.param.nombre!='' && this.param.nombre!=null){
-        this.validate.evento.css="";
-        this.validate.evento.message="";
-        return this.validate.evento.valid=true;
+    validateDestino(){
+      if(this.param.destino!='' && this.param.destino!=null){
+        return this.validate.destino.valid=true;
       }else{
-        this.validate.evento.css="is-invalid";
-        this.validate.evento.message="Dato requerido";
-        return this.validate.evento.valid=false;
+        this.mensajeError="Debe seleccionar un destino.";
+        return this.validate.destino.valid=false;
+    }
+    }
+
+    validateDate(){
+      if(this.param.fechaInicial!='' && this.param.fechaInicial!=null && this.param.fechaFinal!='' && this.param.fechaFinal!=null){
+         return true;
+      }else{
+        this.mensajeError="Debe seleccionar un rango de fechas.";
+        return false;
+    }
+    }
+
+    validateOrigen(){
+      if(this.param.origen!='' && this.param.origen!=null){
+        return true;
+      }else{
+        this.mensajeError="Debe seleccionar un origen.";
+        return false;
     }
     }
     replaceNegative(text){
@@ -114,28 +143,28 @@ export class FechaBuscadorComponent implements OnInit {
   onSubmit() {
     console.log("Event emitter");
     if(this.validateSumitForms()){
-    var param = new parametrosBusqueda();
-    param.categoria= this.params.categoria,
-    param.nombre=  this.params.nombre,
-    param.descripcion= this.params.descripcion,
-    param.codigo=  this.params.codigo,
-    param.comodin=  this.params.comodin,
-    param.fechaFinal=  this.params.fechaFinal,
-    param.fechaInicial =  this.params.fechaInicial,
-    param.cantidadPersonas =  this.params.cantidadPersonas,
-    param.destino =  this.params.destino,
-    param.origen=   this.params.origen,
-    param.cantidadItems=  this.params.cantidadItems
+    var paramsBusqueda = new parametrosBusqueda();
+    paramsBusqueda.categoria= this.param.categoria,
+    paramsBusqueda.nombre=  this.param.nombre,
+    paramsBusqueda.descripcion= this.param.descripcion,
+    paramsBusqueda.codigo=  this.param.codigo,
+    paramsBusqueda.comodin=  this.param.comodin,
+    paramsBusqueda.fechaFinal=  this.param.fechaFinal,
+    paramsBusqueda.fechaInicial =  this.param.fechaInicial,
+    paramsBusqueda.cantidadPersonas =  this.param.cantidadPersonas,
+    paramsBusqueda.destino =  this.param.destino,
+    paramsBusqueda.origen=   this.param.origen,
+    paramsBusqueda.cantidadItems=  this.param.cantidadItems
 
-    this.action.emit(param);
+    this.action.emit(paramsBusqueda);
     }else{
-      this.parent.openDialog( "","Seleciona una rando de fecha y destino","Alerta");
+      this.parent.openDialog( "",this.mensajeError,"Alerta");
 
      }
    }
 
    
-  //Evento que captura el input de los rangos de fecha
+  //destino que captura el input de los rangos de fecha
   addEvent(type: string, event: MatDatepickerInputEvent<Date>, dateInput: string) {
     var fecha = event.value;
     console.log(fecha);
@@ -145,7 +174,7 @@ export class FechaBuscadorComponent implements OnInit {
         this.endDate= fecha;//.getFullYear() +"-"+fecha.getMonth()+"-"+fecha.getDate();
         console.log("endDate");
         console.log(fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate());
-        
+        this.param.fechaFinal=fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate();
       }
       else
       {
@@ -155,6 +184,7 @@ export class FechaBuscadorComponent implements OnInit {
         this.maxEndDate = new Date(vfinishDay.getFullYear(), vfinishDay.getMonth(), vfinishDay.getDate());
         console.log(fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate());
         console.log("initialDate");
+        this.param.fechaInicial=fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate();
       }
     }else{
       if("endDate"==dateInput)

@@ -16,7 +16,7 @@
     </div>
     
   </div>
-  <app-fecha-buscador [params]="params" ></app-fecha-buscador>
+  <app-fecha-buscador [params]="params" (action)="action($event)"></app-fecha-buscador>
   <div class="container separador">
       <div class="container-fluid">
           <app-pasos-compra  [params]="params"></app-pasos-compra>

@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import {StorageParamsCompraService} from '../../storage/storage-compra'
 import {DatalleEventoComponent} from '../datalle-evento/datalle-evento.component';
 import {MatDialog} from '@angular/material';
+import {parametrosBusqueda} from '../../Models/parametrosBusqueda';
 
 import { Router } from '@angular/router';
 import { hotel } from '../../Models/hotel';
@@ -29,6 +30,8 @@ export class HotelesComponent implements OnInit {
   progressBar=false
   optionActual="H";
   params:any;
+  paramsBusqueda:parametrosBusqueda;
+
   session:any;
   constructor(private sesion:StorageService, private productService: ProductsService,private router:Router,
      private parent: AppComponent, private dialog: MatDialog,
@@ -42,15 +45,16 @@ export class HotelesComponent implements OnInit {
     this.params={};
     this.params.opionPaquete=this.session.optionPaquete
     this.params.nombrePaso= this.optionActual;//esta en el paso de consultar eventos
-    this.action();
+    //this.action();
   }
 
-  action(){
+  action(item:parametrosBusqueda){
     console.log("Eschua evento");
     this.processing=true;
     //console.log(this.username, this.password);
     var params={fecha:""}
-    this.productService.hotels(params).subscribe(
+    this.paramsBusqueda=item
+    this.productService.hotels(this.paramsBusqueda).subscribe(
       result => {
             console.log(result);
             this.infoTable = result;
@@ -73,13 +77,14 @@ export class HotelesComponent implements OnInit {
   }
 
   addProducto(item) {
-  console.log(item);
   var producto = new Producto();
-  
+  console.log("Agrega Hotel al carrito");
   console.log(item);
     var route="carro";
     var producto = new Producto();
    // item.cantidadPersonas=this.params.can
+    
+    item.cantidadPersonas=this.paramsBusqueda.cantidadPersonas;
     producto.Hotel=item; 
     this.carritoService.addCarrito(producto);
 

@@ -34,7 +34,7 @@ export class PaquetesComponent implements OnInit {
     tmIni: null,
     tmFin: null,
     evento: null,
-    cantidad: null,
+    cantidad: 0,
     categoria: null,
     operador: null,
     optionPaquete:null,

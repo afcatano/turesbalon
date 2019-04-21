@@ -13,6 +13,7 @@ import {StorageParamsCompraService} from '../../storage/storage-compra'
 import { transporte } from '../../Models/transporte';
 import {MatDialog} from '@angular/material';
 import {DatalleEventoComponent} from '../datalle-evento/datalle-evento.component';
+import {parametrosBusqueda} from '../../Models/parametrosBusqueda';
 
 @Component({
   selector: 'app-vuelos',
@@ -29,6 +30,8 @@ export class VuelosComponent implements OnInit {
   infoTable: any[];
   processing:boolean;
   params:any;
+  paramsBusqueda:parametrosBusqueda;
+
   constructor(private sesion:StorageService, private productService: ProductsService, private dialog: MatDialog,
      private parent: AppComponent, private carritoService:CarritoService, private router: Router, private storageCompra:StorageParamsCompraService) { 
 
@@ -40,14 +43,12 @@ export class VuelosComponent implements OnInit {
     this.params={};
     this.params.opionPaquete=this.session.optionPaquete
     this.params.nombrePaso= this.optionActual;//esta en el paso de consultar eventos
-   
-    this.action();
-  }
+   }
 
-  action(){
+  action(item:parametrosBusqueda){
     console.log("Eschua evento");
     this.processing=true;
-    //console.log(this.username, this.password);
+    this.paramsBusqueda=item
     var params={fecha:""}
      this.infoTable = Vuelos;
       
@@ -65,6 +66,8 @@ export class VuelosComponent implements OnInit {
   var route="carro";
   var producto = new Producto();
   producto.Transporte=item; 
+
+  producto.Transporte.numSillas= this.paramsBusqueda.cantidadPersonas;
   this.carritoService.addCarrito(producto);
 
   //Valida si hay session para enrutar

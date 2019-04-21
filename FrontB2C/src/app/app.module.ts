@@ -38,6 +38,7 @@ import { PasosCompraComponent } from './component/pasos-compra/pasos-compra.comp
 import { NavegadorComponent } from './component/navegador/navegador.component';
 import { FechaBuscadorComponent } from './component/fecha-buscador/fecha-buscador.component';
 import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
+import { CampaingComponent } from './component/campaing/campaing.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { CrearOrdenComponent } from './component/crear-orden/crear-orden.compone
     PasosCompraComponent,
     NavegadorComponent,
     FechaBuscadorComponent,
-    CrearOrdenComponent
+    CrearOrdenComponent,
+    CampaingComponent
   ],
   imports: [
     BrowserModule,

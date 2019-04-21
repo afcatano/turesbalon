@@ -12,10 +12,12 @@ import {StorageConfigService} from '../storage/storage-config.service'
 export class ProductsService {
 
  private pathHotels: string;
+ private pathCampaign: string;
 
   constructor(private http: HttpClient ,private config:StorageConfigService) {
   
-    this.pathHotels= "/api/products/hotels"
+    this.pathHotels= "/api/products/hotels";
+    this.pathCampaign= "/campanas/consulta";
    }
 
 
@@ -108,4 +110,55 @@ export class ProductsService {
     return this.http.post(path + this.pathHotels,{ headers: headers});
   }
 
+
+
+  getCampaing(params, callback){
+
+    var config= this.config.getConfigSession();
+    console.log("Entra a buscar campañas" );
+    //Valida si aplica mock
+    if(config.campaing){
+      var result={codigo:"01", mensaje:""};
+     //Solo entra si esta en modo dumy
+     console.log("Entra al mock de buscar campañas" );
+     callback(result);
+    }else{
+    
+      this.campaign(params).subscribe(
+          result => {
+                    var date="";
+                      if(result.codigo=="0") {
+                       // console.log(JSON.stringify(result, null, 4));
+                      } else {
+                        console.log(JSON.stringify(result, null, 4));
+                      }
+                      console.log("Entra al api de buscar campañas" );
+                      callback(result);
+                    },
+                    error => {
+                      console.log("Error al consultar campañas:" +error);
+                      console.log(error);
+                      callback(error);
+      })
+    }
+ }
+
+  //Invoca api que consulta las campañas
+  campaign(params): Observable<any> {
+    var parameterInfo = new ParameterInfo();
+
+    var headers = new HttpHeaders ();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    
+    console.log(params);
+    console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+    return this.http.post(
+      (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCampaign,
+     params,
+    { headers: headers}
+     );
+    }
 }
