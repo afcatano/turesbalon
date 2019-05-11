@@ -16,6 +16,93 @@ export class StorageParamsCompraService {
     console.log(session);
     this.localStorageService.setItem('ParamsCompra', JSON.stringify(session));
   };
+
+  setAddItemsParamsCompraSession(items, type): void {
+      var listCarrito = this.getParamsCompraSession();
+      console.log("Agregar item al carrito");
+      var carrito=[];
+      if(listCarrito){
+        if(listCarrito.orden){
+          switch(type){
+  
+            case "E":
+                    if(listCarrito.orden.Evento)
+                      listCarrito.orden.Evento.cantidadPersonas = parseInt(listCarrito.orden.Evento.cantidadPersonas) +1;
+                  break;
+            case "T":
+                      if(listCarrito.orden.Transporte)
+                      listCarrito.orden.Transporte.numSillas = parseInt(listCarrito.orden.Transporte.numSillas) +1;
+                  break;
+            case "H":
+                      if(listCarrito.orden.Hotel)
+                      listCarrito.orden.Hotel.cantidadPersonas = parseInt(listCarrito.orden.Hotel.cantidadPersonas) +1;
+                  break;
+          }
+          this.setParamsCompraSession(listCarrito);
+        }
+       
+    };
+  }
+
+
+  setDeleteItemsParamsCompraSession(items, type): void {
+    console.log("Elimina item al carrito");
+    var listCarrito = this.getParamsCompraSession();
+    var carrito=[];
+    if(listCarrito){
+     
+      if(listCarrito.orden){
+        switch(type){
+
+          case "E":
+                    listCarrito.orden.Evento=null;
+                break;
+          case "T":
+                    listCarrito.orden.Transporte= null;
+                break;
+          case "H":
+                    listCarrito.orden.Hotel=null;
+                break;
+        }
+        this.setParamsCompraSession(listCarrito);
+      }
+     
+  };
+}
+
+  setModItemsParamsCompraSession(items, type): void {
+    console.log("Elimina item al carrito");
+    var listCarrito = this.getParamsCompraSession();
+    var carrito=[];
+    if(listCarrito){
+    
+      if(listCarrito.orden){
+        switch(type){
+
+          case "E":
+                  if(listCarrito.orden.Evento)
+                    if(listCarrito.orden.Evento.cantidadPersonas!=0)
+                      listCarrito.orden.Evento.cantidadPersonas = parseInt(listCarrito.orden.Evento.cantidadPersonas) -1;
+                break;
+          case "T":
+                    if(listCarrito.orden.Transporte)
+                    if(listCarrito.orden.Transporte.numSillas!=0)
+                    listCarrito.orden.Transporte.numSillas = parseInt(listCarrito.orden.Transporte.numSillas) -1;
+                break;
+          case "H":
+                    if(listCarrito.orden.Hotel)
+                    if(listCarrito.orden.Hotel.cantidadPersonas!=0)
+                    listCarrito.orden.Hotel.cantidadPersonas = parseInt(listCarrito.orden.Hotel.cantidadPersonas) -1;
+                break;
+        }
+        this.setParamsCompraSession(listCarrito);
+      }
+    
+  };
+  }
+
+
+
   loadSessionData(): any{
     var sessionStr = this.localStorageService.getItem('ParamsCompra');
     return (sessionStr) ?  JSON.parse(sessionStr) : null;

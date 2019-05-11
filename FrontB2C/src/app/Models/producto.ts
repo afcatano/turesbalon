@@ -43,7 +43,7 @@ export class Producto {
               imagen:this.Evento.imagen,
               inicioEvento:this.Evento.inicioEvento,
               finEvento:this.Evento.finEvento,
-              cantidadPersonas:this.Evento.cantidadPersonas
+              Cantidad:this.Evento.cantidadPersonas
             },
             Hotel: {
               IdReservaHotel: this.Hotel ? this.Hotel.codigo:null,

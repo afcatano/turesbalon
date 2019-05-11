@@ -23,6 +23,10 @@
           <mat-icon>flag</mat-icon>
           <span> Notificaciones</span>
      </button>
+     <button *ngIf="sesionUser" mat-menu-item>
+        <mat-icon>shopping_cart</mat-icon>
+        <span> <a [routerLink]="['/carro']">Mi Carrito</a></span>
+     </button>
     <button *ngIf="sesionUser" mat-menu-item>
         <mat-icon>perm_identity</mat-icon>
         <span> <a [routerLink]="['/datosusuario']">Mis Datos</a></span>

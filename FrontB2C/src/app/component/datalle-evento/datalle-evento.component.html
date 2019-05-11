@@ -1,4 +1,5 @@
-<h1 mat-dialog-title style="font-weight: bold;">Detalle {{data.tipoDetalle}} # {{data.codigo}}</h1>
+<h1 mat-dialog-title *ngIf="!data.Evento" style="font-weight: bold;">Detalle {{data.tipoDetalle}} # {{data.codigo}}</h1>
+<h1 mat-dialog-title *ngIf="data.Evento" style="font-weight: bold;">Detalle {{data.tipoDetalle}} # {{data.Evento.codigoEvento}}</h1>
 <div mat-dialog-content style="text-align: center">
   
       <table *ngIf="data.Evento" class="table table-striped">
@@ -11,16 +12,16 @@
           <tbody>
             <tr >
               <th scope="row">Fecha Evento</th>
-               <td>{{data.Evento.FechaEvento}}</td>
+               <td>{{data.Evento.fechaEvento}}</td>
             </tr>
             
               <tr >
               <th scope="row">Evento</th>
-                  <td>{{data.Evento.NombreEvento}}</td>
+                  <td>{{data.Evento.nombreEvento}}</td>
               </tr>
               <tr >
               <th scope="row">Descripción</th>
-                  <td>{{data.Evento.DescEvento}}</td>
+                  <td>{{data.Evento.descEvento}}</td>
               </tr>
               <tr >
               <th scope="row">Ciudad</th>
@@ -28,7 +29,7 @@
               </tr>
               <tr>
               <th scope="row">Costo Evento</th>
-                 <td>{{data.Evento.ValorEvento | currency}}</td>
+                 <td>{{data.Evento.valorEvento | currency}}</td>
               </tr>
           </tbody>
         </table>

@@ -35,9 +35,9 @@
           <img [src]="item.imagen" class="card-img-top" alt="...">
           <div class="card-body card-color-blue">
               <div class="row">
-                  <div class="col-6"><p >Precio unitario </p><p class="card-text" style="margin-left: 20%;">{{item.ValorEvento | currency}}</p></div>
+                  <div class="col-6"><p >Precio unitario </p><p class="card-text" style="margin-left: 20%;">{{item.valorEvento | currency}}</p></div>
                   <div class="col-3">  
-                    <button type="button"  (click)="addProducto(item)" class="btn btn-success">Selecionar</button>
+                    <button type="button"  (click)="addEvento(item)" class="btn btn-success">Selecionar</button>
                     <button type="button" style="margin-top: 10px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
                   </div>
                 </div>

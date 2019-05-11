@@ -26,6 +26,10 @@ export class CarroComponent implements OnInit {
     private parent: AppComponent, private carritoService:CarritoService, private storageCompra:StorageParamsCompraService, private storageUser:StorageService) { }
 
   ngOnInit() {
+    this.cargarCarrito();
+  }
+
+  cargarCarrito(){
     this.session = this.storageCompra.getParamsCompraSession();
     this.params={};
     if(this.session)
@@ -44,21 +48,13 @@ export class CarroComponent implements OnInit {
 
       this.session.orden.precio =valorTotal;
       this.totalOrders=valorTotal;
+      this.carrito=[];//TODO
       this.carrito.push(this.session.orden);
       this.countOrders=this.carrito.length;
     }
     this.params.nombrePaso= this.optionActual;//esta en el paso de consultar eventos
     
-    /*this.carritoService.getCarrito().subscribe(data => {
-      console.log(data);
-      this.carrito = data;
-     // this.total = this.carritoService.getTotal();
-    },
-      error => alert(error));*/
-
-    
       console.log(this.carrito);
-      
   }
 
   eliminarItem(item){
@@ -69,6 +65,25 @@ export class CarroComponent implements OnInit {
     this.countOrders= 0;
     this.totalOrders=0;
     console.log("Elimina orden");
+  }
+
+
+  //Metodo que agrega la cantidad a un hotel, transporte o evento
+  removerProducto(producto, type){
+    this.storageCompra.setModItemsParamsCompraSession(producto,type);
+    this.cargarCarrito();
+  }
+
+  //Metodo que elimina  la cantidad a un hotel, transporte o evento
+  addProducto(producto,type) {
+    this.storageCompra.setAddItemsParamsCompraSession(producto,type);
+    this.cargarCarrito();
+  }
+
+  //Metodo que elimina  el elemento sea  un hotel, transporte o evento
+  delteItemProducto(producto,type){
+    this.storageCompra.setDeleteItemsParamsCompraSession(producto,type);
+    this.cargarCarrito();
   }
 
   pagar(){

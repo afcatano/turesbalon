@@ -13,11 +13,14 @@ export class ProductsService {
 
  private pathHotels: string;
  private pathCampaign: string;
+ private pathProducts: string;
 
   constructor(private http: HttpClient ,private config:StorageConfigService) {
   
     this.pathHotels= "/api/products/hotels";
     this.pathCampaign= "/campanas/consulta";
+    this.pathProducts= "/producto/consulta";
+
    }
 
 
@@ -31,8 +34,8 @@ export class ProductsService {
     var count=0;
     var rangoInicial=0;
     //params.page= params.page==0?1:params.page;
-    rangoInicial=(params.page)* params.pageSize; //14
-    var rangoFinal=rangoInicial + params.pageSize;//21
+    rangoInicial=(params.pagina)* params.tamanoPagina; //14
+    var rangoFinal=rangoInicial + params.tamanoPagina;//21
    
     dataArrayObject.forEach(element => {
       if((rangoInicial <= count) && (rangoFinal > count))
@@ -46,33 +49,33 @@ export class ProductsService {
    getEventos(params, callback){
 
     var config= this.config.getConfigSession();
-
     //Valida si aplica mock
     if(config.eventos){
      //Solo entra si esta en modo dumy
       this.paginadorDumy(params,result =>{
-        var retono= {data:result,page:params.page,size:Eventos.length,pageSize:params.pageSize }
+        var retono= {data:result,page:params.pagina,size:Eventos.length,pageSize:params.tamanoPagina }
         console.log(retono);
-        console.log("Invocar servicio eventos");
+        console.log("Invocar mock servicio eventos");
         callback(retono);
       });
-    }
-    /*
-      this.eventos(params).subscribe(
+    }else{
+     this.eventos(params).subscribe(
           result => {
                     var date="";
-                      if(result.code=="0") {
-                        
+                      if(result.codigo=="0") {
+                       // console.log(JSON.stringify(result, null, 4));
                       } else {
                         console.log(JSON.stringify(result, null, 4));
                       }
-                      callback();
+                      console.log("Entra al api de buscar eventos" );
+                      callback(result);
                     },
                     error => {
-                      console.log("Error al actualizar la ultima fecha del localstorage:" +error);
-                        console.log(error);
-                        callback();
-      })*/
+                      console.log("Error al consultar eventos:" +error);
+                      console.log(error);
+                      callback(error);
+      })
+    }
 
 
 
@@ -80,19 +83,22 @@ export class ProductsService {
 
    //Invoca api que consulta los eventos
   eventos(params): Observable<any> {
-    var path = "";
-    //Verifica que exita la propiedad config
     var parameterInfo = new ParameterInfo();
-   var headers = new HttpHeaders ();
+
+    var headers = new HttpHeaders ();
     headers.append('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
     headers.append('Access-Control-Allow-Headers', 'Content-Type');
     
-    //console.log(params.toJSON());
+    console.log(params);
     console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
-    return this.http.post(path + this.pathHotels,{ headers: headers});
-  }
+    return this.http.post(
+      (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathProducts,
+     params,
+    { headers: headers}
+     );
+    }
 
   //Invoca api que registra datos del usuario
   hotels(params): Observable<any> {

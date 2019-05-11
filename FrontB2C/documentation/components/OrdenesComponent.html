@@ -1,0 +1,1119 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>turesbalon documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">turesbalon documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>OrdenesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/component/ordenes/ordenes.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ordenes</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ordenes.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ordenes.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dataTitle">dataTitle</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#infoTable">infoTable</a>
+                            </li>
+                            <li>
+                                <a href="#ordenesCount">ordenesCount</a>
+                            </li>
+                            <li>
+                                <a href="#processing">processing</a>
+                            </li>
+                            <li>
+                                <a href="#userInfo">userInfo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#action">action</a>
+                            </li>
+                            <li>
+                                <a href="#cancelarOrden">cancelarOrden</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#correctLogin">correctLogin</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openDetail">openDetail</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(sesion: <a href="../injectables/StorageService.html">StorageService</a>, userService: <a href="../injectables/UserInfoService.html">UserInfoService</a>, parent: <a href="../components/AppComponent.html">AppComponent</a>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>sesion</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserInfoService.html" target="_self" >UserInfoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>parent</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/AppComponent.html" target="_self" >AppComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="action"></a>
+                    <span class="name">
+                        <b>
+                            action
+                        </b>
+                        <a href="#action"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>action()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarOrden"></a>
+                    <span class="name">
+                        <b>
+                            cancelarOrden
+                        </b>
+                        <a href="#cancelarOrden"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarOrden(nav)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>nav</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="correctLogin"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            correctLogin
+                        </b>
+                        <a href="#correctLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>correctLogin(data: <a href="../classes/User.html">User</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDetail"></a>
+                    <span class="name">
+                        <b>
+                            openDetail
+                        </b>
+                        <a href="#openDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDetail(item)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataTitle"></a>
+                        <span class="name">
+                            <b>
+                            dataTitle</b>
+                            <a href="#dataTitle"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+     fechas: &#x27;fecha&#x27;,valor: &#x27;valor&#x27;,evento: &#x27;evento&#x27;,transporte: &#x27;transporte&#x27;, hotel: &quot;hotel&quot;, estado: &#x27;estado&#x27;, accion: &#x27;accion&#x27;
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="infoTable"></a>
+                        <span class="name">
+                            <b>
+                            infoTable</b>
+                            <a href="#infoTable"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>any[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ordenesCount"></a>
+                        <span class="name">
+                            <b>
+                            ordenesCount</b>
+                            <a href="#ordenesCount"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="processing"></a>
+                        <span class="name">
+                            <b>
+                            processing</b>
+                            <a href="#processing"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userInfo"></a>
+                        <span class="name">
+                            <b>
+                            userInfo</b>
+                            <a href="#userInfo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/component/ordenes/ordenes.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
+import {Session } from &#x27;../../Models/session&#x27;;
+import { StorageService } from &#x27;../../storage/storage.service&#x27;;
+import {User } from &#x27;../../Models/User&#x27;;
+import {orden } from &#x27;../../Models/orden&#x27;;
+import {UserInfoService} from &#x27;../../service/user-info.service&#x27;
+import {AppComponent} from &#x27;../../app.component&#x27;;
+import {ordenes } from &#x27;../../mock/oredenes&#x27;;
+import {DetalleOrdenComponent} from &#x27;../detalle-orden/detalle-orden.component&#x27;;
+import {MatDialog} from &#x27;@angular/material&#x27;;
+@Component({
+  selector: &#x27;app-ordenes&#x27;,
+  templateUrl: &#x27;./ordenes.component.html&#x27;,
+  styleUrls: [&#x27;./ordenes.component.css&#x27;]
+})
+export class OrdenesComponent implements OnInit {
+  userInfo :User;
+  ordenesCount:number;
+  dataTitle &#x3D; {
+     fechas: &#x27;fecha&#x27;,valor: &#x27;valor&#x27;,evento: &#x27;evento&#x27;,transporte: &#x27;transporte&#x27;, hotel: &quot;hotel&quot;, estado: &#x27;estado&#x27;, accion: &#x27;accion&#x27;
+  }
+  infoTable: any[];
+  processing:boolean;
+  constructor(private sesion:StorageService, private userService: UserInfoService, private parent: AppComponent
+  , public dialog: MatDialog) { 
+
+  }
+
+  ngOnInit() {
+    this.userInfo &#x3D;this.sesion.loadSessionData().user;
+    
+    this.action();
+}
+
+  action(){
+    console.log(&quot;Eschua evento&quot;);
+    this.processing&#x3D;true;
+    
+
+    var params &#x3D;{
+              FechaInicio: &quot;2019-03-31&quot;,
+              FechaFin: &quot;2019-04-29&quot;,
+              IdUsuario: this.userInfo.userid,
+              ConDetalle: &quot;true&quot;,
+              TipoConsulta: &quot;ESTANDAR&quot;
+    }
+
+    this.userService.odersUser(params).subscribe(
+      result &#x3D;&gt; {
+         if(result.codigo&#x3D;&#x3D;&quot;0&quot;){
+
+        
+            console.log(result);
+            this.infoTable &#x3D; result.Orders;
+            this.ordenesCount&#x3D;this.infoTable.length; 
+           
+
+          }else{
+            this.parent.openDialog( &quot;&quot;,result.mensaje,&quot;Alerta&quot;);
+         }
+         this.processing&#x3D;false;
+      },
+      error &#x3D;&gt; {
+          console.log(error);
+          this.processing &#x3D; false;
+          this.parent.openDialog( &quot;&quot;,&quot;Servidor no disponible&quot;,&quot;Alerta&quot;);
+          this.infoTable &#x3D; ordenes;
+      })
+     
+  }
+
+  cancelarOrden(nav){
+    console.log(&quot;Eschua evento&quot;);
+    this.processing&#x3D;true;
+    var params &#x3D;{
+              EstadoOrden: &quot;C&quot;,
+              CodigoOrden: nav.CodigoOrden,
+              IdUsuario: nav.IdUsuario,
+     }
+
+    this.userService.updateUser(params).subscribe(
+      result &#x3D;&gt; {
+         if(result.codigo&#x3D;&#x3D;&quot;0&quot;){
+            console.log(result);
+            this.parent.openDialog( &quot;&quot;,&quot;Orden Cancelada !!&quot;,&quot;Alerta&quot;);
+            this.action();
+          }else{
+            this.parent.openDialog( &quot;&quot;,result.mensaje,&quot;Alerta&quot;);
+         }
+         this.processing&#x3D;false;
+      },
+      error &#x3D;&gt; {
+          console.log(error);
+          this.processing &#x3D; false;
+          this.parent.openDialog( &quot;&quot;,&quot;Servidor no disponible&quot;,&quot;Alerta&quot;);
+          this.infoTable &#x3D; ordenes;
+      })
+     
+  }
+
+  openDetail( item): void {
+    const dialogRef &#x3D; this.dialog.open(DetalleOrdenComponent, {
+      width: &#x27;70%&#x27;,
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      console.log(&#x27;The dialog was closed&#x27;);
+    });
+  }
+
+  private correctLogin(data: User){
+    var sessionData&#x3D; new Session();
+    sessionData.user&#x3D;data;
+   // this.storageService.setCurrentSession(sessionData);
+    //this.router.navigate([&#x27;/&#x27;]);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid&quot; style&#x3D;&quot;margin-bottom: 20px;&quot;&gt;
+    &lt;div class&#x3D;&quot;row &quot;&gt;
+      &lt;div class&#x3D;&quot;col-auto mr-auto&quot;&gt; 
+          &lt;a class&#x3D;&quot;nav-link&quot; style&#x3D;&quot;display: inline-block&quot; href&#x3D;&quot;#&quot;&gt;TouresBalon&lt;/a&gt;&gt; 
+          &lt;a class&#x3D;&quot;nav-link&quot; style&#x3D;&quot;display: inline-block&quot; href&#x3D;&quot;#&quot;&gt;{{userInfo.username}}&lt;/a&gt;&gt; 
+         Mis Ordenes 
+        &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-auto&quot;&gt;
+          &lt;div class&#x3D;&quot;card&quot; style&#x3D;&quot;width: 18rem;&quot;&gt;
+             &lt;div class&#x3D;&quot;card-body &quot;&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-2&quot;&gt;&lt;mat-icon&gt;shopping_cart&lt;/mat-icon&gt; &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col-7&quot;&gt; &lt;a [routerLink]&#x3D;&quot;[&#x27;/carro&#x27;]&quot;&gt;Mi Carrito&lt;/a&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+       &lt;/div&gt;
+       
+    &lt;/div&gt;
+    
+  &lt;/div&gt;
+&lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+          {{ordenesCount}} Ordenes encontradas
+          &lt;/div&gt;
+          &lt;/div&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-3&quot;&gt;
+            &lt;div class&#x3D;&quot;card&quot; style&#x3D;&quot;width: 18rem;&quot;&gt;
+                &lt;div class&#x3D;&quot;card-header&quot;&gt;
+                  Filtros                
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;card-body &quot;&gt;
+                  &lt;div class&#x3D;&quot;custom-control custom-checkbox my-1 mr-sm-2&quot;&gt;
+                      &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; id&#x3D;&quot;customControlInline&quot;&gt;
+                      &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;customControlInline&quot;&gt;Todas los filtros&lt;/label&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;custom-control custom-checkbox my-1 mr-sm-2&quot;&gt;
+                        &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; id&#x3D;&quot;customControlInline&quot;&gt;
+                        &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;customControlInline&quot;&gt;Fechas&lt;/label&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;custom-control custom-checkbox my-1 mr-sm-2&quot;&gt;
+                        &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; id&#x3D;&quot;customControlInline&quot;&gt;
+                        &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;customControlInline&quot;&gt;Valor&lt;/label&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;custom-control custom-checkbox my-1 mr-sm-2&quot;&gt;
+                        &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; id&#x3D;&quot;customControlInline&quot;&gt;
+                        &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;customControlInline&quot;&gt;Evento&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;custom-control custom-checkbox my-1 mr-sm-2&quot;&gt;
+                        &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;custom-control-input&quot; id&#x3D;&quot;customControlInline&quot;&gt;
+                        &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;customControlInline&quot;&gt;Estado&lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+              &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-8&quot;&gt;
+          
+            &lt;div class&#x3D;&quot;card mb-3&quot; &gt;
+                &lt;h2&gt;Mis Ordenes&lt;/h2&gt;
+                &lt;div class&#x3D;&quot;row no-gutters&quot;  *ngIf&#x3D;&quot;!processing&quot;&gt;
+                 
+
+                    &lt;table class&#x3D;&quot;table table-striped&quot;&gt;
+                        &lt;thead class&#x3D;&quot;thead-dark&quot;&gt;
+                          &lt;tr&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;#&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Fecha&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Valor&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Evento&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Transporte&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Hotel&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Estado&lt;/th&gt;
+                            &lt;th scope&#x3D;&quot;col&quot;&gt;Acción&lt;/th&gt;
+                          &lt;/tr&gt;
+                        &lt;/thead&gt;
+                        &lt;tbody&gt;
+                          &lt;tr *ngFor&#x3D;&quot;let nav of infoTable&quot;&gt;
+                            &lt;th scope&#x3D;&quot;row&quot;&gt;{{nav.CodigoOrden}}&lt;/th&gt;
+                            &lt;td&gt;{{nav.FechaOrden}}&lt;/td&gt;
+                            &lt;td&gt;{{nav.ValorOrden | currency}}&lt;/td&gt;
+                            &lt;td&gt;{{nav.Evento.NombreEvento}}&lt;/td&gt;
+                            &lt;td&gt;{{nav.Transporte? nav.Transporte.EmpresaTransporte:&#x27;N/A&#x27;}}&lt;/td&gt;
+                            &lt;td&gt;{{nav.Hotel? nav.Hotel.EmpresaHotel:&#x27;N/A&#x27;}}&lt;/td&gt;
+                            &lt;td&gt;{{nav.EstadoOrden}}&lt;/td&gt;
+                            &lt;td&gt; 
+                                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger&quot; (click)&#x3D;&quot;cancelarOrden(nav)&quot;&gt;Cancelar Orden&lt;/button&gt;
+                                &amp;nbsp;&amp;nbsp;
+                                &lt;button class&#x3D;&quot;btn btn-primary&quot;  (click)&#x3D;&quot;openDetail(nav)&quot;  type&#x3D;&quot;submit&quot;&gt;ver&lt;/button&gt;&lt;/td&gt;
+                          &lt;/tr&gt;
+                          
+                        &lt;/tbody&gt;
+                      &lt;/table&gt;
+
+
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;processing&quot; style&#x3D;&quot;margin-left: 50%&quot;&gt;
+                    &lt;mat-spinner&gt;&lt;/mat-spinner&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+          &lt;/div&gt;
+      &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./ordenes.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.card-color-blue{
+    background-color:  rgb(31, 72, 124) !important;
+    color: white;
+}
+.col-sm{
+    margin-bottom: 25px;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+     padding: 0px; 
+}
+
+.col-sm[_ngcontent-c12] {
+     margin-bottom: 0px;
+}
+
+.background-grey{
+    background-color: #80808029;
+    padding: 10px;
+}
+
+.background-white{
+    background-color:#fff;
+    padding: 10px;
+}
+.card-logo{
+ width: 120px;
+}
+table {
+    width: 100%;
+  }
+  .thead-dark, .table .thead-dark th{
+
+    background-color:  rgb(31, 72, 124) !important;
+    color: white;
+  }</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid" style="margin-bottom: 20px;">    <div class="row ">      <div class="col-auto mr-auto">           <a class="nav-link" style="display: inline-block" href="#">TouresBalon</a>>           <a class="nav-link" style="display: inline-block" href="#">{{userInfo.username}}</a>>          Mis Ordenes         </div>      <div class="col-auto">          <div class="card" style="width: 18rem;">             <div class="card-body ">              <div class="row">                  <div class="col-2"><mat-icon>shopping_cart</mat-icon> </div>                  <div class="col-7"> <a [routerLink]="[\'/carro\']">Mi Carrito</a></div>                </div>              </div>            </div>       </div>           </div>      </div><div class="container-fluid">    <div class="row">        <div class="col-sm">          {{ordenesCount}} Ordenes encontradas          </div>          </div>    <div class="row">        <div class="col-3">            <div class="card" style="width: 18rem;">                <div class="card-header">                  Filtros                                </div>                <div class="card-body ">                  <div class="custom-control custom-checkbox my-1 mr-sm-2">                      <input type="checkbox" class="custom-control-input" id="customControlInline">                      <label class="custom-control-label" for="customControlInline">Todas los filtros</label>                    </div>                    <div class="custom-control custom-checkbox my-1 mr-sm-2">                        <input type="checkbox" class="custom-control-input" id="customControlInline">                        <label class="custom-control-label" for="customControlInline">Fechas</label>                    </div>                    <div class="custom-control custom-checkbox my-1 mr-sm-2">                        <input type="checkbox" class="custom-control-input" id="customControlInline">                        <label class="custom-control-label" for="customControlInline">Valor</label>                    </div>                    <div class="custom-control custom-checkbox my-1 mr-sm-2">                        <input type="checkbox" class="custom-control-input" id="customControlInline">                        <label class="custom-control-label" for="customControlInline">Evento</label>                    </div>                    <div class="custom-control custom-checkbox my-1 mr-sm-2">                        <input type="checkbox" class="custom-control-input" id="customControlInline">                        <label class="custom-control-label" for="customControlInline">Estado</label>                    </div>                </div>                              </div>        </div>        <div class="col-8">                      <div class="card mb-3" >                <h2>Mis Ordenes</h2>                <div class="row no-gutters"  *ngIf="!processing">                                     <table class="table table-striped">                        <thead class="thead-dark">                          <tr>                            <th scope="col">#</th>                            <th scope="col">Fecha</th>                            <th scope="col">Valor</th>                            <th scope="col">Evento</th>                            <th scope="col">Transporte</th>                            <th scope="col">Hotel</th>                            <th scope="col">Estado</th>                            <th scope="col">Acción</th>                          </tr>                        </thead>                        <tbody>                          <tr *ngFor="let nav of infoTable">                            <th scope="row">{{nav.CodigoOrden}}</th>                            <td>{{nav.FechaOrden}}</td>                            <td>{{nav.ValorOrden | currency}}</td>                            <td>{{nav.Evento.NombreEvento}}</td>                            <td>{{nav.Transporte? nav.Transporte.EmpresaTransporte:\'N/A\'}}</td>                            <td>{{nav.Hotel? nav.Hotel.EmpresaHotel:\'N/A\'}}</td>                            <td>{{nav.EstadoOrden}}</td>                            <td>                                 <button type="button" class="btn btn-danger" (click)="cancelarOrden(nav)">Cancelar Orden</button>                                &nbsp;&nbsp;                                <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">ver</button></td>                          </tr>                                                  </tbody>                      </table>                </div>                <div *ngIf="processing" style="margin-left: 50%">                    <mat-spinner></mat-spinner>                </div>            </div>                      </div>      </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BuscadorComponent', 'selector': 'app-buscador'},{'name': 'CampaingComponent', 'selector': 'app-campaing'},{'name': 'CarroComponent', 'selector': 'app-carro'},{'name': 'CrearOrdenComponent', 'selector': 'app-crear-orden'},{'name': 'DatalleEventoComponent', 'selector': 'app-datalle-evento'},{'name': 'DatosUsuarioComponent', 'selector': 'app-datos-usuario'},{'name': 'DetalleOrdenComponent', 'selector': 'app-detalle-orden'},{'name': 'FechaBuscadorComponent', 'selector': 'app-fecha-buscador'},{'name': 'homeComponent', 'selector': 'app-home'},{'name': 'HotelesComponent', 'selector': 'app-hoteles'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MessageComponent', 'selector': 'app-message'},{'name': 'NavegadorComponent', 'selector': 'app-navegador'},{'name': 'OrdenesComponent', 'selector': 'app-ordenes'},{'name': 'PanelBuscadorComponent', 'selector': 'app-panel-buscador'},{'name': 'PaquetesComponent', 'selector': 'app-paquetes'},{'name': 'PasosCompraComponent', 'selector': 'app-pasos-compra'},{'name': 'ProductoComponent', 'selector': 'app-producto'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'VuelosComponent', 'selector': 'app-vuelos'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OrdenesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OrdenesComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

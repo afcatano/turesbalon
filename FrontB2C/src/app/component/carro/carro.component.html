@@ -62,6 +62,10 @@
                                 <div class="row">
                                     <div class="col-sm">
                                       <P>Cantidad: {{item.Evento.cantidadPersonas}}</P>
+                                      <span ><a (click)="removerProducto(item,'E')"style="cursor: pointer;"><mat-icon>remove_circle</mat-icon></a></span>
+                                      <span ><a (click)="addProducto(item,'E')"style="cursor: pointer;"><mat-icon>add_circle</mat-icon></a></span>
+                                      
+                                      
                                    </div>
                                    <div class="col-sm">
                                         <P>Valor unitario: {{item.Evento.ValorEvento | currency}} </P>
@@ -101,7 +105,11 @@
                             <li class="list-group-item background-white" *ngIf="item.Transporte">
                                     <div class="row">
                                         <div class="col-sm">
-                                                <P>Cantidad: {{item.Transporte.numSillas}}</P>
+                                           <P>Cantidad: {{item.Transporte.numSillas}}</P>
+                                           <span ><a (click)="removerProducto(item,'T')"style="cursor: pointer;"><mat-icon>remove_circle</mat-icon></a></span>
+                                           <span ><a (click)="addProducto(item,'T')"style="cursor: pointer;"><mat-icon>add_circle</mat-icon></a></span>
+                                           <span ><a (click)="delteItemProducto(item,'T')"style="cursor: pointer;"><mat-icon>delete</mat-icon></a></span>
+
                                         </div>
                                         <div class="col-sm">
                                             <P>Valor unitario: {{item.Transporte.valor | currency}} </P>
@@ -131,7 +139,11 @@
                             <li class="list-group-item background-white" *ngIf="item.Hotel">
                                 <div class="row">
                                      <div class="col-sm">
-                                            <P>Cantidad: {{item.Hotel.cantidadPersonas}}</P>
+                                      <P>Cantidad: {{item.Hotel.cantidadPersonas}}</P>
+                                      <span ><a (click)="removerProducto(item,'H')" style="cursor: pointer;"><mat-icon>remove_circle</mat-icon></a></span>
+                                      <span ><a (click)="addProducto(item,'H')" style="cursor: pointer;"><mat-icon>add_circle</mat-icon></a></span>
+                                      <span ><a (click)="delteItemProducto(item,'H')"style="cursor: pointer;"><mat-icon>delete</mat-icon></a></span>
+
                                     </div>
                                     <div class="col-sm">
                                         <P>Valor unitario: {{item.Hotel.valor | currency}} </P>

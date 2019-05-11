@@ -1,5 +1,6 @@
 import { Component, OnInit ,Output,Input,EventEmitter} from '@angular/core';
 import {paqueteInfo} from '../../Models/paqueteInfo';
+import {parametrosBusqueda} from '../../Models/parametrosBusqueda';
 import { Observable } from 'rxjs';
 
 import {AppComponent} from '../../app.component';
@@ -11,11 +12,11 @@ import {AppComponent} from '../../app.component';
 export class PanelBuscadorComponent implements OnInit {
 
   //Evento que envia la consulta realizada
-  @Output() action = new EventEmitter<paqueteInfo>();
+  @Output() action = new EventEmitter<parametrosBusqueda>();
   
   @Input() params: any;
 
-  paquete={ categoria:"",evento:"", fechaInicial:"", fechaFinal:"", cantidad:"1" ,accion:""}
+  paquete={ categoria:"",evento:"", fechaInicial:"", fechaFinal:"", cantidad:1 ,accion:""}
   constructor(private parent: AppComponent) { }
 
   validate={
@@ -73,11 +74,24 @@ export class PanelBuscadorComponent implements OnInit {
     replaceNegative(text){
       this.paquete.cantidad=text.toString().replace("-","");
       }
+
   onSubmit() {
     console.log("Event emitter");
     if(this.validateSumitForms()){
-    var paquete = new paqueteInfo(this.paquete.categoria, this.paquete.evento,this.paquete.fechaInicial,this.paquete.fechaFinal, this.paquete.cantidad);
-    this.action.emit(paquete);
+     var paramsBusqueda = new parametrosBusqueda();
+     paramsBusqueda.categoria= this.paquete.categoria,
+     paramsBusqueda.nombre=  this.paquete.evento,
+     paramsBusqueda.descripcion= "";//this.paquete.descripcion, TODO
+     paramsBusqueda.codigo=  "";//this.paquete.codigo, TODO
+     paramsBusqueda.comodin= "";// this.paquete.comodin, TODO
+     paramsBusqueda.fechaFinal=  this.paquete.fechaFinal,
+     paramsBusqueda.fechaInicial =  this.paquete.fechaInicial,
+     paramsBusqueda.cantidadPersonas =  this.paquete.cantidad,
+     paramsBusqueda.destino = "";// this.paquete.destino, TODO
+     paramsBusqueda.origen=  "";// this.paquete.origen, TODO
+     paramsBusqueda.cantidadItems= 0;//this.paquete.cantidadItems TODO
+    //var paquete = new paqueteInfo(this.paquete.categoria, this.paquete.evento,this.paquete.fechaInicial,this.paquete.fechaFinal, this.paquete.cantidad);
+    this.action.emit(paramsBusqueda);
     }else{
       this.parent.openDialog( "","Seleciona una categoria y/ó ingresa un evento","Alerta");
 

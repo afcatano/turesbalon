@@ -10,7 +10,7 @@ export class ParameterInfo {
 
    //Para utilizar mocks
    public login:boolean  = false;
-   public eventos:boolean = true;
+   public eventos:boolean = false;
    public campaing:boolean = false;
   
  }

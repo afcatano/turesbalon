@@ -50,7 +50,7 @@ export class PasosCompraComponent implements OnInit {
       }
 
       this.pasos.push({paso:0});
-      this.pasos.push({paso:numPasos,nombre:"Checkout",estado:this.params.nombrePaso=='C'?true:false});
+      this.pasos.push({paso:numPasos,nombre:"Checkint",estado:this.params.nombrePaso=='C'?true:false});
      
 
     }

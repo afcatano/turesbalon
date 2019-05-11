@@ -37,7 +37,7 @@
           <div class="buscador_input">
               <div class="form-group">
                   <label for="exampleFormControlSelect1">Evento</label>
-                <input  name="Evento" type="text" class="form-control" [(ngModel)]="params.evento" maxlength="50" minlength="3" placeholder="Evento">
+                <input  name="Evento" type="text" class="form-control" [(ngModel)]="params.evento" maxlength="100" minlength="3" placeholder="Evento">
                 <div *ngIf="!validate.evento.valid" class="invalid-feedback">
                   {{validate.evento.message}}
                 </div>

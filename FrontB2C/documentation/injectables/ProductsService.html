@@ -1,0 +1,949 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>turesbalon documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">turesbalon documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>ProductsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/service/products.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#pathCampaign">pathCampaign</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#pathHotels">pathHotels</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#pathProducts">pathProducts</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#campaign">campaign</a>
+                            </li>
+                            <li>
+                                <a href="#eventos">eventos</a>
+                            </li>
+                            <li>
+                                <a href="#getCampaing">getCampaing</a>
+                            </li>
+                            <li>
+                                <a href="#getEventos">getEventos</a>
+                            </li>
+                            <li>
+                                <a href="#hotels">hotels</a>
+                            </li>
+                            <li>
+                                <a href="#paginadorDumy">paginadorDumy</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, config: <a href="../injectables/StorageConfigService.html">StorageConfigService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/service/products.service.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageConfigService.html" target="_self" >StorageConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="campaign"></a>
+                    <span class="name">
+                        <b>
+                            campaign
+                        </b>
+                        <a href="#campaign"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>campaign(params)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/app/service/products.service.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eventos"></a>
+                    <span class="name">
+                        <b>
+                            eventos
+                        </b>
+                        <a href="#eventos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eventos(params)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/service/products.service.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCampaing"></a>
+                    <span class="name">
+                        <b>
+                            getCampaing
+                        </b>
+                        <a href="#getCampaing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCampaing(params, callback)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/service/products.service.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getEventos"></a>
+                    <span class="name">
+                        <b>
+                            getEventos
+                        </b>
+                        <a href="#getEventos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getEventos(params, callback)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/service/products.service.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hotels"></a>
+                    <span class="name">
+                        <b>
+                            hotels
+                        </b>
+                        <a href="#hotels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hotels(params)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/app/service/products.service.ts:104</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginadorDumy"></a>
+                    <span class="name">
+                        <b>
+                            paginadorDumy
+                        </b>
+                        <a href="#paginadorDumy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>paginadorDumy(params, callback)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/service/products.service.ts:28</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>params</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>callback</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pathCampaign"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            pathCampaign</b>
+                            <a href="#pathCampaign"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/service/products.service.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pathHotels"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            pathHotels</b>
+                            <a href="#pathHotels"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/service/products.service.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pathProducts"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            pathProducts</b>
+                            <a href="#pathProducts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/service/products.service.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import {ParameterInfo} from &#x27;../ParameterInfo&#x27;;
+import {Evento} from &#x27;../Models/evento&#x27;;
+import {Eventos} from &#x27;../mock/mockEventos&#x27;;
+import {StorageConfigService} from &#x27;../storage/storage-config.service&#x27;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class ProductsService {
+
+ private pathHotels: string;
+ private pathCampaign: string;
+ private pathProducts: string;
+
+  constructor(private http: HttpClient ,private config:StorageConfigService) {
+  
+    this.pathHotels&#x3D; &quot;/api/products/hotels&quot;;
+    this.pathCampaign&#x3D; &quot;/campanas/consulta&quot;;
+    this.pathProducts&#x3D; &quot;/producto/consulta&quot;;
+
+   }
+
+
+   //Dumy paginador
+   paginadorDumy(params,callback){
+    var data&#x3D; Eventos;
+    var dataObject&#x3D;[];
+    var dataArrayObject&#x3D;[];
+    dataArrayObject&#x3D;Eventos;
+    var total &#x3D; Eventos.length;
+    var count&#x3D;0;
+    var rangoInicial&#x3D;0;
+    //params.page&#x3D; params.page&#x3D;&#x3D;0?1:params.page;
+    rangoInicial&#x3D;(params.pagina)* params.tamanoPagina; //14
+    var rangoFinal&#x3D;rangoInicial + params.tamanoPagina;//21
+   
+    dataArrayObject.forEach(element &#x3D;&gt; {
+      if((rangoInicial &lt;&#x3D; count) &amp;&amp; (rangoFinal &gt; count))
+          dataObject.push(element);
+
+        count&#x3D;count+1;
+    });
+    callback(dataObject);
+   }
+
+   getEventos(params, callback){
+
+    var config&#x3D; this.config.getConfigSession();
+    //Valida si aplica mock
+    if(config.eventos){
+     //Solo entra si esta en modo dumy
+      this.paginadorDumy(params,result &#x3D;&gt;{
+        var retono&#x3D; {data:result,page:params.pagina,size:Eventos.length,pageSize:params.tamanoPagina }
+        console.log(retono);
+        console.log(&quot;Invocar mock servicio eventos&quot;);
+        callback(retono);
+      });
+    }else{
+     this.eventos(params).subscribe(
+          result &#x3D;&gt; {
+                    var date&#x3D;&quot;&quot;;
+                      if(result.codigo&#x3D;&#x3D;&quot;0&quot;) {
+                       // console.log(JSON.stringify(result, null, 4));
+                      } else {
+                        console.log(JSON.stringify(result, null, 4));
+                      }
+                      console.log(&quot;Entra al api de buscar eventos&quot; );
+                      callback(result);
+                    },
+                    error &#x3D;&gt; {
+                      console.log(&quot;Error al consultar eventos:&quot; +error);
+                      console.log(error);
+                      callback(error);
+      })
+    }
+
+
+
+   }
+
+   //Invoca api que consulta los eventos
+  eventos(params): Observable&lt;any&gt; {
+    var parameterInfo &#x3D; new ParameterInfo();
+
+    var headers &#x3D; new HttpHeaders ();
+    headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Origin&#x27;, &#x27;*&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Methods&#x27;, &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Headers&#x27;, &#x27;Content-Type&#x27;);
+    
+    console.log(params);
+    console.log(&quot;url-&gt;&quot;+parameterInfo.isLocal ? parameterInfo.pathApis: &quot;&quot;);
+    return this.http.post(
+      (parameterInfo.isLocal ? parameterInfo.pathApis: &quot;&quot; )+this.pathProducts,
+     params,
+    { headers: headers}
+     );
+    }
+
+  //Invoca api que registra datos del usuario
+  hotels(params): Observable&lt;any&gt; {
+    var path &#x3D; &quot;&quot;;
+    //Verifica que exita la propiedad config
+    var parameterInfo &#x3D; new ParameterInfo();
+   var headers &#x3D; new HttpHeaders ();
+    headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Origin&#x27;, &#x27;*&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Methods&#x27;, &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Headers&#x27;, &#x27;Content-Type&#x27;);
+    
+    //console.log(params.toJSON());
+    console.log(&quot;url-&gt;&quot;+parameterInfo.isLocal ? parameterInfo.pathApis: &quot;&quot;);
+    return this.http.post(path + this.pathHotels,{ headers: headers});
+  }
+
+
+
+  getCampaing(params, callback){
+
+    var config&#x3D; this.config.getConfigSession();
+    console.log(&quot;Entra a buscar campañas&quot; );
+    //Valida si aplica mock
+    if(config.campaing){
+      var result&#x3D;{codigo:&quot;01&quot;, mensaje:&quot;&quot;};
+     //Solo entra si esta en modo dumy
+     console.log(&quot;Entra al mock de buscar campañas&quot; );
+     callback(result);
+    }else{
+    
+      this.campaign(params).subscribe(
+          result &#x3D;&gt; {
+                    var date&#x3D;&quot;&quot;;
+                      if(result.codigo&#x3D;&#x3D;&quot;0&quot;) {
+                       // console.log(JSON.stringify(result, null, 4));
+                      } else {
+                        console.log(JSON.stringify(result, null, 4));
+                      }
+                      console.log(&quot;Entra al api de buscar campañas&quot; );
+                      callback(result);
+                    },
+                    error &#x3D;&gt; {
+                      console.log(&quot;Error al consultar campañas:&quot; +error);
+                      console.log(error);
+                      callback(error);
+      })
+    }
+ }
+
+  //Invoca api que consulta las campañas
+  campaign(params): Observable&lt;any&gt; {
+    var parameterInfo &#x3D; new ParameterInfo();
+
+    var headers &#x3D; new HttpHeaders ();
+    headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Origin&#x27;, &#x27;*&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Methods&#x27;, &#x27;GET,POST,PUT,DELETE,OPTIONS&#x27;);
+    headers.append(&#x27;Access-Control-Allow-Headers&#x27;, &#x27;Content-Type&#x27;);
+    
+    console.log(params);
+    console.log(&quot;url-&gt;&quot;+parameterInfo.isLocal ? parameterInfo.pathApis: &quot;&quot;);
+    return this.http.post(
+      (parameterInfo.isLocal ? parameterInfo.pathApis: &quot;&quot; )+this.pathCampaign,
+     params,
+    { headers: headers}
+     );
+    }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProductsService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -41,7 +41,8 @@ export class OrdenesComponent implements OnInit {
               FechaInicio: "2019-03-31",
               FechaFin: "2019-04-29",
               IdUsuario: this.userInfo.userid,
-              ConDetalle: "true"
+              ConDetalle: "true",
+              TipoConsulta: "ESTANDAR"
     }
 
     this.userService.odersUser(params).subscribe(

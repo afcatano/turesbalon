@@ -95,6 +95,7 @@ export class UserInfoService {
     producto.Hotel=params.Hotel;
     producto.Transporte=params.Transporte;
 
+    console.log(producto.toJSON());
     //Verifica que exita la propiedad config
     var param = new ParameterInfo();
     path = param.isLocal ? param.pathApis : param.serve;
