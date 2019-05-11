@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ParameterInfo} from '../ParameterInfo';
 import {StorageConfigService} from '../storage/storage-config.service'
+import {Evento} from '../Models/evento';
+import {Eventos} from '../mock/mockEventos';
 
 @Injectable({
   providedIn: 'root'
@@ -20,18 +22,39 @@ export class ProductosService {
     }
 
 
+    //Dumy paginador
+   paginadorDumy(params,callback){
+    var data= Eventos;
+    var dataObject=[];
+    var dataArrayObject=[];
+    dataArrayObject=Eventos;
+    var total = Eventos.length;
+    var count=0;
+    var rangoInicial=0;
+    //params.page= params.page==0?1:params.page;
+    rangoInicial=(params.pagina)* params.tamanoPagina; //14
+    var rangoFinal=rangoInicial + params.tamanoPagina;//21
+   
+    dataArrayObject.forEach(element => {
+      if((rangoInicial <= count) && (rangoFinal > count))
+          dataObject.push(element);
+
+        count=count+1;
+    });
+    callback(dataObject);
+   }
 
     getProductos(params, callback){
       var config= this.config.getConfigSession();
       //Valida si aplica mock
       if(config.productos){
        //Solo entra si esta en modo dumy
-      /*  this.paginadorDumy(params,result =>{
-          var retono= {data:result,page:params.pagina,size:Eventos.length,pageSize:params.tamanoPagina }
+       this.paginadorDumy(params,result =>{
+          var retono= {eventos:result,paginaActual:params.pagina,cantidadRegistros:Eventos.length,tamanoPagina:params.tamanoPagina,codigo:'0' }
           console.log(retono);
           console.log("Invocar mock servicio eventos");
           callback(retono);
-        });*/
+        });
       }else{
        this.eventos(params).subscribe(
             result => {

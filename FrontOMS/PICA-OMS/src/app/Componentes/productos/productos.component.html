@@ -61,6 +61,35 @@
         </div>
       </div>
   </form>
+  <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+
+  <div class="container separador">
+     <div class="row">
+      <div class="col-sm">
+          {{dataCount}} Productos Encontrados
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-sm" *ngFor="let item of dataEventos">
+          <div class="card" style="width: 18rem;">
+            <img [src]="item.imagen" class="card-img-top" alt="...">
+            <div class="card-body card-color-blue">
+                <div class="row">
+                    <div class="col-6"><p >Precio unitario </p><p class="card-text" style="margin-left: 20%;">{{item.valorEvento | currency}}</p></div>
+                    <div class="col-3">  
+                      <button type="button" style="margin-top: 10px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <mat-paginator #paginator [length]="dataCount" [pageIndex]="params.page" [pageSize]="params.pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPaginateChange($event)">
+      </mat-paginator>
+    </div>
+
+
       <div class="row">
         <div class="col-md-12">
             <div class="mat-elevation-z8">

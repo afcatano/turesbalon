@@ -88,8 +88,8 @@ export class PaquetesComponent implements OnInit {
     this.params.page = event.pageIndex;
     this.params.pageSize = event.pageSize;
 
-    event
-    this.params
+    //event
+    //this.params
     this.getDataEventos();
   }
 
