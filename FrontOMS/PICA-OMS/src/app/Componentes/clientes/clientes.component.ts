@@ -8,6 +8,9 @@ import  {TiposDocumento} from '../../mock/tipoDocumentos';
 })
 export class ClientesComponent implements OnInit {
   
+
+  data= {tipoDocumento:""}
+
   constructor() { }
 
   dataTiposDocumento = TiposDocumento;

@@ -61,7 +61,7 @@ export class UserInfoService {
      );
   }
 
-  //Invoca api que registra datos del usuario
+  //Invoca api que consulta las ordenes del usaurio 
   odersUser(params): Observable<any> {
     var path = "";
     console.log(params);

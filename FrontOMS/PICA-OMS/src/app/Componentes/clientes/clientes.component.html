@@ -11,8 +11,9 @@
       <div class="col-sm-2"></div>
       <label for="input" class="col-sm-2 col-form-label">Tipo Documento</label>
       <div class="col-sm-6">
-        <select class="form-control" name="TipoDocumento">
-          </select>
+        <select class="form-control "  name="tipoDocumento" [(ngModel)]="data.tipoDocumento"  >
+          <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}">{{data.name}}</option>
+        </select>
       </div>
     </div>
     <div class="form-group row">
