@@ -30,11 +30,25 @@ namespace BackEndsPICAWeb.Servicios.Clientes
                     City = prmcustomerRequest.Customer.City,
                     Country = prmcustomerRequest.Customer.Country,
                     User = prmcustomerRequest.Customer.User,
-                    Status = prmcustomerRequest.Customer.StatusCustomer
+                    Status = prmcustomerRequest.Customer.StatusCustomer,
+                    Pagina = prmcustomerRequest.Customer.Page,
+                    RegsxPagina = prmcustomerRequest.Customer.RegsPerPage,
+                    RegsTotales= prmcustomerRequest.Customer.TotalsRegs,
+                    FechaIniFact = prmcustomerRequest.Customer.DateIniFact,
+                    FechaFinFact = prmcustomerRequest.Customer.DateFinFact,
+                    Evento  = prmcustomerRequest.Customer.EventType
                 };
 
-                iCSBusiness = new CustomerServicesBusiness();
-                customerResponse = iCSBusiness.GetResultCustomerDTOs(clientesDTO);
+                if (clientesDTO.Pagina == 0)
+                {
+                    iCSBusiness = new CustomerServicesBusiness();
+                    customerResponse = iCSBusiness.GetResultCustomerDTOs(clientesDTO);
+                }
+                else
+                {
+                    iCSBusiness = new CustomerServicesBusiness();
+                    customerResponse = iCSBusiness.GetResultCustomerDTOsPaginado(clientesDTO);
+                }
             }
             catch (Exception ex)
             {

@@ -22,6 +22,12 @@ namespace BackEndsPICAWeb.Business.Clientes.DTO
         public string Password { get; set; }
         public string Status { get; set; }
         public List<CreditCardDTO> LCreditCard { get; set; }
+        public string Evento { get; set; }
+        public DateTime FechaIniFact { get; set; }
+        public DateTime FechaFinFact { get; set; }
+        public long Pagina { get; set; }
+        public long RegsxPagina { get; set; }
+        public long RegsTotales { get; set; }
 
         public override bool Equals(object obj)
         {

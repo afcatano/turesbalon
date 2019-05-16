@@ -7,7 +7,7 @@ namespace BackEndsPICAWeb.Servicios.Clientes
     interface ICustomerService
     {
 
-        [XmlSerializerFormatAttribute()] //comando para el formato del WSDL
+        [XmlSerializerFormat()] //comando para el formato del WSDL
         [OperationContract]
         GetCustomerResponse GetCustomer(GetCustomerRequest customerRequest);
 

@@ -373,6 +373,8 @@ public partial class PutCustomer
     
     private long idNumberField;
     
+    private bool idNumberFieldSpecified;
+    
     private string firstNameField;
     
     private string lastNamesField;
@@ -389,9 +391,9 @@ public partial class PutCustomer
     
     private string userField;
     
-    private string statusCustomerField;
-
     private string passwordField;
+    
+    private string statusCustomerField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -432,6 +434,20 @@ public partial class PutCustomer
         set
         {
             this.idNumberField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool IdNumberSpecified
+    {
+        get
+        {
+            return this.idNumberFieldSpecified;
+        }
+        set
+        {
+            this.idNumberFieldSpecified = value;
         }
     }
     
@@ -546,8 +562,9 @@ public partial class PutCustomer
             this.userField = value;
         }
     }
+    
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
+    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
     public string Password
     {
         get
@@ -559,6 +576,7 @@ public partial class PutCustomer
             this.passwordField = value;
         }
     }
+    
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order=12)]
     public string StatusCustomer
@@ -574,345 +592,111 @@ public partial class PutCustomer
     }
 }
 
-///// <remarks/>
-//[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
-//[System.SerializableAttribute()]
-//[System.Diagnostics.DebuggerStepThroughAttribute()]
-//[System.ComponentModel.DesignerCategoryAttribute("code")]
-//[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
-//public partial class CreditCardGet
-//{
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+public partial class CreditCardGet
+{
     
-//    private string typeField;
+    private string typeField;
     
-//    private string numberField;
+    private string numberField;
     
-//    private string cardNameField;
+    private string cardNameField;
     
-//    private double expirationDateField;
+    private string expirationDateField;
     
-//    private string securityCodeField;
+    private string securityCodeField;
     
-//    private string statusCardField;
+    private string statusCardField;
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-//    public string Type
-//    {
-//        get
-//        {
-//            return this.typeField;
-//        }
-//        set
-//        {
-//            this.typeField = value;
-//        }
-//    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public string Type
+    {
+        get
+        {
+            return this.typeField;
+        }
+        set
+        {
+            this.typeField = value;
+        }
+    }
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-//    public string Number
-//    {
-//        get
-//        {
-//            return this.numberField;
-//        }
-//        set
-//        {
-//            this.numberField = value;
-//        }
-//    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+    public string Number
+    {
+        get
+        {
+            return this.numberField;
+        }
+        set
+        {
+            this.numberField = value;
+        }
+    }
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-//    public string CardName
-//    {
-//        get
-//        {
-//            return this.cardNameField;
-//        }
-//        set
-//        {
-//            this.cardNameField = value;
-//        }
-//    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+    public string CardName
+    {
+        get
+        {
+            return this.cardNameField;
+        }
+        set
+        {
+            this.cardNameField = value;
+        }
+    }
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-//    public double ExpirationDate
-//    {
-//        get
-//        {
-//            return this.expirationDateField;
-//        }
-//        set
-//        {
-//            this.expirationDateField = value;
-//        }
-//    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+    public string ExpirationDate
+    {
+        get
+        {
+            return this.expirationDateField;
+        }
+        set
+        {
+            this.expirationDateField = value;
+        }
+    }
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-//    public string SecurityCode
-//    {
-//        get
-//        {
-//            return this.securityCodeField;
-//        }
-//        set
-//        {
-//            this.securityCodeField = value;
-//        }
-//    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+    public string SecurityCode
+    {
+        get
+        {
+            return this.securityCodeField;
+        }
+        set
+        {
+            this.securityCodeField = value;
+        }
+    }
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-//    public string StatusCard
-//    {
-//        get
-//        {
-//            return this.statusCardField;
-//        }
-//        set
-//        {
-//            this.statusCardField = value;
-//        }
-//    }
-//}
-
-///// <remarks/>
-//[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
-//[System.SerializableAttribute()]
-//[System.Diagnostics.DebuggerStepThroughAttribute()]
-//[System.ComponentModel.DesignerCategoryAttribute("code")]
-//[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
-//public partial class GetCustomerResult
-//{
-    
-//    private long idUserField;
-    
-//    private string idTypeField;
-    
-//    private string idNumberField;
-    
-//    private string firstNameField;
-    
-//    private string lastNamesField;
-    
-//    private string emailField;
-    
-//    private string phoneNumberField;
-    
-//    private string addressField;
-    
-//    private string cityField;
-    
-//    private string countryField;
-    
-//    private string userField;
-    
-//    private string passwordField;
-    
-//    private string statusCustomerField;
-    
-//    private CreditCardGet creditCardField;
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-//    public long IdUser
-//    {
-//        get
-//        {
-//            return this.idUserField;
-//        }
-//        set
-//        {
-//            this.idUserField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-//    public string IdType
-//    {
-//        get
-//        {
-//            return this.idTypeField;
-//        }
-//        set
-//        {
-//            this.idTypeField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-//    public string IdNumber
-//    {
-//        get
-//        {
-//            return this.idNumberField;
-//        }
-//        set
-//        {
-//            this.idNumberField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-//    public string FirstName
-//    {
-//        get
-//        {
-//            return this.firstNameField;
-//        }
-//        set
-//        {
-//            this.firstNameField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-//    public string LastNames
-//    {
-//        get
-//        {
-//            return this.lastNamesField;
-//        }
-//        set
-//        {
-//            this.lastNamesField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-//    public string Email
-//    {
-//        get
-//        {
-//            return this.emailField;
-//        }
-//        set
-//        {
-//            this.emailField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-//    public string PhoneNumber
-//    {
-//        get
-//        {
-//            return this.phoneNumberField;
-//        }
-//        set
-//        {
-//            this.phoneNumberField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-//    public string Address
-//    {
-//        get
-//        {
-//            return this.addressField;
-//        }
-//        set
-//        {
-//            this.addressField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-//    public string City
-//    {
-//        get
-//        {
-//            return this.cityField;
-//        }
-//        set
-//        {
-//            this.cityField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
-//    public string Country
-//    {
-//        get
-//        {
-//            return this.countryField;
-//        }
-//        set
-//        {
-//            this.countryField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
-//    public string User
-//    {
-//        get
-//        {
-//            return this.userField;
-//        }
-//        set
-//        {
-//            this.userField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
-//    public string Password
-//    {
-//        get
-//        {
-//            return this.passwordField;
-//        }
-//        set
-//        {
-//            this.passwordField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=12)]
-//    public string StatusCustomer
-//    {
-//        get
-//        {
-//            return this.statusCustomerField;
-//        }
-//        set
-//        {
-//            this.statusCustomerField = value;
-//        }
-//    }
-    
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=13)]
-//    public CreditCardGet CreditCard
-//    {
-//        get
-//        {
-//            return this.creditCardField;
-//        }
-//        set
-//        {
-//            this.creditCardField = value;
-//        }
-//    }
-//}
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+    public string StatusCard
+    {
+        get
+        {
+            return this.statusCardField;
+        }
+        set
+        {
+            this.statusCardField = value;
+        }
+    }
+}
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
@@ -920,12 +704,10 @@ public partial class PutCustomer
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
-public partial class GetCustomer
+public partial class GetCustomerResult
 {
     
     private long idUserField;
-    
-    private bool idUserFieldSpecified;
     
     private string idTypeField;
     
@@ -947,7 +729,15 @@ public partial class GetCustomer
     
     private string userField;
     
+    private string passwordField;
+    
     private string statusCustomerField;
+    
+    private CreditCardGet creditCardField;
+    
+    private long totalsRegsField;
+    
+    private bool totalsRegsFieldSpecified;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -960,20 +750,6 @@ public partial class GetCustomer
         set
         {
             this.idUserField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool IdUserSpecified
-    {
-        get
-        {
-            return this.idUserFieldSpecified;
-        }
-        set
-        {
-            this.idUserFieldSpecified = value;
         }
     }
     
@@ -1119,6 +895,20 @@ public partial class GetCustomer
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+    public string Password
+    {
+        get
+        {
+            return this.passwordField;
+        }
+        set
+        {
+            this.passwordField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=12)]
     public string StatusCustomer
     {
         get
@@ -1128,6 +918,458 @@ public partial class GetCustomer
         set
         {
             this.statusCustomerField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+    public CreditCardGet CreditCard
+    {
+        get
+        {
+            return this.creditCardField;
+        }
+        set
+        {
+            this.creditCardField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+    public long TotalsRegs
+    {
+        get
+        {
+            return this.totalsRegsField;
+        }
+        set
+        {
+            this.totalsRegsField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool TotalsRegsSpecified
+    {
+        get
+        {
+            return this.totalsRegsFieldSpecified;
+        }
+        set
+        {
+            this.totalsRegsFieldSpecified = value;
+        }
+    }
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+public partial class GetCustomer
+{
+    
+    private long idUserField;
+    
+    private bool idUserFieldSpecified;
+    
+    private string idTypeField;
+    
+    private long idNumberField;
+    
+    private bool idNumberFieldSpecified;
+    
+    private string firstNameField;
+    
+    private string lastNamesField;
+    
+    private string emailField;
+    
+    private string phoneNumberField;
+    
+    private string addressField;
+    
+    private string cityField;
+    
+    private string countryField;
+    
+    private string userField;
+    
+    private string statusCustomerField;
+    
+    private string eventTypeField;
+    
+    private System.DateTime dateIniFactField;
+    
+    private bool dateIniFactFieldSpecified;
+    
+    private System.DateTime dateFinFactField;
+    
+    private bool dateFinFactFieldSpecified;
+    
+    private long pageField;
+    
+    private bool pageFieldSpecified;
+    
+    private long regsPerPageField;
+    
+    private bool regsPerPageFieldSpecified;
+    
+    private long totalsRegsField;
+    
+    private bool totalsRegsFieldSpecified;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public long IdUser
+    {
+        get
+        {
+            return this.idUserField;
+        }
+        set
+        {
+            this.idUserField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool IdUserSpecified
+    {
+        get
+        {
+            return this.idUserFieldSpecified;
+        }
+        set
+        {
+            this.idUserFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+    public string IdType
+    {
+        get
+        {
+            return this.idTypeField;
+        }
+        set
+        {
+            this.idTypeField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+    public long IdNumber
+    {
+        get
+        {
+            return this.idNumberField;
+        }
+        set
+        {
+            this.idNumberField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool IdNumberSpecified
+    {
+        get
+        {
+            return this.idNumberFieldSpecified;
+        }
+        set
+        {
+            this.idNumberFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+    public string FirstName
+    {
+        get
+        {
+            return this.firstNameField;
+        }
+        set
+        {
+            this.firstNameField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+    public string LastNames
+    {
+        get
+        {
+            return this.lastNamesField;
+        }
+        set
+        {
+            this.lastNamesField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+    public string Email
+    {
+        get
+        {
+            return this.emailField;
+        }
+        set
+        {
+            this.emailField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+    public string PhoneNumber
+    {
+        get
+        {
+            return this.phoneNumberField;
+        }
+        set
+        {
+            this.phoneNumberField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+    public string Address
+    {
+        get
+        {
+            return this.addressField;
+        }
+        set
+        {
+            this.addressField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+    public string City
+    {
+        get
+        {
+            return this.cityField;
+        }
+        set
+        {
+            this.cityField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+    public string Country
+    {
+        get
+        {
+            return this.countryField;
+        }
+        set
+        {
+            this.countryField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+    public string User
+    {
+        get
+        {
+            return this.userField;
+        }
+        set
+        {
+            this.userField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+    public string StatusCustomer
+    {
+        get
+        {
+            return this.statusCustomerField;
+        }
+        set
+        {
+            this.statusCustomerField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+    public string EventType
+    {
+        get
+        {
+            return this.eventTypeField;
+        }
+        set
+        {
+            this.eventTypeField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=13)]
+    public System.DateTime DateIniFact
+    {
+        get
+        {
+            return this.dateIniFactField;
+        }
+        set
+        {
+            this.dateIniFactField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool DateIniFactSpecified
+    {
+        get
+        {
+            return this.dateIniFactFieldSpecified;
+        }
+        set
+        {
+            this.dateIniFactFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=14)]
+    public System.DateTime DateFinFact
+    {
+        get
+        {
+            return this.dateFinFactField;
+        }
+        set
+        {
+            this.dateFinFactField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool DateFinFactSpecified
+    {
+        get
+        {
+            return this.dateFinFactFieldSpecified;
+        }
+        set
+        {
+            this.dateFinFactFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+    public long Page
+    {
+        get
+        {
+            return this.pageField;
+        }
+        set
+        {
+            this.pageField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool PageSpecified
+    {
+        get
+        {
+            return this.pageFieldSpecified;
+        }
+        set
+        {
+            this.pageFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+    public long RegsPerPage
+    {
+        get
+        {
+            return this.regsPerPageField;
+        }
+        set
+        {
+            this.regsPerPageField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool RegsPerPageSpecified
+    {
+        get
+        {
+            return this.regsPerPageFieldSpecified;
+        }
+        set
+        {
+            this.regsPerPageFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+    public long TotalsRegs
+    {
+        get
+        {
+            return this.totalsRegsField;
+        }
+        set
+        {
+            this.totalsRegsField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool TotalsRegsSpecified
+    {
+        get
+        {
+            return this.totalsRegsFieldSpecified;
+        }
+        set
+        {
+            this.totalsRegsFieldSpecified = value;
         }
     }
 }
@@ -1158,47 +1400,47 @@ public partial class PostCustomer
     }
 }
 
-///// <remarks/>
-//[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
-//[System.SerializableAttribute()]
-//[System.Diagnostics.DebuggerStepThroughAttribute()]
-//[System.ComponentModel.DesignerCategoryAttribute("code")]
-//[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
-//public partial class Status
-//{
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xmlns.touresbalon.com/CustomerService")]
+public partial class Status
+{
     
-//    private string codeRespField;
+    private string codeRespField;
     
-//    private string messageRespField;
+    private string messageRespField;
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-//    public string CodeResp
-//    {
-//        get
-//        {
-//            return this.codeRespField;
-//        }
-//        set
-//        {
-//            this.codeRespField = value;
-//        }
-//    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+    public string CodeResp
+    {
+        get
+        {
+            return this.codeRespField;
+        }
+        set
+        {
+            this.codeRespField = value;
+        }
+    }
     
-//    /// <remarks/>
-//    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-//    public string MessageResp
-//    {
-//        get
-//        {
-//            return this.messageRespField;
-//        }
-//        set
-//        {
-//            this.messageRespField = value;
-//        }
-//    }
-//}
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+    public string MessageResp
+    {
+        get
+        {
+            return this.messageRespField;
+        }
+        set
+        {
+            this.messageRespField = value;
+        }
+    }
+}
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("svcutil", "4.6.1055.0")]

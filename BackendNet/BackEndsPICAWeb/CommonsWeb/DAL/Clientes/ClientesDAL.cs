@@ -13,6 +13,7 @@ namespace CommonsWeb.DAL.Clientes
 
         List<OracleParameter> Lstparameters = new List<OracleParameter>();
         string strWhere;
+        string strWherePag;
         string strSET;
         string strPLSQL;
         string strWhereUpdate;
@@ -279,6 +280,253 @@ namespace CommonsWeb.DAL.Clientes
             return rsta;
         }
 
+        public List<ClientesDTO> GetClientesPaginado(ClientesDTO clientesDTO)
+        {
+            string strPLSQL2;
+            List<ClientesDTO> LstClientesDTOs = new List<ClientesDTO>();
+            DataSet dsClientes;
+            DataSet dsCuenta;
+            int tmpRegsTotales = 0;
+            OracleServerHelper OrclConection = new OracleServerHelper();
+            try
+            {
+                strWhere = ConfiguracionParametrosGet(clientesDTO);
+                strWherePag = ConfiguracionParametrosGetPaginado(clientesDTO);
+
+                strPLSQL = "SELECT AX.* FROM( " +
+                        "SELECT rownum registro, X.* FROM( " +
+                        "SELECT A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS " +
+                        "FROM CUSTOMER A " +
+                        "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere +
+                        " ORDER BY ID DESC) X ) AX " + strWherePag;
+
+                if (clientesDTO.RegsTotales == 0)
+                {
+                    strPLSQL2 = "SELECT COUNT(*) RegsTotales " +
+                        "FROM CUSTOMER A " +
+                        "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere;
+
+                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, new List<OracleParameter>());
+
+                    if (dsCuenta != null && dsCuenta.Tables[0].Rows.Count == 1)
+                    {
+                        foreach (DataRow ldr_temp in dsCuenta.Tables[0].Rows)
+                        {
+                            tmpRegsTotales = Convert.ToInt32(ldr_temp["RegsTotales"]);
+                        }
+                    }
+                }
+
+                dsClientes = OrclConection.ExecuteSqlToDataSet(strPLSQL, Lstparameters);
+                OrclConection.ExecuteProcedureToDataSet(strPLSQL, Lstparameters);
+                if (dsClientes != null && dsClientes.Tables.Count > 0)
+                {
+                    foreach (DataRow dataRowClientes in dsClientes.Tables[0].Rows)
+                    {
+                        ClientesDTO lclientesDTO;
+                        CreditCardDTO creditCardDTO = new CreditCardDTO();
+                        creditCardDTO = null;
+                        
+                        lclientesDTO = new ClientesDTO
+                        {
+                            ID = Convert.ToInt32(dataRowClientes["ID"]),
+                            CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
+                            FName = Convert.ToString(dataRowClientes["FNAME"]),
+                            LName = Convert.ToString(dataRowClientes["LNAME"]),
+                            CodTypeIdent = Convert.ToString(dataRowClientes["TYPEIDENT"]),
+                            PhoneNumber = Convert.ToString(dataRowClientes["PHONENUMBER"]),
+                            Email = Convert.ToString(dataRowClientes["EMAIL"]),
+                            Address = Convert.ToString(dataRowClientes["ADDRESS"]),
+                            Country = Convert.ToString(dataRowClientes["COUNTRY"]),
+                            City = Convert.ToString(dataRowClientes["CITY"]),
+                            //User = Convert.ToString(dataRowClientes["USUARIO"]),
+                            Status = Convert.ToString(dataRowClientes["STATUS"]),
+                            RegsTotales = tmpRegsTotales,
+                            LCreditCard = new List<CreditCardDTO>()
+                        };
+                        LstClientesDTOs.Add(lclientesDTO);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LstClientesDTOs = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN DAL Clientes: GetClientesPaginado");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
+            }
+
+
+            return LstClientesDTOs;
+        }
+
+        public List<ClientesDTO> GetClientesPaginadoxEvento(ClientesDTO clientesDTO)
+        {
+            string strPLSQL2;
+            List<ClientesDTO> LstClientesDTOs = new List<ClientesDTO>();
+            DataSet dsClientes;
+            DataSet dsCuenta;
+            int tmpRegsTotales = 0;
+            OracleServerHelper OrclConection = new OracleServerHelper();
+            try
+            {
+                strWhere = "WHERE O.EVENTCODE LIKE '%" + clientesDTO.Evento.Trim() + "% ' OR O.EVENTNAME LIKE '%" + clientesDTO.Evento.Trim() + "%'";
+                strWherePag = ConfiguracionParametrosGetPaginado(clientesDTO);
+
+                strPLSQL = "SELECT AX.* FROM( " +
+                        "SELECT ROWNUM registro, X.* FROM( " +
+                        "SELECT DISTINCT A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS " +
+                        "FROM ORDERS O " +
+                        "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
+                        "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere + ") X) AX " + strWherePag;
+
+                if (clientesDTO.RegsTotales == 0)
+                {
+                    strPLSQL2 = "SELECT COUNT(DISTINCT A.ID) RegsTotales " +
+                        "FROM ORDERS O " +
+                        "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
+                        "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere;
+
+                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, new List<OracleParameter>());
+
+                    if (dsCuenta != null && dsCuenta.Tables[0].Rows.Count == 1)
+                    {
+                        foreach (DataRow ldr_temp in dsCuenta.Tables[0].Rows)
+                        {
+                            tmpRegsTotales = Convert.ToInt32(ldr_temp["RegsTotales"]);
+                        }
+                    }
+                }
+
+                dsClientes = OrclConection.ExecuteSqlToDataSet(strPLSQL, Lstparameters);
+                OrclConection.ExecuteProcedureToDataSet(strPLSQL, Lstparameters);
+                if (dsClientes != null && dsClientes.Tables.Count > 0)
+                {
+                    foreach (DataRow dataRowClientes in dsClientes.Tables[0].Rows)
+                    {
+                        ClientesDTO lclientesDTO;
+                        CreditCardDTO creditCardDTO = new CreditCardDTO();
+                        creditCardDTO = null;
+
+                        lclientesDTO = new ClientesDTO
+                        {
+                            ID = Convert.ToInt32(dataRowClientes["ID"]),
+                            CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
+                            FName = Convert.ToString(dataRowClientes["FNAME"]),
+                            LName = Convert.ToString(dataRowClientes["LNAME"]),
+                            CodTypeIdent = Convert.ToString(dataRowClientes["TYPEIDENT"]),
+                            PhoneNumber = Convert.ToString(dataRowClientes["PHONENUMBER"]),
+                            Email = Convert.ToString(dataRowClientes["EMAIL"]),
+                            Address = Convert.ToString(dataRowClientes["ADDRESS"]),
+                            Country = Convert.ToString(dataRowClientes["COUNTRY"]),
+                            City = Convert.ToString(dataRowClientes["CITY"]),
+                            //User = Convert.ToString(dataRowClientes["USUARIO"]),
+                            Status = Convert.ToString(dataRowClientes["STATUS"]),
+                            RegsTotales = tmpRegsTotales,
+                            LCreditCard = new List<CreditCardDTO>()
+                        };
+                        LstClientesDTOs.Add(lclientesDTO);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LstClientesDTOs = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN DAL Clientes: GetClientesPaginadoxEvento");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
+            }
+
+
+            return LstClientesDTOs;
+        }
+
+        public List<ClientesDTO> GetClientesPaginadoxFechaFact(ClientesDTO clientesDTO)
+        {
+            string strPLSQL2;
+            List<ClientesDTO> LstClientesDTOs = new List<ClientesDTO>();
+            DataSet dsClientes;
+            DataSet dsCuenta;
+            int tmpRegsTotales = 0;
+            OracleServerHelper OrclConection = new OracleServerHelper();
+            try
+            {
+                strWhere = "WHERE O.ORDERDATE BETWEEN TO_DATE ('" + clientesDTO.FechaIniFact.ToString("yyyy-MM-dd") + "', 'yyyy/mm/dd') AND TO_DATE ('" + clientesDTO.FechaFinFact.ToString("yyyy-MM-dd") + "', 'yyyy/mm/dd')";
+                strWherePag = ConfiguracionParametrosGetPaginado(clientesDTO);
+
+                strPLSQL = "SELECT AX.* FROM( " +
+                        "SELECT ROWNUM registro, X.* FROM( " +
+                        "SELECT SUM(O.ORDERVALUE), A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS " +
+                        "FROM ORDERS O " +
+                        "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
+                        "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + 
+                        strWhere + " GROUP BY  A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS) X) AX " + strWherePag;
+
+                if (clientesDTO.RegsTotales == 0)
+                {
+                    strPLSQL2 = "SELECT COUNT(SUM(O.ORDERVALUE)) RegsTotales " +
+                        "FROM ORDERS O " +
+                        "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
+                        "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere +
+                        " GROUP BY  A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS";
+                                
+                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, new List<OracleParameter>());
+
+                    if (dsCuenta != null && dsCuenta.Tables[0].Rows.Count == 1)
+                    {
+                        foreach (DataRow ldr_temp in dsCuenta.Tables[0].Rows)
+                        {
+                            tmpRegsTotales = Convert.ToInt32(ldr_temp["RegsTotales"]);
+                        }
+                    }
+                }
+
+                dsClientes = OrclConection.ExecuteSqlToDataSet(strPLSQL, Lstparameters);
+                OrclConection.ExecuteProcedureToDataSet(strPLSQL, Lstparameters);
+                if (dsClientes != null && dsClientes.Tables.Count > 0)
+                {
+                    foreach (DataRow dataRowClientes in dsClientes.Tables[0].Rows)
+                    {
+                        ClientesDTO lclientesDTO;
+                        CreditCardDTO creditCardDTO = new CreditCardDTO();
+                        creditCardDTO = null;
+
+                        lclientesDTO = new ClientesDTO
+                        {
+                            ID = Convert.ToInt32(dataRowClientes["ID"]),
+                            CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
+                            FName = Convert.ToString(dataRowClientes["FNAME"]),
+                            LName = Convert.ToString(dataRowClientes["LNAME"]),
+                            CodTypeIdent = Convert.ToString(dataRowClientes["TYPEIDENT"]),
+                            PhoneNumber = Convert.ToString(dataRowClientes["PHONENUMBER"]),
+                            Email = Convert.ToString(dataRowClientes["EMAIL"]),
+                            Address = Convert.ToString(dataRowClientes["ADDRESS"]),
+                            Country = Convert.ToString(dataRowClientes["COUNTRY"]),
+                            City = Convert.ToString(dataRowClientes["CITY"]),
+                            //User = Convert.ToString(dataRowClientes["USUARIO"]),
+                            Status = Convert.ToString(dataRowClientes["STATUS"]),
+                            RegsTotales = tmpRegsTotales,
+                            LCreditCard = new List<CreditCardDTO>()
+                        };
+                        LstClientesDTOs.Add(lclientesDTO);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LstClientesDTOs = null;
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN DAL Clientes: GetClientesPaginadoxFechaFact");
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
+            }
+
+
+            return LstClientesDTOs;
+        }
+
         private string ConfiguracionParametrosGet(ClientesDTO clientesDTO)
         {
             string strWhere = "WHERE 1=1";
@@ -414,6 +662,18 @@ namespace CommonsWeb.DAL.Clientes
                     strWhere = strWhere + " AND A.PASSWORD = :Password";
                 }
             }
+            return strWhere;
+        }
+
+        private string ConfiguracionParametrosGetPaginado(ClientesDTO clientesDTO)
+        {
+            string strWhere = "WHERE AX.registro BETWEEN";
+
+            if (clientesDTO.Pagina != 0 && clientesDTO.RegsxPagina != 0)
+            {
+                strWhere = strWhere + "(" + clientesDTO.Pagina.ToString() + " - 1) * " + clientesDTO.RegsxPagina.ToString() + " + 1 AND "+ clientesDTO.Pagina.ToString() + " * " + clientesDTO.RegsxPagina.ToString();
+            }
+
             return strWhere;
         }
 

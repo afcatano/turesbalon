@@ -158,8 +158,8 @@ E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe.config
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\Oracle.DataAccess.dll
-E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Debug\CommonsWeb.csprojAssemblyReference.cache
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Debug\CommonsWeb.csproj.CoreCompileInputs.cache
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Debug\CommonsWeb.csproj.CopyComplete
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Debug\CommonsWeb.dll
 E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Debug\CommonsWeb.pdb
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Debug\CommonsWeb.csprojAssemblyReference.cache
