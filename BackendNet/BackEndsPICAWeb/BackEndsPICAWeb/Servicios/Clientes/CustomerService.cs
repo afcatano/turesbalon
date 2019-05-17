@@ -739,6 +739,10 @@ public partial class GetCustomerResult
     
     private bool totalsRegsFieldSpecified;
     
+    private decimal totalsSalesField;
+    
+    private bool totalsSalesFieldSpecified;
+    
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order=0)]
     public long IdUser
@@ -960,6 +964,34 @@ public partial class GetCustomerResult
         set
         {
             this.totalsRegsFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+    public decimal TotalsSales
+    {
+        get
+        {
+            return this.totalsSalesField;
+        }
+        set
+        {
+            this.totalsSalesField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool TotalsSalesSpecified
+    {
+        get
+        {
+            return this.totalsSalesFieldSpecified;
+        }
+        set
+        {
+            this.totalsSalesFieldSpecified = value;
         }
     }
 }

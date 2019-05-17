@@ -308,7 +308,7 @@ namespace CommonsWeb.DAL.Clientes
                         "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
                         "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere;
 
-                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, new List<OracleParameter>());
+                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, Lstparameters);
 
                     if (dsCuenta != null && dsCuenta.Tables[0].Rows.Count == 1)
                     {
@@ -320,7 +320,6 @@ namespace CommonsWeb.DAL.Clientes
                 }
 
                 dsClientes = OrclConection.ExecuteSqlToDataSet(strPLSQL, Lstparameters);
-                OrclConection.ExecuteProcedureToDataSet(strPLSQL, Lstparameters);
                 if (dsClientes != null && dsClientes.Tables.Count > 0)
                 {
                     foreach (DataRow dataRowClientes in dsClientes.Tables[0].Rows)
@@ -343,7 +342,7 @@ namespace CommonsWeb.DAL.Clientes
                             City = Convert.ToString(dataRowClientes["CITY"]),
                             //User = Convert.ToString(dataRowClientes["USUARIO"]),
                             Status = Convert.ToString(dataRowClientes["STATUS"]),
-                            RegsTotales = tmpRegsTotales,
+                            RegsTotales = tmpRegsTotales==0 ? clientesDTO.RegsTotales : tmpRegsTotales,
                             LCreditCard = new List<CreditCardDTO>()
                         };
                         LstClientesDTOs.Add(lclientesDTO);
@@ -371,7 +370,8 @@ namespace CommonsWeb.DAL.Clientes
             OracleServerHelper OrclConection = new OracleServerHelper();
             try
             {
-                strWhere = "WHERE O.EVENTCODE LIKE '%" + clientesDTO.Evento.Trim() + "% ' OR O.EVENTNAME LIKE '%" + clientesDTO.Evento.Trim() + "%'";
+                //strWhere = "WHERE O.EVENTCODE LIKE '%" + clientesDTO.Evento.Trim() + "% ' OR O.EVENTNAME LIKE '%" + clientesDTO.Evento.Trim() + "%'";
+                strWhere = "WHERE O.EVENTCODE = '" + clientesDTO.Evento.Trim() + "'";
                 strWherePag = ConfiguracionParametrosGetPaginado(clientesDTO);
 
                 strPLSQL = "SELECT AX.* FROM( " +
@@ -380,7 +380,8 @@ namespace CommonsWeb.DAL.Clientes
                         "FROM ORDERS O " +
                         "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
                         "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
-                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere + ") X) AX " + strWherePag;
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere +
+                        " ORDER BY ID DESC) X ) AX " + strWherePag;
 
                 if (clientesDTO.RegsTotales == 0)
                 {
@@ -402,7 +403,6 @@ namespace CommonsWeb.DAL.Clientes
                 }
 
                 dsClientes = OrclConection.ExecuteSqlToDataSet(strPLSQL, Lstparameters);
-                OrclConection.ExecuteProcedureToDataSet(strPLSQL, Lstparameters);
                 if (dsClientes != null && dsClientes.Tables.Count > 0)
                 {
                     foreach (DataRow dataRowClientes in dsClientes.Tables[0].Rows)
@@ -425,7 +425,7 @@ namespace CommonsWeb.DAL.Clientes
                             City = Convert.ToString(dataRowClientes["CITY"]),
                             //User = Convert.ToString(dataRowClientes["USUARIO"]),
                             Status = Convert.ToString(dataRowClientes["STATUS"]),
-                            RegsTotales = tmpRegsTotales,
+                            RegsTotales = tmpRegsTotales == 0 ? clientesDTO.RegsTotales : tmpRegsTotales,
                             LCreditCard = new List<CreditCardDTO>()
                         };
                         LstClientesDTOs.Add(lclientesDTO);
@@ -458,12 +458,13 @@ namespace CommonsWeb.DAL.Clientes
 
                 strPLSQL = "SELECT AX.* FROM( " +
                         "SELECT ROWNUM registro, X.* FROM( " +
-                        "SELECT SUM(O.ORDERVALUE), A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS " +
+                        "SELECT SUM(O.ORDERVALUE) ORDERVALUE, A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS " +
                         "FROM ORDERS O " +
                         "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
                         "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
-                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + 
-                        strWhere + " GROUP BY  A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS) X) AX " + strWherePag;
+                        "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " +
+                        strWhere + " GROUP BY  A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS) X) AX " + strWherePag +
+                        " ORDER BY AX.ORDERVALUE DESC";
 
                 if (clientesDTO.RegsTotales == 0)
                 {
@@ -474,7 +475,7 @@ namespace CommonsWeb.DAL.Clientes
                         "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere +
                         " GROUP BY  A.ID, E.TypeIdent, A.CUSTID, A.FNAME, A.LNAME, A.EMAIL, A.PHONENUMBER, A.ADDRESS, A.CITY, A.COUNTRY, D.STATUS";
                                 
-                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, new List<OracleParameter>());
+                    dsCuenta = OrclConection.ExecuteSqlToDataSet(strPLSQL2, Lstparameters);
 
                     if (dsCuenta != null && dsCuenta.Tables[0].Rows.Count == 1)
                     {
@@ -486,7 +487,6 @@ namespace CommonsWeb.DAL.Clientes
                 }
 
                 dsClientes = OrclConection.ExecuteSqlToDataSet(strPLSQL, Lstparameters);
-                OrclConection.ExecuteProcedureToDataSet(strPLSQL, Lstparameters);
                 if (dsClientes != null && dsClientes.Tables.Count > 0)
                 {
                     foreach (DataRow dataRowClientes in dsClientes.Tables[0].Rows)
@@ -509,7 +509,8 @@ namespace CommonsWeb.DAL.Clientes
                             City = Convert.ToString(dataRowClientes["CITY"]),
                             //User = Convert.ToString(dataRowClientes["USUARIO"]),
                             Status = Convert.ToString(dataRowClientes["STATUS"]),
-                            RegsTotales = tmpRegsTotales,
+                            RegsTotales = tmpRegsTotales == 0 ? clientesDTO.RegsTotales : tmpRegsTotales,
+                            TotalFacturado = Convert.ToDecimal(dataRowClientes["ORDERVALUE"]),
                             LCreditCard = new List<CreditCardDTO>()
                         };
                         LstClientesDTOs.Add(lclientesDTO);
@@ -522,7 +523,6 @@ namespace CommonsWeb.DAL.Clientes
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN DAL Clientes: GetClientesPaginadoxFechaFact");
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
             }
-
 
             return LstClientesDTOs;
         }

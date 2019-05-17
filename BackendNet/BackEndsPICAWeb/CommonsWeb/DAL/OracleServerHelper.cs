@@ -116,9 +116,10 @@ namespace CommonsWeb.DAL
                     command = new OracleCommand(sentenceSql, connection);
                     command.BindByName = true;
                     command.CommandTimeout = 600;
+                    command.Parameters.Clear();
                     foreach (OracleParameter par in parameters)
                     {
-                        command.Parameters.Add(par);
+                        command.Parameters.Add(par.Clone());
                     }
                     dbAdapter = new OracleDataAdapter(command);
                     dbAdapter.Fill(ResultsDataSet);
@@ -138,7 +139,6 @@ namespace CommonsWeb.DAL
                     command.Dispose();
                     command = null;
                 }
-
                 if (dbAdapter != null)
                 {
                     dbAdapter.Dispose();
@@ -147,6 +147,54 @@ namespace CommonsWeb.DAL
             }
         }
 
+        public DataSet ExecuteSqlToDataSet2(string sentenceSql, List<OracleParameter> parameters)
+        {
+            ImprimirParametros(sentenceSql, parameters);
+
+            OracleCommand command = null;
+            OracleDataAdapter dbAdapter = null;
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(connectionString))
+                {
+
+                    DataSet ResultsDataSet = new DataSet();
+                    ResultsDataSet.Locale = CultureInfo.InvariantCulture;
+                    //command = PrepareCommand(sentenceSql, parameters, connection);
+                    command = new OracleCommand(sentenceSql, connection);
+                    command.BindByName = true;
+                    command.CommandTimeout = 600;
+                    command.Parameters.Clear();
+                    foreach (OracleParameter par2 in parameters)
+                    {
+                        command.Parameters.Add(par2.Clone());
+                    }
+                    dbAdapter = new OracleDataAdapter(command);
+                    dbAdapter.Fill(ResultsDataSet);
+                    command.Parameters.Clear();
+                    return ResultsDataSet;
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Debug, "ERROR EN EJECUCION SENTENCIA SQL :: " + sentenceSql + "  " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Debug, "----------------------------------------- FIN");
+                if (command != null)
+                {
+                    command.Dispose();
+                    command = null;
+                }
+                if (dbAdapter != null)
+                {
+                    dbAdapter.Dispose();
+                    dbAdapter = null;
+                }
+            }
+        }
         public int ExecuteSql(string sentenceSql, List<OracleParameter> parameters)
         {
             ImprimirParametros(sentenceSql, parameters);

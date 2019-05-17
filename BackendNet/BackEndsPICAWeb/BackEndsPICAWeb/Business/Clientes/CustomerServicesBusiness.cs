@@ -530,7 +530,7 @@ namespace BackEndsPICAWeb.Business.Clientes
                 {
                     lstClientesDTO = ClientesDAL.GetClientesPaginadoxEvento(prmsearchClientesDTO);
                 }
-                else if (prmsearchClientesDTO.FechaIniFact != null && prmsearchClientesDTO.FechaFinFact != null)
+                else if ((prmsearchClientesDTO.FechaIniFact != null && prmsearchClientesDTO.FechaIniFact != new DateTime()) && (prmsearchClientesDTO.FechaFinFact != null && prmsearchClientesDTO.FechaIniFact != new DateTime()))
                 {
                     lstClientesDTO = ClientesDAL.GetClientesPaginadoxFechaFact(prmsearchClientesDTO);
                 }
@@ -566,7 +566,10 @@ namespace BackEndsPICAWeb.Business.Clientes
                                 Password = clientesDTO.Password,
                                 StatusCustomer = clientesDTO.Status,
                                 IdUser = clientesDTO.ID,
-                                TotalsRegs = clientesDTO.RegsTotales
+                                TotalsRegs = clientesDTO.RegsTotales,
+                                TotalsSales = clientesDTO.TotalFacturado,
+                                TotalsRegsSpecified = true,
+                                TotalsSalesSpecified = clientesDTO.TotalFacturado == 0 ? false : true
                             };
 
                             if (clientesDTO.LCreditCard != null)
@@ -615,7 +618,7 @@ namespace BackEndsPICAWeb.Business.Clientes
                 customerResponse.status.MessageResp = "Error en la....";
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO CustomerService:GetCustomer");
                 Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
-                throw ex;
+                //throw ex;
             }
 
         return customerResponse;

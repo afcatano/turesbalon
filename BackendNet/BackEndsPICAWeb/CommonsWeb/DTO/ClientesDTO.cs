@@ -28,6 +28,7 @@ namespace BackEndsPICAWeb.Business.Clientes.DTO
         public long Pagina { get; set; }
         public long RegsxPagina { get; set; }
         public long RegsTotales { get; set; }
+        public decimal TotalFacturado { get; set; }
 
         public override bool Equals(object obj)
         {
