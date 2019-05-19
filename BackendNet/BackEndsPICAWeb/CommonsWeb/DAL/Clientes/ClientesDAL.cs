@@ -299,7 +299,7 @@ namespace CommonsWeb.DAL.Clientes
                         "FROM CUSTOMER A " +
                         "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
                         "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere +
-                        " ORDER BY ID DESC) X ) AX " + strWherePag;
+                        " ORDER BY ID) X ) AX " + strWherePag;
 
                 if (clientesDTO.RegsTotales == 0)
                 {
@@ -381,7 +381,7 @@ namespace CommonsWeb.DAL.Clientes
                         "INNER JOIN CUSTOMER A ON O.IDCustomer = A.ID " +
                         "INNER JOIN TypeIdent E ON A.IDTypeIdent = E.CodTypeIdent " +
                         "LEFT JOIN Status D ON A.IDSTATUS = D.CodStatus " + strWhere +
-                        " ORDER BY ID DESC) X ) AX " + strWherePag;
+                        " ORDER BY ID) X ) AX " + strWherePag;
 
                 if (clientesDTO.RegsTotales == 0)
                 {
@@ -453,7 +453,7 @@ namespace CommonsWeb.DAL.Clientes
             OracleServerHelper OrclConection = new OracleServerHelper();
             try
             {
-                strWhere = "WHERE O.ORDERDATE BETWEEN TO_DATE ('" + clientesDTO.FechaIniFact.ToString("yyyy-MM-dd") + "', 'yyyy/mm/dd') AND TO_DATE ('" + clientesDTO.FechaFinFact.ToString("yyyy-MM-dd") + "', 'yyyy/mm/dd')";
+                strWhere = "WHERE O.ORDERSTATUS = 'PA' AND O.ORDERDATE BETWEEN TO_DATE ('" + clientesDTO.FechaIniFact.ToString("yyyy-MM-dd") + "', 'yyyy/mm/dd') AND TO_DATE ('" + clientesDTO.FechaFinFact.ToString("yyyy-MM-dd") + "', 'yyyy/mm/dd')";
                 strWherePag = ConfiguracionParametrosGetPaginado(clientesDTO);
 
                 strPLSQL = "SELECT AX.* FROM( " +

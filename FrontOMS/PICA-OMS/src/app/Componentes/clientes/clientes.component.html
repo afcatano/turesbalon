@@ -66,41 +66,58 @@
         </div>
       </div>
   </form>
-      <div class="row">
-        <div class="col-md-12">
-            <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource">
-              
-                  <!-- Position Column -->
-                  <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                  </ng-container>
-              
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                  </ng-container>
-              
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="weight">
-                    <th mat-header-cell *matHeaderCellDef> Weight </th>
-                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                  </ng-container>
-              
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                  </ng-container>
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-              
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-              </div>
-        </div>
+  <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+
+  <div class="card mb-3" >
+  <div class="row no-gutters"  *ngIf="!processing">
+                 
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Tipo Doc.</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nav of dataClientes">
+            <th scope="row">{{nav.userid}}</th>
+            <td>{{nav.nombre}}</td>
+            <td>{{nav.apellido}}</td>
+            <td>{{nav.tipoDocumento}}</td>
+            <td>{{nav.documento}}</td>
+            <td>{{nav.estadoCliente}}</td>
+            <td>{{nav.telefono}}</td>
+            <td>{{nav.Correo}}</td>
+            <td>{{nav.pais}}</td>
+            <td>{{nav.ciudad}}</td>
+            <td> 
+           <!----     <button type="button" class="btn btn-danger" (click)="cancelar(nav)">Cancelar</button>
+                &nbsp;&nbsp; -->
+                <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">Ver</button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
+<div *ngIf="processing" style="margin-left: 50%">
+    <mat-spinner></mat-spinner>
+</div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="mat-elevation-z8">
+        <mat-paginator #paginator [length]="dataCount" [pageIndex]="params.Pagina" [pageSize]="params.pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPaginateChange($event)">
+        </mat-paginator>            
       </div>
+     </div>
+   </div>
 </div>
