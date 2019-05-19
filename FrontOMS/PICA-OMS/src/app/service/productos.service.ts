@@ -12,12 +12,13 @@ import {Eventos} from '../mock/mockEventos';
 export class ProductosService {
 
   private pathHotels: string;
-  private pathCampaign: string;
+  private pathProductsCrud: string;
   private pathProducts: string;
  
    constructor(private http: HttpClient , private config:StorageConfigService) {
    
      this.pathProducts= "/producto/consulta";
+     this.pathProductsCrud="/producto";
  
     }
 
@@ -91,6 +92,63 @@ export class ProductosService {
         (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathProducts,
        params,
       { headers: headers}
+       );
+      }
+
+        //Invoca api de actualizacion de productos
+    actualizarProductos(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.put(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathProductsCrud,
+       params,
+      { headers: headers}
+       );
+      }
+
+    //Invoca api de actualizacion de productos
+    crearProductos(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.post(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathProductsCrud,
+       params,
+      { headers: headers}
+       );
+      }
+
+      //Invoca api de eliminar de productos
+    eliminarProductos(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+ 
+      let options = { params: params };
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.delete(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathProductsCrud,
+        options
        );
       }
   

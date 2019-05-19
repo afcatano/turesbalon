@@ -3,7 +3,8 @@ import {buscadorPaginacion} from '../../Models/busquedaPaginacion';
 import {Evento} from '../../Models/evento';
 import { AppComponent } from '../../app.component';
 import {ProductosService} from '../../service/productos.service';
-
+import { DatalleProductoComponent} from '../datalle-producto/datalle-producto.component';
+import {MatDialog} from '@angular/material';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -30,7 +31,7 @@ export class ProductosComponent implements OnInit {
   }
   dataCount: number=0;//tamaño para el paginador
   dataEventos:Evento[];
-  constructor(private parent: AppComponent ,private serviceProduct :ProductosService) { }
+  constructor(private parent: AppComponent ,private serviceProduct :ProductosService, private dialog:MatDialog) { }
 
   ngOnInit() {
     this.onSubmit();
@@ -81,19 +82,30 @@ export class ProductosComponent implements OnInit {
 
    //Metodo que abre el popup del detalle del evento
    openDetail( item): void {
-   /* var orden = new Producto();
-    var  evento= new Evento();
-    orden.Evento = item;
-    orden.tipoDetalle="Evento";
-    orden.codigo=item.CodigoEvento;
-    console.log(orden);
-    const dialogRef = this.dialog.open(DatalleEventoComponent, {
+    
+    console.log(item);
+    const dialogRef = this.dialog.open(DatalleProductoComponent, {
       width: '70%',
-      data: orden
+      data: item
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-    });*/
+    });
   }
+
+    //Metodo que abre el popup del detalle del evento
+    crearProducto( ): void {
+      var item = new Evento();
+      console.log(item);
+      console.log("item");
+  
+     const dialogRef = this.dialog.open(DatalleProductoComponent, {
+       width: '70%',
+       data: item
+     });
+  
+     dialogRef.afterClosed().subscribe(result => {
+       console.log('The dialog was closed');
+     });
+   }
 }

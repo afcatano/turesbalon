@@ -23,6 +23,7 @@ import {RemoveSession} from "./service/remove-session.service";
 import {ValidateSession} from "./service/validatesession.service";
 import { AuthenticationService } from './service/authentication.service';
 import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-campana.component';
+import { DatalleProductoComponent } from './Componentes/datalle-producto/datalle-producto.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-c
     OrdenesComponent,
     LoginComponent,
     MessageComponent,
-    DatalleCampanaComponent
+    DatalleCampanaComponent,
+    DatalleProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-c
     FormsModule,
      HttpClientModule  
   ],
-  entryComponents: [ MessageComponent, DatalleCampanaComponent],
+  entryComponents: [ MessageComponent, DatalleCampanaComponent,DatalleProductoComponent],
   providers: [StorageService, StorageParamsService,ValidateSession, RemoveSession, AuthenticationService,StorageConfigService
 ],
   bootstrap: [AppComponent]
