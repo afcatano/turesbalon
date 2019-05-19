@@ -9,6 +9,7 @@ import { OrdenesComponent } from './Componentes/ordenes/ordenes.component';
 import { LoginComponent } from './Componentes/login/login.component';
 import { ValidateSession } from './service/validatesession.service';
 import { RemoveSession } from './service/remove-session.service';
+import { DatalleComponent} from './Componentes/datalle/datalle.component'
 //Constante que almacena las rutas de la app
 const routes: Route[] = [
  { path: '', redirectTo: '/', pathMatch: 'full', canActivate: [ValidateSession]},
@@ -18,6 +19,7 @@ const routes: Route[] = [
   {path: "Productos", component: ProductosComponent, canActivate: [ValidateSession]},
   {path: "Clientes", component: ClientesComponent, canActivate: [ValidateSession]},
   {path: "Ordenes", component: OrdenesComponent, canActivate: [ValidateSession]},
+  {path: "Ordenes", component: DatalleComponent, canActivate: [ValidateSession]},
   { path: "logout", component: LoginComponent, canActivate: [RemoveSession] },
 ];
 

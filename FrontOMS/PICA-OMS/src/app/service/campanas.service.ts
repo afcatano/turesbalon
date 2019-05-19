@@ -94,4 +94,61 @@ export class CampanasService {
       { headers: headers}
        );
       }
+
+    //Invoca api de actualizacion de campañas
+    actualizarCampanas(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.put(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCampaingCrud,
+       params,
+      { headers: headers}
+       );
+      }
+
+    //Invoca api de actualizacion de campañas
+    crearCampanas(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.post(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCampaingCrud,
+       params,
+      { headers: headers}
+       );
+      }
+
+      //Invoca api de eliminar de campañas
+    eliminarCampanas(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+ 
+      let options = { params: params };
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.delete(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCampaingCrud,
+        options
+       );
+      }
 }
