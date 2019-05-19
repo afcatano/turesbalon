@@ -36,7 +36,8 @@ namespace BackEndsPICAWeb.Servicios.Clientes
                     RegsTotales= prmcustomerRequest.Customer.TotalsRegs,
                     FechaIniFact = prmcustomerRequest.Customer.DateIniFact,
                     FechaFinFact = prmcustomerRequest.Customer.DateFinFact,
-                    Evento  = prmcustomerRequest.Customer.EventType
+                    Evento  = prmcustomerRequest.Customer.EventType,
+                    ID = prmcustomerRequest.Customer.IdUser
                 };
 
                 if (clientesDTO.Pagina == 0)

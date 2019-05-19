@@ -532,6 +532,14 @@ namespace CommonsWeb.DAL.Clientes
             string strWhere = "WHERE 1=1";
             OracleParameter OrclParameters;
 
+            if (clientesDTO.ID != 0)
+            {
+                OrclParameters = new OracleParameter("ID", OracleDbType.Int32);
+                OrclParameters.Value = clientesDTO.ID;
+                Lstparameters.Add(OrclParameters);
+                strWhere = strWhere + " AND A.ID = :ID";
+            }
+
             if (clientesDTO.CodTypeIdent != null)
             {
                 if (clientesDTO.CodTypeIdent.Trim().Length > 0)

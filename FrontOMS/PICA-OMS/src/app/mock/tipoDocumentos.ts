@@ -1,5 +1,6 @@
 
 export const TiposDocumento: tipoDocumento[] = [
+    { id: "0", name: 'NA/ND' },
     { id: "1", name: 'Cédula de Ciudadania' },
     { id: "2", name: 'Tarjeta de Identidad' },
     { id: "3", name: 'Pasaporte' },
