@@ -117,6 +117,18 @@ public partial class GetOrder
 
     private string typeQueryField;
 
+    private long pageField;
+
+    private bool pageFieldSpecified;
+
+    private long regsPerPageField;
+
+    private bool regsPerPageFieldSpecified;
+
+    private long totalsRegsField;
+
+    private bool totalsRegsFieldSpecified;
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
     public string OrderCode
@@ -408,6 +420,90 @@ public partial class GetOrder
         set
         {
             this.typeQueryField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 15)]
+    public long Page
+    {
+        get
+        {
+            return this.pageField;
+        }
+        set
+        {
+            this.pageField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool PageSpecified
+    {
+        get
+        {
+            return this.pageFieldSpecified;
+        }
+        set
+        {
+            this.pageFieldSpecified = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 16)]
+    public long RegsPerPage
+    {
+        get
+        {
+            return this.regsPerPageField;
+        }
+        set
+        {
+            this.regsPerPageField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool RegsPerPageSpecified
+    {
+        get
+        {
+            return this.regsPerPageFieldSpecified;
+        }
+        set
+        {
+            this.regsPerPageFieldSpecified = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 17)]
+    public long TotalsRegs
+    {
+        get
+        {
+            return this.totalsRegsField;
+        }
+        set
+        {
+            this.totalsRegsField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool TotalsRegsSpecified
+    {
+        get
+        {
+            return this.totalsRegsFieldSpecified;
+        }
+        set
+        {
+            this.totalsRegsFieldSpecified = value;
         }
     }
 }
@@ -1715,6 +1811,14 @@ public partial class OrderInfo
 
     private GetTransport transportField;
 
+    private long totalsRegsField;
+
+    private bool totalsRegsFieldSpecified;
+
+    private decimal totalSoldField;
+
+    private bool totalSoldFieldSpecified;
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
     public string OrderCode
@@ -1852,6 +1956,62 @@ public partial class OrderInfo
         set
         {
             this.transportField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
+    public long TotalsRegs
+    {
+        get
+        {
+            return this.totalsRegsField;
+        }
+        set
+        {
+            this.totalsRegsField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool TotalsRegsSpecified
+    {
+        get
+        {
+            return this.totalsRegsFieldSpecified;
+        }
+        set
+        {
+            this.totalsRegsFieldSpecified = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 11)]
+    public decimal TotalSold
+    {
+        get
+        {
+            return this.totalSoldField;
+        }
+        set
+        {
+            this.totalSoldField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool TotalSoldSpecified
+    {
+        get
+        {
+            return this.totalSoldFieldSpecified;
+        }
+        set
+        {
+            this.totalSoldFieldSpecified = value;
         }
     }
 }

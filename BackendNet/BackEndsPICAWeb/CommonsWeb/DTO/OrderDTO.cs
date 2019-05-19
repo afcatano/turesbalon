@@ -27,6 +27,9 @@ namespace CommonsWeb.DTO
         public string TransportCompanyName { get; set; }
         public long EventUnit { get; set; }
         public bool FlagDetail { get; set; }
+        public long Page { get; set; }
+        public long RowsPerPage { get; set; }
+        public long TotalRows { get; set; }
         public HotelReservationDTO Hotel { get; set; }
         public TransportReservationDTO Transport { get; set; }
 
