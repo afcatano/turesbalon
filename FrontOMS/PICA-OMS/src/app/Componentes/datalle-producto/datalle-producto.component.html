@@ -42,7 +42,7 @@
             <input  maxlength="40" type="file"  accept="image/*"  name="imagen"  class="form-control " id="imagen" placeholder="Codigo producto"  required>
           </div>
   
-          <div class="col-md-8 mb-3">
+          <div class="col-md-8 mb-3" *ngIf="data.id">
             <label for="validationServer02">Estado</label>
            
             <select class="form-control "  name="tipoDocumento" [(ngModel)]="data.estado"  >

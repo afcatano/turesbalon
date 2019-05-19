@@ -89,6 +89,7 @@ export class ProductosComponent implements OnInit {
       data: item
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.parent.openDialog( "",result,"Alerta");
       console.log('The dialog was closed');
     });
   }
@@ -105,6 +106,8 @@ export class ProductosComponent implements OnInit {
      });
   
      dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.parent.openDialog( "",result,"Alerta");
        console.log('The dialog was closed');
      });
    }

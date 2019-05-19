@@ -87,6 +87,7 @@ export class CampanasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.parent.openDialog( "",result,"Alerta");
       console.log('The dialog was closed');
     });
   }
@@ -103,6 +104,7 @@ export class CampanasComponent implements OnInit {
    });
 
    dialogRef.afterClosed().subscribe(result => {
+     this.parent.openDialog( "",result,"Alerta");
      console.log('The dialog was closed');
    });
  }

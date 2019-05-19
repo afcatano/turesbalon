@@ -58,7 +58,7 @@ export class DatalleCampanaComponent  {
       }else{
 
       }
-      this.dialogRef.close();
+      this.dialogRef.close(result.mensaje);
     }); 
   }
 
@@ -68,6 +68,7 @@ export class DatalleCampanaComponent  {
     data.fechaInicio=fecha.getFullYear()+"-"+(fecha.getMonth().toString().length==1?"0"+fecha.getMonth():fecha.getMonth())+"-"+(fecha.getDate().toString().length==1?"0"+fecha.getDate():fecha.getDate());
     data.fechaFin= this.fechaFin;
     var codigo = data.codigo;
+    data.estado="Activo";
     data.id_producto=codigo.replace('CO_','');
     this.service.crearCampanas(data).subscribe(result =>{
       console.log(result);
@@ -76,7 +77,7 @@ export class DatalleCampanaComponent  {
       }else{
 
       }
-      this.dialogRef.close();
+      this.dialogRef.close(result.mensaje);
     }); 
   }
 
@@ -90,7 +91,7 @@ export class DatalleCampanaComponent  {
       }else{
 
       }
-      this.dialogRef.close();
+      this.dialogRef.close(result.mensaje);
     }); 
   }
   
