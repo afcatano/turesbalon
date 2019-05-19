@@ -15,10 +15,10 @@ export class ProductosComponent implements OnInit {
   params = {
     tmIni: null,
     tmFin: null,
-    evento: null,
+    evento: '%%',
     cantidad: 0,
     page: 0,//Variable para almacenar la pagina actual
-    pageSize: 21,  // Variable para almacenar la cantidad de resultados por pagina
+    pageSize: 15,  // Variable para almacenar la cantidad de resultados por pagina
     categoria: null,
     operador: null,
     optionPaquete:null,
@@ -33,10 +33,10 @@ export class ProductosComponent implements OnInit {
   constructor(private parent: AppComponent ,private serviceProduct :ProductosService) { }
 
   ngOnInit() {
+    this.onSubmit();
   }
-
-
   
+
   //Metodo que trae los eventos
   onSubmit() {
     this.progressBar=true;

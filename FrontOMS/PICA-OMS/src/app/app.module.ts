@@ -22,7 +22,6 @@ import {StorageParamsService} from "./storage/storage-params.service";
 import {RemoveSession} from "./service/remove-session.service";
 import {ValidateSession} from "./service/validatesession.service";
 import { AuthenticationService } from './service/authentication.service';
-import { DatalleComponent } from './Componentes/datalle/datalle.component';
 import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-campana.component';
 
 @NgModule({
@@ -36,7 +35,6 @@ import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-c
     OrdenesComponent,
     LoginComponent,
     MessageComponent,
-    DatalleComponent,
     DatalleCampanaComponent
   ],
   imports: [
