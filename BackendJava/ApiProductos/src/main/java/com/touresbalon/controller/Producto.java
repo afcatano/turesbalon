@@ -12,7 +12,6 @@ import org.springframework.cache.annotation.Cacheable;
 
 @Entity
 @Table(name = "Producto")
-@Cacheable("Producto")
 public class Producto {
 	 
 	@Id
@@ -20,20 +19,20 @@ public class Producto {
 	Integer Id;
 	 
 	@Column(name = "espectaculo")
-	String nombre;
+	String NombreEvento;
 	
 	
 	@Column(name = "codigo")
-	String codigo;
+	String CodigoEvento;
 	
 	@Column(name = "descripcion")
-	String descripcion;
+	String DescEvento;
 	
 	@Column(name = "ciudad")
 	String ciudad;
 	
 	@Column(name = "fecha")
-	Date fecha;
+	Date FechaEvento;
 	
 	@Column(name = "horainicio")
 	String horaInicio;
@@ -42,7 +41,7 @@ public class Producto {
 	String horaFin;
 	
 	@Column(name = "precio")
-	Long precio;
+	Long ValorEvento;
 	
 	@Column(name = "cantidad")
 	Long cantidad;
@@ -62,28 +61,28 @@ public class Producto {
 		Id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreEvento() {
+		return NombreEvento;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreEvento(String nombreEvento) {
+		NombreEvento = nombreEvento;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getCodigoEvento() {
+		return CodigoEvento;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigoEvento(String codigoEvento) {
+		CodigoEvento = codigoEvento;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescEvento() {
+		return DescEvento;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescEvento(String descEvento) {
+		DescEvento = descEvento;
 	}
 
 	public String getCiudad() {
@@ -94,12 +93,12 @@ public class Producto {
 		this.ciudad = ciudad;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public Date getFechaEvento() {
+		return FechaEvento;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFechaEvento(Date fechaEvento) {
+		FechaEvento = fechaEvento;
 	}
 
 	public String getHoraInicio() {
@@ -118,12 +117,12 @@ public class Producto {
 		this.horaFin = horaFin;
 	}
 
-	public Long getPrecio() {
-		return precio;
+	public Long getValorEvento() {
+		return ValorEvento;
 	}
 
-	public void setPrecio(Long precio) {
-		this.precio = precio;
+	public void setValorEvento(Long valorEvento) {
+		ValorEvento = valorEvento;
 	}
 
 	public Long getCantidad() {
