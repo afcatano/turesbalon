@@ -110,14 +110,15 @@ public class ApiProductosApplication {
 				
 	    	    System.out.println(producto);
 	    	    System.out.println("Entra");
+	    	    System.out.println(producto.nombre);
+				System.out.println(producto.descripcion);
+				System.out.println(producto.codigo);
 	    	    PageRequest pagerequest= PageRequest.of(producto.pagina, producto.tamanoPagina);
 				List<Producto> res = page.findByLikeEspectaculo( producto.fechaInicial,  producto.fechaFinal,  producto.nombre ,pagerequest);
 				int cantidad = page.findByLikeEspectaculoCount( producto.fechaInicial,  producto.fechaFinal,  producto.nombre );
 				
 				System.out.println("Sale");
-				System.out.println(producto.nombre);
-				System.out.println(producto.descripcion);
-				System.out.println(producto.codigo);
+				
 				System.out.println(cantidad);
 				ResponseDto resDto  = new  ResponseDto();
 				resDto.codigo="0";

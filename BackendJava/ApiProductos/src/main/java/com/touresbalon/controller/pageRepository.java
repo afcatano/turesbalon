@@ -35,7 +35,7 @@ public interface pageRepository extends JpaRepository<Producto, Integer>, Paging
 	
 	
 	@Cacheable("Producto")
-	@Query(value = "select DISTINCT id,espectaculo,descripcion ,ciudad,fecha ,horainicio,horafin ,precio,cantidad,imagen ,usuario,codigo from Producto where fecha between ?1 and ?2 and ( codigo like ?3 " + 
+	@Query(value = "select DISTINCT Producto.* from Producto where fecha between ?1 and ?2 and ( codigo like ?3 " + 
 			" or espectaculo like ?3 or descripcion like ?3 )",
 			nativeQuery = true)
 	List<Producto> findByLikeEspectaculo( String dateIni, String dateFin, String name , PageRequest pageRequest);
