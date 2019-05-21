@@ -6,6 +6,8 @@ import {Cliente} from '../../Models/Customer';
 import { AppComponent } from '../../app.component';
 import {ClientesService} from '../../service/clientes.service';
 import {MAT_DATE_LOCALE} from '@angular/material';
+import { DetalleClienteComponent} from  '../detalle-cliente/detalle-cliente.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-clientes',
@@ -35,7 +37,7 @@ export class ClientesComponent implements OnInit {
   }
   private dataCount: number=0;//tamaño para el paginador
 
-  constructor(private parent: AppComponent ,private serviceCustomer :ClientesService) { } 
+  constructor(private parent: AppComponent ,private serviceCustomer :ClientesService, private dialog: MatDialog) { } 
   ngOnInit() {
     this.data.tipoDocumento = "0";
     this.datacat.categoria = "0";
@@ -94,9 +96,40 @@ export class ClientesComponent implements OnInit {
            this.params.Pagina = result.paginaActual;
            this.params.pageSize = result.tamanoPagina;
            this.params.TotalRegistros = result.cantidadRegistros;
+           
            console.log(this.dataClientes);
            if(result.clientes){
                 this.dataClientes=result.clientes;
+                for (let i = 0; i < this.dataClientes.length; i++) {
+                  if(this.dataClientes[i].estadoCliente == 'PLATA')
+                  {
+                   this.dataClientes[i].IDEstadoCliente = 1
+                  }
+                  if(this.dataClientes[i].estadoCliente == 'PLATINO')
+                  {
+                   this.dataClientes[i].IDEstadoCliente = 2
+                  }
+                  if(this.dataClientes[i].estadoCliente == 'DORADO')
+                  {
+                   this.dataClientes[i].IDEstadoCliente = 3
+                  }
+                  if(this.dataClientes[i].tipoDocumento == 'CC')
+                  {
+                   this.dataClientes[i].IDtipoDocumento = 1
+                  }
+                  if(this.dataClientes[i].tipoDocumento == 'TI')
+                  {
+                   this.dataClientes[i].IDtipoDocumento = 2
+                  }
+                  if(this.dataClientes[i].tipoDocumento == 'PE')
+                  {
+                   this.dataClientes[i].IDtipoDocumento = 3
+                  }
+                  if(this.dataClientes[i].tipoDocumento == 'NIT')
+                  {
+                   this.dataClientes[i].IDtipoDocumento = 4
+                  }
+               }
           }
           }else{
             if(result.mensaje)
@@ -150,4 +183,42 @@ validateTotalFacturado(){
     else
     return this.colTotalFacturado=false;
 }
+
+   //Metodo que abre el popup del detalle del evento
+   openDetail( item): void {
+    console.log(item);
+  const dialogRef = this.dialog.open(DetalleClienteComponent, {
+     width: '70%',
+     data: item
+   });
+
+   dialogRef.afterClosed().subscribe(result => {
+    if (result != undefined || result != null)
+    {
+    this.parent.openDialog( "",result,"Alerta");
+    }
+    console.log('The dialog was closed');
+  });
+  }
+
+  
+   //Metodo que abre el popup del detalle del evento
+   crearCliente( ): void {
+    var item = new Cliente();
+    console.log(item);
+    console.log("item");
+
+   const dialogRef = this.dialog.open(DetalleClienteComponent, {
+     width: '70%',
+     data: item
+   });
+
+   dialogRef.afterClosed().subscribe(result => {
+     if (result != undefined || result != null)
+     {
+      this.parent.openDialog( "",result,"Alerta");
+    }
+     console.log('The dialog was closed');
+   });
+ }
 }
