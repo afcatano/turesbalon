@@ -690,16 +690,20 @@ namespace CommonsWeb.DAL.Clientes
             string strSET = "";
             OracleParameter OrclParameters;
 
+            OrclParameters = new OracleParameter("Id", OracleDbType.Int32);
+            OrclParameters.Value = clientesDTO.ID;
+            Lstparameters.Add(OrclParameters);
+            strWhereUpdate = "WHERE ID = :Id";
+            
             if (clientesDTO.CustID != 0)
             {
                 OrclParameters = new OracleParameter("IdNumber", OracleDbType.Int32);
                 OrclParameters.Value = clientesDTO.CustID;
                 Lstparameters.Add(OrclParameters);
                 strSET = "SET CUSTID = :IdNumber";
-                strWhereUpdate = "WHERE CUSTID = :IdNumber";
             }
 
-            if (clientesDTO.CodTypeIdent != null)
+             if (clientesDTO.CodTypeIdent != null)
             {
                 if (clientesDTO.CodTypeIdent.Trim().Length > 0)
                 {
