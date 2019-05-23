@@ -657,6 +657,7 @@ namespace BackEndsPICAWeb.Business.Orders
                             loi_oi.IdType = lo_orderTemp.IdType.ToString();
                             loi_oi.IdNumber = lo_orderTemp.IdNumber;
                             loi_oi.TotalsRegs = lo_orderTemp.TotalRows;
+                            loi_oi.TotalsRegsSpecified = true;
 
                             if (lo_order.FlagDetail)
                             {
@@ -813,6 +814,7 @@ namespace BackEndsPICAWeb.Business.Orders
                             loi_oi.Event.Date = lo_orderTemp.EventDate;
                             loi_oi.Event.Cantidad = lo_orderTemp.EventUnit.ToString();
                             loi_oi.TotalsRegs = lo_order.TotalRows;
+                            loi_oi.TotalsRegsSpecified = true;
                             llor_orders.Add(loi_oi);
 
                         }
@@ -904,7 +906,9 @@ namespace BackEndsPICAWeb.Business.Orders
 
                             loi_oi = new OrderInfo();
                             loi_oi.TotalsRegs = lo_orderTemp.TotalRows;
-                            loi_oi.OrderValue = lo_orderTemp.OrderValue;
+                            loi_oi.TotalsRegsSpecified = true;
+                            loi_oi.TotalSold = lo_orderTemp.OrderValue;
+                            loi_oi.TotalSoldSpecified = true;
                             llor_orders.Add(loi_oi);
 
                         }
@@ -992,6 +996,7 @@ namespace BackEndsPICAWeb.Business.Orders
                             loi_oi.IdType = lo_orderTemp.IdType.ToString();
                             loi_oi.IdNumber = lo_orderTemp.IdNumber;
                             loi_oi.TotalsRegs = lo_orderTemp.TotalRows;
+                            loi_oi.TotalsRegsSpecified = true;
 
                             if (lo_order.FlagDetail)
                             {
@@ -1150,6 +1155,7 @@ namespace BackEndsPICAWeb.Business.Orders
                             loi_oi.IdType = lo_orderTemp.IdType.ToString();
                             loi_oi.IdNumber = lo_orderTemp.IdNumber;
                             loi_oi.TotalsRegs = lo_order.TotalRows;
+                            loi_oi.TotalsRegsSpecified = true;
 
                             if (lo_order.FlagDetail)
                             {
