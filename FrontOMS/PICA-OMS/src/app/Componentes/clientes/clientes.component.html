@@ -50,7 +50,7 @@
           <label for="FFinal" class="col-sm-3 col-form-label">Fecha Final</label>
           <div class="col-sm-3">
             <mat-form-field>
-              <input matInput name="fechafin" [matDatepicker]="picker1" (dateInput)="onDateFin($event)" (dateChange)="onDateIni($event)">
+              <input matInput name="fechafin" [matDatepicker]="picker1" (dateInput)="onDateFin($event)" (dateChange)="onDateFin($event)">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>

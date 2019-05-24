@@ -2,9 +2,9 @@ import { Component, OnInit} from '@angular/core';
 import {Orders} from '../../Models/Orders';
 import { AppComponent } from '../../app.component';
 import {OrdenesService} from '../../service/ordenes.service';
+import {mes, Mes} from '../../mock/mes';
 import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {MatDatepicker} from '@angular/material/datepicker';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-ordenes',
@@ -13,6 +13,9 @@ import {MatDatepicker} from '@angular/material/datepicker';
 })
 export class OrdenesComponent implements OnInit {
   dataOrders:Orders[];
+  datames= {mes:""};
+  dataMeses = Mes;
+
   colTotalFacturado = false;
   
   progressBar= false;
@@ -24,18 +27,30 @@ export class OrdenesComponent implements OnInit {
     CodigoEvento:"",
     TipoConsulta: "ESTANDAR",
     ConDetalle: true,
-    FechaInicio:"",
-    FechaFin:""
+    Anio: "",
+    FechaIni:"",
+    FechaFin:"",
+    checkRanking:false
   }
   private dataCount: number=0;//tamaño para el paginador
 
   constructor(private parent: AppComponent ,private serviceOrders :OrdenesService) { }
 
   ngOnInit() {
+    this.colTotalFacturado = false;
+    this.datames.mes = "0";
+    this.params.TipoConsulta= "ESTANDAR";
+    this.params.FechaIni = "";
+    this.params.FechaFin = "";
   }
 
   //metodo que consulta Ordenes
-  onConsultar(){
+  onConsultar(pagina:number){
+    if(pagina==1)
+    {
+      this.params.Pagina = pagina;
+      this.dataCount = 0;
+    }
     this.progressBar=true;
     let parametros = this.params;
     console.log("onConsultar()", parametros);
@@ -56,28 +71,37 @@ export class OrdenesComponent implements OnInit {
       dataRequest.CodigoEvento = this.params.CodigoEvento;
       this.colTotalFacturado = false;
     }     
-   /* if (this.params.tipoevento.trim() != "")
+    if (this.datames.mes != "0" && this.params.Anio !="")
     {
-      dataRequest.CodigoEvento = this.params.tipoevento;
+      dataRequest.FechaInicio = this.params.Anio +"-"+ this.datames.mes + "-01";
+      dataRequest.TipoConsulta = "ORDCERTOTFACMES";
+      dataRequest.EstadoOrden = "PA";
+      this.colTotalFacturado = true;
+    }
+    if (this.params.checkRanking == true)
+    {
+      dataRequest.TipoConsulta = "ORDMASTIEABI";
       this.colTotalFacturado = false;
     }
     if (this.params.FechaIni.trim() != "")
     {
-      dataRequest.FechaIniFact = this.params.FechaIni;
-      this.colTotalFacturado = true;
+      dataRequest.TipoConsulta = "ORDCERMASFAC";
+      dataRequest.FechaInicio = this.params.FechaIni;
+      this.colTotalFacturado = false;
     }
     if (this.params.FechaFin.trim() != "")
     {
-      dataRequest.FechaFinFact = this.params.FechaFin;
-      this.colTotalFacturado = true;
-    }*/
+      dataRequest.FechaFin = this.params.FechaFin;
+      this.colTotalFacturado = false;
+    }
+      
     this.serviceOrders.getOrdenes(dataRequest,result =>{
          
       if(result.codigo=='0'){
-         this.dataCount=result.TotalRegistros;// ==0?1:result.cantidadRegistros;//TODO
+         this.dataCount=result.cantidadRegistros;// ==0?1:result.cantidadRegistros;//TODO
          this.params.Pagina = result.paginaActual;
-         this.params.pageSize = result.tamanoPagina;
-         this.params.TotalRegistros = result.TotalRegistros;
+         //this.params.pageSize = result.tamanoPagina;
+         this.params.TotalRegistros = result.cantidadRegistros;
       
          console.log(this.dataOrders);
          if(result.Orders){
@@ -121,7 +145,34 @@ onPaginateChange(event) {
   this.params.pageSize = event.pageSize;
  //event
   //this.params
-  this.onConsultar();
+  this.onConsultar(this.params.Pagina);
+}
+
+
+onDateIni(event: MatDatepickerInputEvent<Date>){
+  if (event.value != null)
+  {
+  let tmpMonth = event.value.getUTCMonth() + 1;
+  let tmpFechIni = event.value.getFullYear() + "-" + ("'00" + tmpMonth).substr(-2) + "-" + ("'00" + event.value.getDate()).substr(-2);
+  this.params.FechaIni = tmpFechIni;
+  }
+  else
+  {
+    this.params.FechaIni = ""
+  }
+}
+
+onDateFin(event: MatDatepickerInputEvent<Date>){
+  if (event.value != null)
+  {
+  let tmpMonth = event.value.getUTCMonth() + 1;
+  let tmpFechFin = event.value.getFullYear() + "-" + ("'00" + tmpMonth).substr(-2) + "-" + ("'00" + event.value.getDate()).substr(-2);
+  this.params.FechaFin = tmpFechFin;
+}
+else
+{
+  this.params.FechaFin = ""
+}
 }
 /*
 chosenYearHandler(normalizedYear: Moment) {

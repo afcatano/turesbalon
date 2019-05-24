@@ -14,59 +14,60 @@
         <input type="text" name="Evento" [(ngModel)] = "params.CodigoEvento" class="form-control" id="Evento">
       </div>
     </div>
-    <div class="form-inline">
-      <div class="form-group">
-        <label for="input" class="col-sm-2 col-form-label">Mes</label>
-          <div class="col-sm-3">
-            <select class="form-control "  name="tipoDocumento" [(ngModel)]="data.tipoDocumento"  >
-              <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}">{{data.name}}</option>
-            </select>
+
+      <div class="form-group row">
+        <div class="col-sm-1"></div>
+        <label for="input" class="col-sm-3 font-weight-bold text-right">Total Facturado x Mes</label>
+        <select class="form-control col-sm-3"  name="Mes" [(ngModel)]="datames.mes"  >
+          <option *ngFor="let datames of dataMeses"  value="{{datames.cod}}">{{datames.name}}</option>
+        </select>
+        <label for="anio" class="col-sm-1 col-form-label">Año</label>
+            <input type="number" name="Anio" [(ngModel)] = "params.Anio" class="form-control col-sm-1" id="Anio">
         </div>
+        <div class="form-group row">
+            <div class="col-sm-4"></div>
+            <label class="col-sm-7 font-weight-bold col-form-label">
+              <input type="checkbox" name="checkRanking" [(ngModel)] = "params.checkRanking" value=""> Ranking Ordenes Mas Tipo Abiertas
+            </label>
         </div>
-        <div class="form-group">
-          <label for="FFinal" class="col-sm-3 col-form-label">Año</label>
-          <div class="col-sm-3">
-            <input type="number" name="Anio" [(ngModel)] = "params.Anio" class="form-control" id="Anio">
-        </div>
-        </div>
-      </div>
     <div class="form-inline">
       <mat-icon style="float: right">star</mat-icon><div class="col-sm-2 font-weight-bold text-right">Más Vendidos</div>
       <div class="form-group">
           <label for="FFinal" class="col-sm-3 col-form-label">Fecha Inicial</label>
           <div class="col-sm-3">
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+              <mat-form-field>
+                  <input matInput name="fechaini" [matDatepicker]="picker" (dateChange)="onDateIni($event)" (dateInput)="onDateIni($event)">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
         </div>
         </div>
         <div class="form-group">
           <label for="FFinal" class="col-sm-3 col-form-label">Fecha Final</label>
           <div class="col-sm-3">
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker1">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
+              <mat-form-field>
+                  <input matInput name="fechafin" [matDatepicker]="picker1" (dateInput)="onDateFin($event)" (dateChange)="onDateFin($event)">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
         </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-primary" style="float: right" (click)="onConsultar()"  type="submit">Consultar</button>
+            <button class="btn btn-primary" style="float: right" (click)="onConsultar(1)"  type="submit">Consultar</button>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <label for="input" class="col-sm-2 font-weight-bold col-form-label" style="float: right">Total Facturado</label>
-        </div>
+      <div *ngIf="colTotalFacturado" class="container">
+        <span *ngFor="let nav of dataOrders">
+          <label for="input"class="col-sm-6 font-weight-bold col-form-label" style="float: center">Nro Ordenes Cerradas: {{nav.TotalRegistros}}</label>
+          <label for="input"class="col-sm-6 font-weight-bold col-form-label" style="float: center">Total Facturado: {{nav.TotalVendido | currency}}</label>
+        </span>
       </div>
   </form>
   <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
 
-  <div class="card mb-3" >
+  <div class="card mb-3" *ngIf="!colTotalFacturado">
   <div class="row no-gutters"  *ngIf="!processing">
                  
     <table class="table table-striped table-sm">
@@ -92,7 +93,6 @@
             <td>{{nav.Transporte? nav.Transporte.EmpresaTransporte:'N/A'}}</td>
             <td>{{nav.Hotel? nav.Hotel.NombreHotel:'N/A'}}</td>
             <td>{{nav.NombreEstadoOrden}}</td>
-            <td *ngIf="colTotalFacturado">{{nav.TotalVendido | currency}}</td>
             <td> 
            <!----     <button type="button" class="btn btn-danger" (click)="cancelar(nav)">Cancelar</button>
                 &nbsp;&nbsp; -->

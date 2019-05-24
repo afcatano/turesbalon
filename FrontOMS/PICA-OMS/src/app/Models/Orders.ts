@@ -14,6 +14,8 @@ export class Orders {
     public RegsPorPagina:number;
     public ConDetalle:boolean;
     public CodigoEvento:string;
+    public FechaInicio:string;
+    public FechaFin:string;
 
   toJSON = () => ({
     CodigoOrden: this.CodigoOrden,
@@ -28,7 +30,9 @@ export class Orders {
     Pagina: this.Pagina,
     RegsPorPagina: this.RegsPorPagina,
     ConDetalle: this.ConDetalle,
-    CodigoEvento: this.CodigoEvento
+    CodigoEvento: this.CodigoEvento,
+    FechaInicio: this.FechaInicio,
+    FechaFin: this.FechaFin
   });
 }
 
