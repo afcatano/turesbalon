@@ -8,6 +8,7 @@ import {ClientesService} from '../../service/clientes.service';
 import {MAT_DATE_LOCALE} from '@angular/material';
 import { DetalleClienteComponent} from  '../detalle-cliente/detalle-cliente.component';
 import {MatDialog} from '@angular/material';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-clientes',
@@ -150,7 +151,7 @@ onPaginateChange(event) {
     this.onConsultar();
   }
 
-onDateIni(event){
+onDateIni(event: MatDatepickerInputEvent<Date>){
   if (event.value != null)
   {
   let tmpMonth = event.value.getUTCMonth() + 1;
@@ -164,7 +165,7 @@ onDateIni(event){
 }
 
 
-onDateFin(event){
+onDateFin(event: MatDatepickerInputEvent<Date>){
   if (event.value != null)
   {
   let tmpMonth = event.value.getUTCMonth() + 1;

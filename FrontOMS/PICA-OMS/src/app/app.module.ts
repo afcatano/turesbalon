@@ -25,6 +25,7 @@ import { AuthenticationService } from './service/authentication.service';
 import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-campana.component';
 import { DatalleProductoComponent } from './Componentes/datalle-producto/datalle-producto.component';
 import { DetalleClienteComponent } from './Componentes/detalle-cliente/detalle-cliente.component';
+import { PasarelapagoComponent } from './Componentes/pasarelapago/pasarelapago.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DetalleClienteComponent } from './Componentes/detalle-cliente/detalle-c
     MessageComponent,
     DatalleCampanaComponent,
     DatalleProductoComponent,
-    DetalleClienteComponent
+    DetalleClienteComponent,
+    PasarelapagoComponent
   ],
   imports: [
     BrowserModule,

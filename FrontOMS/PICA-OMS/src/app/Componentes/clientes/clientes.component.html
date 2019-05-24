@@ -37,10 +37,10 @@
     <div class="form-inline">
       <mat-icon style="float: right">star</mat-icon><div class="col-sm-2 font-weight-bold text-right">Facturacion</div>
       <div class="form-group">
-          <label for="FFinal" class="col-sm-3 col-form-label">Fecha Inicial</label>
+          <label for="FInicial" class="col-sm-3 col-form-label">Fecha Inicial</label>
           <div class="col-sm-3">
             <mat-form-field>
-              <input matInput name="fechaini" [(ngModel)]="params.FechaIni" [matDatepicker]="picker" (dateChange)="onDateIni($event)">
+              <input matInput name="fechaini" [matDatepicker]="picker" (dateChange)="onDateIni($event)" (dateInput)="onDateIni($event)">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -50,7 +50,7 @@
           <label for="FFinal" class="col-sm-3 col-form-label">Fecha Final</label>
           <div class="col-sm-3">
             <mat-form-field>
-              <input matInput name="fechafin" [(ngModel)]="params.FechaFin" [matDatepicker]="picker1" (dateInput)="onDateFin($event)">
+              <input matInput name="fechafin" [matDatepicker]="picker1" (dateInput)="onDateFin($event)" (dateChange)="onDateIni($event)">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>

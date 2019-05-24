@@ -4,32 +4,32 @@
       <div class="col-sm-2"></div>
       <label for="input" class="col-sm-2 col-form-label">Nro Orden</label>
       <div class="col-sm-6">
-        <input type="number" class="form-control" id="NroOrden">
+        <input type="number" name="NroOrden" [(ngModel)] = "params.CodigoOrden" class="form-control" id="NroOrden">
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-2"></div>
-      <label for="input" class="col-sm-2 col-form-label">Evento</label>
+      <label for="input" class="col-sm-2 col-form-label">Codigo Evento</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" id="Evento">
+        <input type="text" name="Evento" [(ngModel)] = "params.CodigoEvento" class="form-control" id="Evento">
       </div>
     </div>
-    <div class="form-group row">
-          <div class="col-sm-2"></div>
-          <label for="input" class="col-sm-2 col-form-label">Estado</label>
-          <div class="col-sm-6">
-            <select class="form-control" name="Estado">
-              </select>
-          </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-2"></div>
-      <label for="input" class="col-sm-2 col-form-label">Mes</label>
-      <div class="col-sm-6">
-        <select class="form-control" name="Mes">
-          </select>
+    <div class="form-inline">
+      <div class="form-group">
+        <label for="input" class="col-sm-2 col-form-label">Mes</label>
+          <div class="col-sm-3">
+            <select class="form-control "  name="tipoDocumento" [(ngModel)]="data.tipoDocumento"  >
+              <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}">{{data.name}}</option>
+            </select>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="FFinal" class="col-sm-3 col-form-label">Año</label>
+          <div class="col-sm-3">
+            <input type="number" name="Anio" [(ngModel)] = "params.Anio" class="form-control" id="Anio">
+        </div>
+        </div>
       </div>
-    </div>
     <div class="form-inline">
       <mat-icon style="float: right">star</mat-icon><div class="col-sm-2 font-weight-bold text-right">Más Vendidos</div>
       <div class="form-group">
@@ -55,7 +55,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-primary" style="float: right" (click)="onSubmit()"  type="submit">Consultar</button>
+            <button class="btn btn-primary" style="float: right" (click)="onConsultar()"  type="submit">Consultar</button>
         </div>
       </div>
       <div class="row">
@@ -64,41 +64,54 @@
         </div>
       </div>
   </form>
-      <div class="row">
-        <div class="col-md-12">
-            <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource">
-              
-                  <!-- Position Column -->
-                  <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                  </ng-container>
-              
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                  </ng-container>
-              
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="weight">
-                    <th mat-header-cell *matHeaderCellDef> Weight </th>
-                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                  </ng-container>
-              
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                  </ng-container>
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-              
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-              </div>
-        </div>
+  <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+
+  <div class="card mb-3" >
+  <div class="row no-gutters"  *ngIf="!processing">
+                 
+    <table class="table table-striped table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Transporte</th>
+            <th scope="col">Hotel</th>
+            <th scope="col">Estado</th>
+            <th *ngIf="colTotalFacturado" scope="col">Total Facturado</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nav of dataOrders">
+            <th scope="row">{{nav.CodigoOrden}}</th>
+            <td>{{nav.FechaOrden}}</td>
+            <td>{{nav.ValorOrden | currency}}</td>
+            <td>{{nav.Evento.NombreEvento}}</td>
+            <td>{{nav.Transporte? nav.Transporte.EmpresaTransporte:'N/A'}}</td>
+            <td>{{nav.Hotel? nav.Hotel.NombreHotel:'N/A'}}</td>
+            <td>{{nav.NombreEstadoOrden}}</td>
+            <td *ngIf="colTotalFacturado">{{nav.TotalVendido | currency}}</td>
+            <td> 
+           <!----     <button type="button" class="btn btn-danger" (click)="cancelar(nav)">Cancelar</button>
+                &nbsp;&nbsp; -->
+                <button class="btn btn-primary btn-sm"  (click)="openDetail(nav)"  type="submit"><mat-icon style="float: right">remove_red_eye</mat-icon></button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
+<div *ngIf="processing" style="margin-left: 50%">
+    <mat-spinner></mat-spinner>
+</div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="mat-elevation-z8">
+        <mat-paginator #paginator [length]="dataCount" [pageIndex]="params.Pagina" [pageSize]="params.pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPaginateChange($event)">
+        </mat-paginator>            
       </div>
+     </div>
+   </div>
 </div>
