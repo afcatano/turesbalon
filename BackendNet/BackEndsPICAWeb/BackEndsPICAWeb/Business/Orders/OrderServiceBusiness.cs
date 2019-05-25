@@ -1740,7 +1740,6 @@ namespace BackEndsPICAWeb.Business.Orders
                             if (aprr_prr.Order.TransportCancelId.Trim().Length > 0)
                                 lo_order.Transport.CancelId = aprr_prr.Order.TransportCancelId;
 
-
                         if (losd_losDAL.PutOrder(lo_order))
                         {
 
