@@ -11,6 +11,14 @@ export class Cliente {
     public documento: number;
     public TotalFacturado: number;
     public TotalRegistros: number;
+    public estadoCliente: any;
+    public userid: number;
+    public IDEstadoCliente: number
+    public IDtipoDocumento: number
+    public checkTarjeta: boolean
+    public username: string
+    public password: string
+    public confirmarContrasena: string
 
   toJSON = () => ({
     nombre: this.nombre,
@@ -24,7 +32,13 @@ export class Cliente {
     tipoDocumento: this.tipoDocumento,
     documento: this.documento,
     TotalFacturado: this.TotalFacturado,
-    TotalRegistros: this.TotalRegistros
+    TotalRegistros: this.TotalRegistros,
+    estadoCliente: this.estadoCliente,
+    userid: this.userid,
+    checkTarjeta: this.checkTarjeta,
+    username: this.username,
+    password: this.password,
+    confirmarContrasena: this.confirmarContrasena
   });
 }
 

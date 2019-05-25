@@ -1,0 +1,55 @@
+<div class="container" >
+    <form style="background-color: white; padding: 30px;">
+      <h2>Cliente</h2>
+      <div class="form-group row">
+              <label for="input" class="col-sm-2 col-form-label">Tipo Documento</label>
+                <select class="form-control col-sm-3"  name="tipoDocumento" [(ngModel)]="data.IDtipoDocumento"  >
+                  <option *ngFor="let data of dataTiposDocumento"  value="{{data.id}}">{{data.name}}</option>
+                </select>
+              <label for="input" class="col-sm-2 col-form-label">Nro Documento</label>
+                <input type="number" class="form-control col-sm-3" name="documento" id="NroDocumento" [(ngModel)]="data.documento">
+      </div>
+      <div class="form-group row">
+          <label for="input" class="col-sm-2 col-form-label">Nombre</label>
+          <input type="text" class="form-control col-sm-3" id="nombre" name="nombre" [(ngModel)]="data.nombre">
+          <label for="input" class="col-sm-2 col-form-label">Apellido</label>
+          <input type="text" class="form-control col-sm-3" name="apellido" id="apellido" [(ngModel)]="data.apellido">
+      </div>
+      <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Telefono</label>
+            <input type="number" class="form-control col-sm-3" id="Telefono" name="Telefono" [(ngModel)]="data.telefono">
+            <label for="input" class="col-sm-2 col-form-label">Correo</label>
+            <input type="text" class="col-sm-3 form-control" name="Correo" id="correo" [(ngModel)]="data.correo">
+      </div>
+      <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Pais</label>
+            <input type="text" class="form-control col-sm-3" id="pais" name="pais" [(ngModel)]="data.pais">
+            <label for="input" class="col-sm-2 col-form-label">Ciudad</label>
+            <input type="text" class="form-control col-sm-3" name="ciudad" id="ciudad" [(ngModel)]="data.ciudad">
+      </div>
+        <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Direccion</label>
+            <input type="text" class="form-control col-sm-3" id="Direccion" name="Direccion" [(ngModel)]="data.direccion">
+            <label for="input" class="col-sm-2 col-form-label">Categoria</label>
+              <select class="col-sm-3 form-control " name="categoria" [(ngModel)]="data.IDEstadoCliente"  >
+                <option *ngFor="let datacat of dataCategorias"  value="{{datacat.id}}">{{datacat.name}}</option>
+              </select>
+      </div>
+      
+      <div class="row">
+          <div *ngIf="data.userid">
+          <div class="col-md-6">
+              <button class="btn btn-primary" style="float: right" (click)="onGuardar(data)"  type="submit">Guardar</button>
+          </div>
+          </div>
+          <div class="col-md-6">
+              <button class="btn btn-danger" style="float: right" (click)="onSalir()"  type="submit">Salir</button>
+          </div>
+          <div *ngIf="!data.userid">
+              <div class="col-md-4 mb-3">
+                  <button class="btn btn-primary"   type="submit" (click)="onCrear(data)">Guardar</button>
+              </div>
+          </div>
+      </div>
+    </form>
+  </div>

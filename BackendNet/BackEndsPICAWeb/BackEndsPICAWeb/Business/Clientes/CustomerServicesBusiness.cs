@@ -134,7 +134,7 @@ namespace BackEndsPICAWeb.Business.Clientes
                     customerResponse.status.MessageResp = "Error en la....";
                     Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "ERROR EN LA CAPA DE NEGOCIO CustomerService:GetCustomer");
                     Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, " :: " + ex.Message);
-                    throw ex;
+                    //throw ex;
                 }
 
             }

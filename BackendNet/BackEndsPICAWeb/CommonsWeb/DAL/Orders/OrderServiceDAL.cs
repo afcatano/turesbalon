@@ -697,7 +697,7 @@ namespace CommonsWeb.DAL.Orders
                 OracleServerHelper losh_osh;
                 DataSet lds_datos;
 
-                ls_sql = "SELECT COUNT(0) TOTALORDERS, SUM(O.ORDERVALUE) TOTALINVOICED";
+                ls_sql = "SELECT COUNT(0) TOTALORDERS, NVL(SUM(O.ORDERVALUE),0) TOTALINVOICED";
                 ls_sql += " FROM ORDERS O WHERE O.ORDERSTATUS = '" + aod_order.OrderStatus + "'";
                 ls_sql += " AND EXTRACT(MONTH FROM O.ORDERDATE) = " + aod_order.OrderDateFrom.Month;
                 ls_sql += " AND EXTRACT(YEAR FROM O.ORDERDATE) = " + aod_order.OrderDateFrom.Year;

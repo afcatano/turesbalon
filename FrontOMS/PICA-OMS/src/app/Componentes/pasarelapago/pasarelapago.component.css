@@ -1,0 +1,27 @@
+.grid-item {
+    display: grid;
+    align-items: right;
+    justify-content: right;
+  }
+.container-test-mode .test-mode-notice {
+    background-color: #F57301;
+    height: 88px;
+    border-bottom: solid 1px #fff;
+    padding-top: 0;
+    width: 100%;
+    z-index: 99999;
+    position: relative;
+}
+.container-test-mode .test-mode-notice .test-mode-notice-box {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-family: 'Arial';
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 23px;
+    vertical-align: bottom;
+}
