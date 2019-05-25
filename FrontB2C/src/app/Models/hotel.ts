@@ -14,5 +14,5 @@ export class hotel {
      tipoHotel:string;
      proveedor:string;
      accion: string;
-     cantidadPersonas:number;
+     cantidad:number;
   }

@@ -33,7 +33,7 @@ export class VuelosComponent implements OnInit {
   processing:boolean;
   params:any;
   paramsBusqueda:parametrosBusqueda;
-  transportes:String;
+  transportes:string;
   constructor(private sesion:StorageService, private rulesService: RulesService,
     private productService: ProductsService, private dialog: MatDialog,private transportService:TransportService,
      private parent: AppComponent, private carritoService:CarritoService, private router: Router, private storageCompra:StorageParamsCompraService) { 
@@ -96,7 +96,7 @@ export class VuelosComponent implements OnInit {
             element.imagen="/../../../assets/vuelos/logo-bolivariano.jpg";
            }
            if(element.PrimerClase)
-            { 
+           { 
               element.Precio = element.PrimerClase.Precio;//.toString().replace(".",",");
 
              var nueElement ={
@@ -109,7 +109,10 @@ export class VuelosComponent implements OnInit {
                             imagen:element.imagen
                           }
                result.Viajes.push(nueElement);
+            }else{
+
             }
+
         });
         this.infoTable= result.Viajes;
         this.progressBar=false;
@@ -143,13 +146,18 @@ export class VuelosComponent implements OnInit {
   var transporte = new Transporte();
   
   transporte.codigo=item.IdViaje;
-  //transporte.proveedor=;
+  transporte.proveedor= this.transportes;
   transporte.ciudadOrigen=item.CiudadOrigen;
   transporte.ciudadDestino=item.CiudadDestino;
-  //transporte.paisOrigen=item.;
-  //transporte.paisDestino=item.;
+  transporte.paisOrigen="Colombia";//TODO - poner pais
+  transporte.paisDestino="Estados unidos";//TODO - poner pais
   transporte.fechaIda=item.FechaSalida;
   transporte.fechaRegreso=item.FechaLlegada;
+
+  if(transporte.fechaIda.split('T').length >0)
+  transporte.fechaIda=transporte.fechaIda.split('T')[0];
+  if(transporte.fechaRegreso.split('T').length >0)
+  transporte.fechaRegreso=transporte.fechaRegreso.split('T')[0];
   //transporte.nombre=item.;
   transporte.valor=item.Precio;
   //transporte.descripcion=item.;
@@ -157,8 +165,8 @@ export class VuelosComponent implements OnInit {
   transporte.imagen=item.imagen;
   //transporte.accion=item.;
   transporte.numSillas=this.paramsBusqueda.cantidadPersonas;
-  //transporte.fechaRegresoDespegue=item.;
-  //transporte.fechaRegresoAterrizaje=item.;
+  transporte.fechaRegresoDespegue="2019-04-19"; //TODO - poner fecha
+  transporte.fechaRegresoAterrizaje="2019-04-19";//TODO - poner fecha
 
   producto.Transporte=transporte; 
 

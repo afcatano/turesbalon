@@ -89,24 +89,25 @@ export class HotelesComponent implements OnInit {
                     var infHotel=new  hotel()
 
                     if(element.Habitaciones.length>0){
-                      // infHotel.codigo=element.IdHotel;
+                      
 
                          element.Habitaciones.forEach(elementHabita => {
+                              infHotel.codigo=212112;//TODO - Codigo de reserva de hotel
                               infHotel.nombre=element.NombreHotel;
                               infHotel.valor=elementHabita.Precio;
                               //infHotel.descripcion=element.Habitaciones.Habitacion.Descripcion;
                               infHotel.direccion=element.Direccion;
                               infHotel.numeroHabitacion=elementHabita.Numero;
                               infHotel.ciudad=item.destino;
-                              //infHotel.pais=element.Hoteles;//TODO - falta el pais
+                              infHotel.pais="Estados unidos";//TODO - falta el pais
                               infHotel.imagen="/../../../assets/hoteles/hotel"+contadorImagen+".jpg";
                               //infHotel.coordenadas=result.Hoteles;
                               infHotel.fechaEntrada=item.fechaInicial;
                               infHotel.fechaSalida=item.fechaFinal;
-                              infHotel.tipoHotel=elementHabita.Tipo;
+                              infHotel.tipoHotel=elementHabita.Tipo ? elementHabita.Tipo:"Estandar";
                               infHotel.proveedor=itemFor;
                               infHotel.accion=this.optionActual;
-                              infHotel.cantidadPersonas=item.cantidadPersonas;
+                              infHotel.cantidad=item.cantidadPersonas;
 
                               if(contadorImagen==4)
                                 contadorImagen=0;
@@ -119,18 +120,18 @@ export class HotelesComponent implements OnInit {
                       infHotel.nombre=element.Habitaciones.Habitacion.Nombre;
                       infHotel.valor=element.Habitaciones.Habitacion.Precio;
                       infHotel.descripcion=element.Habitaciones.Habitacion.Descripcion;
-                      //infHotel.direccion=result.Hoteles;
+                      infHotel.direccion="avenue 124 dolor four" ;//TODO - no tiene direccion
                       infHotel.numeroHabitacion=element.Habitaciones.Habitacion.Numero;
                       infHotel.ciudad=item.destino;
-                      //infHotel.pais=element.Hoteles;//TODO - falta el pais
+                      infHotel.pais="Colombia";//TODO - falta el pais
                       infHotel.imagen="/../../../assets/hoteles/hotel"+contadorImagen+".jpg";
                       //infHotel.coordenadas=result.Hoteles;
                       infHotel.fechaEntrada=item.fechaInicial;
                       infHotel.fechaSalida=item.fechaFinal;
-                      //infHotel.tipoHotel=result.Hoteles;
+                      infHotel.tipoHotel="Estandar";//TODO - no tiene tipo
                       infHotel.proveedor=itemFor;
                       infHotel.accion=this.optionActual;
-                      infHotel.cantidadPersonas=item.cantidadPersonas;
+                      infHotel.cantidad=item.cantidadPersonas;
                       if(contadorImagen==4)
                       contadorImagen=0;
                       contadorImagen= contadorImagen+1;
@@ -217,7 +218,9 @@ export class HotelesComponent implements OnInit {
     var data =this.infoTable.sort((a, b) => {
       return <any>a.valor - <any>b.valor;
     });
+    if(this.infoTable[1])
     this.infoTable[1].select = false;
+    if(this.infoTable[0])
     this.infoTable[0].select = true;
     return this.infoTable;
   }
