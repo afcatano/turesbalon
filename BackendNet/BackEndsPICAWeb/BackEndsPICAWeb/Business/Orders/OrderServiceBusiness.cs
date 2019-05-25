@@ -1693,6 +1693,8 @@ namespace BackEndsPICAWeb.Business.Orders
                         OrderServiceDAL losd_losDAL;
 
                         lo_order = new OrderDTO();
+                        lo_order.Hotel = new HotelReservationDTO();
+                        lo_order.Transport = new TransportReservationDTO();
                         losd_losDAL = new OrderServiceDAL();
 
                         if (aprr_prr.Order.OrderCode != null)
@@ -1719,16 +1721,25 @@ namespace BackEndsPICAWeb.Business.Orders
                             throw new Exception("El numero de la orden es obligatorio");
 
                         if (aprr_prr.Order.Status != null)
-                        {
-
                             if (aprr_prr.Order.Status.Trim().Length > 0)
                                 lo_order.OrderStatus = aprr_prr.Order.Status;
-                            else
-                                throw new Exception("El estado de la orden es obligatorio");
 
-                        }
-                        else
-                            throw new Exception("El estado de la orden es obligatorio");
+                        if (aprr_prr.Order.HotelBookingId != null)
+                            if (aprr_prr.Order.HotelBookingId.Trim().Length > 0)
+                                lo_order.Hotel.BookingId = aprr_prr.Order.HotelBookingId;
+
+                        if (aprr_prr.Order.HotelCancelId != null)
+                            if (aprr_prr.Order.HotelCancelId.Trim().Length > 0)
+                                lo_order.Hotel.CancelId = aprr_prr.Order.HotelCancelId;
+
+                        if (aprr_prr.Order.TransportBookingId != null)
+                            if (aprr_prr.Order.TransportBookingId.Trim().Length > 0)
+                                lo_order.Transport.BookingId = aprr_prr.Order.TransportBookingId;
+
+                        if (aprr_prr.Order.TransportCancelId != null)
+                            if (aprr_prr.Order.TransportCancelId.Trim().Length > 0)
+                                lo_order.Transport.CancelId = aprr_prr.Order.TransportCancelId;
+
 
                         if (losd_losDAL.PutOrder(lo_order))
                         {
