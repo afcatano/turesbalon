@@ -1,4 +1,4 @@
-export class transporte {
+export class Transporte {
     codigo: number;
     proveedor:string;
     ciudadOrigen:string;

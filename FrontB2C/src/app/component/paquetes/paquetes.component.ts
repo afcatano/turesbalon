@@ -15,6 +15,7 @@ import {Evento} from '../../Models/evento';
 import {Producto} from '../../Models/producto';
 import {parametrosBusqueda} from '../../Models/parametrosBusqueda';
 import {AppComponent} from '../../app.component';
+import { Regiones} from '../../mock/ciudadesColombia';
 @Component({
   selector: 'app-paquetes',
   templateUrl: './paquetes.component.html',
@@ -158,15 +159,24 @@ export class PaquetesComponent implements OnInit {
     producto.Evento.NombreEvento=item.nombreEvento ;
     producto.Evento.ValorEvento=item.valorEvento;
     producto.Evento.DescEvento=item.descEvento ;
+
+    //Valida si el evento es nacional o internacional
+    var esInternacional="I";
+    Regiones.forEach(element => {
+      if(element.ciudad==item.ciudad && element.pais=='colombia'){
+        esInternacional="N";
+      }
+    });
+
     producto.Evento.ciudad=item.ciudad ;
     producto.Evento.imagen=item.imagen ;
     producto.Evento.FechaEvento="2019-09-09";//item.fechaEvento ;TODO - Arreglar el formato de fecha
     producto.Evento.inicioEvento=item.horaInicio ;
     producto.Evento.finEvento=item.horaFin ;
     producto.Evento.cantidadDisponibildad=item.cantidad ;
-    producto.Evento.cantidadPersonas=this.params.cantidad;
-
-    item.cantidadPersonas=this.params.cantidad;
+    producto.Evento.Cantidad=this.params.cantidad;
+    producto.Evento.esInternacional = esInternacional;
+     item.cantidadPersonas=this.params.cantidad;
     this.carritoService.addCarrito(producto);
 
     //Valida si hay session para enrutar

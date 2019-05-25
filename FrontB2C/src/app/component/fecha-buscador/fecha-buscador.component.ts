@@ -174,7 +174,7 @@ export class FechaBuscadorComponent implements OnInit {
         this.endDate= fecha;//.getFullYear() +"-"+fecha.getMonth()+"-"+fecha.getDate();
         console.log("endDate");
         console.log(fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate());
-        this.param.fechaFinal=fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate();
+         this.param.fechaFinal=fecha.getFullYear()+"-"+(fecha.getMonth().toString().length==1?"0"+(fecha.getMonth()+1):(fecha.getMonth()+1))+"-"+(fecha.getDate().toString().length==1?"0"+fecha.getDate():fecha.getDate());
       }
       else
       {
@@ -184,7 +184,8 @@ export class FechaBuscadorComponent implements OnInit {
         this.maxEndDate = new Date(vfinishDay.getFullYear(), vfinishDay.getMonth(), vfinishDay.getDate());
         console.log(fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate());
         console.log("initialDate");
-        this.param.fechaInicial=fecha.getFullYear()+"-"+fecha.getMonth()+"-"+ fecha.getDate();
+
+        this.param.fechaInicial=fecha.getFullYear()+"-"+(fecha.getMonth().toString().length==1?"0"+(fecha.getMonth()+1):(fecha.getMonth()+1))+"-"+(fecha.getDate().toString().length==1?"0"+fecha.getDate():fecha.getDate());
       }
     }else{
       if("endDate"==dateInput)

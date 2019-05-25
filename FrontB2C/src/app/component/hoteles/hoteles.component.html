@@ -61,7 +61,7 @@
         </div>
         <div class="col-8">
             
-          <div class="card mb-3" *ngFor="let item of infoTable">
+          <div class="card mb-3" *ngFor="let item of sortData">
                 <div class="row no-gutters">
                   <div class="col-md-4">
                     <img [src]="item.imagen" class="card-img" alt="...">
@@ -81,6 +81,7 @@
                           <div class="col-9">  
                             <button type="button" (click)="addProducto(item)" style="margin-left: 20%;margin-top: 20px;" class="btn btn-success">Selecionar</button>
                             <button type="button" style="margin-left: 20%;margin-top: 20px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
+                            <div style="color: red; margin-top: 20px" *ngIf="item.select">Producto de menor precio recomendado !!</div> 
                 
                           </div>
                       </div>

@@ -13,7 +13,7 @@ import { PaquetesComponent } from './component/paquetes/paquetes.component';
 import { VuelosComponent } from './component/vuelos/vuelos.component';
 import { CarroComponent } from './component/carro/carro.component';
 import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
-import { transporte } from './Models/transporte';
+
 //Constante que almacena las rutas de la app
 const routes: Route[] = [
   { path: '', redirectTo: '/', pathMatch: 'full' },

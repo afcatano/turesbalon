@@ -61,7 +61,7 @@
                             <li class="list-group-item background-white" *ngIf="item.Evento">
                                 <div class="row">
                                     <div class="col-sm">
-                                      <P>Cantidad: {{item.Evento.cantidadPersonas}}</P>
+                                      <P>Cantidad: {{item.Evento.Cantidad}}</P>
                                       <span ><a (click)="removerProducto(item,'E')"style="cursor: pointer;"><mat-icon>remove_circle</mat-icon></a></span>
                                       <span ><a (click)="addProducto(item,'E')"style="cursor: pointer;"><mat-icon>add_circle</mat-icon></a></span>
                                       
@@ -71,7 +71,7 @@
                                         <P>Valor unitario: {{item.Evento.ValorEvento | currency}} </P>
                                    </div>
                                     <div class="col-sm">
-                                        <P>Total: {{item.Evento.ValorEvento * item.Evento.cantidadPersonas  | currency}} </P>
+                                        <P>Total: {{item.Evento.ValorEvento * item.Evento.Cantidad  | currency}} </P>
                                      </div>
                                     
                                 </div>
