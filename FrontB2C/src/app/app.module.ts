@@ -39,6 +39,7 @@ import { NavegadorComponent } from './component/navegador/navegador.component';
 import { FechaBuscadorComponent } from './component/fecha-buscador/fecha-buscador.component';
 import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
 import { CampaingComponent } from './component/campaing/campaing.component';
+import { PasarelaComponent } from './component/pasarela/pasarela.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CampaingComponent } from './component/campaing/campaing.component';
     NavegadorComponent,
     FechaBuscadorComponent,
     CrearOrdenComponent,
-    CampaingComponent
+    CampaingComponent,
+    PasarelaComponent
   ],
   imports: [
     BrowserModule,

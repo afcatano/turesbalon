@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {buscadorPaginacion} from '../../Models/busquedaPaginacion';
 import {Evento} from '../../Models/evento';
+import {campana} from '../../Models/Campana';
 import { AppComponent } from '../../app.component';
 import {CampanasService} from '../../service/campanas.service';
+import { DatalleCampanaComponent} from '../datalle-campana/datalle-campana.component';
+import {MatDialog} from '@angular/material';
 @Component({
   selector: 'app-campanas',
   templateUrl: './campanas.component.html',
@@ -29,14 +32,15 @@ export class CampanasComponent implements OnInit {
   }
   dataCount: number=0;//tamaño para el paginador
   dataCampaing:Evento[];
-  constructor(private parent: AppComponent ,private serviceCamping :CampanasService) { }
+  constructor(private parent: AppComponent ,private serviceCamping :CampanasService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.onSubmit();
   }
 
 
   
-  //Metodo que trae los eventos
+  //Metodo que trae las campañas
   onSubmit() {
     this.progressBar=true;
     let parametros = this.params;
@@ -76,19 +80,32 @@ export class CampanasComponent implements OnInit {
 
    //Metodo que abre el popup del detalle del evento
    openDetail( item): void {
-   /* var orden = new Producto();
-    var  evento= new Evento();
-    orden.Evento = item;
-    orden.tipoDetalle="Evento";
-    orden.codigo=item.CodigoEvento;
-    console.log(orden);
-    const dialogRef = this.dialog.open(DatalleEventoComponent, {
+     console.log(item);
+   const dialogRef = this.dialog.open(DatalleCampanaComponent, {
       width: '70%',
-      data: orden
+      data: item
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.parent.openDialog( "",result,"Alerta");
       console.log('The dialog was closed');
-    });*/
+    });
   }
+
+   //Metodo que abre el popup del detalle del evento
+   crearCampana( ): void {
+    var item = new campana();
+    console.log(item);
+    console.log("item");
+
+   const dialogRef = this.dialog.open(DatalleCampanaComponent, {
+     width: '70%',
+     data: item
+   });
+
+   dialogRef.afterClosed().subscribe(result => {
+     this.parent.openDialog( "",result,"Alerta");
+     console.log('The dialog was closed');
+   });
+ }
 }

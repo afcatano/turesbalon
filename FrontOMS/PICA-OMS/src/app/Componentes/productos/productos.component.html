@@ -4,23 +4,10 @@
       <div class="col-sm-2"></div>
       <label for="input" class="col-sm-2 col-form-label">Codigo</label>
       <div class="col-sm-6">
-        <input type="number" class="form-control" id="Codigo">
+          <input type="text" [(ngModel)]="params.evento"class="form-control" id="Codigo" name="Codigo">
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-2"></div>
-      <label for="input" class="col-sm-2 col-form-label">Nombre</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" id="Nombre">
-      </div>
-    </div>
-    <div class="form-group row">
-          <div class="col-sm-2"></div>
-          <label for="input" class="col-sm-2 col-form-label">Descripción</label>
-          <div class="col-sm-6">
-            <input type="text" class="form-control" id="Descripcion">
-          </div>
-    </div>
+  
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <label for="input" class="col-sm-2 col-form-label">Tipo Evento</label>
@@ -57,7 +44,7 @@
             <button class="btn btn-primary" style="float: right" (click)="onSubmit()"  type="submit">Consultar</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary" (click)="onSubmit()"  type="submit">Crear</button>
+            <button class="btn btn-primary" (click)="crearProducto()"  type="submit">Crear</button>
         </div>
       </div>
   </form>
@@ -69,60 +56,41 @@
           {{dataCount}} Productos Encontrados
         </div>
      </div>
-     <div class="row">
-        <div class="col-sm" *ngFor="let item of dataEventos">
-          <div class="card" style="width: 18rem;">
-            <img [src]="item.imagen" class="card-img-top" alt="...">
-            <div class="card-body card-color-blue">
-                <div class="row">
-                    <div class="col-6"><p >Precio unitario </p><p class="card-text" style="margin-left: 20%;">{{item.valorEvento | currency}}</p></div>
-                    <div class="col-3">  
-                      <button type="button" style="margin-top: 10px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
-                    </div>
-                  </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-      <mat-paginator #paginator [length]="dataCount" [pageIndex]="params.page" [pageSize]="params.pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPaginateChange($event)">
-      </mat-paginator>
+     
     </div>
 
-
+   
       <div class="row">
         <div class="col-md-12">
             <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource">
-              
-                  <!-- Position Column -->
-                  <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                  </ng-container>
-              
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                  </ng-container>
-              
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="weight">
-                    <th mat-header-cell *matHeaderCellDef> Weight </th>
-                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                  </ng-container>
-              
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                  </ng-container>
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-              
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Codigo Evento</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let nav of dataEventos">
+                        <th scope="row">{{nav.id}}</th>
+                        <td>{{nav.codigoEvento}}</td>
+                        <td>{{nav.nombreEvento}}</td>
+                        <td>{{nav.fechaEvento}}</td>
+                        <td>{{nav.valorEvento | currency}}</td>
+                        <td>{{nav.cantidad}}</td>
+                        <td>{{nav.estado}}</td>
+                        <td> 
+                         <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">Ver</button></td>
+                      </tr>
+                     </tbody>
+                  </table>
+                 
                 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
               </div>
         </div>

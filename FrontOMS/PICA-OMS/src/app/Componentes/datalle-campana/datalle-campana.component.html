@@ -1,0 +1,77 @@
+<div class="container" >
+  <form style="background-color: white; padding: 30px;">
+    <div >
+      <h2>Campaña</h2>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Campaña</label>
+          <input maxlength="40" type="text" [(ngModel)]="data.campana"   name="campana"  class="form-control " id="campana" placeholder="Campaña"  required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Descripción</label>
+          <input maxlength="40" type="text" [(ngModel)]="data.descripcion"   name="descripcion"  class="form-control " id="descripcion" placeholder="descripción"  required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Fecha Finalización</label>
+          <div class="date-picker">
+              <input matInput [matDatepicker]="endDate" class="input-date-picker" [min]="minEndDate" [max]="maxEndDate" placeholder="Fecha final" (dateInput)="addEvent('input', $event, 'endDate')"
+              (dateChange)="addEvent('change', $event,'endDate')">
+              <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+              <mat-datepicker #endDate></mat-datepicker>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Precio</label>
+          <input maxlength="40" type="number" [(ngModel)]="data.precio"   name="precio"  class="form-control " id="precio" placeholder="Precio"  required>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Cantidad</label>
+          <input maxlength="40" type="number" [(ngModel)]="data.cantidad"   name="cantidad"  class="form-control " id="cantidad" placeholder="Cantidad"  required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Codigo producto</label>
+          <input maxlength="40" type="text" [(ngModel)]="data.codigo"   name="codigo"  class="form-control " id="codigo" placeholder="Codigo producto"  required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Cargue Imagen de campaña</label>
+          <input  maxlength="40" type="file"  accept="image/*"  name="imagen"  class="form-control " id="imagen" placeholder="Codigo producto"  required>
+        </div>
+
+        <div class="col-md-8 mb-3" *ngIf="data.id">
+          <label for="validationServer02">Estado</label>
+         
+          <select class="form-control "  name="tipoDocumento" [(ngModel)]="data.estado"  >
+            <option  value="Activo" >Activo</option>
+            <option  value="Inactivo" >Inactivo</option>
+          </select>
+          
+        </div>
+
+        <div *ngIf="data.id">
+            <div class="col-md-4 mb-3">
+                <button class="btn btn-primary"   type="submit" (click)="openAlmacenar(data)">Guardar</button>
+            </div>
+            <div class="col-md-4 mb-3">
+                <button class="btn btn-danger"   type="submit" (click)="openEliminar(data)">Eliminar</button>
+            </div>
+        </div>
+        <div *ngIf="!data.id">
+            <div class="col-md-4 mb-3">
+                <button class="btn btn-primary"   type="submit" (click)="openCrear(data)">Guardar</button>
+            </div>
+        </div>
+      </div>
+     
+      
+
+      
+    </div>
+      
+    </form>
+</div>

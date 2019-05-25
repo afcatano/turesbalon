@@ -27,7 +27,7 @@ export class StorageParamsCompraService {
   
             case "E":
                     if(listCarrito.orden.Evento)
-                      listCarrito.orden.Evento.cantidadPersonas = parseInt(listCarrito.orden.Evento.cantidadPersonas) +1;
+                      listCarrito.orden.Evento.Cantidad = parseInt(listCarrito.orden.Evento.Cantidad) +1;
                   break;
             case "T":
                       if(listCarrito.orden.Transporte)
@@ -81,8 +81,8 @@ export class StorageParamsCompraService {
 
           case "E":
                   if(listCarrito.orden.Evento)
-                    if(listCarrito.orden.Evento.cantidadPersonas!=0)
-                      listCarrito.orden.Evento.cantidadPersonas = parseInt(listCarrito.orden.Evento.cantidadPersonas) -1;
+                    if(listCarrito.orden.Evento.Cantidad!=0)
+                      listCarrito.orden.Evento.Cantidad = parseInt(listCarrito.orden.Evento.Cantidad) -1;
                 break;
           case "T":
                     if(listCarrito.orden.Transporte)

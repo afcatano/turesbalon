@@ -63,7 +63,7 @@
         <div class="col-8">
 
 
-            <div class="card mb-3"  *ngFor="let item of infoTable">
+            <div class="card mb-3"  *ngFor="let item of sortData">
                 <div class="row no-gutters">
                   <div class="col-md-9">
                     <div class="card-body ">
@@ -72,15 +72,15 @@
                                 <div class="row">
                                     <div class="col-sm">
                                       <P>IDA</P>
-                                      <P>Lun. 15 Abril 2019</P>
+                                      <P>{{item.FechaSalida}}</P>
                                     </div>
                                     <div class="col-sm">
                                       <P>BOG</P>
-                                      <P>Bogotá</P>
+                                      <P>{{item.CiudadOrigen}}</P>
                                     </div>
                                     <div class="col-sm">
                                       <P>MAD</P>
-                                      <P>Madrid</P>
+                                      <P>{{item.CiudadDestino}}</P>
                                     </div>
                                 </div>
                             </li>
@@ -90,26 +90,26 @@
                                         <P>  <img [src]="item.imagen" class="card-img card-logo" alt="..."></P>
                                     </div>
                                     <div class="col-sm">
-                                        <P>20:10</P>
+                                        <P>{{item.HoraSalida}}</P>
                                     </div>
                                     <div class="col-sm">
-                                        <P>22:10</P>
+                                        <P>{{item.HoraLlegada}}</P>
                                     </div>
                                 </div>
                             </li>
                             <li class="list-group-item background-grey">
                                 <div class="row">
                                     <div class="col-sm">
-                                      <P>IDA</P>
-                                      <P>Lun. 15 Abril 2019</P>
+                                      <P>Vuelta</P>
+                                      <P>{{paramsBusqueda.fechaFinal}}</P>
                                     </div>
                                     <div class="col-sm">
                                       <P>MAD</P>
-                                      <P>Madrid</P>
+                                      <P>{{item.CiudadDestino}}</P>
                                     </div>
                                     <div class="col-sm">
                                       <P>BOG</P>
-                                      <P>Bogotá</P>
+                                      <P>{{item.CiudadOrigen}}</P>
                                     </div>
                                 </div>
                             </li>
@@ -119,10 +119,10 @@
                                         <P>  <img [src]="item.imagen" class="card-img card-logo" alt="..."></P>
                                     </div>
                                     <div class="col-sm">
-                                        <P>20:10</P>
+                                        <P>{{item.HoraSalida}}</P>
                                     </div>
                                     <div class="col-sm">
-                                        <P>22:10</P>
+                                        <P>{{item.HoraLlegada}}</P>
                                     </div>
                                 </div>
                             </li>
@@ -132,10 +132,11 @@
                   <div class="col-md-3 card-color-blue" >
                      <div class="card-body ">
                       <div class="row">
-                          <div class="col-9"><p style="margin-left: 20%;">Precio unitario </p><p class="card-text" style="margin-left: 30%;">{{item.valor | currency}}</p></div>
+                          <div class="col-9"><p style="margin-left: 20%;">Precio unitario </p><p class="card-text" style="margin-left: 30%;">{{item.Precio | currency}}</p></div>
                           <div class="col-9">  
                               <button type="button" (click)="addProducto(item)" style="margin-left: 20%;margin-top: 20px;" class="btn btn-success">Selecionar</button>
                               <button type="button" style="margin-left: 20%;margin-top: 20px;" (click)="openDetail(item)" class="btn btn-success">Detalle</button>
+                          <div style="color: red; margin-top: 20px" *ngIf="item.select">Producto de menor precio recomendado !!</div> 
                           </div>
                       </div>
                     </div>

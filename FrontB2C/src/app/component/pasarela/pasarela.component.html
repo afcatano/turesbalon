@@ -1,0 +1,60 @@
+<div class="container"> 
+  <div class="container-test-mode hidden-print"> 
+    <div id="container-test-mode-body-sticky-wrapper" class="sticky-wrapper" style="height: 88px;">
+      <div id="container-test-mode-body" class="test-mode-notice body-test-mode ng-isolate-scope"> 
+        <div id="sub-content" class="hidden-print"></div><div class="test-mode-notice-box"> 
+          <span class="ng-scope">Transacción en Proceso</span> 
+        </div> 
+      </div>
+    </div> 
+  </div>
+  <p></p> 
+  <form class="form-horizontal">
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+      <label for="input" class="col-sm-2 grid-item">Nombre en la Tarjeta</label>
+      <input type="text" size="35" class="form-control col-sm-5" name="nombretarjeta" id="nombretarjeta">
+  </div>
+  <div class="form-group row">
+      <div class="col-sm-1"></div>
+      <label for="input" class="col-form-label col-sm-3 grid-item">Documento de Identificación</label>
+      <select class="form-control col-sm-2" name="tipoDocumento" >
+        </select>
+      <input type="text" size="35" class="form-control col-sm-3 grid-item" name="Documento" id="Documento">
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+      <label for="input" class="col-sm-2 grid-item">Numero de la Tarjeta</label>
+      <input type="text" size="35" class="form-control col-sm-5" name="nrotarjeta" id="nrotarjeta">
+  </div>
+  <div class="form-group row">
+      <div class="col-sm-2"></div>
+        <label for="input" class="col-sm-2 grid-item">Codigo de Seguridad</label>
+        <input type="text" size="35" class="form-control col-sm-2" name="ccv" id="ccv">
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-1"></div>
+        <label for="input" class="col-form-label col-sm-3 grid-item">Fecha Vencimiento</label>
+        <select class="form-control col-sm-2" name="mes" >
+          </select>
+          <select class="form-control col-sm-2" name="anio" >
+            </select>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+          <label for="input" class="col-sm-2 grid-item">Cuotas</label>
+          <input type="number" size="35" class="form-control col-sm-2" name="cuotas" id="cuotas">
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+          <label for="input" class="col-sm-2 grid-item">Telefono Celular</label>
+          <input type="number" size="35" class="form-control col-sm-2" name="cuotas" id="cuotas">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+              <button *ngIf="!verificar" class="btn btn-success" style="float: right" (click)="veryfy()"  type="submit">Verificar</button>
+              <button *ngIf="verificar" class="btn btn-success" style="float: right" (click)="pay()"  type="submit">Pagar</button>
+          </div>
+    </div>
+</form>
+</div>

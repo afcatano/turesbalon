@@ -1,7 +1,7 @@
 
 
 import {hotel} from './hotel';
-import {transporte} from './transporte';
+import {Transporte} from './transporte';
 import {Evento} from './evento';
 
 export class Producto {
@@ -21,7 +21,7 @@ export class Producto {
      finEvento:string;
      cantidad:string;
      /**info transporte */
-     Transporte: transporte;
+     Transporte: Transporte;
      horaSalida:string;
      cantidadTransporte:string;
      /**info hotel */
@@ -43,7 +43,8 @@ export class Producto {
               imagen:this.Evento.imagen,
               inicioEvento:this.Evento.inicioEvento,
               finEvento:this.Evento.finEvento,
-              Cantidad:this.Evento.cantidadPersonas
+              Cantidad:this.Evento.Cantidad,
+              esInternacional:this.Evento.esInternacional
             },
             Hotel: {
               IdReservaHotel: this.Hotel ? this.Hotel.codigo:null,
@@ -57,6 +58,7 @@ export class Producto {
               TipoHotel: this.Hotel ? this.Hotel.tipoHotel:null,
               ValorHotel: this.Hotel ? this.Hotel.valor:null,
               EmpresaHotel: this.Hotel ? this.Hotel.proveedor:null,
+              Cantidad: this.Hotel ? this.Hotel.cantidad:null,
             },
             Transporte: {
               IdReservaTransporte: this.Transporte ? this.Transporte.codigo:null,
@@ -73,6 +75,5 @@ export class Producto {
               EmpresaTransporte:this.Transporte ? this.Transporte.proveedor:null,
             }
           
-        
       })
 }

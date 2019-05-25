@@ -7,6 +7,7 @@ import { CampanasComponent } from './Componentes/campanas/campanas.component';
 import { ProductosComponent } from './Componentes/productos/productos.component';
 import { OrdenesComponent } from './Componentes/ordenes/ordenes.component';
 import { LoginComponent } from './Componentes/login/login.component';
+import {PasarelapagoComponent} from './Componentes/pasarelapago/pasarelapago.component'
 import { ValidateSession } from './service/validatesession.service';
 import { RemoveSession } from './service/remove-session.service';
 //Constante que almacena las rutas de la app
@@ -19,6 +20,7 @@ const routes: Route[] = [
   {path: "Clientes", component: ClientesComponent, canActivate: [ValidateSession]},
   {path: "Ordenes", component: OrdenesComponent, canActivate: [ValidateSession]},
   { path: "logout", component: LoginComponent, canActivate: [RemoveSession] },
+  {path:"Pasarela", component: PasarelapagoComponent},
 ];
 
 @NgModule({

@@ -99,19 +99,19 @@ export class ClientesService {
           result => {
                     var date="";
                       if(result.codigo=="0") {
-                       // console.log(JSON.stringify(result, null, 4));
                        this.Clientes = result.Clientes;
+                       console.log("Invocar paginador Clientes");
+                       this.paginador(params,result =>{
+                        var retono= {clientes:result,paginaActual:params.Pagina,cantidadRegistros:result[0].TotalRegistros,tamanoPagina:params.RegistroXPagina,codigo:'0' }
+                        console.log(retono);
+                        callback(retono);
+                      });
                       } else {
+                        var retono= {mensaje:result.mensaje,paginaActual:params.Pagina,cantidadRegistros:0,tamanoPagina:params.RegistroXPagina, codigo:result.codigo }
+                        callback(retono);
                         console.log(JSON.stringify(result, null, 4));
                       }
                       console.log("Entra al api de Consultar Clientes" );
-                      //callback(result);
-                      this.paginador(params,result =>{
-                        var retono= {clientes:result,paginaActual:params.Pagina,cantidadRegistros:result[0].TotalRegistros,tamanoPagina:params.RegistroXPagina,codigo:'0' }
-                        console.log(retono);
-                        console.log("Invocar paginador Clientes");
-                        callback(retono);
-                      });
                     },
                     error => {
                       console.log("Error al consultar clientes:" +error);

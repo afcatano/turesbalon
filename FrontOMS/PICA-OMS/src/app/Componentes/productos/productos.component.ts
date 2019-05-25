@@ -3,7 +3,8 @@ import {buscadorPaginacion} from '../../Models/busquedaPaginacion';
 import {Evento} from '../../Models/evento';
 import { AppComponent } from '../../app.component';
 import {ProductosService} from '../../service/productos.service';
-
+import { DatalleProductoComponent} from '../datalle-producto/datalle-producto.component';
+import {MatDialog} from '@angular/material';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -15,10 +16,10 @@ export class ProductosComponent implements OnInit {
   params = {
     tmIni: null,
     tmFin: null,
-    evento: null,
+    evento: '%%',
     cantidad: 0,
     page: 0,//Variable para almacenar la pagina actual
-    pageSize: 21,  // Variable para almacenar la cantidad de resultados por pagina
+    pageSize: 15,  // Variable para almacenar la cantidad de resultados por pagina
     categoria: null,
     operador: null,
     optionPaquete:null,
@@ -30,13 +31,13 @@ export class ProductosComponent implements OnInit {
   }
   dataCount: number=0;//tamaño para el paginador
   dataEventos:Evento[];
-  constructor(private parent: AppComponent ,private serviceProduct :ProductosService) { }
+  constructor(private parent: AppComponent ,private serviceProduct :ProductosService, private dialog:MatDialog) { }
 
   ngOnInit() {
+    this.onSubmit();
   }
-
-
   
+
   //Metodo que trae los eventos
   onSubmit() {
     this.progressBar=true;
@@ -81,19 +82,33 @@ export class ProductosComponent implements OnInit {
 
    //Metodo que abre el popup del detalle del evento
    openDetail( item): void {
-   /* var orden = new Producto();
-    var  evento= new Evento();
-    orden.Evento = item;
-    orden.tipoDetalle="Evento";
-    orden.codigo=item.CodigoEvento;
-    console.log(orden);
-    const dialogRef = this.dialog.open(DatalleEventoComponent, {
+    
+    console.log(item);
+    const dialogRef = this.dialog.open(DatalleProductoComponent, {
       width: '70%',
-      data: orden
+      data: item
     });
-
     dialogRef.afterClosed().subscribe(result => {
+      this.parent.openDialog( "",result,"Alerta");
       console.log('The dialog was closed');
-    });*/
+    });
   }
+
+    //Metodo que abre el popup del detalle del evento
+    crearProducto( ): void {
+      var item = new Evento();
+      console.log(item);
+      console.log("item");
+  
+     const dialogRef = this.dialog.open(DatalleProductoComponent, {
+       width: '70%',
+       data: item
+     });
+  
+     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.parent.openDialog( "",result,"Alerta");
+       console.log('The dialog was closed');
+     });
+   }
 }

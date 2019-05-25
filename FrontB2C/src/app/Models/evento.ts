@@ -10,7 +10,8 @@ export class Evento {
     inicioEvento:string;
     finEvento:string;
     cantidadDisponibildad:number;
-    cantidadPersonas:number;
+    Cantidad:number;
+    esInternacional:String;
     
 }
 

@@ -100,24 +100,7 @@ export class ProductsService {
      );
     }
 
-  //Invoca api que registra datos del usuario
-  hotels(params): Observable<any> {
-    var path = "";
-    //Verifica que exita la propiedad config
-    var parameterInfo = new ParameterInfo();
-   var headers = new HttpHeaders ();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    
-    //console.log(params.toJSON());
-    console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
-    return this.http.post(path + this.pathHotels,{ headers: headers});
-  }
-
-
-
+  
   getCampaing(params, callback){
 
     var config= this.config.getConfigSession();

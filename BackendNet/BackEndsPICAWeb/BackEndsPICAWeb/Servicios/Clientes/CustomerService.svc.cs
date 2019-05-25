@@ -36,7 +36,8 @@ namespace BackEndsPICAWeb.Servicios.Clientes
                     RegsTotales= prmcustomerRequest.Customer.TotalsRegs,
                     FechaIniFact = prmcustomerRequest.Customer.DateIniFact,
                     FechaFinFact = prmcustomerRequest.Customer.DateFinFact,
-                    Evento  = prmcustomerRequest.Customer.EventType
+                    Evento  = prmcustomerRequest.Customer.EventType,
+                    ID = prmcustomerRequest.Customer.IdUser
                 };
 
                 if (clientesDTO.Pagina == 0)
@@ -84,7 +85,8 @@ namespace BackEndsPICAWeb.Servicios.Clientes
                     Country = prmcustomerRequest.Customer.Country,
                     User = prmcustomerRequest.Customer.User,
                     Status = prmcustomerRequest.Customer.StatusCustomer,
-                    Password = prmcustomerRequest.Customer.Password
+                    Password = prmcustomerRequest.Customer.Password,
+                    ID = prmcustomerRequest.Customer.IdUser
                 };
 
                 iCSBusiness = new CustomerServicesBusiness();

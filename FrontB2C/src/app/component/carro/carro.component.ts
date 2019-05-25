@@ -38,13 +38,11 @@ export class CarroComponent implements OnInit {
       this.params.opionPaquete=this.session.optionPaquete
       
       if(this.session.orden.Evento!= undefined )
-       { 
-         valorTotal= (this.session.orden.Evento.ValorEvento !=null? this.session.orden.Evento.ValorEvento:0)*(this.session.orden.Evento.cantidadPersonas);
-       }
-      if(this.session.orden.Transporte!= undefined )
+       valorTotal= (this.session.orden.Evento.ValorEvento !=null? this.session.orden.Evento.ValorEvento:0)*(this.session.orden.Evento.Cantidad);
+       if(this.session.orden.Transporte!= undefined)
         valorTotal=valorTotal+ ((this.session.orden.Transporte.valor !=null? this.session.orden.Transporte.valor:0)*(this.session.orden.Transporte.numSillas));
-      if(this.session.orden.Hotel!= undefined )
-        valorTotal= valorTotal + ((this.session.orden.Hotel.valor !=null? this.session.orden.Hotel.valor:0)*(this.session.orden.Evento.cantidadPersonas));
+      if(this.session.orden.Hotel!= undefined)//&& this.session.orden.Transporte.IdReservaHotel!= undefined)
+        valorTotal= valorTotal + ((this.session.orden.Hotel.valor !=null? this.session.orden.Hotel.valor:0)*(this.session.orden.Hotel.cantidadPersonas));
 
       this.session.orden.precio =valorTotal;
       this.totalOrders=valorTotal;
@@ -95,7 +93,7 @@ export class CarroComponent implements OnInit {
       this.session.orden.userid=user.userid;
       this.session.orden.precio=this.totalOrders;
       this.storageCompra.setParamsCompraSession(this.session);
-      this.router.navigate(['crearOrden']);
+      this.router.navigate(['pasarela']);
 
     }else{
       this.parent.openDialog( "","Debe primero iniciar sesion !!.","Alerta");

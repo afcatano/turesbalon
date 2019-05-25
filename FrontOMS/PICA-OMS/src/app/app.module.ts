@@ -22,6 +22,10 @@ import {StorageParamsService} from "./storage/storage-params.service";
 import {RemoveSession} from "./service/remove-session.service";
 import {ValidateSession} from "./service/validatesession.service";
 import { AuthenticationService } from './service/authentication.service';
+import { DatalleCampanaComponent } from './Componentes/datalle-campana/datalle-campana.component';
+import { DatalleProductoComponent } from './Componentes/datalle-producto/datalle-producto.component';
+import { DetalleClienteComponent } from './Componentes/detalle-cliente/detalle-cliente.component';
+import { PasarelapagoComponent } from './Componentes/pasarelapago/pasarelapago.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { AuthenticationService } from './service/authentication.service';
     ProductosComponent,
     OrdenesComponent,
     LoginComponent,
-    MessageComponent
+    MessageComponent,
+    DatalleCampanaComponent,
+    DatalleProductoComponent,
+    DetalleClienteComponent,
+    PasarelapagoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,7 @@ import { AuthenticationService } from './service/authentication.service';
     FormsModule,
      HttpClientModule  
   ],
-  entryComponents: [ MessageComponent],
+  entryComponents: [ MessageComponent, DatalleCampanaComponent,DatalleProductoComponent, DetalleClienteComponent],
   providers: [StorageService, StorageParamsService,ValidateSession, RemoveSession, AuthenticationService,StorageConfigService
 ],
   bootstrap: [AppComponent]
