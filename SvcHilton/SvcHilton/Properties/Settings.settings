@@ -1,0 +1,105 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SvcHilton.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TimeOutConnectionSQL" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Ruta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:/log/</Value>
+    </Setting>
+    <Setting Name="Warning" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Error" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Fatal" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Information" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Exception" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Debug" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="hostSmtp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PortMail" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CorreoEmisor" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PasswordCorreoEmi" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TimeOutMail" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+    <Setting Name="Nombre" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LogHiltonServices</Value>
+    </Setting>
+    <Setting Name="DataBaseNameSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Hilton</Value>
+    </Setting>
+    <Setting Name="IndicadorConsecutivo" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="DigitoConsecutivo" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CodigoMoneda" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DataSourceSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">JavaServer2\SQLEXPRESS</Value>
+    </Setting>
+    <Setting Name="UserIDSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sa</Value>
+    </Setting>
+    <Setting Name="PasswordSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sa2</Value>
+    </Setting>
+    <Setting Name="Categoria" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OTO</Value>
+    </Setting>
+    <Setting Name="ParamatroEtaRefBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ERBPM</Value>
+    </Setting>
+    <Setting Name="ParamatroProRefBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PRBPM</Value>
+    </Setting>
+    <Setting Name="ParamatroEtaAnaBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EABPM</Value>
+    </Setting>
+    <Setting Name="ParamatroProAnaBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PABPM</Value>
+    </Setting>
+    <Setting Name="CodigoTDC" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ParamatroReglaTDCBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RTBPM</Value>
+    </Setting>
+    <Setting Name="ParamatroReglaVIVBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RVBPM</Value>
+    </Setting>
+    <Setting Name="ParamatroReglaLIBBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RLBPM</Value>
+    </Setting>
+    <Setting Name="ParamatroReglaCEPBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RCBPM</Value>
+    </Setting>
+    <Setting Name="UnidadTiempoBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UTBPM</Value>
+    </Setting>
+    <Setting Name="TiempoTarjetaBPM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">36</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
