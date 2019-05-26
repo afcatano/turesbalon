@@ -1,18 +1,26 @@
-<div class="container" style="background-color: white; padding: 30px;">
-    <div style="padding: 0px 0px 40px 10px;"><h2>Estado Compra : Compra Exitosa</h2></div>
-      <div class="row" >
-          <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
-          
-          <div class="col-12"><h5>CodigoOrden: {{CodigoOrden}}</h5> </div>
-          <div class="col-12"><h5>EstadoOrden: {{EstadoOrden}}</h5> </div>
-          <div class="col-12"><h5>FechaOrden : {{FechaOrden}}</h5> </div>
-          <div class="col-12"><h5>ValorOrden : {{ValorOrden | currency}}</h5> </div>
-          
-         
-          <div class="col-12"> <a [routerLink]="['/ordenesusuario']">Mis Ordenes</a></div>
 
-
-         
+<div class="container">
+    <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
+      <div class="col-9 card" >
+        <div class="card-header">
+            <span class="fontpayment">   Estado Compra : Compra Exitosa        </span>      
         </div>
-</div>
+        <div class="container" style="background-color: white; padding: 30px;">
+            <div style="padding: 0px 0px 40px 10px;"></div>
+              <div class="row" >
+                  <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+                  
+                  <div class="col-12"><h5>CodigoOrden: {{CodigoOrden}}</h5> </div>
+                  <div class="col-12"><h5>EstadoOrden: {{EstadoOrden}}</h5> </div>
+                  <div class="col-12"><h5>FechaOrden : {{FechaOrden}}</h5> </div>
+                  <div class="col-12"><h5>ValorOrden : {{ValorOrden | currency}}</h5> </div>
+                  
+                
+                  <div class="col-12"> <a [routerLink]="['/ordenesusuario']">Mis Ordenes</a></div>
+               </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     

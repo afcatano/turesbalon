@@ -12,31 +12,40 @@
       <div class="col-sm-2"></div>
       <label for="input" class="col-sm-2 col-form-label">Tipo Evento</label>
       <div class="col-sm-6">
-        <select class="form-control" name="TipoEvento">
+        <select class="form-control" id="Categoria" [disabled]="categoriaComodin" [(ngModel)]="params.categoria"name="Categoria">
+          <option selected="selected">--selecciona--</option>
+          <option>Futbol</option>
+          <option>Tenis</option>
+          <option>Basketbol</option>
         </select>
       </div>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" name="check"  [(ngModel)]="categoriaComodin" (change)="cambioCategoria()" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Busca Comodin Tipo Evento</label>
+      <input type="text" [(ngModel)]="params.categoriaComodin"class="form-control" [readonly]="!categoriaComodin" id="Codigo" name="Codigo">
     </div>
     <div class="form-inline">
       <mat-icon style="float: right">star</mat-icon><div class="col-sm-2 font-weight-bold text-right">Más Vendidos</div>
       <div class="form-group">
-          <label for="FFinal" class="col-sm-3 col-form-label">Fecha Inicial</label>
-          <div class="col-sm-3">
+        <label for="FFinal" class="col-sm-3 col-form-label">Fecha Inicial</label>
+        <div class="col-sm-3">
             <mat-form-field>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
+                <input matInput name="fechaini" [matDatepicker]="picker" (dateChange)="onDateIni($event)" (dateInput)="onDateIni($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
         </div>
         <div class="form-group">
           <label for="FFinal" class="col-sm-3 col-form-label">Fecha Final</label>
           <div class="col-sm-3">
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker1">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-        </div>
+              <mat-form-field>
+                  <input matInput name="fechafin" [matDatepicker]="picker1" (dateInput)="onDateFin($event)" (dateChange)="onDateFin($event)">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+           </div>
         </div>
       </div>
       <div class="row">
@@ -86,12 +95,13 @@
                         <td>{{nav.cantidad}}</td>
                         <td>{{nav.estado}}</td>
                         <td> 
-                         <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">Ver</button></td>
+                         <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit"><mat-icon style="float: right">remove_red_eye</mat-icon></button></td>
                       </tr>
                      </tbody>
                   </table>
                  
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                  <mat-paginator #paginator [length]="dataCount" [pageIndex]="params.Pagina" [pageSize]="params.pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="onPaginateChange($event)">
+                  </mat-paginator>   
               </div>
         </div>
       </div>

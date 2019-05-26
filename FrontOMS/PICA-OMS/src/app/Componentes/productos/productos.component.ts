@@ -4,6 +4,7 @@ import {Evento} from '../../Models/evento';
 import { AppComponent } from '../../app.component';
 import {ProductosService} from '../../service/productos.service';
 import { DatalleProductoComponent} from '../datalle-producto/datalle-producto.component';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatDialog} from '@angular/material';
 @Component({
   selector: 'app-productos',
@@ -20,37 +21,91 @@ export class ProductosComponent implements OnInit {
     cantidad: 0,
     page: 0,//Variable para almacenar la pagina actual
     pageSize: 15,  // Variable para almacenar la cantidad de resultados por pagina
-    categoria: null,
+    categoria: "--selecciona--",
     operador: null,
     optionPaquete:null,
     nombrePaso:null,
     opionPaquete:null,
+    FechaIni:"2017-09-09",
+    FechaFin:"2022-09-09",
+    categoriaComodin:"",
     routers:[],
  
     accion:""
   }
+  categoriaComodin:boolean;
   dataCount: number=0;//tamaño para el paginador
   dataEventos:Evento[];
   constructor(private parent: AppComponent ,private serviceProduct :ProductosService, private dialog:MatDialog) { }
 
   ngOnInit() {
-    this.onSubmit();
+     this.onSubmit();
+    
   }
   
 
+  onSubmit(){
+      if(this.params.categoria=="--selecciona--" && !this.categoriaComodin )
+        this.onProduct();
+      else
+        this.onCategoria();
+  }
+
   //Metodo que trae los eventos
-  onSubmit() {
+  onProduct() {
     this.progressBar=true;
     let parametros = this.params;
     console.log("getDataSource()", parametros);
+
+    
     var data=new buscadorPaginacion();
     data.pagina=this.params.page;
     data.tamanoPagina=this.params.pageSize;
     data.nombre=this.params.evento;
-    data.fechaInicial="2017-09-09";//TODO
-    data.fechaFinal="2022-09-09";//TODO
-    data.codigo =this.params.categoria; //TODO - Categoria
+    data.fechaInicial=this.params.FechaIni;
+    data.fechaFinal=this.params.FechaFin;
+    data.codigo =this.params.categoria;; 
     this.serviceProduct.getProductos(data,result =>{
+         
+      if(result.codigo=='0'){
+         this.dataCount=result.cantidadRegistros;// ==0?1:result.cantidadRegistros;//TODO
+         this.params.page = result.paginaActual;
+         this.params.pageSize = result.tamanoPagina;
+         console.log(this.dataEventos);
+         if(result.eventos){
+              this.dataEventos=result.eventos;
+        }
+        }else{
+          if(result.mensaje)
+            this.parent.openDialog( "",result.mensaje,"Alerta");
+          else
+            this.parent.openDialog( "","Servidor no disponible","Alerta");
+       }
+        this.progressBar=false;
+    });
+    
+  }
+
+
+  
+  //Metodo que trae los eventos por categoria
+  onCategoria() {
+    this.progressBar=true;
+    let parametros = this.params;
+    console.log("getDataSource()", parametros);
+
+    var categoria=this.params.categoria;
+    if(this.categoriaComodin)
+      var categoria=this.params.categoriaComodin
+
+    var data=new buscadorPaginacion();
+    data.pagina=this.params.page;
+    data.tamanoPagina=this.params.pageSize;
+    data.nombre=categoria;
+    data.fechaInicial=this.params.FechaIni;
+    data.fechaFinal=this.params.FechaFin;
+    data.codigo =categoria; 
+    this.serviceProduct.getCategoria(data,result =>{
          
       if(result.codigo=='0'){
          this.dataCount=result.cantidadRegistros;// ==0?1:result.cantidadRegistros;//TODO
@@ -80,6 +135,8 @@ export class ProductosComponent implements OnInit {
     this.onSubmit();
   }
 
+  
+
    //Metodo que abre el popup del detalle del evento
    openDetail( item): void {
     
@@ -89,7 +146,7 @@ export class ProductosComponent implements OnInit {
       data: item
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.parent.openDialog( "",result,"Alerta");
+      //this.parent.openDialog( "",result,"Alerta");
       console.log('The dialog was closed');
     });
   }
@@ -107,8 +164,44 @@ export class ProductosComponent implements OnInit {
   
      dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.parent.openDialog( "",result,"Alerta");
+     // this.parent.openDialog( "",result,"Alerta");
        console.log('The dialog was closed');
      });
    }
+
+
+   onDateIni(event: MatDatepickerInputEvent<Date>){
+    if (event.value != null)
+    {
+    let tmpMonth = event.value.getUTCMonth() + 1;
+    let tmpFechIni = event.value.getFullYear() + "-" + ("'00" + tmpMonth).substr(-2) + "-" + ("'00" + event.value.getDate()).substr(-2);
+    this.params.FechaIni = tmpFechIni;
+    console.log("fecha inicial:" +tmpFechIni);
+    }
+    else
+    {
+      this.params.FechaIni = ""
+    }
+  }
+
+  cambioCategoria(){
+
+    console.log(this.categoriaComodin);
+  }
+  
+  onDateFin(event: MatDatepickerInputEvent<Date>){
+    if (event.value != null)
+    {
+    let tmpMonth = event.value.getUTCMonth() + 1;
+    let tmpFechFin = event.value.getFullYear() + "-" + ("'00" + tmpMonth).substr(-2) + "-" + ("'00" + event.value.getDate()).substr(-2);
+    this.params.FechaFin = tmpFechFin;
+    console.log("fecha inicial:" +tmpFechFin);
+  }
+  else
+  {
+    this.params.FechaFin = ""
+  }
+  }
+
+  
 }

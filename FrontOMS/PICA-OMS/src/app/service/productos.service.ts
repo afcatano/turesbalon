@@ -14,11 +14,14 @@ export class ProductosService {
   private pathHotels: string;
   private pathProductsCrud: string;
   private pathProducts: string;
+  private pathCategoria: string;
  
    constructor(private http: HttpClient , private config:StorageConfigService) {
    
      this.pathProducts= "/producto/consulta";
      this.pathProductsCrud="/producto";
+     this.pathCategoria= "/producto/categoria";
+     
  
     }
 
@@ -76,6 +79,50 @@ export class ProductosService {
       }
     }
   
+
+    getCategoria(params, callback){
+      var config= this.config.getConfigSession();
+      
+       this.categoria(params).subscribe(
+            result => {
+                      var date="";
+                        if(result.codigo=="0") {
+                         // console.log(JSON.stringify(result, null, 4));
+                        } else {
+                          console.log(JSON.stringify(result, null, 4));
+                        }
+                        console.log("Entra al api de buscar productos" );
+                        callback(result);
+                      },
+                      error => {
+                        console.log("Error al consultar productos:" +error);
+                        console.log(error);
+                        callback(error);
+        })
+      
+    }
+
+
+    
+     //Invoca api que consulta los productos
+     categoria(params): Observable<any> {
+      var parameterInfo = new ParameterInfo();
+  
+      var headers = new HttpHeaders ();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      
+      console.log(params);
+      console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+      return this.http.post(
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCategoria,
+       params,
+      { headers: headers}
+       );
+      }
+
      //Invoca api que consulta los productos
     eventos(params): Observable<any> {
       var parameterInfo = new ParameterInfo();
