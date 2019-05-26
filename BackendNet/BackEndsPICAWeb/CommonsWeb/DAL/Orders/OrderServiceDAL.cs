@@ -1404,13 +1404,84 @@ namespace CommonsWeb.DAL.Orders
                 long ll_affected;
                 OracleServerHelper losh_conection;
 
-                ls_sql = "UPDATE ORDERS SET ORDERSTATUS = '" + aod_order.OrderStatus + "'";
-                ls_sql += " WHERE ORDERCODE = " + aod_order.OrderCode;
+                ls_sql = "";
                 losh_conection = new OracleServerHelper();
-                ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+                ll_affected = 1;
+
+                if (aod_order.OrderStatus != null)
+                    if (aod_order.OrderStatus.Trim().Length > 0)
+                    {
+
+                        ls_sql = "UPDATE ORDERS SET ORDERSTATUS = '" + aod_order.OrderStatus + "'";
+                        ls_sql += " WHERE ORDERCODE = " + aod_order.OrderCode;
+                        ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                    }
 
                 if (ll_affected > 0)
+                {
+
                     lb_retorno = true;
+
+                    if (aod_order.Hotel != null)
+                        if (aod_order.Hotel.BookingId != null || aod_order.Hotel.CancelId != null)
+                        {
+
+                            ls_sql = "UPDATE HOTELRESERVATION SET";
+
+                            if (aod_order.Hotel.BookingId != null)
+                                if (aod_order.Hotel.BookingId.Trim().Length > 0)
+                                    ls_sql += " RESERVATIONCODE = '" + aod_order.Hotel.BookingId + "'";
+
+                            if (aod_order.Hotel.CancelId != null)
+                                if (aod_order.Hotel.CancelId.Trim().Length > 0)
+                                    if (aod_order.Hotel.BookingId != null)
+                                        if (aod_order.Hotel.BookingId.Trim().Length > 0)
+                                            ls_sql += " ,CANCELATIONCODE = '" + aod_order.Hotel.CancelId + "'";
+                                        else
+                                            ls_sql += " CANCELATIONCODE = '" + aod_order.Hotel.CancelId + "'";
+                                    else
+                                        ls_sql += " CANCELATIONCODE = '" + aod_order.Hotel.CancelId + "'";
+
+                            ls_sql += " WHERE IDORDER = " + aod_order.OrderCode;
+                            ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                            if (ll_affected <= 0)
+                                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "Error actualizando reserva hotelera, codigo de reserva (" +
+                                    aod_order.Hotel.BookingId + "), codigo de cancelacion(" + aod_order.Hotel.CancelId + ").");
+
+                        }
+
+                    if (aod_order.Transport != null)
+                        if (aod_order.Transport.BookingId != null || aod_order.Transport.CancelId != null)
+                        {
+
+                            ls_sql = "UPDATE TRANSPORTRESERVATION SET";
+
+                            if (aod_order.Transport.BookingId != null)
+                                if (aod_order.Transport.BookingId.Trim().Length > 0)
+                                    ls_sql += " RESERVATIONCODE = '" + aod_order.Transport.BookingId + "'";
+
+                            if (aod_order.Transport.CancelId != null)
+                                if (aod_order.Transport.CancelId.Trim().Length > 0)
+                                    if (aod_order.Transport.BookingId != null)
+                                        if (aod_order.Transport.BookingId.Trim().Length > 0)
+                                            ls_sql += " ,CANCELATIONCODE = '" + aod_order.Transport.CancelId + "'";
+                                        else
+                                            ls_sql += " CANCELATIONCODE = '" + aod_order.Transport.CancelId + "'";
+                                    else
+                                        ls_sql += " CANCELATIONCODE = '" + aod_order.Transport.CancelId + "'";
+
+                            ls_sql += " WHERE IDORDER = " + aod_order.OrderCode;
+                            ll_affected = losh_conection.ExecuteSql(ls_sql, new List<OracleParameter>());
+
+                            if (ll_affected <= 0)
+                                Common.CreateTrace.WriteLog(Common.CreateTrace.LogLevel.Error, "Error actualizando reserva de transporte, codigo de reserva (" +
+                                    aod_order.Transport.BookingId + "), codigo de cancelacion(" + aod_order.Transport.CancelId + ").");
+
+                        }
+
+                }
 
             }
             catch (Exception ae_e)

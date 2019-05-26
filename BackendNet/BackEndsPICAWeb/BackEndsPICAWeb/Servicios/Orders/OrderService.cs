@@ -523,6 +523,14 @@ public partial class CancelOrder
 
     private string statusField;
 
+    private string hotelBookingIdField;
+
+    private string hotelCancelIdField;
+
+    private string transportBookingIdField;
+
+    private string transportCancelIdField;
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
     public long IdUser
@@ -562,6 +570,62 @@ public partial class CancelOrder
         set
         {
             this.statusField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+    public string HotelBookingId
+    {
+        get
+        {
+            return this.hotelBookingIdField;
+        }
+        set
+        {
+            this.hotelBookingIdField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+    public string HotelCancelId
+    {
+        get
+        {
+            return this.hotelCancelIdField;
+        }
+        set
+        {
+            this.hotelCancelIdField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+    public string TransportBookingId
+    {
+        get
+        {
+            return this.transportBookingIdField;
+        }
+        set
+        {
+            this.transportBookingIdField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+    public string TransportCancelId
+    {
+        get
+        {
+            return this.transportCancelIdField;
+        }
+        set
+        {
+            this.transportCancelIdField = value;
         }
     }
 }
