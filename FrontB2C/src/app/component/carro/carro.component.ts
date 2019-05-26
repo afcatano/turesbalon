@@ -93,7 +93,7 @@ export class CarroComponent implements OnInit {
       this.session.orden.userid=user.userid;
       this.session.orden.precio=this.totalOrders;
       this.storageCompra.setParamsCompraSession(this.session);
-      this.router.navigate(['pasarela']);
+      this.router.navigate(['crearOrden']);
 
     }else{
       this.parent.openDialog( "","Debe primero iniciar sesion !!.","Alerta");

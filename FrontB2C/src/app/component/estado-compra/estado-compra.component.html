@@ -1,7 +1,8 @@
 <div class="container" style="background-color: white; padding: 30px;">
-    <div style="padding: 0px 0px 40px 10px;"><h2>Validar Resumen Compra</h2></div>
+    <div style="padding: 0px 0px 40px 10px;"><h2>Estado Compra : Compra Exitosa</h2></div>
       <div class="row" >
-
+          <mat-progress-bar *ngIf="progressBar" mode="indeterminate"></mat-progress-bar>
+          
           <div class="col-12"><h5>CodigoOrden: {{CodigoOrden}}</h5> </div>
           <div class="col-12"><h5>EstadoOrden: {{EstadoOrden}}</h5> </div>
           <div class="col-12"><h5>FechaOrden : {{FechaOrden}}</h5> </div>
@@ -11,7 +12,6 @@
           <div class="col-12"> <a [routerLink]="['/ordenesusuario']">Mis Ordenes</a></div>
 
 
-          <button *ngIf="botonPagar"  class="btn btn-success" style="float: right" (click)="validarOrden()"  type="submit">Pagar</button>
          
         </div>
 </div>

@@ -27,7 +27,7 @@
  <div class="container-fluid">
     <div class="row">
         <div class="col-sm">
-            6 Vuelos encontrados
+            {{infoTablelLength}} Vuelos encontrados
           </div>
           </div>
     <div class="row">
@@ -57,6 +57,29 @@
                         <label class="custom-control-label" for="customControlInline">2 o más escalas</label>
                     </div>
                 </div>
+                <div class="card-header">
+                        <h5 style=" color:  rgb(31, 72, 124) !important;"> Tipo Evento {{isNacional=='I'?'Internacional':'Nacional'}}  </h5>            
+                 </div>
+                 <div  *ngIf="isHotel" class="card-header">
+                        <h5 style=" color:  rgb(31, 72, 124) !important;"> Proveedor Hotel {{isProveedorHotel=='H'?'Hilton':'Dann Carton'}}  </h5>            
+                 </div>
+                <div class="card-header">
+                        <h5 style=" color:  rgb(31, 72, 124) !important;">Proveedores Transporte Disponibles</h5>               
+                      </div>
+                      <div class="card-body ">
+                          <div *ngIf="isAV" class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <img class="card-img"alt="Paquetes" src="../../../assets/vuelos/avianca.jpg" >
+                          </div>
+      
+                          <div *ngIf="isAA" class="custom-control custom-checkbox my-1 mr-sm-2">
+                              <img class="card-img"alt="Paquetes" src="../../../assets/vuelos/american.jpg" >
+                          </div>
+      
+                          <div *ngIf="isBOL" class="custom-control custom-checkbox my-1 mr-sm-2">
+                              <img class="card-img"alt="Paquetes" src="../../../assets/vuelos/logo-bolivariano.jpg" >
+                          </div>
+      
+                      </div>
                 
               </div>
         </div>

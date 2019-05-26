@@ -3,10 +3,12 @@
 import {hotel} from './hotel';
 import {Transporte} from './transporte';
 import {Evento} from './evento';
+import {orden} from './orden';
 
 export class Producto {
     uuidPaqueteProducto:string;
     codigo: number;
+    CodigoOrden:number;
     userid:number
     precio: number;
     titulo: string;
@@ -15,6 +17,7 @@ export class Producto {
     ciudad:string
     tipoDetalle:string;
     
+     Orden:orden;
      /**info transporte */
      Evento: Evento;
      inicioEvento:string;
@@ -33,6 +36,16 @@ export class Producto {
      toJSON = () => ({
          IdUsuario: this.userid,
          ValorTotal: this.precio,
+         CodigoOrden: this.CodigoOrden? this.CodigoOrden:null,
+          Orden:{
+                      CodigoOrden:this.Orden  ? this.Orden.CodigoOrden:null,
+                      FechaOrden: this.Orden ? this.Orden.FechaOrden:null,
+                      EstadoOrden: this.Orden ? this.Orden.EstadoOrden:null,
+                      ValorOrden: this.Orden ? this.Orden.ValorOrden:null,
+                      IdUsuario: this.Orden ? this.Orden.IdUsuario:null,
+                      IdTipo: this.Orden ? this.Orden.IdTipo:null,
+                      IdNumero: this.Orden ? this.Orden.IdNumero:null,
+                    },
             Evento: {
               CodigoEvento: this.Evento.CodigoEvento,
               NombreEvento: this.Evento.NombreEvento,

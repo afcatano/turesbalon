@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
         sessionData.user=use;
         this.correctLogin(sessionData);
       }else
-      this.servicio.signIn(new User(this.username, this.password,"","","","","","","","","","","","","","","","","")).subscribe(
+      this.servicio.signIn(new User(this.username, this.password,"","","","","","","","","","","","","","","","","","")).subscribe(
         result => {
              console.log(result);
              this.processing = false;
@@ -101,6 +101,7 @@ export class LoginComponent implements OnInit {
                 result.numeroTarjeta,
                 result. franquiciaTarjeta,
                 result. userid,
+                result. estadoCliente
               )
 
               sessionData.user=userData;

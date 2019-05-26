@@ -14,6 +14,7 @@ import { VuelosComponent } from './component/vuelos/vuelos.component';
 import { CarroComponent } from './component/carro/carro.component';
 import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
 import { PasarelaComponent } from './component/pasarela/pasarela.component';
+import { EstadoCompraComponent } from './component/estado-compra/estado-compra.component';
 //Constante que almacena las rutas de la app
 const routes: Route[] = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Route[] = [
   { path: "hotel", component: HotelesComponent},
   { path: "crearOrden", component: CrearOrdenComponent},
   { path: "pasarela", component: PasarelaComponent},
+  { path: "estadocompra", component: EstadoCompraComponent},
   { path: "logout", component: LoginComponent, canActivate: [RemoveSession] },
   //, canActivate: [RemoveSession] },
  /* children: [

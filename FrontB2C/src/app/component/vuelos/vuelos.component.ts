@@ -30,10 +30,18 @@ export class VuelosComponent implements OnInit {
   optionActual="T";
   session:any;
   infoTable: any[];
+  infoTablelLength:number=0;
   processing:boolean;
   params:any;
   paramsBusqueda:parametrosBusqueda;
   transportes:string;
+  isNacional:string;
+  isAA=false;
+  isAV=false; 
+  isBOL=false;
+  isHotel=false;
+  isProveedorHotel:string;
+
   constructor(private sesion:StorageService, private rulesService: RulesService,
     private productService: ProductsService, private dialog: MatDialog,private transportService:TransportService,
      private parent: AppComponent, private carritoService:CarritoService, private router: Router, private storageCompra:StorageParamsCompraService) { 
@@ -45,17 +53,31 @@ export class VuelosComponent implements OnInit {
     this.session = this.storageCompra.getParamsCompraSession();
     this.params={};
     this.session.orden.Evento.esInternacional
-
+    this.isNacional=this.session.orden.Evento.esInternacional;
+    
     var param={
       tipoEvento: this.session.orden.Evento.esInternacional,
-      hotel: "H" //TODO - Se debe Validar que si viene el hotel lo ponga, si no lo tiene enviar vacio.
+      hotel: this.session.orden.Hotel? this.session.orden.Hotel.proveedor:'' //TODO - Se debe Validar que si viene el hotel lo ponga, si no lo tiene enviar vacio.
     }
+    //Valida si hay hoteles seleccionados
+    if( this.session.orden.Hotel)
+      this.isHotel=true;
+    this.isProveedorHotel=param.hotel;
     //Consulta el metor de reglas para traer los proveedores de transporte a consultar
     this.rulesService.transporte(param).subscribe(request=>{
       if(request.resultado)
          this.transportes=request.resultado;
          
       console.log("los codigos de transportes a consultar son:"+this.transportes );
+      var splitDataHotel= this.transportes.split(',');
+        splitDataHotel.forEach(element => {
+          if( element=='AA')
+            this.isAA=true;
+          if( element=='AV')
+            this.isAV=true; 
+          if( element=='BOL')
+            this.isBOL=true; 
+        });
     })
     
     this.params.opionPaquete=this.session.optionPaquete
@@ -83,42 +105,57 @@ export class VuelosComponent implements OnInit {
      this.transportService.transporte(params).subscribe(
       result =>{
        console.log("Entra Transporte");
-       if(result.Viajes){
+       if(result.codigo=="0"){
+            if(result.Viajes){
 
-        result.Viajes.forEach(element => {
-          if(params.Proveedor=="AV"){
-            element.imagen="/../../../assets/vuelos/avianca.jpg";
-           }
-           if(params.Proveedor=="AA"){
-            element.imagen="/../../../assets/vuelos/american.jpg";
-           }
-           if(params.Proveedor=="BOL"){
-            element.imagen="/../../../assets/vuelos/logo-bolivariano.jpg";
-           }
-           if(element.PrimerClase)
-           { 
-              element.Precio = element.PrimerClase.Precio;//.toString().replace(".",",");
+                if(result.Viajes.length >0 ){
+                    result.Viajes.forEach(element => {
+                      if(params.Proveedor=="AV"){
+                        element.imagen="/../../../assets/vuelos/avianca.jpg";
+                      }
+                      if(params.Proveedor=="AA"){
+                        element.imagen="/../../../assets/vuelos/american.jpg";
+                      }
+                      if(params.Proveedor=="BOL"){
+                        element.imagen="/../../../assets/vuelos/logo-bolivariano.jpg";
+                      }
+                      //Si no tiene precio pongo un precio
+                      if(!element.Precio)
+                        element.Precio=12770;
+                      if(element.PrimerClase)
+                      { 
+                          element.Precio = element.PrimerClase.Precio;//.toString().replace(".",",");
 
-             var nueElement ={
-                            IdViaje: element.IdViaje,
-                            CiudadOrigen: element.CiudadOrigen,
-                            CiudadDestino: element.CiudadDestino,
-                            FechaLlegada: element.FechaLlegada,
-                            FechaSalida: element.FechaSalida,
-                            Precio:element.ClaseEconomica.Precio,
-                            imagen:element.imagen
-                          }
-               result.Viajes.push(nueElement);
-            }else{
+                        var nueElement ={
+                                        IdViaje: element.IdViaje,
+                                        CiudadOrigen: element.CiudadOrigen,
+                                        CiudadDestino: element.CiudadDestino,
+                                        FechaLlegada: element.FechaLlegada,
+                                        FechaSalida: element.FechaSalida,
+                                        Precio:element.ClaseEconomica.Precio,
+                                        imagen:element.imagen
+                                      }
+                          result.Viajes.push(nueElement);
+                        }else{
 
+                        }
+
+                    });
+                this.infoTable= result.Viajes;
             }
-
-        });
-        this.infoTable= result.Viajes;
-        this.progressBar=false;
-       }else{
- 
-       }
+            else{
+            }
+            
+            this.progressBar=false;
+          }else{
+    
+          }
+      }else{
+        //No se encontro transporte
+      }
+       this.infoTable
+       this.infoTablelLength=this.infoTable?this.infoTable.length:0;
+       
        this.progressBar=false;
      }
      ,
@@ -154,10 +191,16 @@ export class VuelosComponent implements OnInit {
   transporte.fechaIda=item.FechaSalida;
   transporte.fechaRegreso=item.FechaLlegada;
 
-  if(transporte.fechaIda.split('T').length >0)
-  transporte.fechaIda=transporte.fechaIda.split('T')[0];
-  if(transporte.fechaRegreso.split('T').length >0)
-  transporte.fechaRegreso=transporte.fechaRegreso.split('T')[0];
+  //Se asignan temporalmente
+  transporte.fechaIda=this.paramsBusqueda.fechaFinal;
+  transporte.fechaRegreso=this.paramsBusqueda.fechaFinal;
+
+  if(transporte.fechaIda)
+    if(transporte.fechaIda.split('T').length >0)
+       transporte.fechaIda=transporte.fechaIda.split('T')[0];
+  if(transporte.fechaRegreso)
+    if(transporte.fechaRegreso.split('T').length >0)
+       transporte.fechaRegreso=transporte.fechaRegreso.split('T')[0];
   //transporte.nombre=item.;
   transporte.valor=item.Precio;
   //transporte.descripcion=item.;
@@ -211,6 +254,7 @@ export class VuelosComponent implements OnInit {
     var data =this.infoTable.sort((a, b) => {
       return <any>a.Precio - <any>b.Precio;
     });
+    if(this.infoTable[0])
     this.infoTable[0].select = true;
     return this.infoTable;
   }

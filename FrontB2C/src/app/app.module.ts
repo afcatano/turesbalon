@@ -40,6 +40,7 @@ import { FechaBuscadorComponent } from './component/fecha-buscador/fecha-buscado
 import { CrearOrdenComponent } from './component/crear-orden/crear-orden.component';
 import { CampaingComponent } from './component/campaing/campaing.component';
 import { PasarelaComponent } from './component/pasarela/pasarela.component';
+import { EstadoCompraComponent } from './component/estado-compra/estado-compra.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { PasarelaComponent } from './component/pasarela/pasarela.component';
     FechaBuscadorComponent,
     CrearOrdenComponent,
     CampaingComponent,
-    PasarelaComponent
+    PasarelaComponent,
+    EstadoCompraComponent
   ],
   imports: [
     BrowserModule,

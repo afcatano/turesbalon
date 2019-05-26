@@ -69,7 +69,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.register = new User( "","","","","","","","","","","","","","","","","","", "");
+    this.register = new User( "","","","","","","","","","","","","","","","","","", "","");
     console.log(this.register.nombre);
     switch(this.page.action){
       case  "update":
@@ -93,14 +93,15 @@ export class UserComponent implements OnInit {
                       this.userdata. fechaTarjeta,
                       this.userdata.numeroTarjeta,
                       this.userdata. franquiciaTarjeta,
-                      this.userdata.userid)
+                      this.userdata.userid,
+                      "")
                       this.register.confirmarContrasena= this.register.password;
                       this.userDisabled = true;
                      break;
        case  "create":
        
                       this.terminosCondiciones= true;
-                      this.register = new User( "","","","","","","","","","","","","","","","","","","");
+                      this.register = new User( "","","","","","","","","","","","","","","","","","","","");
                       break;
         default:
               break;
@@ -153,7 +154,8 @@ export class UserComponent implements OnInit {
        this.register. fechaTarjeta,
        this.register.numeroTarjeta,
        this.register. franquiciaTarjeta,
-       this.register.userid
+       this.register.userid,
+       ""
       ));
     } else {
       this.parent.openDialog( "",msg,"Alerta");

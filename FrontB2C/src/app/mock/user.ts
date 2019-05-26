@@ -20,5 +20,6 @@ export const user: User = new User(
       "202019",
       "21621621",
       "1",
-      "10"
+      "10",
+      "PLATA"
 );

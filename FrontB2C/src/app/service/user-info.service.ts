@@ -12,6 +12,7 @@ export class UserInfoService {
 
   private pathGetOverview: string;
   private pathOrder: string;
+  private pathValidarOrden : string;
   private pathRegisterUser: string;
   private pathOrderUser: string;
 
@@ -20,6 +21,7 @@ export class UserInfoService {
     this.pathOrder = "/orden/order";
     this.pathRegisterUser = "/usuario/user"
     this.pathOrderUser = "/orden/consulta";
+    this.pathValidarOrden = "/validacionorden/validacion";
    }
 
   //Invoca api que actualiza datos del usuario
@@ -32,11 +34,11 @@ export class UserInfoService {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
     headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    console.log(params.toJSON());
+   // console.log(params.toJSON());
     console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
     return this.http.put(
-      (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathRegisterUser,
-     params.toJSON(),
+      (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathOrder,
+     params,
     { headers: headers}
      );
   }
@@ -102,6 +104,15 @@ export class UserInfoService {
     return this.http.post(path + this.pathOrder, producto.toJSON());
   }
 
+  //Invoca validar orden
+  validateOrder(params): Observable<any> {
+    var path = "";
+    console.log(params);
+    //Verifica que exita la propiedad config
+    var param = new ParameterInfo();
+    path = param.isLocal ? param.pathApis : param.serve;
+    return this.http.post(path + this.pathValidarOrden, params);
+  }
   
   initialDb(){
         let db = new NgxIndexedDB('myDb', 1);

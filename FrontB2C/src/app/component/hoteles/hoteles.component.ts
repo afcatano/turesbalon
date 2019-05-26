@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Hoteles } from '../../mock/hoteles';
+import {DataCodigoHotel } from '../../mock/proveedores';
 import {Session } from '../../Models/session';
 import { StorageService } from '../../storage/storage.service';
 import {User } from '../../Models/User';
@@ -27,6 +28,7 @@ export class HotelesComponent implements OnInit {
   private subscription: Subscription;
   
   infoTable: any[];
+  infoTableLength:number=0;
   processing:boolean;
   progressBar=false
   optionActual="H";
@@ -34,6 +36,9 @@ export class HotelesComponent implements OnInit {
   paramsBusqueda:parametrosBusqueda;
   hoteles: String
   session:any;
+  isHilton=false;
+  isDann=false;
+  isNacional:string;
   constructor(private sesion:StorageService, private productService: ProductsService,private router:Router,private rulesService: RulesService,
      private parent: AppComponent, private dialog: MatDialog,private hotelsService: HotelsService,
      private carritoService:CarritoService, private storageCompra:StorageParamsCompraService) { 
@@ -47,6 +52,7 @@ export class HotelesComponent implements OnInit {
     this.params.opionPaquete=this.session.optionPaquete
     this.params.nombrePaso= this.optionActual;//esta en el paso de consultar eventos
     //this.action();
+    this.isNacional=this.session.orden.Evento.esInternacional;
     var param={
       tipoEvento: this.session.orden.Evento.esInternacional,
     }
@@ -55,7 +61,17 @@ export class HotelesComponent implements OnInit {
       if(request.resultado)
          this.hoteles=request.resultado;
          
-      console.log("los codigos de hotel a consultar son:"+this.hoteles );
+        console.log("los codigos de hotel a consultar son:"+this.hoteles );
+
+        var splitDataHotel= this.hoteles.split(',');
+        splitDataHotel.forEach(element => {
+          if( element=='H')
+            this.isHilton=true;
+          if( element=='D')
+            this.isDann=true; 
+        });
+      
+        
     })
   }
 
@@ -150,6 +166,7 @@ export class HotelesComponent implements OnInit {
                 
               }
               this.ordenesCount=this.infoTable.length; 
+              this.infoTableLength=this.infoTable.length;
               this.processing = false;
         },
         error => {

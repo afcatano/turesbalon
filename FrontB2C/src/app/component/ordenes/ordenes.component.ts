@@ -2,12 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {Session } from '../../Models/session';
 import { StorageService } from '../../storage/storage.service';
 import {User } from '../../Models/User';
+import {Producto } from '../../Models/producto';
+import {Evento } from '../../Models/evento';
 import {orden } from '../../Models/orden';
 import {UserInfoService} from '../../service/user-info.service'
 import {AppComponent} from '../../app.component';
 import {ordenes } from '../../mock/oredenes';
+import {EstadosOrden } from '../../mock/estadosoOrden';
 import {DetalleOrdenComponent} from '../detalle-orden/detalle-orden.component';
 import {MatDialog} from '@angular/material';
+import {StorageParamsCompraService} from '../../storage/storage-compra'
+import { Router } from '@angular/router';
+import {DataCodigoHotel} from '../../mock/proveedores';
+import {DataCodigoTransporte} from '../../mock/proveedores';
 @Component({
   selector: 'app-ordenes',
   templateUrl: './ordenes.component.html',
@@ -21,8 +28,9 @@ export class OrdenesComponent implements OnInit {
   }
   infoTable: any[];
   processing:boolean;
-  constructor(private sesion:StorageService, private userService: UserInfoService, private parent: AppComponent
-  , public dialog: MatDialog) { 
+  constructor(private router:Router,private sesion:StorageService, private userService: UserInfoService, private parent: AppComponent,
+    private storageCompra:StorageParamsCompraService,
+    public dialog: MatDialog) { 
 
   }
 
@@ -38,19 +46,39 @@ export class OrdenesComponent implements OnInit {
     
 
     var params ={
-              FechaInicio: "2019-03-31",
-              FechaFin: "2019-04-29",
+              //FechaInicio: "2019-03-31",
+              //FechaFin: "2019-04-29",
               IdUsuario: this.userInfo.userid,
               ConDetalle: "true",
               TipoConsulta: "ESTANDAR"
     }
 
+    //consulta las ordenes del usuario
     this.userService.odersUser(params).subscribe(
       result => {
          if(result.codigo=="0"){
-
-        
             console.log(result);
+
+            result.Orders.forEach(elementOrder => {
+              EstadosOrden.forEach(element => {
+                if(elementOrder.EstadoOrden==element.codigo)
+                elementOrder.EstadoValorOrden=element.valor;
+              });
+
+              if(elementOrder.Hotel){
+                  DataCodigoHotel.forEach(element => {
+                     if(elementOrder.Hotel.EmpresaHotel==element.codigo)
+                       elementOrder.Hotel.EmpresaHotelNombre=element.valor;
+                  });
+               }
+               if(elementOrder.Transporte){
+                  DataCodigoTransporte.forEach(element => {
+                    if(elementOrder.Transporte.EmpresaTransporte==element.codigo)
+                    elementOrder.Transporte.EmpresaTransporteNombre=element.valor;
+                  });
+                }
+            });
+           
             this.infoTable = result.Orders;
             this.ordenesCount=this.infoTable.length; 
            
@@ -115,4 +143,31 @@ export class OrdenesComponent implements OnInit {
    // this.storageService.setCurrentSession(sessionData);
     //this.router.navigate(['/']);
   }
+
+
+  //Pagar la orden en estado aprobado
+  payment(Ordenes){
+    
+    var param={
+      categoria:"",
+      evento:"",
+      cantidad:"1",
+      orden:null,
+      optionPaquete:"E",
+      routers:[]
+    }
+   
+    var producto = new Producto();
+
+    producto.CodigoOrden= Ordenes.CodigoOrden;
+    producto.userid = Ordenes.IdUsuario;
+    producto.Evento=new Evento(); 
+    producto.Evento= Ordenes.Evento;
+    producto.Orden=Ordenes
+    param.orden = producto;
+    
+    this.storageCompra.setParamsCompraSession(param);
+    this.router.navigate(['crearOrden']);
+  }
+  
 }

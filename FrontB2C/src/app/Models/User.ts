@@ -20,6 +20,7 @@ export class User {
   public fechaTarjeta: string;
   public numeroTarjeta: number;
   public franquiciaTarjeta: string;
+  public estadoCliente:string
 
   constructor(
      username,
@@ -41,6 +42,7 @@ export class User {
       numeroTarjeta,
       franquiciaTarjeta,
       iduser,
+      estadoCliente
   ) {
     this.userid = iduser;
     this.username = username;
@@ -62,6 +64,7 @@ export class User {
     this. fechaTarjeta=fechaTarjeta;
     this. numeroTarjeta=numeroTarjeta;
     this. franquiciaTarjeta=franquiciaTarjeta;
+    this.estadoCliente =estadoCliente;
   }
 
   getUsername = () => {
@@ -221,8 +224,16 @@ export class User {
 
   setiduser = (userid) => {
     this.userid=userid;
+    
   }
 
+  getestadoCliente = () => {
+    return this.estadoCliente;
+  }
+
+  setestadoCliente = (estadoCliente) => {
+    this.estadoCliente=estadoCliente;
+  }
   toJSON = () => ({
     username: this.username,
     userid: this.userid,
@@ -243,7 +254,8 @@ export class User {
     fechaTarjeta :this. fechaTarjeta,
     numeroTarjeta: this. numeroTarjeta,
     franquiciaTarjeta :this. franquiciaTarjeta,
-    nombreTarjeta:"demo"
+    nombreTarjeta:"demo",
+    estadoCliente: this.estadoCliente,
     
   })
 

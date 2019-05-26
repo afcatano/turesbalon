@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PasarelaService} from '../../service/pasarela.service';
 import {AppComponent} from '../../app.component';
 import { Router } from '@angular/router';
-
+import { StorageService } from '../../storage/storage.service';
+import {StorageParamsCompraService} from '../../storage/storage-compra'
 @Component({
   selector: 'app-pasarela',
   templateUrl: './pasarela.component.html',
@@ -12,10 +13,17 @@ export class PasarelaComponent implements OnInit {
 
   progressBar=false;
   verificar=false;
-
-  constructor(private pasarelaService:PasarelaService, private parent:AppComponent,private router:Router) { }
+  sessionUser:any;
+  session:any;
+valorTotal:number;
+  constructor(private storageCompra:StorageParamsCompraService,private sesion:StorageService,private pasarelaService:PasarelaService, private parent:AppComponent,private router:Router) { }
 
   ngOnInit() {
+    this.sessionUser = this.sesion.getCurrentUser();
+    this.session = this.storageCompra.getParamsCompraSession();
+   //Total de ocmpra
+   this.valorTotal=this.session.orden.ValorTotal;
+  
   }
 
   veryfy(){
@@ -67,7 +75,7 @@ export class PasarelaComponent implements OnInit {
           if(result.Codigo=="0"){
             this.parent.openDialog( "",result.Mensaje,"Alerta");
             this.verificar= true;
-            this.router.navigate(['crearOrden']);
+            this.router.navigate(['estadocompra']);
           }else{
             this.parent.openDialog( "",result.Mensaje,"Alerta");
           }

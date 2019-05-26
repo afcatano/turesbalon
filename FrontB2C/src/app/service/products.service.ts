@@ -14,12 +14,15 @@ export class ProductsService {
  private pathHotels: string;
  private pathCampaign: string;
  private pathProducts: string;
-
+ private pathOrden: string;
+ 
   constructor(private http: HttpClient ,private config:StorageConfigService) {
   
     this.pathHotels= "/api/products/hotels";
     this.pathCampaign= "/campanas/consulta";
     this.pathProducts= "/producto/consulta";
+    this.pathOrden= "/orden/consulta";
+    
 
    }
 
@@ -80,6 +83,26 @@ export class ProductsService {
 
 
    }
+
+
+  //Top products
+  topProducts(params): Observable<any> {
+    var parameterInfo = new ParameterInfo();
+
+    var headers = new HttpHeaders ();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    
+    console.log(params);
+    console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
+    return this.http.post(
+      (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathOrden,
+     params,
+    { headers: headers}
+     );
+    }
 
    //Invoca api que consulta los eventos
   eventos(params): Observable<any> {

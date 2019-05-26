@@ -26,7 +26,7 @@
   <div class="container-fluid">
     <div class="row">
         <div class="col-sm">
-            6 Hoteles encontrados
+            {{infoTableLength}} Hoteles encontrados
           </div>
     </div>
     <div class="row">
@@ -56,6 +56,27 @@
                         <label class="custom-control-label" for="customControlInline">Estandar</label>
                     </div>
                 </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <h4 style=" color:  rgb(31, 72, 124) !important;"> Tipo Evento {{isNacional=='I'?'Internacional':'Nacional'}}  </h4>            
+                      </div>
+                    <div class="card-header">
+                      <h4 style=" color:  rgb(31, 72, 124) !important;"> Hoteles Disponibles  </h4>            
+                    </div>
+                    <div class="card-body ">
+                        <div *ngIf="isHilton" class="custom-control custom-checkbox my-1 mr-sm-2">
+                          <h4 style=" color:  rgb(31, 72, 124) !important;"> Hilton  </h4>  
+                          <img class="card-img"alt="Paquetes" src="../../../assets/hoteles/hotel1.jpg" >
+                        </div>
+    
+                        <div *ngIf="isDann" class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <h4 style=" color:  rgb(31, 72, 124) !important;"> Dan Carton  </h4>  
+                            <img class="card-img"alt="Paquetes" src="../../../assets/hoteles/hotel2.jpg" >
+                        </div>
+    
+                    </div>
+                    
+                  </div>
                 
               </div>
         </div>

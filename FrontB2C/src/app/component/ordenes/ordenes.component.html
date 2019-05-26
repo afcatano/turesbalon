@@ -63,6 +63,7 @@
           
             <div class="card mb-3" >
                 <h2>Mis Ordenes</h2>
+                <button class="btn btn-secondary"  (click)="action()"  type="submit">Actualizar</button>
                 <div class="row no-gutters"  *ngIf="!processing">
                  
 
@@ -85,13 +86,24 @@
                             <td>{{nav.FechaOrden}}</td>
                             <td>{{nav.ValorOrden | currency}}</td>
                             <td>{{nav.Evento.NombreEvento}}</td>
-                            <td>{{nav.Transporte? nav.Transporte.EmpresaTransporte:'N/A'}}</td>
-                            <td>{{nav.Hotel? nav.Hotel.EmpresaHotel:'N/A'}}</td>
-                            <td>{{nav.EstadoOrden}}</td>
+                            <td>{{nav.Transporte? nav.Transporte.EmpresaTransporteNombre:'N/A'}}</td>
+                            <td>{{nav.Hotel? nav.Hotel.EmpresaHotelNombre:'N/A'}}</td>
+                            <td>
+
+                                    <div  *ngIf="nav.EstadoValorOrden=='Aprobada'" class="alert alert-success" role="alert">
+                                            {{nav.EstadoValorOrden}}
+                                    </div>
+                                    <div  *ngIf="nav.EstadoValorOrden!='Aprobada'" >
+                                            {{nav.EstadoValorOrden}}
+                                    </div>
+                            </td>
                             <td> 
-                                <button type="button" class="btn btn-danger" (click)="cancelarOrden(nav)">Cancelar Orden</button>
+                                <button *ngIf="nav.EstadoValorOrden!='Pagada' && nav.EstadoValorOrden!='Cancelada' && nav.EstadoValorOrden!='Rechazada' && (nav.Transporte? (nav.Transporte.EmpresaTransporte=='BOL'?false:true):true)" type="button" class="btn btn-danger" (click)="cancelarOrden(nav)">Cancelar Orden</button>
                                 &nbsp;&nbsp;
-                                <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">ver</button></td>
+                                <button class="btn btn-primary"  (click)="openDetail(nav)"  type="submit">ver</button>
+                                &nbsp;&nbsp;
+                                <button *ngIf="nav.EstadoValorOrden=='Aprobada' || nav.EstadoValorOrden=='Activa'" class="btn btn-secondary"  (click)="payment(nav)"  type="submit">Pagar</button>
+                            </td>
                           </tr>
                           
                         </tbody>

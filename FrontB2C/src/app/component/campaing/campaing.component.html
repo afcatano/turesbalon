@@ -25,6 +25,21 @@
                 </div>
                 
               </div>
+              
+
+              <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    <h4 style=" color:  rgb(31, 72, 124) !important;"> Top 5 nuestros Eventos </h4>            
+                  </div>
+                  <div class="card-body ">
+                      
+                     <div *ngFor="let item of topProduct" class="custom-control custom-checkbox my-1 mr-sm-2">
+                         <img  class="card-img" alt="..." [src]="item.imagen" style="cursor: pointer;" (click)="verEventoTOP('CO_'+item.Evento.CodigoEvento)">
+                      </div>
+  
+                  </div>
+                  
+              </div>
 
               <div class="card" style="width: 18rem;">
                   <div class="card-header">
@@ -48,7 +63,7 @@
                        </div>
                   </div>
                   
-                </div>
+              </div>
 
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
