@@ -30,7 +30,7 @@ export class ProductosComponent implements OnInit {
     FechaFin:"2022-09-09",
     categoriaComodin:"",
     routers:[],
- 
+    Pagina:null,
     accion:""
   }
   categoriaComodin:boolean;

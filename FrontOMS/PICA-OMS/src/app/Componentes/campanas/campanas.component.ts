@@ -27,7 +27,7 @@ export class CampanasComponent implements OnInit {
     nombrePaso:null,
     opionPaquete:null,
     routers:[],
- 
+    Pagina:null,
     accion:""
   }
   dataCount: number=0;//tamaño para el paginador

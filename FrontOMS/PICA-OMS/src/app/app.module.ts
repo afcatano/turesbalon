@@ -14,7 +14,7 @@ import { ProductosComponent } from './Componentes/productos/productos.component'
 import { OrdenesComponent } from './Componentes/ordenes/ordenes.component';
 import { LoginComponent } from './Componentes/login/login.component';
 import { MessageComponent } from './Componentes/message/message.component';
-
+import {MatIconModule} from '@angular/material/icon';
 //servicios
 import {StorageService} from "./storage/storage.service";
 import {StorageConfigService} from "./storage/storage-config.service";
@@ -49,7 +49,8 @@ import { PasarelapagoComponent } from './Componentes/pasarelapago/pasarelapago.c
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-     HttpClientModule  
+    MatIconModule,
+    HttpClientModule  
   ],
   entryComponents: [ MessageComponent, DatalleCampanaComponent,DatalleProductoComponent, DetalleClienteComponent],
   providers: [StorageService, StorageParamsService,ValidateSession, RemoveSession, AuthenticationService,StorageConfigService
