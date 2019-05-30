@@ -70,7 +70,7 @@ namespace CommonsWeb.DAL.Clientes
                             lclientesDTO = new ClientesDTO
                             {
                                 ID = Convert.ToInt32(dataRowClientes["ID"]),
-                                CustID = Convert.ToInt32(dataRowClientes["CUSTID"]),
+                                CustID = Convert.ToInt64(dataRowClientes["CUSTID"]),
                                 FName = Convert.ToString(dataRowClientes["FNAME"]),
                                 LName = Convert.ToString(dataRowClientes["LNAME"]),
                                 CodTypeIdent = Convert.ToString(dataRowClientes["IDTYPEIDENT"]),

@@ -36,7 +36,7 @@ export class ClientesComponent implements OnInit {
     FechaIni:"",
     FechaFin:""
   }
-  private dataCount: number=0;//tamaño para el paginador
+  public dataCount: number=0;//tamaño para el paginador
 
   constructor(private parent: AppComponent ,private serviceCustomer :ClientesService, private dialog: MatDialog) { } 
   ngOnInit() {

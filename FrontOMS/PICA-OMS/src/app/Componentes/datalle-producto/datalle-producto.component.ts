@@ -40,7 +40,7 @@ export class DatalleProductoComponent  {
 
   constructor(
     public dialogRef: MatDialogRef<DatalleProductoComponent>,private service:ProductosService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
   onNoClick(): void {

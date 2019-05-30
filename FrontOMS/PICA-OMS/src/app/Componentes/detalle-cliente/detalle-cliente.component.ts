@@ -23,7 +23,7 @@ export class DetalleClienteComponent {
   dataClientes = new Cliente();
 
   constructor(public dialogRef: MatDialogRef<DetalleClienteComponent>,private service :ClientesService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     }
  
   onNoClick(): void {

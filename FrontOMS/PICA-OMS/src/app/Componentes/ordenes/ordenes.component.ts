@@ -32,7 +32,7 @@ export class OrdenesComponent implements OnInit {
     FechaFin:"",
     checkRanking:false
   }
-  private dataCount: number=0;//tamaño para el paginador
+  public dataCount: number=0;//tamaño para el paginador
 
   constructor(private parent: AppComponent ,private serviceOrders :OrdenesService) { }
 
