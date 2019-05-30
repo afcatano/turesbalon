@@ -218,7 +218,7 @@ export class HotelesComponent implements OnInit {
             }else{
               this.parent.openDialog( "","Para el Hotel Hilton : "+"Servidor no disponible","Alerta");
             }
-            this.infoTable = Hoteles;
+            //this.infoTable = Hoteles;
         })
     });
      

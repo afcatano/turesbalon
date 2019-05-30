@@ -55,6 +55,11 @@ export class CampanasComponent implements OnInit {
          this.params.page = result.paginaActual;
          this.params.pageSize = result.tamanoPagina;
          if(result.data){
+
+          result.data.forEach(element => {
+            element.campana =element.campaña;
+          });
+
           this.dataCampaing=result.data;
           this.progressBar=false;
          }
