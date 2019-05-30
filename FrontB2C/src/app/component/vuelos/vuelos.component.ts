@@ -86,6 +86,7 @@ export class VuelosComponent implements OnInit {
 
   action(item:parametrosBusqueda){
     console.log("Eschua evento");
+    this.infoTable=[];
     this.processing=true;
     this.paramsBusqueda=item
     // this.infoTable = Vuelos;
@@ -105,6 +106,7 @@ export class VuelosComponent implements OnInit {
      this.transportService.transporte(params).subscribe(
       result =>{
        console.log("Entra Transporte");
+       var countPrecio=12770;
        if(result.codigo=="0"){
             if(result.Viajes){
 
@@ -121,7 +123,7 @@ export class VuelosComponent implements OnInit {
                       }
                       //Si no tiene precio pongo un precio
                       if(!element.Precio)
-                        element.Precio=12770;
+                        element.Precio=countPrecio;
                       if(element.PrimerClase)
                       { 
                           element.Precio = element.PrimerClase.Precio;//.toString().replace(".",",");
@@ -139,7 +141,7 @@ export class VuelosComponent implements OnInit {
                         }else{
 
                         }
-
+                        countPrecio=countPrecio+1240;
                     });
                 this.infoTable= result.Viajes;
             }
@@ -152,6 +154,7 @@ export class VuelosComponent implements OnInit {
           }
       }else{
         //No se encontro transporte
+        this.parent.openDialog( "","No hay transporte disponible","Alerta");
       }
        this.infoTable
        this.infoTablelLength=this.infoTable?this.infoTable.length:0;
@@ -182,8 +185,11 @@ export class VuelosComponent implements OnInit {
   var producto = new Producto();
   var transporte = new Transporte();
   
-  transporte.codigo=item.IdViaje;
-  transporte.proveedor= this.transportes;
+  var fecha = new Date();
+  var idFecha = fecha.getFullYear()+""+(fecha.getMonth())+""+fecha.getDate()+ ""+fecha.getMinutes()+""+fecha.getSeconds()+""+fecha.getMilliseconds();
+  console.log("Validación de la id reserva para el proveedor:"+item.proveedor);
+ transporte.proveedor= this.transportes;
+  transporte.codigo=transporte.proveedor=="AV"? item.IdViaje +"-"+item.Consecutivo:transporte.proveedor=="BOL"?idFecha +"-"+item.IdViaje: item.IdViaje ;  //TODO AV IdViaje-Consecutivo, BOL IdViaje-
   transporte.ciudadOrigen=item.CiudadOrigen;
   transporte.ciudadDestino=item.CiudadDestino;
   transporte.paisOrigen="Colombia";//TODO - poner pais

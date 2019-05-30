@@ -40,6 +40,7 @@ export class RegistroComponent implements OnInit {
              console.log("Usuario registrado "+data.username);
              this.parent.openDialog( "","Usuario Registrado!!","Informativo");
              data.userid=result.userid;
+             data.estadoCliente ="PLATA";
              this.correctLogin(data);
             } else {
               console.log(JSON.stringify(result, null, 4));

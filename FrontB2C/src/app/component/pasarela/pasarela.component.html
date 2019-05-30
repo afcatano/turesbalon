@@ -22,13 +22,13 @@
             <div class="col-sm-1"></div>
             <label for="input" class="col-form-label col-sm-3 grid-item">Nombre</label>
             
-            <input type="text" [(ngModel)]="sessionUser.nombre" size="35" class="form-control col-sm-3 grid-item" readonly name="Documento" id="Documento">
+            <input type="text" [(ngModel)]="sessionUser.nombre" size="35" class="form-control col-sm-3 grid-item" readonly name="nombre" id="nombre">
         </div>
         <div class="form-group row">
             <div class="col-sm-1"></div>
             <label for="input" class="col-form-label col-sm-3 grid-item">Apellido</label>
             
-            <input type="text" [(ngModel)]="sessionUser.apellido" size="35" class="form-control col-sm-3 grid-item" readonly name="Documento" id="Documento">
+            <input type="text" [(ngModel)]="sessionUser.apellido" size="35" class="form-control col-sm-3 grid-item" readonly name="apellido" id="apellido">
         </div>
         <div class="form-group row">
             <div class="col-sm-1"></div>
@@ -37,7 +37,7 @@
             <input type="text" [(ngModel)]="sessionUser.documento" size="35" class="form-control col-sm-3 grid-item" name="Documento" id="Documento">
         </div>
       </div>
-      <div *ngIf="!sessionUser.numeroTarjeta">
+      <div *ngIf="!tieneTarjetaRegistrar">
           <div style="padding: 20px;width: 100%;height: 20px;"></div>
           <div class="card-header">
               <span class="fontpayment">  DATOS DE TU TARJETA        </span>       
@@ -46,11 +46,12 @@
               <div class="col-sm-2"></div>
               <h4>Por Favor Ingresa tu número de tarjeta</h4>
             </div>
-          <div class="form-group row">
-                <div class="col-sm-2"></div>
-                <label for="input" class="col-sm-2 grid-item">Nombre en la Tarjeta</label>
-              
-                <div style="padding: 20px;width: 100%;height: 20px;"></div>
+            <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                <label for="validationServer01" class="col-sm-2 grid-item">Franquicia</label>
+                <select class="form-control " class="form-control col-sm-5" name="franquiciaTarjeta">
+                    <option *ngFor="let data of dataFranquicias"  value="{{data.id}}" >{{data.name}}</option>
+                  </select>
             </div>
           <div class="form-group row">
               <div class="col-sm-2"></div>
@@ -61,21 +62,30 @@
           <div class="form-group row">
             <div class="col-sm-2"></div>
               <label for="input" class="col-sm-2 grid-item">Numero de la Tarjeta</label>
-              <input type="password" [(ngModel)]="sessionUser.numeroTarjeta"  size="35" class="form-control col-sm-5" name="nrotarjeta" id="nrotarjeta">
+              <input type="text" [(ngModel)]="sessionUser.numeroTarjeta"  size="35" class="form-control col-sm-5" name="nrotarjeta" id="nrotarjeta">
           </div>
           <div class="form-group row">
               <div class="col-sm-2"></div>
                 <label for="input" class="col-sm-2 grid-item">Codigo de Seguridad</label>
-                <input type="password"  [(ngModel)]="username"  size="35" class="form-control col-sm-2" name="ccv" id="ccv">
+                <input type="text"  [(ngModel)]="username"  size="35" class="form-control col-sm-2" name="ccv" id="ccv">
             </div>
             <div class="form-group row">
                 <div class="col-sm-1"></div>
-                <label for="input" class="col-form-label col-sm-3 grid-item">Fecha Vencimiento</label>
-                <select class="form-control col-sm-2" name="mes" >
-                  </select>
-                  <select class="form-control col-sm-2" name="anio" >
-                    </select>
+                <label for="input" class="col-form-label col-sm-3 grid-item">Mes vencimiento</label>
+                <select class="form-control " class="col-sm-2 grid-item"  name="mes">
+                    <option *ngFor="let date of dataMeses" >{{date.value}}</option>
+                </select>
+           </div>
+
+           <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <label for="input" class="col-form-label col-sm-3 grid-item">Año vencimiento</label>
+            <select class="form-control "  class="col-sm-2 grid-item" name="ano">
+                <option *ngFor="let date of dataAnos" >{{date.value}}</option>
+              </select>
             </div>
+
+            
       </div>
        
         <div class="form-group row">

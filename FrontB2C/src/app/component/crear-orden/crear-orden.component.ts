@@ -101,12 +101,12 @@ export class CrearOrdenComponent implements OnInit {
             ValorOrden: this.session.orden.Orden.ValorOrden,
             CodigoOrden: this.session.orden.Orden.CodigoOrden,
             FechaOrden: this.session.orden.Orden.FechaOrden,
-            IdUsuario: this.session.orden.IdUsuario,
+            IdUsuario: this.sessionUser.userid? this.sessionUser.userid:this.session.orden.IdUsuario,
             EstadoOrden: this.session.orden.Orden.EstadoOrden,
             NombreCliente: this.sessionUser.nombre,
             ApellidoCliente: this.sessionUser.apellido,
             IdTipo: this.sessionUser.tipoDocumento,
-            IdNumero: this.sessionUser.userid,
+            IdNumero: this.sessionUser.documento,
             Correo: this.sessionUser.correo
        }
        if(this.session.orden.Orden.EstadoOrden!="PE" && this.session.orden.Orden.EstadoOrden!="AP"){

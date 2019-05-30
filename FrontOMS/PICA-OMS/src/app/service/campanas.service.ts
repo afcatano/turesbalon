@@ -14,11 +14,13 @@ export class CampanasService {
   private pathHotels: string;
   private pathCampaingCrud: string;
   private pathCampaing: string;
+  private pathCampaingCrudOms: string;
  
    constructor(private http: HttpClient , private config:StorageConfigService) {
    
      this.pathCampaing= "/campanas/consulta";
      this.pathCampaingCrud= "/campanas";
+     this.pathCampaingCrudOms= "/campanas/oms";
  
     }
 
@@ -89,7 +91,7 @@ export class CampanasService {
       console.log(params);
       console.log("url->"+parameterInfo.isLocal ? parameterInfo.pathApis: "");
       return this.http.post(
-        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCampaing,
+        (parameterInfo.isLocal ? parameterInfo.pathApis: "" )+this.pathCampaingCrudOms,
        params,
       { headers: headers}
        );

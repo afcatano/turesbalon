@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Hoteles } from '../../mock/hoteles';
+import {DataDannCarton } from '../../mock/dannCarton';
 import {DataCodigoHotel } from '../../mock/proveedores';
 import {Session } from '../../Models/session';
 import { StorageService } from '../../storage/storage.service';
@@ -78,12 +79,39 @@ export class HotelesComponent implements OnInit {
   action(item:parametrosBusqueda){
     console.log("Eschua evento");
     this.processing=true;
+    this.progressBar=true;
     //console.log(this.username, this.password);
     this.paramsBusqueda=item;
     var splitHoteles=this.hoteles.split(',');
     this.infoTable=[];
 
+
+
     splitHoteles.forEach(itemFor=>{
+      var idHotel="";//TODO - el hotel esta quemado.
+      var nombreHabitacion ="";
+      var direccion="avenue 124 dolor four" ;//TODO - no tiene direccion
+      this.infoTable=[];
+        /*
+        "Id": "2",
+                  "Codigo": "DCH-1001",
+                  "Nombre": "HOTEL DANN CARLTON BOGOTA",
+                  "Estrellas": "4.0",
+                  "Direccion": "Carrera 15 #103-60, Bogotá, ",
+                  "Telefono": "57 (1) 635 0010",
+                  "Ciudad": "Bogota",
+                  "CodigoCiiu": "11001"
+        */
+        if(itemFor=="D"){
+          DataDannCarton.forEach(danCar=>{
+           if(danCar.Ciudad==item.destino){
+              idHotel = danCar.Codigo;
+              nombreHabitacion = danCar.Nombre;
+              direccion= danCar.Direccion;
+              
+            }
+          })
+        }
         var params ={
             Proveedor: itemFor, //TODO - Validar si hay mas de uno
             Pais:"colombia", //TODO.- pais esta quemado
@@ -92,87 +120,104 @@ export class HotelesComponent implements OnInit {
             FechaSalida: item.fechaFinal,
             CodigoProm: "",
             TipoHabitacion: "Individual", //TODO - Tipo habitación esta quemado
-            IdHotel:"DCH-1003", //TODO - el hotel esta quemado.
+            IdHotel:idHotel, //TODO - el hotel esta quemado.
             NumeroHabitaciones: item.cantidadPersonas
       }
       this.hotelsService.hotel(params).subscribe(
         result => {
               console.log(result);
-              if(result.Hoteles){
-                var contadorImagen=1;
-                var arrayHotel=[];
-                result.Hoteles.forEach(element => {
-                    var infHotel=new  hotel()
+              if(result.codigo=="0"){
+                  if(result.Hoteles){
+                    var contadorImagen=1;
+                    var arrayHotel=[];
+                    result.Hoteles.forEach(element => {
+                        var infHotel=new  hotel()
 
-                    if(element.Habitaciones.length>0){
-                      
+                        if(element.Habitaciones.length>0){
+                          
 
-                         element.Habitaciones.forEach(elementHabita => {
-                              infHotel.codigo=212112;//TODO - Codigo de reserva de hotel
-                              infHotel.nombre=element.NombreHotel;
-                              infHotel.valor=elementHabita.Precio;
-                              //infHotel.descripcion=element.Habitaciones.Habitacion.Descripcion;
-                              infHotel.direccion=element.Direccion;
-                              infHotel.numeroHabitacion=elementHabita.Numero;
-                              infHotel.ciudad=item.destino;
-                              infHotel.pais="Estados unidos";//TODO - falta el pais
-                              infHotel.imagen="/../../../assets/hoteles/hotel"+contadorImagen+".jpg";
-                              //infHotel.coordenadas=result.Hoteles;
-                              infHotel.fechaEntrada=item.fechaInicial;
-                              infHotel.fechaSalida=item.fechaFinal;
-                              infHotel.tipoHotel=elementHabita.Tipo ? elementHabita.Tipo:"Estandar";
-                              infHotel.proveedor=itemFor;
-                              infHotel.accion=this.optionActual;
-                              infHotel.cantidad=item.cantidadPersonas;
+                            element.Habitaciones.forEach(elementHabita => {
+                                  infHotel.codigo=212112;//TODO - Codigo de reserva de hotel
+                                  infHotel.nombre=element.NombreHotel;
+                                  infHotel.valor=elementHabita.Precio;
+                                  //infHotel.descripcion=element.Habitaciones.Habitacion.Descripcion;
+                                  infHotel.direccion=element.Direccion;
+                                  infHotel.numeroHabitacion=elementHabita.Numero;
+                                  infHotel.ciudad=item.destino;
+                                  infHotel.pais="Estados unidos";//TODO - falta el pais
+                                  infHotel.imagen="/../../../assets/hoteles/hotel"+contadorImagen+".jpg";
+                                  //infHotel.coordenadas=result.Hoteles;
+                                  infHotel.fechaEntrada=item.fechaInicial;
+                                  infHotel.fechaSalida=item.fechaFinal;
+                                  infHotel.tipoHotel=elementHabita.Tipo ? elementHabita.Tipo:"Estandar";
+                                  infHotel.proveedor=itemFor;
+                                  infHotel.accion=this.optionActual;
+                                  infHotel.cantidad=item.cantidadPersonas;
 
-                              if(contadorImagen==4)
-                                contadorImagen=0;
-                                contadorImagen= contadorImagen+1;
-                                arrayHotel.push(infHotel);
-                          });
-                 
-                    }else{
-                      infHotel.codigo=element.IdHotel;
-                      infHotel.nombre=element.Habitaciones.Habitacion.Nombre;
-                      infHotel.valor=element.Habitaciones.Habitacion.Precio;
-                      infHotel.descripcion=element.Habitaciones.Habitacion.Descripcion;
-                      infHotel.direccion="avenue 124 dolor four" ;//TODO - no tiene direccion
-                      infHotel.numeroHabitacion=element.Habitaciones.Habitacion.Numero;
-                      infHotel.ciudad=item.destino;
-                      infHotel.pais="Colombia";//TODO - falta el pais
-                      infHotel.imagen="/../../../assets/hoteles/hotel"+contadorImagen+".jpg";
-                      //infHotel.coordenadas=result.Hoteles;
-                      infHotel.fechaEntrada=item.fechaInicial;
-                      infHotel.fechaSalida=item.fechaFinal;
-                      infHotel.tipoHotel="Estandar";//TODO - no tiene tipo
-                      infHotel.proveedor=itemFor;
-                      infHotel.accion=this.optionActual;
-                      infHotel.cantidad=item.cantidadPersonas;
-                      if(contadorImagen==4)
-                      contadorImagen=0;
-                      contadorImagen= contadorImagen+1;
-                      arrayHotel.push(infHotel);
-                    }
+                                  if(contadorImagen==4)
+                                    contadorImagen=0;
+                                    contadorImagen= contadorImagen+1;
+                                    arrayHotel.push(infHotel);
+                              });
                     
-                });
-                //Verifica que no este vacio para saber si lo asigna o lo une
-                if(this.infoTable.length > 0){
-                  arrayHotel.forEach(element => {
-                    this.infoTable.push(element);
-                  });
+                        }else{
+                          infHotel.codigo=element.IdHotel;
+                          infHotel.nombre=nombreHabitacion? nombreHabitacion: element.Habitaciones.Habitacion.Nombre;
+                          infHotel.valor=element.Habitaciones.Habitacion.Precio;
+                          infHotel.descripcion=element.Habitaciones.Habitacion.Descripcion;
+                          infHotel.direccion=direccion ;
+                          infHotel.numeroHabitacion=element.Habitaciones.Habitacion.Numero;
+                          infHotel.ciudad=item.destino;
+                          infHotel.pais="Colombia";//TODO - falta el pais
+                          infHotel.imagen="/../../../assets/hoteles/hotel"+contadorImagen+".jpg";
+                          //infHotel.coordenadas=result.Hoteles;
+                          infHotel.fechaEntrada=item.fechaInicial;
+                          infHotel.fechaSalida=item.fechaFinal;
+                          infHotel.tipoHotel="Estandar";//TODO - no tiene tipo
+                          infHotel.proveedor=itemFor;
+                          infHotel.accion=this.optionActual;
+                          infHotel.cantidad=item.cantidadPersonas;
+                          if(contadorImagen==4)
+                          contadorImagen=0;
+                          contadorImagen= contadorImagen+1;
+                          arrayHotel.push(infHotel);
+                        }
+                        
+                    });
+                    //Verifica que no este vacio para saber si lo asigna o lo une
+                    if(this.infoTable.length > 0){
+                      arrayHotel.forEach(element => {
+                        this.infoTable.push(element);
+                      });
+                    }
+                    else
+                      this.infoTable=arrayHotel;
+                    
+                  }
+              }//No hay resultados de hoteles
+              else{
+                if(itemFor=="D"){
+                  console.log("Hotel codigo -> "+itemFor);
+                  this.parent.openDialog( "","Para el Hotel Dann Carton : "+result.mensaje,"Alerta");
+                }else{
+                  console.log("Hotel codigo -> "+itemFor);
+                  this.parent.openDialog( "","Para el Hotel Hilton : "+result.mensaje,"Alerta");
                 }
-                else
-                  this.infoTable=arrayHotel;
-                
               }
               this.ordenesCount=this.infoTable.length; 
               this.infoTableLength=this.infoTable.length;
               this.processing = false;
+              this.progressBar=false;
         },
         error => {
             console.log(error);
             this.processing = false;
-            //this.parent.openDialog( "","Servidor no disponible","Alerta");
+            this.progressBar=false;
+            if(itemFor=="D"){
+              this.parent.openDialog( "","Para el Hotel Dann Carton : "+"Servidor no disponible","Alerta");
+            }else{
+              this.parent.openDialog( "","Para el Hotel Hilton : "+"Servidor no disponible","Alerta");
+            }
             this.infoTable = Hoteles;
         })
     });

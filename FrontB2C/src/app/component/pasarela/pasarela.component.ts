@@ -4,6 +4,9 @@ import {AppComponent} from '../../app.component';
 import { Router } from '@angular/router';
 import { StorageService } from '../../storage/storage.service';
 import {StorageParamsCompraService} from '../../storage/storage-compra'
+import  {anos} from '../../mock/anos';
+import  {meses} from '../../mock/mes';
+import {franquicias} from '../../mock/franquicia';
 @Component({
   selector: 'app-pasarela',
   templateUrl: './pasarela.component.html',
@@ -13,14 +16,20 @@ export class PasarelaComponent implements OnInit {
 
   progressBar=false;
   verificar=false;
+  tieneTarjetaRegistrar=false;
   sessionUser:any;
   session:any;
-valorTotal:number;
+  valorTotal:number;
+  dataMeses = meses;
+  dataAnos = anos;
+  dataFranquicias= franquicias;
   constructor(private storageCompra:StorageParamsCompraService,private sesion:StorageService,private pasarelaService:PasarelaService, private parent:AppComponent,private router:Router) { }
 
   ngOnInit() {
     this.sessionUser = this.sesion.getCurrentUser();
     this.session = this.storageCompra.getParamsCompraSession();
+
+   this.tieneTarjetaRegistrar = this.sessionUser.numeroTarjeta ?true:false;
    //Total de ocmpra
    this.valorTotal=this.session.orden.ValorTotal;
   
