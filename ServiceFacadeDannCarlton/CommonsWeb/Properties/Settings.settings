@@ -1,0 +1,81 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CommonsWeb.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TimeOutConnectionSQL" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Ruta" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:/log/DannCarlton</Value>
+    </Setting>
+    <Setting Name="Warning" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Error" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Fatal" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Information" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Exception" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Debug" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PortMail" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="TimeOutMail" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+    <Setting Name="Nombre" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LogHandler</Value>
+    </Setting>
+    <Setting Name="DataBaseNameOracle" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IndicadorConsecutivo" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="DigitoConsecutivo" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CodigoMoneda" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DataSourceOracle" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PasswordOracle" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="hostSmtp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CorreoEmisor" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PasswordCorreoEmi" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UserIDOracle" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">system</Value>
+    </Setting>
+    <Setting Name="DataSourceSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">186.30.161.35</Value>
+    </Setting>
+    <Setting Name="DataBaseNameSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DANNCARLTONBOOKING_RA</Value>
+    </Setting>
+    <Setting Name="UserIDSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TBUSER_DEA2</Value>
+    </Setting>
+    <Setting Name="PasswordSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Dea2AgreeDanCar1928</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

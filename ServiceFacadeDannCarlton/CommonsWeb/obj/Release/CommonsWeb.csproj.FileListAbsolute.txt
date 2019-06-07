@@ -1,0 +1,220 @@
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csprojAssemblyReference.cache
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csproj.CoreCompileInputs.cache
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.dll.config
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.pdb
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.exe
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.exe.config
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.rsp
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.exe
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.exe.config
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.rsp
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.AppContext.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Console.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Compression.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Claims.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.ValueTuple.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.exe
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.exe.config
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.rsp
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csproj.CopyComplete
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.dll
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.pdb
+C:\Users\Jeyson Vega\source\repos\BackEndsPICAWeb\CommonsWeb\bin\Oracle.DataAccess.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.dll.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.pdb
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.rsp
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.rsp
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.AppContext.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Console.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Compression.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Claims.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.ValueTuple.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.rsp
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\bin\Oracle.DataAccess.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csprojAssemblyReference.cache
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csproj.CoreCompileInputs.cache
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csproj.CopyComplete
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.dll
+C:\Users\Familia\Desktop\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.pdb
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.dll.config
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\CommonsWeb.pdb
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.exe
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.exe.config
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csc.rsp
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.exe
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.exe.config
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\csi.rsp
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.Managed.Core.targets
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.AppContext.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Collections.Immutable.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Console.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Compression.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.FileSystem.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.IO.Pipes.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Reflection.Metadata.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.AccessControl.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Claims.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Security.Principal.Windows.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.ValueTuple.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XmlDocument.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XPath.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.exe
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.exe.config
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\vbc.rsp
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\roslyn\VBCSCompiler.exe.config
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\bin\Oracle.DataAccess.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csprojAssemblyReference.cache
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csproj.CoreCompileInputs.cache
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.csproj.CopyComplete
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.dll
+E:\PICA .NET\GitHub\turesbalon\BackendNet\BackEndsPICAWeb\CommonsWeb\obj\Release\CommonsWeb.pdb
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\CommonsWeb.dll.config
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\CommonsWeb.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\CommonsWeb.pdb
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\csc.exe
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\csc.exe.config
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\csc.rsp
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\csi.exe
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\csi.exe.config
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\csi.rsp
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.Managed.Core.targets
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.AppContext.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Collections.Immutable.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Console.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.IO.Compression.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.IO.FileSystem.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.IO.Pipes.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Reflection.Metadata.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.AccessControl.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.Claims.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Security.Principal.Windows.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.ValueTuple.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Xml.XmlDocument.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Xml.XPath.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\vbc.exe
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\vbc.exe.config
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\vbc.rsp
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\VBCSCompiler.exe
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\roslyn\VBCSCompiler.exe.config
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\bin\Oracle.DataAccess.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\obj\Release\CommonsWeb.csprojAssemblyReference.cache
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\obj\Release\CommonsWeb.csproj.CoreCompileInputs.cache
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\obj\Release\CommonsWeb.csproj.CopyComplete
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\obj\Release\CommonsWeb.dll
+E:\PICA .NET\ServiceFacadeDannCarlton\CommonsWeb\obj\Release\CommonsWeb.pdb
